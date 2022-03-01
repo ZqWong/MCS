@@ -382,7 +382,7 @@
     <Compile Include="考试相关信息录入界面.Designer.cs">
       <DependentUpon>考试相关信息录入界面.cs</DependentUpon>
     </Compile>
-    <Compile Include="Common\GlobalClass.cs" />
+    <Compile Include="Common\Global.cs" />
     <Compile Include="SocketHandler\HandlerCenter.cs" />
     <Compile Include="考试成绩查询.cs">
       <SubType>Form</SubType>

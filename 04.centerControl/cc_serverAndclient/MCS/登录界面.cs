@@ -94,8 +94,8 @@ namespace MCS
             //}
             // TODO: 测试暂时隐藏，发布时显示 - end
 
-            GlobalClass.Instance._LoginUserName = "Admin";
-            GlobalClass.Instance._IsHasAdminLevel = true;
+            Global.Instance.LoginUserName = "Admin";
+            Global.Instance.IsHasAdminLevel = true;
             this.DialogResult = DialogResult.OK;    //返回一个登录成功的对话框状态
             this.Close();    //关闭登录窗口
         }

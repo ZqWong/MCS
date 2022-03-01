@@ -42,7 +42,7 @@ namespace MCS
         private static readonly object syslock = new object();
 
         private static 主界面 _instance;
-        private static SynchronizationContext _uiContext;
+        private static SynchronizationContext s_uiContext;
 
         public static 主界面 GetSingleton()
         {
@@ -62,56 +62,99 @@ namespace MCS
 
         public SynchronizationContext GetSyncContext()
         {
-            return _uiContext;
+            return s_uiContext;
         }
 
+        /// <summary>
+        /// 考试信息
+        /// </summary>
         ExaminationBLL _ExaminationBLL = new ExaminationBLL();
+        /// <summary>
+        /// 考试机信息
+        /// </summary>
         ExaminationPCBLL _ExaminationPCBLL = new ExaminationPCBLL();
+        /// <summary>
+        /// 考生信息
+        /// </summary>
         ExamineeBLL _ExamineeBLL = new ExamineeBLL();
+        /// <summary>
+        /// 获取所有系统信息
+        /// </summary>
         SystemBLL _SystemBLL = new SystemBLL();
+        /// <summary>
+        /// 获取设备信息
+        /// </summary>
         DeviceControlInfoBLL _GetDeviceInfoBLL = new DeviceControlInfoBLL();
+        /// <summary>
+        /// 获取相对路径
+        /// </summary>
+        string _AppStartPath = Application.StartupPath;
 
-        string _AppStartPath = Application.StartupPath; // 获取相对路径
-
-        // 选中数据的IP集合
+        /// <summary>
+        /// 选中数据的IP集合
+        /// </summary>
         private List<string> _SelectedIPList = new List<string>();
-        // 选中数据的Mac集合
+        /// <summary>
+        /// 选中数据的Mac集合
+        /// </summary>
         private List<string> _SelectedMacList = new List<string>();
 
         // 当前局域网能ping通IP
         private ConcurrentDictionary<string, string> _IPDict = new ConcurrentDictionary<string, string>();
         public ConcurrentDictionary<string, string> IPDict = new ConcurrentDictionary<string, string>();
-        public object lockObject = new object();
+        public object lockPingIp = new object();
 
-        // 当前已连接的客户端
+        /// <summary>
+        /// 当前已连接的客户端
+        /// </summary>
         public List<string> connectedIP = new List<string>();
         public object lockConnectedIp = new object();
 
-        // 控制播放列表播放的线程
+        /// <summary>
+        /// 控制播放列表播放的线程
+        /// </summary>
         private CancellationTokenSource _playListControlSource = new CancellationTokenSource();
+        /// <summary>
+        /// 播放列表名称
+        /// </summary>
         private string playListName;
+        /// <summary>
+        /// 当前播放APP名称
+        /// </summary>
         private string curPlayAppName;
+        /// <summary>
+        /// 控制任务
+        /// </summary>
         private Task controlTask = new Task(() => { });
+        /// <summary>
+        /// 播放音频间隔（ms）
+        /// </summary>
         private int playVideoIntervalMS = int.Parse(ConfigHelper.GetSingleton().GetAppConfig("PlayVideoInterval"));
-
-        // 关闸开启延迟时间
+        /// <summary>
+        /// 关闸开启延迟时间
+        /// </summary>
         private int OpenRasterDelayTime = int.Parse(ConfigHelper.GetSingleton().GetAppConfig("OpenRasterDelay"));
-
-        // 整体开关机状态记录. true：已经整体开机完成，当前是开机状态   false：整体关机完成，当前是关机状态
+        /// <summary>
+        /// 整体开关机状态记录. true：已经整体开机完成，当前是开机状态   false：整体关机完成，当前是关机状态
+        /// </summary>
         public bool allAccomPower = false;
-        // 整体开关机剩余时间记录
+        /// <summary>
+        /// 整体开关机剩余时间记录
+        /// </summary>
         public float controlPowerRemainSeconds = 0;
-
-        // 键盘钩子
+        /// <summary>
+        /// 键盘钩子
+        /// </summary>
         private KeyboardHookLib _keyboardHook = null;
 
         private 主界面()
         {
             // 此项目删除权限管理，在此设置全局的权限
-            GlobalClass.Instance._LoginUserName = "Admin";
-            GlobalClass.Instance._IsHasAdminLevel = true;
+            Global.Instance.LoginUserName = "Admin";
+            Global.Instance.IsHasAdminLevel = true;
 
-            _uiContext = SynchronizationContext.Current;
+            // 提供在各种同步模型中传播同步上下文的基本功能。
+            s_uiContext = SynchronizationContext.Current;
 
             InitializeComponent();
 
@@ -137,7 +180,7 @@ namespace MCS
                 fullShow(true);
             }
 
-            this.toolStripStatusLabel_server.Text = "当前登录用户：" + GlobalClass.Instance._LoginUserName;
+            this.toolStripStatusLabel_server.Text = "当前登录用户：" + Global.Instance.LoginUserName;
 
             // 自动执行
             AutoExcute();
@@ -154,7 +197,7 @@ namespace MCS
             }
             catch (Exception e)
             {
-                NlogHandler.GetSingleton().Info("页面数据加载异常：" + e.Message.ToString());
+                NlogHandler.GetSingleton().Error("页面数据加载异常：" + e.Message.ToString());
             }
             
             NlogHandler.GetSingleton().Info("页面数据加载完成");
@@ -953,7 +996,7 @@ namespace MCS
             try
             {
                 // 赋值给IPlist
-                lock (lockObject)
+                lock (lockPingIp)
                 {
                     // 将上次查找的ip保存。防止在两次查找间隔过程中清空了_IPBag导致应用到_IPBag的里面为空
                     // 这样会导致IPList是_IPBag延迟定长的结果
@@ -1735,7 +1778,7 @@ namespace MCS
 
         private void 考生管理ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (GlobalClass.Instance._IsHasAdminLevel)
+            if (Global.Instance.IsHasAdminLevel)
             {
                 考生信息管理界面 form = new 考生信息管理界面();
                 form.ShowDialog();
@@ -1748,7 +1791,7 @@ namespace MCS
 
         private void 考生所属公司管理ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (GlobalClass.Instance._IsHasAdminLevel)
+            if (Global.Instance.IsHasAdminLevel)
             {
                 考生所属公司信息管理 form = new 考生所属公司信息管理();
                 form.ShowDialog();
@@ -1761,7 +1804,7 @@ namespace MCS
 
         private void 用户管理ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (GlobalClass.Instance._IsHasAdminLevel)
+            if (Global.Instance.IsHasAdminLevel)
             {
                 用户管理 form = new 用户管理();
                 form.ShowDialog();
@@ -1886,7 +1929,7 @@ namespace MCS
 
         private void 考试机配置ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (GlobalClass.Instance._IsHasAdminLevel)
+            if (Global.Instance.IsHasAdminLevel)
             {
                 考试机配置 form = new 考试机配置();
                 form.ShowDialog(this);
@@ -2312,8 +2355,8 @@ namespace MCS
                 string appName = comboBox_process.SelectedValue.ToString();
 
                 ds = 进程管理.GetSingleton()._GetAllAppInfoBLL.GetAllAppinfoByName(appName);
-
-                int row = MCS_DataGridView.Rows.Count; //得到总行数  
+                
+                int row = MCS_DataGridView.Rows.Count; //得到总行数
 
                 for (int i = 0; i < row; i++) //得到总行数并在之内循环  
                 {
@@ -2321,7 +2364,7 @@ namespace MCS
                     {
                         string ip = MCS_DataGridView.Rows[i].Cells[ExaminationPCModel.ColumnName_IP].Value.ToString();
                         string appPath = "";
-
+                        
                         DataRow[] dr = ds.Tables[0].Select(string.Format("{0} = '{1}' and {2} = '{3}'", ProcessControlModel.DB_IP, ip, ProcessControlModel.DB_Name, appName));
 
                         if (dr.Length == 1)
@@ -2334,6 +2377,8 @@ namespace MCS
                         }
 
                         LogHelper.WriteLog(string.Format("目标计算机 ip: {0} 操作进程 {1} 开启状态：{2}", ip, appName, isOn));
+
+                        NlogHandler.GetSingleton().Info($"准备启动 设备({ip}) App: {appName}");
 
                         RabbitMQEventBus.GetSingleton()
                             .Trigger<R_C_ControlProcessData

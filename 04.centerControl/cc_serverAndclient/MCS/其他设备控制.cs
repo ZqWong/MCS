@@ -342,7 +342,7 @@ namespace MCS
                         else if (deviceDict[className].controlType == CONTROLTYPENET)
                         {
                             // 网口连接
-                            lock (主界面.GetSingleton().lockObject)
+                            lock (主界面.GetSingleton().lockPingIp)
                             {
                                 if (主界面.GetSingleton().IPDict.ContainsKey(ip))
                                 {

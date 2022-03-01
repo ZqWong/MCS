@@ -71,7 +71,7 @@ namespace MCS.SocketHandler.LogicHandlers
         /// </summary>
         private void ExcuteApplicationOpenStateCommand(string ip, bool isOpen)
         {
-            GlobalClass.Instance.AddApplicationOpenStateDic(ip, isOpen);
+            Global.Instance.AddApplicationOpenStateDic(ip, isOpen);
         }
         #endregion
     }

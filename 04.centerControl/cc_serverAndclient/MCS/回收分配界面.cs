@@ -550,7 +550,7 @@ namespace MCS
                     _ExaminationPCModel.ExaminationResultID = newExaminationResultID.ToString();
                     // add by wuxin at 2018/5/30 - end
 
-                    string clientIPAddress = GlobalClass.Instance.GetClientIPAddressByIP(_ExaminationPCModel.IP);
+                    string clientIPAddress = Global.Instance.GetClientIPAddressByIP(_ExaminationPCModel.IP);
 
                     // ------------------------------------------------------------
                     ByteArray ba = new ByteArray();
@@ -575,7 +575,7 @@ namespace MCS
                     try
                     {
                         // 发客户端发送信息
-                        GlobalClass.Instance._ClientDic[clientIPAddress].Send(resultByteArray.GetBuffer());
+                        Global.Instance._ClientDic[clientIPAddress].Send(resultByteArray.GetBuffer());
                     }
                     catch (Exception e)
                     {
@@ -635,7 +635,7 @@ namespace MCS
                 // 考试状态（不添加到DB，需要发送给客户端）
                 _ExaminationPCModel.ExamState = EnumExamState.NoStart;
 
-                string clientIPAddress = GlobalClass.Instance.GetClientIPAddressByIP(_ExaminationPCModel.IP);
+                string clientIPAddress = Global.Instance.GetClientIPAddressByIP(_ExaminationPCModel.IP);
 
                 // ------------------------------------------------------------
                 ByteArray ba = new ByteArray();
@@ -660,7 +660,7 @@ namespace MCS
                 try
                 {
                     // 发客户端发送信息
-                    GlobalClass.Instance._ClientDic[clientIPAddress].Send(resultByteArray.GetBuffer());
+                    Global.Instance._ClientDic[clientIPAddress].Send(resultByteArray.GetBuffer());
                 }
                 catch (Exception e)
                 {
@@ -699,7 +699,7 @@ namespace MCS
             _ExaminationPCModel.ExamState = EnumExamState.Empty;
             _ExaminationPCModel.ExaminationResultID = "";
 
-            string clientIPAddress = GlobalClass.Instance.GetClientIPAddressByIP(_ExaminationPCModel.IP);
+            string clientIPAddress = Global.Instance.GetClientIPAddressByIP(_ExaminationPCModel.IP);
             // ------------------------------------------------------------
             ByteArray ba = new ByteArray();
 
@@ -723,7 +723,7 @@ namespace MCS
             try
             {
                 // 发客户端发送信息
-                GlobalClass.Instance._ClientDic[clientIPAddress].Send(resultByteArray.GetBuffer());
+                Global.Instance._ClientDic[clientIPAddress].Send(resultByteArray.GetBuffer());
             }
             catch (Exception ex)
             {

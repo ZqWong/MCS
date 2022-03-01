@@ -3,25 +3,25 @@ using System.Collections.Generic;
 
 namespace MCS.Common
 {
-    public class GlobalClass
+    public class Global
     {
-        private static GlobalClass _Instance;
+        private static Global _Instance;
 
         public Dictionary<string, UserToken> _ClientDic = new Dictionary<string, UserToken>();
 
         public Dictionary<string, bool> _ApplicationOpenStateDic = new Dictionary<string, bool>();
 
-        public string _LoginUserName;
+        public string LoginUserName;
 
-        public bool _IsHasAdminLevel = false;
+        public bool IsHasAdminLevel = false;
 
-        public static GlobalClass Instance
+        public static Global Instance
         {
             get
             {
                 if (_Instance == null)
                 {
-                    _Instance = new GlobalClass();
+                    _Instance = new Global();
                 }
 
                 return _Instance;

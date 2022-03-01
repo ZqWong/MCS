@@ -21,11 +21,11 @@ namespace MCS.SocketHandler
 
             LogHelper.WriteLog("客户端连接成功！" + clientKey);
 
-            bool result = GlobalClass.Instance.AddClientToClientDic(clientKey, userToken);
+            bool result = Global.Instance.AddClientToClientDic(clientKey, userToken);
 
             if (result)
             {
-                LogHelper.WriteLog("客户端数：" + GlobalClass.Instance.ShowClientCount());
+                LogHelper.WriteLog("客户端数：" + Global.Instance.ShowClientCount());
             }
             else
             {
@@ -83,11 +83,11 @@ namespace MCS.SocketHandler
 
             LogHelper.WriteLog("客户端关闭！" + error);
 
-            bool result = GlobalClass.Instance.RemoveClientFromClientDic(clientKey);
+            bool result = Global.Instance.RemoveClientFromClientDic(clientKey);
 
             if (result)
             {
-                LogHelper.WriteLog("客户端数：" + GlobalClass.Instance.ShowClientCount());
+                LogHelper.WriteLog("客户端数：" + Global.Instance.ShowClientCount());
             }
             else
             {
