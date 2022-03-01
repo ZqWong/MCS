@@ -1,0 +1,8 @@
+生成出来的.sql文件没有创建数据库的语句，因此在导入.sql文件前，需要确保数据库中存在该数据库。
+vrexaminationmaincontrolsystemdb
+
+需要的文件：
+DBConfig.ini
+mysqldump.exe
+mysql.exe
+以上都需要放到程序执行文件所在目录。

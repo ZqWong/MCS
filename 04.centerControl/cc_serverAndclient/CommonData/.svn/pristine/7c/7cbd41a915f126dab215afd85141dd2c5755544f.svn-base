@@ -1,0 +1,21 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using DW_CC_NET;
+using UserEventData;
+
+namespace UserEventData
+{
+
+    public class C_SystemStateData : C_BasicEventData
+    {
+        public float cpu_ratio;
+        public float memory_available;
+        public int system_tick_count;
+    }
+
+
+
+}

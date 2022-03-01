@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DW_Net</name>
+    </assembly>
+    <members>
+        <member name="P:Networker.Client.Abstractions.IClient.Connected">
+            <summary>
+            连接成功后的回调函数
+            </summary>
+        </member>
+        <member name="P:Networker.Client.Abstractions.IClient.Disconnected">
+            <summary>
+            断开连接后的回调函数
+            </summary>
+        </member>
+        <member name="M:Networker.Client.Abstractions.IClient.Send``1(``0)">
+            <summary>
+            TCP发送数据
+            </summary>
+            <typeparam name="T">自定义的消息类型</typeparam>
+            <param name="packet"></param>
+        </member>
+        <member name="M:Networker.Client.Abstractions.IClient.SendUdp``1(``0)">
+            <summary>
+            UDP发送数据
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="packet"></param>
+        </member>
+        <member name="M:Networker.Client.Abstractions.IClient.ReceiveSyncTcp">
+            <summary>
+            手动阻塞接收。仅在UseSync(True)的同步阻塞模式下手动调用并阻塞线程。UseSync(False)的异步模式下自动接收，不阻塞线程。
+            </summary>
+        </member>
+        <member name="M:Networker.Client.Abstractions.IClient.Connect">
+            <summary>
+            创建连接
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Networker.Client.Abstractions.IClient.Stop">
+            <summary>
+            关闭连接
+            </summary>
+        </member>
+        <member name="M:Networker.Client.Abstractions.IClient.GetPacketSerialiser">
+            <summary>
+            获取序列化接口。大部分情况下不需要调用此函数，因为序列化部分已经自动执行。
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Networker.Client.Client.Ping(System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Networker.Client.Client.Send``1(``0)">
+            <inheritdoc />
+        </member>
+        <member name="M:Networker.Client.Client.Send(System.Byte[])">
+            <inheritdoc />
+        </member>
+        <member name="M:Networker.Client.Client.SendUdp``1(``0)">
+            <inheritdoc />
+        </member>
+        <member name="M:Networker.Client.Client.SendUdp(System.Byte[])">
+            <inheritdoc />
+        </member>
+        <member name="M:Networker.Client.Client.Stop">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>

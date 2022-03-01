@@ -1,0 +1,616 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\CefSharp.WinForms.79.1.360\build\CefSharp.WinForms.props" Condition="Exists('..\packages\CefSharp.WinForms.79.1.360\build\CefSharp.WinForms.props')" />
+  <Import Project="..\packages\CefSharp.Common.79.1.360\build\CefSharp.Common.props" Condition="Exists('..\packages\CefSharp.Common.79.1.360\build\CefSharp.Common.props')" />
+  <Import Project="..\packages\cef.redist.x86.79.1.36\build\cef.redist.x86.props" Condition="Exists('..\packages\cef.redist.x86.79.1.36\build\cef.redist.x86.props')" />
+  <Import Project="..\packages\cef.redist.x64.79.1.36\build\cef.redist.x64.props" Condition="Exists('..\packages\cef.redist.x64.79.1.36\build\cef.redist.x64.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <CefSharpAnyCpuSupport>true</CefSharpAnyCpuSupport>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{88FF48A0-5F5D-477D-B627-D3961F998CCF}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MCS</RootNamespace>
+    <AssemblyName>MCS</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Automation.BDaq4">
+      <HintPath>..\Automation.BDaq4.dll</HintPath>
+    </Reference>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.5.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.5\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Protobuf, Version=3.11.4.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Protobuf.3.11.4\lib\net45\Google.Protobuf.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Compression.LZ4, Version=1.1.11.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
+      <HintPath>..\packages\K4os.Compression.LZ4.1.1.11\lib\net46\K4os.Compression.LZ4.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Compression.LZ4.Streams, Version=1.1.11.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
+      <HintPath>..\packages\K4os.Compression.LZ4.Streams.1.1.11\lib\net46\K4os.Compression.LZ4.Streams.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Hash.xxHash, Version=1.0.6.0, Culture=neutral, PublicKeyToken=32cd54395057cec3, processorArchitecture=MSIL">
+      <HintPath>..\packages\K4os.Hash.xxHash.1.0.6\lib\net46\K4os.Hash.xxHash.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=8.0.17.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.8.0.17\lib\net452\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI, Version=2.2.0.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OOXML, Version=2.2.0.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\NPOI.OOXML.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXml4Net, Version=2.2.0.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\NPOI.OpenXml4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXmlFormats, Version=2.2.0.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\NPOI.OpenXmlFormats.dll</HintPath>
+    </Reference>
+    <Reference Include="Renci.SshNet, Version=2020.0.0.0, Culture=neutral, PublicKeyToken=1cee9f8bde3db106, processorArchitecture=MSIL">
+      <HintPath>..\packages\SSH.NET.2020.0.0\lib\net40\Renci.SshNet.dll</HintPath>
+    </Reference>
+    <Reference Include="SqlSugar, Version=5.0.0.20, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\sqlSugar.5.0.0.20\lib\SqlSugar.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.3\lib\netstandard2.0\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.4.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="4D座椅.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="4D座椅.Designer.cs">
+      <DependentUpon>4D座椅.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\Alert.cs" />
+    <Compile Include="Common\Check.cs" />
+    <Compile Include="Common\Const.cs" />
+    <Compile Include="Common\ICCardWriterAndReader.cs" />
+    <Compile Include="Common\IDCardReader.cs" />
+    <Compile Include="Common\DeviceInternetConnect.cs" />
+    <Compile Include="Common\KeyboardHookLib.cs" />
+    <Compile Include="Common\LogHelper.cs" />
+    <Compile Include="Common\MyTool.cs" />
+    <Compile Include="Common\ProgressControls.cs" />
+    <Compile Include="Common\Validator.cs" />
+    <Compile Include="Common\Reader.cs" />
+    <Compile Include="Common\WOLClass.cs" />
+    <Compile Include="DB\BLL\DeviceControlInfoBLL.cs" />
+    <Compile Include="DB\BLL\UpdateClientAppInfoBLL.cs" />
+    <Compile Include="DB\BLL\ReceiveFilesInfoBLL.cs" />
+    <Compile Include="DB\BLL\ProcessControlAppInfoBLL.cs" />
+    <Compile Include="DB\BLL\ExaminationBLL.cs" />
+    <Compile Include="DB\BLL\ExaminationItemBLL.cs" />
+    <Compile Include="DB\BLL\ExaminationPCBLL.cs" />
+    <Compile Include="DB\BLL\ExaminationResultBLL.cs" />
+    <Compile Include="DB\BLL\ExaminationResultDetailBLL.cs" />
+    <Compile Include="DB\BLL\ExaminationSubjectBLL.cs" />
+    <Compile Include="DB\BLL\ExamineeBLL.cs" />
+    <Compile Include="DB\BLL\ExamineeCompanyBLL.cs" />
+    <Compile Include="DB\BLL\PageBLL.cs" />
+    <Compile Include="DB\BLL\SystemBLL.cs" />
+    <Compile Include="DB\BLL\UserBLL.cs" />
+    <Compile Include="DB\DBConnect.cs" />
+    <Compile Include="DB\MySqlHelper.cs" />
+    <Compile Include="DB\StoredProcedureName.cs" />
+    <Compile Include="DeviceRespond\PCI1710.cs" />
+    <Compile Include="EventBusHandler\GetContentInfoHandler.cs" />
+    <Compile Include="EventBusHandler\ListContentHandler.cs" />
+    <Compile Include="EventBusHandler\DeleteContentHandler.cs" />
+    <Compile Include="EventBusHandler\CreateFolderHandler.cs" />
+    <Compile Include="EventBusHandler\MobileHandlerNew\M_GetProjectsStateHander.cs" />
+    <Compile Include="EventBusHandler\MobileHandlerNew\M_GetLightInfoHander.cs" />
+    <Compile Include="EventBusHandler\MobileHandlerNew\M_ProjectControlHander.cs" />
+    <Compile Include="EventBusHandler\MobileHandlerNew\M_LightControlHander.cs" />
+    <Compile Include="EventBusHandler\MobileHandlerNew\M_7THControlHander.cs" />
+    <Compile Include="EventBusHandler\MobileHandlerNew\M_PlaylistControlHander.cs" />
+    <Compile Include="EventBusHandler\MobileHandlerNew\M_ControlComputerHander.cs" />
+    <Compile Include="EventBusHandler\U_ReceiveDataHander.cs" />
+    <Compile Include="EventBusHandler\RenameContentHandler.cs" />
+    <Compile Include="EventBusHandler\M_ControlPlanHander.cs" />
+    <Compile Include="EventBusHandler\M_ControlComputerHander.cs" />
+    <Compile Include="EventBusHandler\M_ControlGroupHander.cs" />
+    <Compile Include="EventBusHandler\M_GetGroupInfoHander.cs" />
+    <Compile Include="EventBusHandler\M_GetProgramInfoHander.cs" />
+    <Compile Include="EventBusHandler\M_GetPlanInfoHander.cs" />
+    <Compile Include="EventBusHandler\MobileHandlerNew\M_GetComputerHander.cs" />
+    <Compile Include="EventBusHandler\M_ControlProgramHander.cs" />
+    <Compile Include="EventBusHandler\GetFileHandler.cs" />
+    <Compile Include="EventBusHandler\GetCltStereoHander.cs" />
+    <Compile Include="EventBusHandler\FileInfoHandler.cs" />
+    <Compile Include="EventBusHandler\ReplyeRemoteControlHandler.cs" />
+    <Compile Include="EventBusHandler\MoveContentHandler.cs" />
+    <Compile Include="Form_Test_1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Test_1.Designer.cs">
+      <DependentUpon>Form_Test_1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EventBusHandler\SystemStateHandler.cs" />
+    <Compile Include="EventBusHandler\PluginEventHandler.cs" />
+    <Compile Include="EventBusHandler\ProcessStateHandler.cs" />
+    <Compile Include="EventBusHandler\ReplyFiledataHander.cs" />
+    <Compile Include="PageControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PageControl.Designer.cs">
+      <DependentUpon>PageControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="xml.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="xml.Designer.cs">
+      <DependentUpon>xml.cs</DependentUpon>
+    </Compile>
+    <Compile Include="其他设备控制.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="其他设备控制.Designer.cs">
+      <DependentUpon>其他设备控制.cs</DependentUpon>
+    </Compile>
+    <Compile Include="分组管理.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="分组管理.Designer.cs">
+      <DependentUpon>分组管理.cs</DependentUpon>
+    </Compile>
+    <Compile Include="删除应用.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="删除应用.Designer.cs">
+      <DependentUpon>删除应用.cs</DependentUpon>
+    </Compile>
+    <Compile Include="参考图片查看界面.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="参考图片查看界面.Designer.cs">
+      <DependentUpon>参考图片查看界面.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SocketHandler\LogicHandlers\ExamHandler.cs" />
+    <Compile Include="传输文件.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="传输文件.Designer.cs">
+      <DependentUpon>传输文件.cs</DependentUpon>
+    </Compile>
+    <Compile Include="回收分配界面.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="回收分配界面.Designer.cs">
+      <DependentUpon>回收分配界面.cs</DependentUpon>
+    </Compile>
+    <Compile Include="增加应用.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="增加应用.Designer.cs">
+      <DependentUpon>增加应用.cs</DependentUpon>
+    </Compile>
+    <Compile Include="帮助界面.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="帮助界面.Designer.cs">
+      <DependentUpon>帮助界面.cs</DependentUpon>
+    </Compile>
+    <Compile Include="播放列表.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="播放列表.Designer.cs">
+      <DependentUpon>播放列表.cs</DependentUpon>
+    </Compile>
+    <Compile Include="方案管理.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="方案管理.Designer.cs">
+      <DependentUpon>方案管理.cs</DependentUpon>
+    </Compile>
+    <Compile Include="更新客户端.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="更新客户端.Designer.cs">
+      <DependentUpon>更新客户端.cs</DependentUpon>
+    </Compile>
+    <Compile Include="测试窗口.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="测试窗口.Designer.cs">
+      <DependentUpon>测试窗口.cs</DependentUpon>
+    </Compile>
+    <Compile Include="版本信息.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="版本信息.Designer.cs">
+      <DependentUpon>版本信息.cs</DependentUpon>
+    </Compile>
+    <Compile Include="登录界面.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="登录界面.Designer.cs">
+      <DependentUpon>登录界面.cs</DependentUpon>
+    </Compile>
+    <Compile Include="类型管理.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="类型管理.Designer.cs">
+      <DependentUpon>类型管理.cs</DependentUpon>
+    </Compile>
+    <Compile Include="考生信息添加界面.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="考生信息添加界面.Designer.cs">
+      <DependentUpon>考生信息添加界面.cs</DependentUpon>
+    </Compile>
+    <Compile Include="考生信息管理界面.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="考生信息管理界面.Designer.cs">
+      <DependentUpon>考生信息管理界面.cs</DependentUpon>
+    </Compile>
+    <Compile Include="用户添加.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="用户添加.Designer.cs">
+      <DependentUpon>用户添加.cs</DependentUpon>
+    </Compile>
+    <Compile Include="考生所属公司信息添加.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="考生所属公司信息添加.Designer.cs">
+      <DependentUpon>考生所属公司信息添加.cs</DependentUpon>
+    </Compile>
+    <Compile Include="用户管理.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="用户管理.Designer.cs">
+      <DependentUpon>用户管理.cs</DependentUpon>
+    </Compile>
+    <Compile Include="设备输入数据.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="设备输入数据.Designer.cs">
+      <DependentUpon>设备输入数据.cs</DependentUpon>
+    </Compile>
+    <Compile Include="输入信息.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="输入信息.Designer.cs">
+      <DependentUpon>输入信息.cs</DependentUpon>
+    </Compile>
+    <Compile Include="进程管理.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="进程管理.Designer.cs">
+      <DependentUpon>进程管理.cs</DependentUpon>
+    </Compile>
+    <Compile Include="远程控制.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="远程控制.Designer.cs">
+      <DependentUpon>远程控制.cs</DependentUpon>
+    </Compile>
+    <Compile Include="选择考生所属公司界面.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="选择考生所属公司界面.Designer.cs">
+      <DependentUpon>选择考生所属公司界面.cs</DependentUpon>
+    </Compile>
+    <Compile Include="考生所属公司信息管理.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="考生所属公司信息管理.Designer.cs">
+      <DependentUpon>考生所属公司信息管理.cs</DependentUpon>
+    </Compile>
+    <Compile Include="考试相关信息录入界面.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="考试相关信息录入界面.Designer.cs">
+      <DependentUpon>考试相关信息录入界面.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\GlobalClass.cs" />
+    <Compile Include="SocketHandler\HandlerCenter.cs" />
+    <Compile Include="考试成绩查询.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="考试成绩查询.Designer.cs">
+      <DependentUpon>考试成绩查询.cs</DependentUpon>
+    </Compile>
+    <Compile Include="考试成绩详情.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="考试成绩详情.Designer.cs">
+      <DependentUpon>考试成绩详情.cs</DependentUpon>
+    </Compile>
+    <Compile Include="考试机信息添加.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="考试机信息添加.Designer.cs">
+      <DependentUpon>考试机信息添加.cs</DependentUpon>
+    </Compile>
+    <Compile Include="考试机信息管理.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="考试机信息管理.Designer.cs">
+      <DependentUpon>考试机信息管理.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SocketHandler\HandlerInterface.cs" />
+    <Compile Include="SocketHandler\LogicHandlers\SystemHandler.cs" />
+    <Compile Include="主界面.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="主界面.Designer.cs">
+      <DependentUpon>主界面.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="考试项目查询界面.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="考试项目查询界面.Designer.cs">
+      <DependentUpon>考试项目查询界面.cs</DependentUpon>
+    </Compile>
+    <Compile Include="选择考生界面.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="选择考生界面.Designer.cs">
+      <DependentUpon>选择考生界面.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="4D座椅.resx">
+      <DependentUpon>4D座椅.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Test_1.resx">
+      <DependentUpon>Form_Test_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PageControl.resx">
+      <DependentUpon>PageControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="xml.resx">
+      <DependentUpon>xml.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="其他设备控制.resx">
+      <DependentUpon>其他设备控制.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="分组管理.resx">
+      <DependentUpon>分组管理.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="删除应用.resx">
+      <DependentUpon>删除应用.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="参考图片查看界面.resx">
+      <DependentUpon>参考图片查看界面.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="传输文件.resx">
+      <DependentUpon>传输文件.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="回收分配界面.resx">
+      <DependentUpon>回收分配界面.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="增加应用.resx">
+      <DependentUpon>增加应用.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="帮助界面.resx">
+      <DependentUpon>帮助界面.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="播放列表.resx">
+      <DependentUpon>播放列表.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="方案管理.resx">
+      <DependentUpon>方案管理.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="更新客户端.resx">
+      <DependentUpon>更新客户端.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="测试窗口.resx">
+      <DependentUpon>测试窗口.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="版本信息.resx">
+      <DependentUpon>版本信息.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="登录界面.resx">
+      <DependentUpon>登录界面.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="类型管理.resx">
+      <DependentUpon>类型管理.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="考生信息添加界面.resx">
+      <DependentUpon>考生信息添加界面.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="考生信息管理界面.resx">
+      <DependentUpon>考生信息管理界面.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="用户添加.resx">
+      <DependentUpon>用户添加.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="考生所属公司信息添加.resx">
+      <DependentUpon>考生所属公司信息添加.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="用户管理.resx">
+      <DependentUpon>用户管理.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="设备输入数据.resx">
+      <DependentUpon>设备输入数据.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="输入信息.resx">
+      <DependentUpon>输入信息.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="进程管理.resx">
+      <DependentUpon>进程管理.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="远程控制.resx">
+      <DependentUpon>远程控制.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="选择考生所属公司界面.resx">
+      <DependentUpon>选择考生所属公司界面.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="考生所属公司信息管理.resx">
+      <DependentUpon>考生所属公司信息管理.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="考试相关信息录入界面.resx">
+      <DependentUpon>考试相关信息录入界面.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="考试成绩查询.resx">
+      <DependentUpon>考试成绩查询.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="考试成绩详情.resx">
+      <DependentUpon>考试成绩详情.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="考试机信息添加.resx">
+      <DependentUpon>考试机信息添加.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="考试机信息管理.resx">
+      <DependentUpon>考试机信息管理.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="主界面.resx">
+      <DependentUpon>主界面.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="考试项目查询界面.resx">
+      <DependentUpon>考试项目查询界面.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="选择考生界面.resx">
+      <DependentUpon>选择考生界面.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CommonData\CommonData.csproj">
+      <Project>{24c5d171-81d7-4dcb-86c9-605fa545b1b3}</Project>
+      <Name>CommonData</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CommonTools\CommonTools.csproj">
+      <Project>{be89926a-ec06-404d-9a5f-3717efa43e59}</Project>
+      <Name>CommonTools</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{097f78c5-9e15-4a27-aadc-1d3799ae738f}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EventBus\DW_CC_NET.csproj">
+      <Project>{91b44572-9b1b-4a0f-ab64-292a92933cf3}</Project>
+      <Name>DW_CC_NET</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NetFrame\ServerFrame.csproj">
+      <Project>{76b790e1-ffce-421a-a435-6ee0763a5b14}</Project>
+      <Name>ServerFrame</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BG.jpg" />
+    <Content Include="Resources\logo256.ico" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\cef.redist.x64.79.1.36\build\cef.redist.x64.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\cef.redist.x64.79.1.36\build\cef.redist.x64.props'))" />
+    <Error Condition="!Exists('..\packages\cef.redist.x86.79.1.36\build\cef.redist.x86.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\cef.redist.x86.79.1.36\build\cef.redist.x86.props'))" />
+    <Error Condition="!Exists('..\packages\CefSharp.Common.79.1.360\build\CefSharp.Common.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\CefSharp.Common.79.1.360\build\CefSharp.Common.props'))" />
+    <Error Condition="!Exists('..\packages\CefSharp.Common.79.1.360\build\CefSharp.Common.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\CefSharp.Common.79.1.360\build\CefSharp.Common.targets'))" />
+    <Error Condition="!Exists('..\packages\CefSharp.WinForms.79.1.360\build\CefSharp.WinForms.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\CefSharp.WinForms.79.1.360\build\CefSharp.WinForms.props'))" />
+    <Error Condition="!Exists('..\packages\CefSharp.WinForms.79.1.360\build\CefSharp.WinForms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\CefSharp.WinForms.79.1.360\build\CefSharp.WinForms.targets'))" />
+  </Target>
+  <Import Project="..\packages\CefSharp.Common.79.1.360\build\CefSharp.Common.targets" Condition="Exists('..\packages\CefSharp.Common.79.1.360\build\CefSharp.Common.targets')" />
+  <Import Project="..\packages\CefSharp.WinForms.79.1.360\build\CefSharp.WinForms.targets" Condition="Exists('..\packages\CefSharp.WinForms.79.1.360\build\CefSharp.WinForms.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

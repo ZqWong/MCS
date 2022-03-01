@@ -1,0 +1,178 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CommonData</name>
+    </assembly>
+    <members>
+        <member name="T:UserEventData.M_S_ControlDevice">
+            <summary>
+            移动端向PC获取发送请求控制其他设备
+            </summary>
+        </member>
+        <member name="F:UserEventData.M_S_ControlDevice.deviceName">
+            <summary>
+            deviceName：设备名称
+            isOn:是否开启
+            </summary>
+        </member>
+        <member name="T:UserEventData.M_S_ControlGroup">
+            <summary>
+            移动端向PC获取发送请求控制分组
+            </summary>
+        </member>
+        <member name="F:UserEventData.M_S_ControlGroup.groupName">
+            <summary>
+            groupName：分组名称
+            isOn: 是否开启
+            </summary>
+        </member>
+        <member name="T:UserEventData.M_S_ControlProgram">
+            <summary>
+            移动端向PC获取发送请求控制应用
+            </summary>
+        </member>
+        <member name="F:UserEventData.M_S_ControlProgram.programName">
+            <summary>
+            programName：应用名称
+            isOn: 是否开启
+            ipList：选中的IP
+            </summary>
+        </member>
+        <member name="T:UserEventData.M_S_GetGroupInfo">
+            <summary>
+            移动端向PC获取所有分组信息，用于分组的启动和关闭控制
+            </summary>
+        </member>
+        <member name="T:UserEventData.S_M_DeviceInfo">
+            <summary>
+            PC向移动端发送设备信息
+            </summary>
+        </member>
+        <member name="F:UserEventData.S_M_DeviceInfo.devicesInfo">
+            <summary>
+            list 为设备名称列表
+            </summary>
+        </member>
+        <member name="T:UserEventData.S_M_ControlReplay">
+            <summary>
+            PC向移动端发送控制执行信息
+            </summary>
+        </member>
+        <member name="F:UserEventData.S_M_ControlReplay.controlName">
+            <summary>
+            controlName  由移动端发送的控制项的大类名称：Computer、 Device、 Program、Group
+            </summary>
+        </member>
+        <member name="T:UserEventData.S_M_GroupInfo">
+            <summary>
+            PC向移动端发送分组信息
+            </summary>
+        </member>
+        <member name="F:UserEventData.S_M_GroupInfo.groupInfo">
+            <summary>
+            list 为分组名称列表
+            </summary>
+        </member>
+        <member name="T:UserEventData.S_M_ProgramInfo">
+            <summary>
+            PC向移动端发送应用信息
+            </summary>
+        </member>
+        <member name="F:UserEventData.S_M_ProgramInfo.progressInfo">
+            <summary>
+            list 为应用名称列表
+            </summary>
+        </member>
+        <member name="T:UserEventData.S_M_ComputersState">
+            <summary>
+            PC向移动端发送计算机状态.包括开关机、连接、左右眼及立体
+            </summary>
+        </member>
+        <!-- 对于成员“F:UserEventData.S_M_ComputersState.computerState”忽略有格式错误的 XML 注释 -->
+        <member name="T:UserEventData.M_S_GetDevicesInfo">
+            <summary>
+            移动端向PC获取所有可控设备
+            </summary>
+        </member>
+        <member name="T:UserEventData.M_S_ControlComputer">
+            <summary>
+            移动端向PC获取发送请求控制计算机
+            包括开机、关机、重启、左右眼切换、立体切换
+            </summary>
+        </member>
+        <member name="F:UserEventData.M_S_ControlComputer.operationCode">
+            <summary>
+            ipList：被控计算机ip
+            operationCode：执行的任务 1：开机 2：关机 3：重启 4：立体切换 5：左右眼切换 6：刷新左右眼和立体信息
+            刷新：PC收到刷新指定，会发送所有客户端信息到移动端，不论是否选中
+            </summary>
+        </member>
+        <member name="T:UserEventData.M_S_GetProgramInfo">
+            <summary>
+            移动端向PC获取所有可控应用信息
+            </summary>
+        </member>
+        <member name="T:UserEventData.C_FileData">
+            <summary>
+            服务端与客户端之间收发文件的数据结构
+            </summary>
+        </member>
+        <member name="M:UserEventData.R_C_ControlPowerData.#ctor(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="_state"> 0：关机 1：重启 </param>
+        </member>
+        <member name="T:UserEventData.C_GetContentInfoData">
+            <summary>
+            客户端文件属性
+            </summary>
+        </member>
+        <member name="T:UserEventData.R_C_GetContentInfoData">
+            <summary>
+            获取客户端文件属性
+            </summary>
+        </member>
+        <member name="T:UserEventData.R_C_CreateFolderContentData">
+            <summary>
+            客户端新建文件夹
+            </summary>
+        </member>
+        <member name="T:UserEventData.R_C_DeleteContentData">
+            <summary>
+            向客户端发送删除消息
+            </summary>
+        </member>
+        <member name="T:UserEventData.R_C_RenameContentData">
+            <summary>
+            重命名
+            </summary>
+        </member>
+        <member name="T:UserEventData.R_C_MoveContentData">
+            <summary>
+            传输文件点击剪切或复制
+            </summary>
+        </member>
+        <member name="T:UserEventData.R_C_FileData">
+            <summary>
+            服务端与客户端之间收发文件的数据结构
+            </summary>
+        </member>
+        <member name="T:UserEventData.R_C_ListContentResData">
+            <summary>
+            向客户端发送获取目录列表
+            </summary>
+        </member>
+        <member name="T:UserEventData.M_S_GetComputersState">
+            <summary>
+            移动端向PC获取计算机状态.包括开关机、连接、左右眼及立体
+            </summary>
+        </member>
+        <member name="F:UserEventData.M_S_GetComputersState.ipList">
+            <summary>
+            默认为空,为获取所有计算机状态
+            如果不为空，则指定返回list中的计算机状态
+            </summary>
+        </member>
+    </members>
+</doc>

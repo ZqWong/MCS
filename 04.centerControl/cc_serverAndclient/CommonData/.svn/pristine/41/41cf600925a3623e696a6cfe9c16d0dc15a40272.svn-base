@@ -1,0 +1,27 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using DW_CC_NET;
+
+namespace UserEventData
+{
+    /// <summary>
+    /// unity 给集控发送的数据
+    /// </summary>
+    public class U_S_DeviceData : EventData
+    {
+        public U_S_DeviceData()
+        {
+
+        }
+
+        public string name;
+        // 座椅   byte[0] 1：前 2：后 3：左 4：右 5：小鞭子 6：喷雾  7：吹风  8：震动
+        public byte[] seatDatas;
+        // 电压
+        public float tempV;
+
+    }
+}

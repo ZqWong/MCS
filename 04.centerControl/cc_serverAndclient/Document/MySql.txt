@@ -1,0 +1,18 @@
+MySql
+
+1、允许远程访问：
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'root' WITH GRANT OPTION;
+FLUSH   PRIVILEGES;
+
+2、修改密码：
+SET PASSWORD FOR 'UserName'@'localhost' = PASSWORD('NewPassword');
+
+
+解决1075问题：16:04:47	DELETE FROM t_examination_subject_item_detail_info WHERE ID IN (SELECT ID FROM(select ID from t_examination_subject_item_detail_info WHERE ExaminationItemID='43')a)	Error Code: 1175. You are using safe update mode and you tried to update a table without a WHERE that uses a KEY column To disable safe mode, toggle the option in Preferences -> SQL Editor and reconnect.	0.000 sec
+
+我们只需要在输入mysql语句的地方，我们输入: SET SQL_SAFE_UPDATES = 0;
+
+然后我们运行这条语句就可以解决问题。请注意一定要确保这条语句成功执行。
+
+
+

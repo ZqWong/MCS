@@ -1,0 +1,19 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using DW_CC_NET;
+
+namespace UserEventData
+{
+
+    public class C_ProcessStateData : C_BasicEventData
+    {
+        public string ProcessName;
+        public string FilePathName;
+        // 系统中运行名称为ProcessName的进程的数量。如果数量为0，表示该进程未运行。数量大于1，表示进程正在运行。
+        public int ProcessCount;
+    }
+
+}

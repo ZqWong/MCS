@@ -1,0 +1,218 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EventBus</name>
+    </assembly>
+    <members>
+        <member name="M:EventBus.tools.ConfigHelper.UpdateConnectionStringsConfig(System.String,System.String,System.String)">
+            <summary> 
+            更新连接字符串  
+            </summary> 
+            <param name="newName">连接字符串名称</param> 
+            <param name="newConString">连接字符串内容</param> 
+            <param name="newProviderName">数据提供程序名称</param> 
+        </member>
+        <member name="M:EventBus.tools.ConfigHelper.GetAppConfig(System.String)">
+            <summary> 
+            返回*.exe.config文件中appSettings配置节的value项  
+            </summary> 
+            <param name="strKey"></param> 
+            <returns></returns> 
+        </member>
+        <member name="M:EventBus.tools.ConfigHelper.UpdateAppConfig(System.String,System.String)">
+            <summary>  
+            在*.exe.config文件中appSettings配置节增加一对键值对  
+            </summary>  
+            <param name="newKey"></param>  
+            <param name="newValue"></param>  
+        </member>
+        <member name="T:EventBus.EventBus">
+            <summary>
+            事件总线
+            </summary>
+        </member>
+        <member name="M:EventBus.EventBus.Register``1(EventBus.Handlers.IEventHandler)">
+            <summary>
+            手动绑定事件源与事件处理
+            </summary>
+            <typeparam name="TEventData"></typeparam>
+            <param name="eventHandler"></param>
+        </member>
+        <member name="M:EventBus.EventBus.Register``1(System.Action{``0})">
+            <summary>
+            注册Action事件处理器
+            </summary>
+            <typeparam name="TEventData"></typeparam>
+            <param name="action"></param>
+        </member>
+        <member name="M:EventBus.EventBus.Register(System.Type,System.Type)">
+            <summary>
+            手动绑定事件源与事件处理
+            </summary>
+            <param name="eventType"></param>
+            <param name="handlerType"></param>
+        </member>
+        <member name="M:EventBus.EventBus.RegisterAllEventHandlerFromAssembly(System.Reflection.Assembly)">
+            <summary>
+            提供入口支持注册其它程序集中实现的IEventHandler
+            </summary>
+            <param name="assembly"></param>
+        </member>
+        <member name="M:EventBus.EventBus.UnRegister``1(System.Type)">
+            <summary>
+            手动解除事件源与事件处理的绑定
+            </summary>
+            <typeparam name="TEventData"></typeparam>
+            <param name="handlerType"></param>
+        </member>
+        <member name="M:EventBus.EventBus.UnRegisterAll``1">
+            <summary>
+            卸载指定事件源上绑定的所有事件
+            </summary>
+            <typeparam name="TEventData"></typeparam>
+        </member>
+        <member name="M:EventBus.EventBus.Trigger``1(``0)">
+            <summary>
+            根据事件源触发绑定的事件处理
+            </summary>
+            <typeparam name="TEventData"></typeparam>
+            <param name="eventData"></param>
+        </member>
+        <member name="M:EventBus.EventBus.Trigger``1(System.Type,``0)">
+            <summary>
+            触发指定EventHandler
+            </summary>
+            <param name="eventHandlerType"></param>
+            <param name="eventData"></param>
+        </member>
+        <member name="M:EventBus.EventBus.TriggerAsync``1(``0)">
+            <summary>
+            异步触发
+            </summary>
+            <typeparam name="TEventData"></typeparam>
+            <param name="eventData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EventBus.EventBus.TriggerAsycn``1(System.Type,``0)">
+            <summary>
+            异步触发指定EventHandler
+            </summary>
+            <param name="eventHandlerType"></param>
+            <param name="eventData"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EventBus.EventBusWithReflection">
+            <summary>
+            通过反射实现的EventBus
+            存在局限性
+            </summary>
+        </member>
+        <member name="F:EventBus.EventBusWithReflection._eventAndHandlerMapping">
+            <summary>
+            定义线程安全集合
+            </summary>
+        </member>
+        <member name="M:EventBus.EventBusWithReflection.MapEventToHandler">
+             <summary>
+            通过反射，将事件源与事件处理绑定
+             </summary>
+        </member>
+        <member name="M:EventBus.EventBusWithReflection.Register``1(System.Type)">
+            <summary>
+            手动绑定事件源与事件处理
+            </summary>
+            <typeparam name="TEventData"></typeparam>
+            <param name="eventHandler"></param>
+        </member>
+        <member name="M:EventBus.EventBusWithReflection.UnRegister``1(System.Type)">
+            <summary>
+            手动解除事件源与事件处理的绑定
+            </summary>
+            <typeparam name="TEventData"></typeparam>
+            <param name="eventHandler"></param>
+        </member>
+        <member name="M:EventBus.EventBusWithReflection.Trigger``1(``0)">
+            <summary>
+            根据事件源触发绑定的事件处理
+            </summary>
+            <typeparam name="TEventData"></typeparam>
+            <param name="eventData"></param>
+        </member>
+        <member name="T:EventBus.EventData">
+            <summary>
+            事件源：描述事件信息，用于参数传递
+            </summary>
+        </member>
+        <member name="P:EventBus.EventData.EventTime">
+            <summary>
+            事件发生的时间
+            </summary>
+        </member>
+        <member name="P:EventBus.EventData.EventSource">
+            <summary>
+            触发事件的对象
+            </summary>
+        </member>
+        <member name="F:EventBus.EventStore.InMemoryEventStore.LockObj">
+            <summary>
+            定义锁对象
+            </summary>
+        </member>
+        <member name="T:EventBus.Handlers.ActionEventHandler`1">
+            <summary>
+            支持Action的事件处理器
+            </summary>
+            <typeparam name="TEventData"></typeparam>
+        </member>
+        <member name="P:EventBus.Handlers.ActionEventHandler`1.Action">
+            <summary>
+            定义Action的引用，并通过构造函数传参初始化
+            </summary>
+        </member>
+        <member name="M:EventBus.Handlers.ActionEventHandler`1.HandleEvent(`0)">
+            <summary>
+            调用具体的Action来处理事件逻辑
+            </summary>
+            <param name="eventData"></param>
+        </member>
+        <member name="T:EventBus.Handlers.IEventHandler">
+            <summary>
+            定义事件处理器公共接口，所有的事件处理都要实现该接口
+            </summary>
+        </member>
+        <member name="T:EventBus.Handlers.IEventHandler`1">
+            <summary>
+            泛型事件处理器接口
+            </summary>
+            <typeparam name="TEventData"></typeparam>
+        </member>
+        <member name="M:EventBus.Handlers.IEventHandler`1.HandleEvent(`0)">
+            <summary>
+            事件处理器实现该方法来处理事件
+            </summary>
+            <param name="eventData"></param>
+        </member>
+        <member name="T:EventBus.IEventData">
+            <summary>
+            定义事件源接口，所有的事件源都要实现该接口
+            </summary>
+        </member>
+        <member name="P:EventBus.IEventData.EventTime">
+            <summary>
+            事件发生的时间
+            </summary>
+        </member>
+        <member name="P:EventBus.IEventData.EventSource">
+            <summary>
+            触发事件的对象
+            </summary>
+        </member>
+        <member name="M:EventBus.RabbitMQ.RabbitMQEventBus.CreatePluginEventConsumerChannel">
+            <summary>
+            新创建一个channel，添加 rabbitmq-event-exchange 插件的消息
+            仅订阅了connection的连接和断开消息
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

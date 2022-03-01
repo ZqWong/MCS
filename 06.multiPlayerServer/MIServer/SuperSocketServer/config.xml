@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<configuration>
+  <server tcpPort="1000" udpPort="1001" controlID="0,1" minClientCounts="2" limitGpuUsage="100" limitGpuSleepTime="200" clientWaitOutTime ="5000" sameFrameTimeDiffThreshold="30"></server>
+  <client ip="default" id="999" pitch="0" rotate="0" roll="0"></client>
+  <client ip="192.168.8.106" id="0" pitch="0" rotate="0"  roll="0"></client>
+  <client ip="192.168.0.11" id="1" pitch="0" rotate="0" roll="0"></client>
+  <client ip="192.168.0.88" id="2" pitch="0" rotate="-180" roll="0"></client>
+  <client ip="192.168.0.138" id="4" pitch="0" rotate="-90" roll="0"></client>
+  <client ip="192.168.0.153" id="3" pitch="0" rotate="-90" roll="0"></client>
+  <client ></client>
+  <client ></client>
+  <client ></client>
+  <client ></client>
+  <client ></client>
+  <client ></client>
+  <client ></client>
+  <client ></client>
+  <client ></client>
+  <client ></client>
+  <client ></client>
+  <client ></client>
+  <client ></client>
+  <client ></client>
+  <client ></client>
+  <client ></client>
+  <client ></client>
+  <client ></client>
+  <client ></client>
+  <client ></client>
+  <client ></client>
+  <client ></client>
+</configuration>

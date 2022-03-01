@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<configuration>
+  <commonConfig tcpPort="4352" udpPort="1001" controlID="0,1" minClientCounts="1" limitGpuUsage="100" limitGpuSleepTime="200" clientWaitOutTime ="5000" sameFrameTimeDiffThreshold="15"></commonConfig>
+  <client ip="192.168.8.106" code="(fdy 50)" pitch="0" rotate="0"  roll="0"></client>
+  <client ip="192.168.0.11" code="(fdy 50)" pitch="0" rotate="0" roll="0"></client>
+  <client ip="192.168.0.88" code="(fdy 50)" pitch="0" rotate="-180" roll="0"></client>
+  <client ip="192.168.0.138" code="(fdy 50)" pitch="0" rotate="-90" roll="0"></client>
+  <client ip="192.168.0.153" code="(fdy 50)" pitch="0" rotate="-90" roll="0"></client>
+  <client ></client>
+  <client ></client>
+  <client ></client>
+  <client ></client>
+  <client ></client>
+  <client ></client>
+  <client ></client>
+  <client ></client>
+  <client ></client>
+  <client ></client>
+  <client ></client>
+  <client ></client>
+  <client ></client>
+  <client ></client>
+  <client ></client>
+  <client ></client>
+  <client ></client>
+  <client ></client>
+  <client ></client>
+  <client ></client>
+  <client ></client>
+  <client ></client>
+</configuration>
