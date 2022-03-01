@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DW_CC_NET.tools;
 using SqlSugar;
+using Utilities;
 
 namespace MainTrain.Tools
 {
@@ -52,6 +53,8 @@ namespace MainTrain.Tools
                 "Server = {0}; Database = {1}; User ID = {2}; Password = {3}; SslMode={4}; allowPublicKeyRetrieval={5};",
                 host, database, id, pwd, SslMode == null ? "None" : SslMode,
                 allowPublicKeyRetrieval == null ? "true" : allowPublicKeyRetrieval);
+    
+            NlogHandler.GetSingleton().Info($"连接数据库 {conString}");
             //创建数据库对象
             db = new SqlSugarClient(new ConnectionConfig()
             {

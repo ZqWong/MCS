@@ -71,6 +71,7 @@ namespace Utilities
                 Layout = "${longdate} | ${message} | ${exception}"
             };
 
+            fileTarget.Encoding = Encoding.UTF8;
             var vAsyncTarget = new AsyncTargetWrapper(fileTarget);
             config.AddTarget(fileTarget);
 
