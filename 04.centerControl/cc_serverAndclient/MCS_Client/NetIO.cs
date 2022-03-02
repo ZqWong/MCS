@@ -77,7 +77,7 @@ namespace MCS_Client
             }
             catch (Exception e)
             {
-                ClientForm.Form.ShowMessage("【异常】服务器连接失败！位置：NetIO.Connect2Server()。");
+                ClientForm.Form.ShowMessage($"【异常】服务器连接失败！位置：NetIO.Connect2Server()。{e}");
             }
 
         }

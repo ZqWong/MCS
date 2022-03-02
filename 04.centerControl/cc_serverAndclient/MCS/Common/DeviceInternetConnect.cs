@@ -211,6 +211,8 @@ namespace MCS.Common
                 }
                 catch (Exception e)
                 {
+                    NlogHandler.GetSingleton().Warn($"LinkConnection sendAsciiCode cmd:{cmd} Failed, {e}");
+
                     return false;
                 }
                 finally

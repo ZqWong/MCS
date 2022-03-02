@@ -71,6 +71,7 @@ namespace cc_client_stereo
                     }
                     catch (System.Exception ex)
                     {
+                        Console.WriteLine($"cc_client_stereo -> SetEye Failed {ex}");
                     }
                 }
 

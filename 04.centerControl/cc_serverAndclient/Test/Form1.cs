@@ -73,7 +73,7 @@ namespace Test
             }
             catch (Exception ex)
             {
-                MessageBox.Show("数据库备份失败！");
+                MessageBox.Show($"数据库备份失败！{ex}");
             }
         }
 

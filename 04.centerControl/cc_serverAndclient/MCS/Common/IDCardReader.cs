@@ -155,7 +155,7 @@ namespace MCS.Common
             }
             catch (Exception ex)
             {
-                LogHelper.WriteErrorLog("关闭身份证阅读器端口失败！");
+                LogHelper.WriteErrorLog($"关闭身份证阅读器端口失败！{ex}");
             }
         }
 

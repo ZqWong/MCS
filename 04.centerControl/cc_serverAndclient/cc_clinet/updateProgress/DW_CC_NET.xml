@@ -190,11 +190,21 @@
             触发事件的对象
             </summary>
         </member>
-        <member name="M:DW_CC_NET.RabbitMQ.RabbitMQEventBus.Init(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+        <member name="M:DW_CC_NET.RabbitMQ.RabbitMQEventBus.Init(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.Int32)">
             <summary>
             保证Init函数是被最先调用，否则会出错
             init 函数是为了获取参数
             </summary>
+            <param name="borkerName"></param>
+            <param name="localIp"></param>
+            <param name="processName"></param>
+            <param name="exchangeType"></param>
+            <param name="userName"></param>
+            <param name="hostName"></param>
+            <param name="passWord"></param>
+            <param name="ssl"></param>
+            <param name="sync"></param>
+            <param name="timeout">0:如果连接不上一直重连。 最小超时时间为30s，如果传入参数小于30，则为默认30s。超时会抛异常，需要用户自己获取异常</param>
         </member>
         <member name="T:DW_CC_NET.RabbitMQ.RabbitMQEventBus.HandlerEventArgs">
             <summary>

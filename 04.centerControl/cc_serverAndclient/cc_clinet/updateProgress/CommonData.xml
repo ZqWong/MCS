@@ -4,17 +4,158 @@
         <name>CommonData</name>
     </assembly>
     <members>
-        <member name="T:UserEventData.M_S_ControlDevice">
+        <member name="T:UserEventData.M_S_GetProjectsState">
             <summary>
-            移动端向PC获取发送请求控制其他设备
+            移动端向PC获取投影机状态
             </summary>
         </member>
-        <member name="F:UserEventData.M_S_ControlDevice.deviceName">
+        <member name="F:UserEventData.M_S_GetProjectsState.ipList">
             <summary>
-            deviceName：设备名称
-            isOn:是否开启
+            默认为空,为获取所有计算机状态
+            如果不为空，则指定返回list中的计算机状态
             </summary>
         </member>
+        <member name="T:UserEventData.M_S_GetLightInfo">
+            <summary>
+            移动端获取系统内计算机状态
+            </summary>
+        </member>
+        <member name="T:UserEventData.S_M_ProjectControlReply">
+            <summary>
+            移动端控制完成后答复
+            </summary>
+        </member>
+        <member name="F:UserEventData.S_M_ProjectControlReply.controlCode">
+            <summary>
+            controlCode          执行的控制码
+            </summary>
+        </member>
+        <member name="T:UserEventData.S_M_LightControlReply">
+            <summary>
+            移动端控制完成后答复
+            </summary>
+        </member>
+        <member name="F:UserEventData.S_M_LightControlReply.controlCode">
+            <summary>
+            controlCode          执行的控制码
+            </summary>
+        </member>
+        <member name="T:UserEventData.S_M_7THControlReply">
+            <summary>
+            移动端控制完成后答复
+            </summary>
+        </member>
+        <member name="F:UserEventData.S_M_7THControlReply.controlCode">
+            <summary>
+            controlCode          执行的控制码
+            </summary>
+        </member>
+        <member name="T:UserEventData.S_M_ComputerInfo">
+            <summary>
+            PC 发送系统内计算机状态
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "F:UserEventData.S_M_ComputerInfo.computerState" -->
+        <member name="T:UserEventData.M_S_7THControl">
+            <summary>
+            移动端控制执行7th主机的操作
+            </summary>
+        </member>
+        <member name="F:UserEventData.M_S_7THControl.controlCode">
+            <summary>
+            controlCode          执行的控制码
+            </summary>
+        </member>
+        <member name="T:UserEventData.S_M_ProjectState">
+            <summary>
+            PC端向移动端发送投影信息和控制码和投影机状态
+            </summary>
+        </member>
+        <member name="F:UserEventData.S_M_ProjectState.projectDict">
+            <summary>
+            projectDict            key：名称 value: ip、连接状态
+            </summary>
+        </member>
+        <member name="T:UserEventData.S_M_LightInfo">
+            <summary>
+            PC端返回移动端初次上线请求的灯光相关数据
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "F:UserEventData.S_M_LightInfo.lightNameList" -->
+        <member name="T:UserEventData.M_S_ProjectControl">
+            <summary>
+            移动端控制执行PC端的投影控制。比如3D开启、翻转等
+            </summary>
+        </member>
+        <member name="F:UserEventData.M_S_ProjectControl.projectIPList">
+            <summary>
+            projectNameList            需要被控制的设备的IP
+            controlCode          执行的控制码
+            </summary>
+        </member>
+        <member name="T:UserEventData.M_S_LightControl">
+            <summary>
+            移动端控制灯光。比如开启或关闭灯光等
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "F:UserEventData.M_S_LightControl.lightName" -->
+        <member name="T:UserEventData.S_M_PlayListControl">
+             <summary>
+             PC响应移动端M_S_PlayListControl。
+            
+             </summary>
+        </member>
+        <member name="F:UserEventData.S_M_PlayListControl.playList">
+            <summary>
+            playList  播放列表
+            playingListName   当前正在播放的播放列表名称
+            playingName   当前正在播放video名称
+            prePlayName   上一部名称
+            nextPlayName   下一部名称
+            playVideoIntervalMS  上一部 下一部  播放等 操作延迟时间 毫秒
+            </summary>
+        </member>
+        <member name="T:UserEventData.M_S_PlayListControl">
+            <summary>
+            移动端控制播放
+            </summary>
+        </member>
+        <member name="F:UserEventData.M_S_PlayListControl.playPlayListName">
+            <summary>
+            playPlayListName  播放列表名称
+            playControl   播放控制。  1：上一部  2：下一步  3：停止播放  4：开始播放
+            </summary>
+        </member>
+        <member name="T:UserEventData.S_M_ControlPower">
+            <summary>
+            移动端发送M_S_ControlPower，pc端返回
+            
+            </summary>
+        </member>
+        <member name="F:UserEventData.S_M_ControlPower.powerState">
+            <summary>
+            powerState   0： 关机 1：开机
+            remainTime   开机剩余时间
+            </summary>
+        </member>
+        <member name="T:UserEventData.M_S_ControlPower">
+            <summary>
+            移动端控制执行整体开机命令或整体关机命令
+            移动端查询PC端的当前状态
+            </summary>
+        </member>
+        <member name="F:UserEventData.M_S_ControlPower.controlCode">
+            <summary>
+            controlCode  0： 关机 1：开机
+            queryState   0:  执行控制，不查询   1：不执行控制，查询状态
+            </summary>
+        </member>
+        <member name="T:UserEventData.M_S_ControlPlane">
+            <summary>
+            移动端向PC发送控制方案执行
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "F:UserEventData.M_S_ControlPlane.planeName" -->
         <member name="T:UserEventData.M_S_ControlGroup">
             <summary>
             移动端向PC获取发送请求控制分组
@@ -43,12 +184,12 @@
             移动端向PC获取所有分组信息，用于分组的启动和关闭控制
             </summary>
         </member>
-        <member name="T:UserEventData.S_M_DeviceInfo">
+        <member name="T:UserEventData.S_M_PlanInfo">
             <summary>
             PC向移动端发送设备信息
             </summary>
         </member>
-        <member name="F:UserEventData.S_M_DeviceInfo.devicesInfo">
+        <member name="F:UserEventData.S_M_PlanInfo.planInfo">
             <summary>
             list 为设备名称列表
             </summary>
@@ -60,7 +201,7 @@
         </member>
         <member name="F:UserEventData.S_M_ControlReplay.controlName">
             <summary>
-            controlName  由移动端发送的控制项的大类名称：Computer、 Device、 Program、Group
+            controlName  由移动端发送的控制项的大类名称：Computer、 Plan、 Program、Group
             </summary>
         </member>
         <member name="T:UserEventData.S_M_GroupInfo">
@@ -88,10 +229,10 @@
             PC向移动端发送计算机状态.包括开关机、连接、左右眼及立体
             </summary>
         </member>
-        <!-- 对于成员“F:UserEventData.S_M_ComputersState.computerState”忽略有格式错误的 XML 注释 -->
-        <member name="T:UserEventData.M_S_GetDevicesInfo">
+        <!-- Badly formed XML comment ignored for member "F:UserEventData.S_M_ComputersState.computerState" -->
+        <member name="T:UserEventData.M_S_GetPlansInfo">
             <summary>
-            移动端向PC获取所有可控设备
+            移动端向PC获取控制方案
             </summary>
         </member>
         <member name="T:UserEventData.M_S_ControlComputer">
@@ -104,12 +245,17 @@
             <summary>
             ipList：被控计算机ip
             operationCode：执行的任务 1：开机 2：关机 3：重启 4：立体切换 5：左右眼切换 6：刷新左右眼和立体信息
-            刷新：PC收到刷新指定，会发送所有客户端信息到移动端，不论是否选中
+            刷新：PC收到刷新指定，会发送所有客户端信息到移动端，不论是否选中.如果ipList的count为1，并且ipList[0]位CCSever，且任务码为2时，则关机
             </summary>
         </member>
         <member name="T:UserEventData.M_S_GetProgramInfo">
             <summary>
             移动端向PC获取所有可控应用信息
+            </summary>
+        </member>
+        <member name="T:UserEventData.S_U_DeviceAIData">
+            <summary>
+            集控发送到unity的设备采集数据
             </summary>
         </member>
         <member name="T:UserEventData.C_FileData">
@@ -141,6 +287,26 @@
         <member name="T:UserEventData.R_C_DeleteContentData">
             <summary>
             向客户端发送删除消息
+            </summary>
+        </member>
+        <member name="T:UserEventData.U_S_DeviceData">
+            <summary>
+            unity 给集控发送的数据(4D座椅)
+            </summary>
+        </member>
+        <member name="F:UserEventData.U_S_DeviceData.seatDatas">
+            <summary>
+            座椅字节（字节长度不要超）
+                开启play:0x50 0x4c 0x41 0x59
+                停止stop:0x53 0x54 0x4f 0x50
+                姿态atti:0x41,0x54,0x54,0x49 + 40字节  详见协议
+                震动effe:0x45 0x46 0x46 0x45 + 12字节  详见协议
+                特效effo:0x45 0x46 0x46 0x4f + 4字节   详见协议
+            </summary>
+        </member>
+        <member name="T:UserEventData.S_U_DeviceDIData">
+            <summary>
+            集控发送到unity的设备采集数据
             </summary>
         </member>
         <member name="T:UserEventData.R_C_RenameContentData">
