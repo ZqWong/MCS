@@ -50,6 +50,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\OCC_Global.cs" />
+    <Compile Include="Core\ProcessInstanceCheck\ProcessInstanceCheck.cs" />
     <Compile Include="OCC_MAIN.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,5 +99,6 @@
       <Name>OCC_Login</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

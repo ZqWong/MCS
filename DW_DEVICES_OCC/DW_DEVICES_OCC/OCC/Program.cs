@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OCC.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,13 +15,16 @@ namespace OCC
         [STAThread]
         static void Main()
         {
-            Debug.Error($"Start");
+            Debug.Error($"OCC System loading...");
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new OCC_MAIN());
 
-
+            ProcessInstanceCheck.InstanceCheck(() =>
+            {
+                Application.Run(new OCC_MAIN());
+            });
+           
         }
     }
 }

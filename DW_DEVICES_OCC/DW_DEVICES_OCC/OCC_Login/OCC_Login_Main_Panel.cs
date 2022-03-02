@@ -26,14 +26,14 @@ namespace OCC_Login
         {
             UserDataModel user = new UserDataModel();
             user.Id = Guid.NewGuid().ToString();
-            user.LoginName = "小明";
-            user.UserName = "xiaoming";
+            user.LoginName = "admin";
+            user.UserName = "多维";
             user.UserType = "00";
-            user.Password = "123456";
-            user.CreateBy = "Admin";
+            user.Password = "duowei";
+            user.CreateBy = "admin";
             user.CreateTime = DataBaseConnection.Instance.DB.GetDate();
             user.UpdateTime = DataBaseConnection.Instance.DB.GetDate();
-            user.Updateby = "Admin";
+            user.Updateby = "admin";
             user.DelFlag = "0";
 
             DataBaseConnection.Instance.DB.Insertable<UserDataModel>(user).ExecuteCommand();
