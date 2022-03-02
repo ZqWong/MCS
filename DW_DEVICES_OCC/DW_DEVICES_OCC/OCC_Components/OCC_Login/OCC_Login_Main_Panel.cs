@@ -31,17 +31,17 @@ namespace OCC_Login
             user.UserType = "00";
             user.Password = "duowei";
             user.CreateBy = "admin";
-            user.CreateTime = DataBaseConnection.Instance.DB.GetDate();
-            user.UpdateTime = DataBaseConnection.Instance.DB.GetDate();
+            user.CreateTime = DataBaseManager.Instance.DB.GetDate();
+            user.UpdateTime = DataBaseManager.Instance.DB.GetDate();
             user.Updateby = "admin";
             user.DelFlag = "0";
 
-            DataBaseConnection.Instance.DB.Insertable<UserDataModel>(user).ExecuteCommand();
+            DataBaseManager.Instance.DB.Insertable<UserDataModel>(user).ExecuteCommand();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            DataBaseConnection.Instance.DB.Queryable<UserDataModel>().ToList().ForEach(x =>
+            DataBaseManager.Instance.DB.Queryable<UserDataModel>().ToList().ForEach(x =>
             {
                 Debug.Error(x.Id);
             });

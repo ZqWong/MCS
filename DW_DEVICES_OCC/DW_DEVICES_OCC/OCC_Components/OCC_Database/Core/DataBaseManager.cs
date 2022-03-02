@@ -8,7 +8,7 @@ using SqlSugar;
 /// <summary>
 /// 创建一个全局的数据库管理类
 /// </summary>
-public class DataBaseConnection: LockedSingletonClass<DataBaseConnection>
+public class DataBaseManager: LockedSingletonClass<DataBaseManager>
 {
     public SqlSugarClient DB;
     public void Initialize(string connectionString, bool isAutoCloseConnection = true, DbType dbType = DbType.MySql, bool needLogExecutingSql = false)

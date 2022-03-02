@@ -40,7 +40,7 @@ namespace OCC
                 null,
                 true);
 
-            DataBaseConnection.Instance.Initialize(connectionString, true, SqlSugar.DbType.MySql, true);
+            DataBaseManager.Instance.Initialize(connectionString, true, SqlSugar.DbType.MySql, true);
         }
 
         private void button1_Click(object sender, EventArgs e)
