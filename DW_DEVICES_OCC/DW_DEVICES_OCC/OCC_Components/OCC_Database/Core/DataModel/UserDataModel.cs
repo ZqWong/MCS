@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SqlSugar;
 
-namespace OCC_Login.DataModel
+namespace DataModel
 {
     [SugarTable("occ_user")]
     public class UserDataModel

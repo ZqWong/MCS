@@ -1,4 +1,4 @@
-﻿using OCC_Login.DataModel;
+﻿using DataModel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

@@ -90,9 +90,13 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Common\Common.csproj">
+    <ProjectReference Include="..\..\Common\Common.csproj">
       <Project>{5a76d0c5-134d-4771-b8f3-bb0c9e0bb7e9}</Project>
       <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OCC_Database\OCC_Database.csproj">
+      <Project>{ad64ad7b-5644-4576-a1cb-27067b12d606}</Project>
+      <Name>OCC_Database</Name>
     </ProjectReference>
     <ProjectReference Include="..\OCC_Login\OCC_Login.csproj">
       <Project>{120F5B92-EC9A-4D87-A4AB-FA2675428882}</Project>

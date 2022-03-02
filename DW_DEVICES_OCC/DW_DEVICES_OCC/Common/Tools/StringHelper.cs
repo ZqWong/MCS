@@ -11,7 +11,7 @@ using System;
 using System.IO;
 
 
-public static class StringUtils
+public static class StringHelper
 {
     /// <summary>
     /// 从url获取带有扩展名的文件名
