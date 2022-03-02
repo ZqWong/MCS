@@ -38,5 +38,13 @@ namespace OCC_Login
 
             DataBaseConnection.Instance.DB.Insertable<UserDataModel>(user).ExecuteCommand();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            DataBaseConnection.Instance.DB.Queryable<UserDataModel>().ToList().ForEach(x =>
+            {
+                Debug.Error(x.Id);
+            });
+        }
     }
 }

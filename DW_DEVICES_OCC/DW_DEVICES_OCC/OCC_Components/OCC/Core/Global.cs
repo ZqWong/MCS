@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OCC.Core
 {
-    public class OCC_Global : LockedSingletonClass<OCC_Global>
+    public class Global : LockedSingletonClass<Global>
     {
         /// <summary>
         /// 记录登陆界面开启状态

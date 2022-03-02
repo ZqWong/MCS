@@ -50,7 +50,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Core\OCC_Global.cs" />
+    <Compile Include="Core\DataManager.cs" />
+    <Compile Include="Core\Global.cs" />
     <Compile Include="Core\ProcessInstanceCheck\ProcessInstanceCheck.cs" />
     <Compile Include="OCC_MAIN.cs">
       <SubType>Form</SubType>
