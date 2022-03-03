@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EventGroup
 {
-    public interface IEventBase
+    public interface IEventBase // IEventBus
     {
         void Register<TEventData>(IEventHandler eventHandler) where TEventData : IEventData;
 

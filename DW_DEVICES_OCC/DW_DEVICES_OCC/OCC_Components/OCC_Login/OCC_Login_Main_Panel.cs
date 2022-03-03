@@ -43,7 +43,7 @@ namespace OCC_Login
         {
             DataBaseManager.Instance.DB.Queryable<UserDataModel>().ToList().ForEach(x =>
             {
-                Debug.Error(x.Id);
+                Debug.Error(x.CreateBy);
             });
         }
     }

@@ -843,11 +843,14 @@ namespace MCS
         /// <param name="e"></param>
         public async void btnControlExamPC_Click(object sender, EventArgs e)
         {
-
+            // 停止刷新网格信息
             MCS_DataGridView.EndEdit();
-
+            // 关闭所有按钮响应
             EnableButton(false);
 
+            // 应用按钮按下后显示信息
+            
+            // 执行动作选择内容
             string action = "";
             Action actionGetText = delegate() { action = this.cbAction.Text.Trim(); };
             this.Invoke(actionGetText);
@@ -867,6 +870,7 @@ namespace MCS
             {
                 string processName;
 
+                // 要遍历应用程序列表， 控制了一些应用的关闭
                 for (int i = 0; i < 主界面.GetSingleton().comboBox_process.Items.Count; i++)
                 {
                     processName = 主界面.GetSingleton().comboBox_process.GetItemText(主界面.GetSingleton().comboBox_process.Items[i]);
@@ -919,10 +923,11 @@ namespace MCS
 
         public void DoAction(string action )
         {
+            // 获取用户输入延迟时间
             float delay = float.Parse(textBox_delay.Text);
-
+            // 更新用户时间到本地
             ConfigHelper.GetSingleton().UpdateAppConfig("ComputerStartDelay", delay.ToString());
-
+            // 0.001s 判断
             if (delay < 0.001)
             {
                 DialogResult dr = MessageBox.Show("请确认是否以小于0.001秒的延迟启动计算机", "提示", MessageBoxButtons.OKCancel);
@@ -940,39 +945,48 @@ namespace MCS
 
             for (int i = 0; i < row; i++) //得到总行数并在之内循环  
             {
-
+                // 找到选择的计算机
                 if (Convert.ToBoolean(MCS_DataGridView.Rows[i].Cells[ExaminationPCModel.ColumnName_CheckBox].Value) == true)
                 {
                     // 跨线程修改winform
                     //MethodInvoker mi = new MethodInvoker(() =>
                     //{
+
+                    // Ip地址
                     string showIP = this.MCS_DataGridView.Rows[i].Cells[ExaminationPCModel.ColumnName_IP].Value.ToString();
+                    // Mac地址
                     string showMac = this.MCS_DataGridView.Rows[i].Cells[ExaminationPCModel.ColumnName_Mac].Value.ToString();
 
+                    // 控制项
                     switch (action)
                     {
                         case "开机":
+
+                            // 这里应该是通过局域网主板MAC地址启动，类似于向日葵远程桌面的功能，需要主板支持
                             MyTool.WakeUpComputer(showMac);
 
+                            // 重新设置状态图片
                             this.MCS_DataGridView.Rows[i].Cells[ExaminationPCModel.ColumnName_OpenOrClosePCState].Value = Image.FromFile(_AppStartPath + Const.ComputerOpeningPicRPath);
-
+                            // 重新设置状态文字
                             this.MCS_DataGridView.Rows[i].Cells[ExaminationPCModel.ColumnName_OpenOrClosePCState].Tag = Const.Tag_OpenOrClosePCState_Opening;
 
                             break;
                         case "关机":
-                            if (this.MCS_DataGridView.Rows[i].Cells[ExaminationPCModel.ColumnName_ConnectionState]
-                                .Tag == Const.Tag_ConnectionState_Connected)
+                            // 如果设备在已连接状态
+                            if (this.MCS_DataGridView.Rows[i].Cells[ExaminationPCModel.ColumnName_ConnectionState].Tag == Const.Tag_ConnectionState_Connected)
                             {
+                                // 发送消息关机 这里参数 0 应该是关机，1 是重启
                                 RabbitMQEventBus.GetSingleton().Trigger<R_C_ControlPowerData>(showIP, new R_C_ControlPowerData(0));
                             }
-                            else if (this.MCS_DataGridView.Rows[i].Cells[ExaminationPCModel.ColumnName_ConnectionState]
-                                .Tag == Const.Tag_ConnectionState_NoConnection)
+                            // 如果设备在未连接状态
+                            else if (this.MCS_DataGridView.Rows[i].Cells[ExaminationPCModel.ColumnName_ConnectionState].Tag == Const.Tag_ConnectionState_NoConnection)
                             {
+                                // 通过命令行关机 shutdown -s -m \\\\" + ip + " -t 1
                                 MyTool.ShutDownComputer(showIP);
                             }
-
+                            // 重新设置状态图片
                             this.MCS_DataGridView.Rows[i].Cells[ExaminationPCModel.ColumnName_OpenOrClosePCState].Value = Image.FromFile(_AppStartPath + Const.ComputerClosingPicRPath);
-
+                            // 重新设置状态文字
                             this.MCS_DataGridView.Rows[i].Cells[ExaminationPCModel.ColumnName_OpenOrClosePCState].Tag = Const.Tag_OpenOrClosePCState_Closing;
 
                             LogHelper.WriteLog("客户端（" + showIP + "）正在关机...");
@@ -983,6 +997,7 @@ namespace MCS
 
                             break;
                         case "重启":
+                            // 发送消息关机 这里参数 0 应该是关机，1 是重启
                             RabbitMQEventBus.GetSingleton().Trigger<R_C_ControlPowerData>(showIP, new R_C_ControlPowerData(1));
                             break;
                         default:
@@ -2365,6 +2380,7 @@ namespace MCS
 
                 string appName = comboBox_process.SelectedValue.ToString();
 
+                // 应用管理
                 ds = 进程管理.GetSingleton()._GetAllAppInfoBLL.GetAllAppinfoByName(appName);
                 
                 int row = MCS_DataGridView.Rows.Count; //得到总行数

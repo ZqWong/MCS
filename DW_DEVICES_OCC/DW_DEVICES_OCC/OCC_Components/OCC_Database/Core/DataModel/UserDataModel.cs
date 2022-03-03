@@ -8,7 +8,7 @@ using SqlSugar;
 namespace DataModel
 {
     [SugarTable("occ_user")]
-    public class UserDataModel
+    public class UserDataModel : DataModelBase
     {
         /// <summary>
         /// 主键ID
@@ -69,37 +69,7 @@ namespace DataModel
         /// </summary>
         [SugarColumn(ColumnName = "login_date")]
         public string loginDate{ get; set; }
-
-        /// <summary>
-        /// 创建者
-        /// </summary>
-        [SugarColumn(ColumnName = "create_by", IsOnlyIgnoreUpdate = true)]
-        public string CreateBy{ get; set; }
-
-        /// <summary>
-        /// 创建时间
-        /// </summary>        
-        [SugarColumn(ColumnName = "create_time", IsOnlyIgnoreUpdate = true)]
-        public DateTime CreateTime { get; set; }
-
-        /// <summary>
-        /// 最后更新时间
-        /// </summary>
-        [SugarColumn(ColumnName = "update_time")]
-        public DateTime UpdateTime { get; set; }
-
-        /// <summary>
-        /// 最后更新者
-        /// </summary>
-        [SugarColumn(ColumnName = "update_by")]
-        public string Updateby{ get; set; }
-
-        /// <summary>
-        /// 删除标记
-        /// </summary>
-        [SugarColumn(ColumnName = "del_flag")]
-        public string DelFlag{ get; set; }
-
+      
         /// <summary>
         /// 备注
         /// </summary>

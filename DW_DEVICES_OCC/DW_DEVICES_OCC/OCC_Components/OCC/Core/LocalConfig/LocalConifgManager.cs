@@ -67,7 +67,7 @@ namespace OCC.Core.LocalConfig
                 $"\nPassword :{SystemConfig.DataModel.Password} " +
                 $"\nRabbitMQBrokerName :{SystemConfig.DataModel.RabbitMQBrokerName} " +
                 $"\nRabbitMQExchangeType :{SystemConfig.DataModel.RabbitMQExchangeType} " +
-                $"\nSSL :{SystemConfig.DataModel.SSL} " +
+                $"\nSSL :{SystemConfig.DataModel.RabbitMQSSL} " +
                 $"\nDatabaseUsername :{SystemConfig.DataModel.DatabaseUsername} " +
                 $"\nDatabasePassword :{SystemConfig.DataModel.DatabasePassword} " +
                 $"\nDatabaseHost :{SystemConfig.DataModel.DatabaseHost} " +

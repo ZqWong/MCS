@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="Core\DataBaseConst.cs" />
     <Compile Include="Core\DataBaseManager.cs" />
+    <Compile Include="Core\DataModel\DataModelBase.cs" />
     <Compile Include="Core\DataModel\UserDataModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
