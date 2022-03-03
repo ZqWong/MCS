@@ -433,7 +433,18 @@ namespace MCS
                 ConfigHelper.GetSingleton().GetAppConfig("Password")
                 );
 
+            NlogHandler.GetSingleton().Error(
+                $"{ConfigHelper.GetSingleton().GetAppConfig("BrokerName")}" +
+                $" {GetLocalIp.GetSingleton().GetIP()}" +
+                $" {Process.GetCurrentProcess().ProcessName} " +
+                $"{ConfigHelper.GetSingleton().GetAppConfig("ExchangeType")} " +
+                $"{ConfigHelper.GetSingleton().GetAppConfig("User_Name")}" +
+                $" {ConfigHelper.GetSingleton().GetAppConfig("HostName")} " +
+                $"{ConfigHelper.GetSingleton().GetAppConfig("Password")}");
+
             RabbitMQEventBus.GetSingleton().RegisterAllEventHandlerFromAssembly(Assembly.GetExecutingAssembly());
+
+            NlogHandler.GetSingleton().Error($"Assembly.GetExecutingAssembly() : {Assembly.GetExecutingAssembly().GetName()}");
 
             RabbitMQEventBus.GetSingleton().CreatePluginEventConsumerChannel();
         }
@@ -2357,7 +2368,7 @@ namespace MCS
                 ds = 进程管理.GetSingleton()._GetAllAppInfoBLL.GetAllAppinfoByName(appName);
                 
                 int row = MCS_DataGridView.Rows.Count; //得到总行数
-
+                
                 for (int i = 0; i < row; i++) //得到总行数并在之内循环  
                 {
                     if (Convert.ToBoolean(MCS_DataGridView.Rows[i].Cells[ExaminationPCModel.ColumnName_CheckBox].Value) == true)
@@ -2378,7 +2389,7 @@ namespace MCS
 
                         LogHelper.WriteLog(string.Format("目标计算机 ip: {0} 操作进程 {1} 开启状态：{2}", ip, appName, isOn));
 
-                        NlogHandler.GetSingleton().Info($"准备启动 设备({ip}) App: {appName}");
+                        NlogHandler.GetSingleton().Info($"准备启动 设备({ip}) App: {appName} AppPath: {appPath}");
 
                         RabbitMQEventBus.GetSingleton()
                             .Trigger<R_C_ControlProcessData

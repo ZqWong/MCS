@@ -1,0 +1,13 @@
+{
+  "Hostname": "192.169.0.198",
+  "Username": "client_duowei",
+  "Password": "duowei",
+  "RabbitMQBrokerName": "event_bus",
+  "RabbitMQExchangeType": "topic",
+  "RabbitMQSSL": "0",
+  "DatabaseUsername": "root",
+  "DatabasePassword": "duowei",
+  "DatabaseHost": "127.0.0.1",
+  "DatabasePort": "3306",
+  "DatabaseRepName": "DW"
+}

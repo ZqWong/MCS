@@ -349,7 +349,7 @@ namespace DW_CC_NET.RabbitMQ
 
                 //var eventName = ea.RoutingKey;
                 var message = Encoding.UTF8.GetString(ea.Body);
-
+                Console.WriteLine($"message {message}");
                 if (_sync == "0")
                 {
                     HandleEvent(eventName, message);
