@@ -403,13 +403,37 @@ namespace MCS
 
             if (dr.Length > 0)
             {
+                // 获取设备信息
                 for (int i = 0; i < dr.Length; i++)
                 {
+
                     string className = dr[i][DeviceControlModel.DB_CLASS].ToString();
                     string ip = dr[i][DeviceControlModel.DB_IP].ToString();
                     string id = dr[i][DeviceControlModel.DB_ID].ToString();
                     string name = dr[i][DeviceControlModel.DB_Name].ToString();
 
+                    /*                            
+                         </ControlCode>
+                          <ControlCode name="3D自动" Code="(tde 0)" Delay="0" AutoExecInterval="0" Show="false">
+                          </ControlCode>
+                          <ControlCode name="3D帧连续" Code="(tde 5)" Delay="0" AutoExecInterval="0" Show="false">
+                          </ControlCode>
+                          <ControlCode name="3D翻转开" Code="(tdi 1)" Delay="0" AutoExecInterval="0" Show="false">
+                          </ControlCode>
+                          <ControlCode name="3D翻转关" Code="(tdi 0)" Delay="0" AutoExecInterval="0" Show="false">
+                          </ControlCode>
+                          <ControlCode name="光闸开" Code="(shu 0)" Delay="0" AutoExecInterval="0" Show="false">
+                          </ControlCode>
+                          <ControlCode name="光闸关" Code="(shu 1)" Delay="0" AutoExecInterval="0" Show="false">
+                          </ControlCode>
+                          <ControlCode name="帧延迟" Code="(fdy 60)" Delay="0" AutoExecInterval="0" Show="false">
+                          </ControlCode>
+                          <ControlCode name="3DSyncOut开" Code="7E 30 30 32 33 31 20 31 0D" Delay="0" AutoExecInterval="0" Show="false">
+                          </ControlCode>
+                          <ControlCode name="3DSyncOut关" Code="7E 30 30 32 33 31 20 30 0D" Delay="0" AutoExecInterval="0" Show="false">
+                          </ControlCode>
+                    */
+                    // 从AppConfig中读取配置
                     string controlCode = GetControlCodeByControlName(className, controlName);
 
                     DeviceStruct temp;
@@ -423,11 +447,13 @@ namespace MCS
                         }
                         else
                         {
+                            // 转16进制
                             ControlCodeTemp = StringToHex(controlCode);
                         }
 
                         cmdBytes = HexStringToBinary(ControlCodeTemp);
 
+                        // 走网口连接
                         if (temp.controlType == CONTROLTYPENET)
                         {
                             // string ipPort = ip + ":" + temp.port;
@@ -447,6 +473,7 @@ namespace MCS
                                 c.OnServerDown += new DelegateMsg(DeviceNetOnServerDown);
                             }
 
+                            // 网口发送
                             if (c.sendBytes(cmdBytes))
                             {
                                 // 发送比较频繁、关闭此log
@@ -459,6 +486,7 @@ namespace MCS
                             }
 
                         }
+                        // 走串口连接
                         else if (temp.controlType == CONTROLTYPESERIAL)
                         {
                             if (其他设备控制.GetSingleton()._serialDict.ContainsKey(id))
@@ -667,12 +695,12 @@ namespace MCS
         }
 
         /**/
-        /// <summary>
-        /// 16进制字符串转换为二进制数组
-        /// </summary>
-        /// <param name="hexstring">用空格切割字符串</param>
-        /// <returns>返回一个二进制字符串</returns>
-        public static byte[] HexStringToBinary(string s)
+                    /// <summary>
+                    /// 16进制字符串转换为二进制数组
+                    /// </summary>
+                    /// <param name="hexstring">用空格切割字符串</param>
+                    /// <returns>返回一个二进制字符串</returns>
+                    public static byte[] HexStringToBinary(string s)
         {
             if (s.Length == 0)
                 throw new Exception("将16进制字符串百转换成字节度数组时出错，错误信息：被知转换的字符串长度为0。道");
@@ -1616,13 +1644,16 @@ namespace MCS
         {
             try
             {
+                // 获取方案名称
                 if (planDict.ContainsKey(planName))
                 {
+                    // 获取方案中所有设备信息
                     foreach (var planDetail in planDict[planName])
                     {
                         // 由于控制计算机启动的方法是单列出来的，需要单独处理
                         if (planDetail.deviceClass == "计算机")
                         {
+                            // 根据已有的方案控制开关机
                             主界面.GetSingleton().ComboBoxGroupSelectChange(planDetail.groupName);
                             if (planDetail.controlCodeName == "开机")
                             {
@@ -1637,8 +1668,7 @@ namespace MCS
                         NlogHandler.GetSingleton().Info(string.Format("设备控制。  分组：{0}， 类型：{1}， 控制名称：{2} 开始执行", planDetail.groupName, planDetail.deviceClass, planDetail.controlCodeName));
 
 
-                        DeviceControl(GetDeviceListByGroupAndClass(planDetail.groupName, planDetail.deviceClass),
-                            planDetail.controlCodeName);
+                        DeviceControl(GetDeviceListByGroupAndClass(planDetail.groupName, planDetail.deviceClass),planDetail.controlCodeName);
 
                         NlogHandler.GetSingleton().Info(string.Format("设备控制。  分组：{0}， 类型：{1}， 控制名称：{2} 执行完成", planDetail.groupName, planDetail.deviceClass, planDetail.controlCodeName));
 
