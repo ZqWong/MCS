@@ -1,4 +1,5 @@
 {
+  "ShowLoginForm": true,
   "Hostname": "192.169.0.198",
   "Username": "client_duowei",
   "Password": "duowei",

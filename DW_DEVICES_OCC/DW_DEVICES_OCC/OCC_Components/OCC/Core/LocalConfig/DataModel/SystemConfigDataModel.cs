@@ -9,6 +9,8 @@ namespace OCC.Core.LocalConfig
     [Serializable]
     public class SystemConfigDataModel : DataModelBase
     {
+        public bool ShowLoginForm;
+
         public string Hostname;
 
         public string Password;
