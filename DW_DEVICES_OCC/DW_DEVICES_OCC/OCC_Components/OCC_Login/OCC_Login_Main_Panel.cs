@@ -28,12 +28,12 @@ namespace OCC_Login
             user.Id = Guid.NewGuid().ToString();
             user.LoginName = "admin";
             user.UserName = "多维";
-            user.UserType = "00";
+            user.UserType = "1";
             user.Password = "duowei";
-            user.CreateBy = "admin";
+            user.CreateBy = "wzq";
             user.CreateTime = DataBaseManager.Instance.DB.GetDate();
             user.UpdateTime = DataBaseManager.Instance.DB.GetDate();
-            user.Updateby = "admin";
+            user.Updateby = "wzq";
             user.DelFlag = "0";
 
             DataBaseManager.Instance.DB.Insertable<UserDataModel>(user).ExecuteCommand();
@@ -45,6 +45,21 @@ namespace OCC_Login
             {
                 Debug.Error(x.CreateBy);
             });
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            CompanyDataModel company = new CompanyDataModel();
+            company.Id = Guid.NewGuid().ToString();
+            company.Remark = "辽宁多维科技有限公司";
+            company.Name = "辽宁多维科技有限公司";
+            company.CreateBy = "wzq";
+            company.CreateTime = DataBaseManager.Instance.DB.GetDate();
+            company.UpdateTime = DataBaseManager.Instance.DB.GetDate();
+            company.Updateby = "wzq";
+            company.DelFlag = "0";
+
+            DataBaseManager.Instance.DB.Insertable<CompanyDataModel>(company).ExecuteCommand();
         }
     }
 }

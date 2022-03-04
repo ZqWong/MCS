@@ -1,6 +1,6 @@
 ﻿namespace OCC
 {
-    partial class OCC_MAIN
+    partial class OCC
     {
         /// <summary>
         /// Required designer variable.
@@ -61,7 +61,7 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // OCC_MAIN
+            // OCC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -69,7 +69,10 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.button1);
-            this.Name = "OCC_MAIN";
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "OCC";
+            this.ShowIcon = false;
             this.Text = "OCC_MAIN";
             this.Load += new System.EventHandler(this.OCC_MAIN_Load);
             this.ResumeLayout(false);

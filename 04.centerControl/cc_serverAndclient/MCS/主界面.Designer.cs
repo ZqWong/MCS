@@ -638,7 +638,7 @@ namespace MCS
             this.备份数据库ToolStripMenuItem.Font = new System.Drawing.Font("微软雅黑", 10F);
             this.备份数据库ToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.White;
             this.备份数据库ToolStripMenuItem.Name = "备份数据库ToolStripMenuItem";
-            this.备份数据库ToolStripMenuItem.Size = new System.Drawing.Size(149, 24);
+            this.备份数据库ToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.备份数据库ToolStripMenuItem.Text = "备份数据库";
             this.备份数据库ToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.备份数据库ToolStripMenuItem.Click += new System.EventHandler(this.备份数据库ToolStripMenuItem_Click);
@@ -647,7 +647,7 @@ namespace MCS
             // 
             this.还原数据库ToolStripMenuItem.Font = new System.Drawing.Font("微软雅黑", 10F);
             this.还原数据库ToolStripMenuItem.Name = "还原数据库ToolStripMenuItem";
-            this.还原数据库ToolStripMenuItem.Size = new System.Drawing.Size(149, 24);
+            this.还原数据库ToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.还原数据库ToolStripMenuItem.Text = "还原数据库";
             this.还原数据库ToolStripMenuItem.Click += new System.EventHandler(this.还原数据库ToolStripMenuItem_Click);
             // 
@@ -670,7 +670,7 @@ namespace MCS
             // 
             this.打开系统日志ToolStripMenuItem.Font = new System.Drawing.Font("微软雅黑", 10F);
             this.打开系统日志ToolStripMenuItem.Name = "打开系统日志ToolStripMenuItem";
-            this.打开系统日志ToolStripMenuItem.Size = new System.Drawing.Size(163, 24);
+            this.打开系统日志ToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.打开系统日志ToolStripMenuItem.Text = "打开系统日志";
             this.打开系统日志ToolStripMenuItem.Click += new System.EventHandler(this.打开系统日志ToolStripMenuItem_Click);
             // 

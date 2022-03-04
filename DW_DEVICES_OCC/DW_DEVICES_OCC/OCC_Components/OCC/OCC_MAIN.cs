@@ -7,9 +7,9 @@ using SqlSugar;
 
 namespace OCC
 {
-    public partial class OCC_MAIN : Form
+    public partial class OCC : Form
     {
-        public OCC_MAIN()
+        public OCC()
         {
             InitializeComponent();
         }
