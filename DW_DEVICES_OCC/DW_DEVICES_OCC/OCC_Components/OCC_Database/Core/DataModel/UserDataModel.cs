@@ -47,10 +47,10 @@ namespace DataModel
         public string Sex{ get; set; }
 
         /// <summary>
-        /// 部门ID
+        /// 所属公司ID
         /// </summary>
-        [SugarColumn(ColumnName = "dept_id")]
-        public string DeptId{ get; set; }
+        [SugarColumn(ColumnName = "company_id")]
+        public string CompanyId{ get; set; }
 
         /// <summary>
         /// 密码
