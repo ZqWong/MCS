@@ -65,7 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Managers\LocalFileSerialization\DataManagerBase.cs" />
-    <Compile Include="Managers\LocalFileSerialization\DataModelBase.cs" />
+    <Compile Include="Managers\LocalFileSerialization\LocalDataModelBase.cs" />
     <Compile Include="Managers\LocalFileSerialization\demo\LocalDataManager.cs" />
     <Compile Include="Managers\LocalFileSerialization\IDataManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

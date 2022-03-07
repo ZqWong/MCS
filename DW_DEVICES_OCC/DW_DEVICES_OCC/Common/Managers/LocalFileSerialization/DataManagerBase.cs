@@ -3,7 +3,7 @@ using System.IO;
 
 
 [Serializable]
-public class DataManagerBase<T> : IDataManager where T : DataModelBase
+public class DataManagerBase<T> : IDataManager where T : LocalDataModelBase
 {
 
     /// <summary>
@@ -24,7 +24,7 @@ public class DataManagerBase<T> : IDataManager where T : DataModelBase
         set { m_dataModel = value; }
     }
 
-    public DataManagerBase( /*LocalDataManager manager,*/ DataModelBase dataModel)
+    public DataManagerBase( /*LocalDataManager manager,*/ LocalDataModelBase dataModel)
     {
         //Debug.Assert(null != manager, "Unexpected null manager");
         //Manager = manager;

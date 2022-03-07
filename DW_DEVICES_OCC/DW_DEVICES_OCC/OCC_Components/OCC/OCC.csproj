@@ -61,11 +61,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\Authorize\UserAuthEnum.cs" />
+    <Compile Include="Core\Authorize\UserAuthManager.cs" />
+    <Compile Include="Core\Authorize\TestAuth.cs" />
     <Compile Include="Core\DataManager.cs" />
     <Compile Include="Core\Global.cs" />
     <Compile Include="Core\LocalConfig\DataModel\SystemConfigDataModel.cs" />
     <Compile Include="Core\LocalConfig\LocalConifgManager.cs" />
     <Compile Include="Core\ProcessInstanceCheck\ProcessInstanceCheck.cs" />
+    <Compile Include="Forms\OCC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\OCC.Designer.cs">
+      <DependentUpon>OCC.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\OCC_Login\OCC_Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -80,6 +89,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\OCC.resx">
+      <DependentUpon>OCC.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\OCC_Login\OCC_Login.resx">
       <DependentUpon>OCC_Login.cs</DependentUpon>
     </EmbeddedResource>
@@ -94,6 +106,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="LocalConfigs\SystemConfig.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -131,6 +144,30 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Forms\OCC_Controls\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\主页.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\主页_btn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\设置_btn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\对号_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\取消_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\最大化_btn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\关闭_btn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\最小化_btn.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

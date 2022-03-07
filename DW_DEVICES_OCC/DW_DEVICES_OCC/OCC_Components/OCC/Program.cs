@@ -1,6 +1,8 @@
 ﻿using EventGroup.RabbitMQ;
 using OCC.Core;
 using OCC.Core.LocalConfig;
+using OCC.Forms.OCC_Login;
+using SqlSugar;
 using System;
 using System.Diagnostics;
 using System.Reflection;
@@ -25,6 +27,7 @@ namespace OCC
             {       
                 LocalConifgManager.Instance.OnInitialized = () =>
                 {
+                    /// RabbitMQ 链接 与 本地配置文件初始化
                     try
                     {
                         //RabbitMQManager.Instance.Initialize("event_bus", GetIP(), Process.GetCurrentProcess().ProcessName, "topic", "client_duowei", "192.169.0.198", "duowei");
@@ -49,11 +52,49 @@ namespace OCC
                         Debug.Error($"[OCC] RabbitMQ Initialize failed :{ex}");
                     }
 
+                    /// 数据库读取
+                    try
+                    {
+                        DataBaseInitialize();
+                    }
+                    catch (Exception ex)
+                    {
+
+                        Debug.Error($"[OCC] Database Initialize failed :{ex}");
+                    }
+
                     Debug.Info($"Lanuch");
-                    Application.Run(new OCC_MAIN());
+                    if (LocalConifgManager.Instance.SystemConfig.DataModel.ShowLoginForm)
+                    {
+                        Application.Run(new OCC_Login());
+                    }
+                    else
+                    {
+                        Application.Run(new OCC());
+                    }       
                 };
                 LocalConifgManager.Instance.Initialize();              
             });           
+        }
+
+        public static void DataBaseInitialize()
+        {
+#if DEBUG
+            string server = "127.0.0.1";
+#else
+            //TODO: 通过配置读取真正的服务器地址
+            string server = "192.168.0.198"; 
+#endif
+            var connectionString = string.Format(
+                DataBaseConst.SQL_SUGAR_CONNECTION_STRING_FORMAT,
+                server,
+                "occ",
+                "root",
+                "duowei",
+                null,
+                true);
+
+            DataBaseManager.Instance.Initialize(connectionString, true, DbType.MySql, true);
         }
     }
 }

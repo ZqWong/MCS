@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace OCC.Core.LocalConfig
 {
     [Serializable]
-    public class SystemConfigDataModel : DataModelBase
+    public class SystemConfigDataModel : LocalDataModelBase
     {
         public bool ShowLoginForm;
 
@@ -25,5 +25,7 @@ namespace OCC.Core.LocalConfig
         public string DatabaseHost;
         public string DatabasePort;
         public string DatabaseRepName;
+
+        public bool WindowsCanMoved;
     }
 }

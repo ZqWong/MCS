@@ -32,7 +32,7 @@ namespace DataModel
         /// 用户类型
         /// </summary>
         [SugarColumn(ColumnName = "user_type")]
-        public string UserType { get; set; }
+        public int UserType { get; set; }
 
         /// <summary>
         /// 邮箱

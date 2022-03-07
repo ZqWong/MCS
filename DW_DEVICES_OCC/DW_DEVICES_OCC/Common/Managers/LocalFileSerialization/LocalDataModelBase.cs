@@ -6,6 +6,6 @@ using System.Threading.Tasks;
 
 
 [Serializable]
-public abstract class DataModelBase
+public abstract class LocalDataModelBase
 {
 }

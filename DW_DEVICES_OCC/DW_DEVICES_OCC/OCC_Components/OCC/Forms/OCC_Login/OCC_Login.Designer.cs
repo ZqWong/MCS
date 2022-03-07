@@ -28,148 +28,151 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.LoginContentPanel = new Sunny.UI.UIPanel();
-            this.Password = new Sunny.UI.UITextBox();
-            this.Username = new Sunny.UI.UITextBox();
-            this.LoginTitle = new Sunny.UI.UIMarkLabel();
-            this.LoginButton = new Sunny.UI.UISymbolButton();
-            this.CanelButton = new Sunny.UI.UISymbolButton();
-            this.LoginContentPanel.SuspendLayout();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.TextPassword = new Sunny.UI.UITextBox();
+            this.TextUsername = new Sunny.UI.UITextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.BtnCancel = new System.Windows.Forms.Button();
+            this.BtnConfirm = new System.Windows.Forms.Button();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // LoginContentPanel
+            // panel1
             // 
-            this.LoginContentPanel.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.LoginContentPanel.Controls.Add(this.CanelButton);
-            this.LoginContentPanel.Controls.Add(this.LoginButton);
-            this.LoginContentPanel.Controls.Add(this.Password);
-            this.LoginContentPanel.Controls.Add(this.Username);
-            this.LoginContentPanel.Controls.Add(this.LoginTitle);
-            this.LoginContentPanel.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.LoginContentPanel.Location = new System.Drawing.Point(858, 203);
-            this.LoginContentPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.LoginContentPanel.MinimumSize = new System.Drawing.Size(1, 1);
-            this.LoginContentPanel.Name = "LoginContentPanel";
-            this.LoginContentPanel.Size = new System.Drawing.Size(270, 300);
-            this.LoginContentPanel.TabIndex = 0;
-            this.LoginContentPanel.Text = null;
-            this.LoginContentPanel.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel1.Location = new System.Drawing.Point(691, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(260, 577);
+            this.panel1.TabIndex = 0;
             // 
-            // Password
+            // panel2
             // 
-            this.Password.ButtonSymbol = 61761;
-            this.Password.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.Password.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
-            this.Password.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.Password.Location = new System.Drawing.Point(20, 200);
-            this.Password.Margin = new System.Windows.Forms.Padding(20, 10, 20, 10);
-            this.Password.Maximum = 2147483647D;
-            this.Password.Minimum = -2147483648D;
-            this.Password.MinimumSize = new System.Drawing.Size(1, 16);
-            this.Password.Name = "Password";
-            this.Password.Padding = new System.Windows.Forms.Padding(20, 5, 20, 5);
-            this.Password.PasswordChar = '*';
-            this.Password.Size = new System.Drawing.Size(230, 30);
-            this.Password.TabIndex = 3;
-            this.Password.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Password.Watermark = "请输入密码";
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.panel2.Controls.Add(this.BtnCancel);
+            this.panel2.Controls.Add(this.BtnConfirm);
+            this.panel2.Controls.Add(this.TextPassword);
+            this.panel2.Controls.Add(this.TextUsername);
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Location = new System.Drawing.Point(0, 159);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(245, 241);
+            this.panel2.TabIndex = 0;
             // 
-            // Username
+            // TextPassword
             // 
-            this.Username.ButtonSymbol = 61761;
-            this.Username.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.Username.EnterAsTab = true;
-            this.Username.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
-            this.Username.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.Username.Location = new System.Drawing.Point(20, 150);
-            this.Username.Margin = new System.Windows.Forms.Padding(20, 10, 20, 10);
-            this.Username.Maximum = 2147483647D;
-            this.Username.Minimum = -2147483648D;
-            this.Username.MinimumSize = new System.Drawing.Size(1, 16);
-            this.Username.Name = "Username";
-            this.Username.Padding = new System.Windows.Forms.Padding(20, 5, 20, 5);
-            this.Username.Size = new System.Drawing.Size(230, 30);
-            this.Username.TabIndex = 1;
-            this.Username.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Username.Watermark = "请输入用户名";
+            this.TextPassword.ButtonSymbol = 61761;
+            this.TextPassword.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.TextPassword.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.TextPassword.Location = new System.Drawing.Point(7, 114);
+            this.TextPassword.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.TextPassword.Maximum = 2147483647D;
+            this.TextPassword.Minimum = -2147483648D;
+            this.TextPassword.MinimumSize = new System.Drawing.Size(1, 16);
+            this.TextPassword.Name = "TextPassword";
+            this.TextPassword.PasswordChar = '*';
+            this.TextPassword.Size = new System.Drawing.Size(234, 29);
+            this.TextPassword.TabIndex = 2;
+            this.TextPassword.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.TextPassword.Watermark = "请输入密码";
             // 
-            // LoginTitle
+            // TextUsername
             // 
-            this.LoginTitle.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.LoginTitle.BackColor = System.Drawing.Color.Transparent;
-            this.LoginTitle.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.LoginTitle.Location = new System.Drawing.Point(82, 100);
-            this.LoginTitle.Margin = new System.Windows.Forms.Padding(20, 10, 20, 10);
-            this.LoginTitle.MarkPos = Sunny.UI.UIMarkLabel.UIMarkPos.Bottom;
-            this.LoginTitle.Name = "LoginTitle";
-            this.LoginTitle.Padding = new System.Windows.Forms.Padding(0, 0, 0, 5);
-            this.LoginTitle.Size = new System.Drawing.Size(100, 30);
-            this.LoginTitle.Style = Sunny.UI.UIStyle.Custom;
-            this.LoginTitle.TabIndex = 0;
-            this.LoginTitle.Text = "用户登录";
-            this.LoginTitle.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.TextUsername.ButtonSymbol = 61761;
+            this.TextUsername.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.TextUsername.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.TextUsername.Location = new System.Drawing.Point(7, 64);
+            this.TextUsername.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.TextUsername.Maximum = 2147483647D;
+            this.TextUsername.Minimum = -2147483648D;
+            this.TextUsername.MinimumSize = new System.Drawing.Size(1, 16);
+            this.TextUsername.Name = "TextUsername";
+            this.TextUsername.Size = new System.Drawing.Size(234, 29);
+            this.TextUsername.TabIndex = 1;
+            this.TextUsername.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.TextUsername.Watermark = "请输入用户名";
             // 
-            // LoginButton
+            // label1
             // 
-            this.LoginButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.LoginButton.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.LoginButton.Location = new System.Drawing.Point(20, 250);
-            this.LoginButton.Margin = new System.Windows.Forms.Padding(20, 10, 20, 20);
-            this.LoginButton.MinimumSize = new System.Drawing.Size(1, 1);
-            this.LoginButton.Name = "LoginButton";
-            this.LoginButton.Size = new System.Drawing.Size(110, 30);
-            this.LoginButton.TabIndex = 1;
-            this.LoginButton.Text = "登录";
-            this.LoginButton.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label1.Font = new System.Drawing.Font("微软雅黑", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(245, 64);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "登录";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // CanelButton
+            // BtnCancel
             // 
-            this.CanelButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.CanelButton.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
-            this.CanelButton.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
-            this.CanelButton.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(127)))), ((int)(((byte)(128)))));
-            this.CanelButton.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(202)))), ((int)(((byte)(87)))), ((int)(((byte)(89)))));
-            this.CanelButton.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(202)))), ((int)(((byte)(87)))), ((int)(((byte)(89)))));
-            this.CanelButton.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.CanelButton.Location = new System.Drawing.Point(140, 250);
-            this.CanelButton.Margin = new System.Windows.Forms.Padding(20, 10, 20, 20);
-            this.CanelButton.MinimumSize = new System.Drawing.Size(1, 1);
-            this.CanelButton.Name = "CanelButton";
-            this.CanelButton.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
-            this.CanelButton.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(127)))), ((int)(((byte)(128)))));
-            this.CanelButton.RectPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(202)))), ((int)(((byte)(87)))), ((int)(((byte)(89)))));
-            this.CanelButton.RectSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(202)))), ((int)(((byte)(87)))), ((int)(((byte)(89)))));
-            this.CanelButton.Size = new System.Drawing.Size(110, 30);
-            this.CanelButton.Style = Sunny.UI.UIStyle.Red;
-            this.CanelButton.Symbol = 61453;
-            this.CanelButton.TabIndex = 4;
-            this.CanelButton.Text = "取消";
-            this.CanelButton.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.BtnCancel.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.BtnCancel.Cursor = System.Windows.Forms.Cursors.Default;
+            this.BtnCancel.FlatAppearance.BorderSize = 2;
+            this.BtnCancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(30)))), ((int)(((byte)(100)))));
+            this.BtnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnCancel.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BtnCancel.Image = global::OCC.Properties.Resources.取消_icon;
+            this.BtnCancel.Location = new System.Drawing.Point(131, 172);
+            this.BtnCancel.MaximumSize = new System.Drawing.Size(180, 45);
+            this.BtnCancel.MinimumSize = new System.Drawing.Size(50, 20);
+            this.BtnCancel.Name = "BtnCancel";
+            this.BtnCancel.Padding = new System.Windows.Forms.Padding(3);
+            this.BtnCancel.Size = new System.Drawing.Size(110, 40);
+            this.BtnCancel.TabIndex = 9;
+            this.BtnCancel.Text = "  取消";
+            this.BtnCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BtnCancel.UseVisualStyleBackColor = true;
+            // 
+            // BtnConfirm
+            // 
+            this.BtnConfirm.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.BtnConfirm.Cursor = System.Windows.Forms.Cursors.Default;
+            this.BtnConfirm.FlatAppearance.BorderSize = 2;
+            this.BtnConfirm.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(30)))), ((int)(((byte)(100)))));
+            this.BtnConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnConfirm.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BtnConfirm.Image = global::OCC.Properties.Resources.对号_icon;
+            this.BtnConfirm.Location = new System.Drawing.Point(7, 172);
+            this.BtnConfirm.MaximumSize = new System.Drawing.Size(180, 45);
+            this.BtnConfirm.MinimumSize = new System.Drawing.Size(50, 20);
+            this.BtnConfirm.Name = "BtnConfirm";
+            this.BtnConfirm.Padding = new System.Windows.Forms.Padding(3);
+            this.BtnConfirm.Size = new System.Drawing.Size(110, 40);
+            this.BtnConfirm.TabIndex = 8;
+            this.BtnConfirm.Text = "  登录";
+            this.BtnConfirm.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnConfirm.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BtnConfirm.UseVisualStyleBackColor = true;
+            this.BtnConfirm.Click += new System.EventHandler(this.BtnConfirm_Click);
             // 
             // OCC_Login
             // 
-            this.AutoScroll = true;
-            this.AutoSize = true;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(1274, 727);
-            this.Controls.Add(this.LoginContentPanel);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
+            this.ClientSize = new System.Drawing.Size(951, 577);
+            this.ControlBox = false;
+            this.Controls.Add(this.panel1);
             this.ForeColor = System.Drawing.Color.Transparent;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "OCC_Login";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.LoginContentPanel.ResumeLayout(false);
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private Sunny.UI.UIPanel LoginContentPanel;
-        private Sunny.UI.UIMarkLabel LoginTitle;
-        private Sunny.UI.UITextBox Password;
-        private Sunny.UI.UITextBox Username;
-        private Sunny.UI.UISymbolButton LoginButton;
-        private Sunny.UI.UISymbolButton CanelButton;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label1;
+        private Sunny.UI.UITextBox TextUsername;
+        private Sunny.UI.UITextBox TextPassword;
+        private System.Windows.Forms.Button BtnConfirm;
+        private System.Windows.Forms.Button BtnCancel;
     }
 }

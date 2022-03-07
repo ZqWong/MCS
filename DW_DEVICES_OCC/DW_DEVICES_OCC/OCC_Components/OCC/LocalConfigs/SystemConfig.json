@@ -10,5 +10,6 @@
   "DatabasePassword": "duowei",
   "DatabaseHost": "127.0.0.1",
   "DatabasePort": "3306",
-  "DatabaseRepName": "DW"
+  "DatabaseRepName": "DW",
+  "WindowsCanMoved": true
 }

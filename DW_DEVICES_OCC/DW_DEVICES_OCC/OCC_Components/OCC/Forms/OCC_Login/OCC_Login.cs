@@ -1,4 +1,5 @@
 ﻿using DataModel;
+using OCC.Core;
 using Sunny.UI;
 using System;
 using System.Collections.Generic;
@@ -17,21 +18,26 @@ namespace OCC.Forms.OCC_Login
         public OCC_Login()
         {
             InitializeComponent();
+
+#if DEBUG
+            TextUsername.Text = "admin";
+            TextPassword.Text = "duowei";
+#endif
         }
 
         private void OCC_Login_Load(object sender, EventArgs e)
         {
-
         }
 
-
-        private bool OCC_Login_OnLogin(string userName, string password)
+        private void BtnConfirm_Click(object sender, EventArgs e)
         {
-            Debug.Warn($"userName {userName}  password  {password}");
-            var targetUserData = DataBaseManager.Instance.DB.Queryable<UserDataModel>().First(u => u.LoginName.Equals(userName));
-            if (targetUserData == null) return false;
-            return targetUserData.Password.Equals(password);            
+            if (DataManager.Instance.GetUserData(TextUsername.Text, TextPassword.Text))
+            {
+                this.Hide();
+                OCC occ = new OCC();
+                occ.ShowDialog();                
+            }
         }
-
     }
 }
+  

@@ -50,6 +50,7 @@
     <Compile Include="Core\DataModel\CompanyDataModel.cs" />
     <Compile Include="Core\DataModel\DataModelBase.cs" />
     <Compile Include="Core\DataModel\UserDataModel.cs" />
+    <Compile Include="Core\DataModel\UserTypeDataModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
