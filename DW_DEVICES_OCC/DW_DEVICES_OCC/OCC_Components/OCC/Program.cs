@@ -50,7 +50,7 @@ namespace OCC
                     }
 
                     Debug.Info($"Lanuch");
-                    Application.Run(new OCC());
+                    Application.Run(new OCC_MAIN());
                 };
                 LocalConifgManager.Instance.Initialize();              
             });           

@@ -9,9 +9,9 @@ using OCC.Core.LocalConfig;
 
 namespace OCC
 {
-    public partial class OCC : UIForm
+    public partial class OCC_MAIN : UIForm
     {
-        public OCC()
+        public OCC_MAIN()
         {
             InitializeComponent();
         }

@@ -1,6 +1,6 @@
 ﻿namespace OCC
 {
-    partial class OCC
+    partial class OCC_MAIN
     {
         /// <summary>
         /// Required designer variable.
