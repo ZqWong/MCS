@@ -11,65 +11,119 @@ using System.Runtime.InteropServices;
 using System.Drawing.Drawing2D;
 using OCC.Core.LocalConfig;
 using OCC.Core;
+using OCC.Forms.OCC_Main;
 
 namespace OCC
 {
     public partial class OCC : Form
     {
+
         public OCC()
         {
             InitializeComponent();
-
-            CreateSideBarButton("BtnMain", "主页", global::OCC.Properties.Resources.主页_btn, (sender, e) =>
-            {
-                Debug.Info("主页按钮 点击");
-            });
-
-            CreateSideBarButton("BtnDevice", "设备", global::OCC.Properties.Resources.主页_btn, (sender, e) =>
-            {
-                Debug.Info("设备按钮 点击");
-            });
-
+            this.IsMdiContainer = true;
             MoouseDrag();
-
-            CreateSideBarButtonByUserAuthority(DataManager.Instance.CurrentUserAuthData.AuthLevel);
         }
 
         private void OCC_Load(object sender, EventArgs e)
         {
-            
+            UpdateUserInfo();
+            CreateSideBarButtonByUserAuthority();
         }
 
-        #region Create Sidebar button
-
-
-        private void CreateSideBarButtonByUserAuthority(int userAuthCode)
+        /// <summary>
+        /// 更新主页面登录用户信息
+        /// </summary>
+        private void UpdateUserInfo()
         {
-            Debug.Info($"{this} CreateSideBarButtonByUserAuthority Level : {userAuthCode}");
+            LabelUserName.Text = DataManager.Instance.CurrentLoginUserData.UserName;
+            LabelUserRemark.Text = DataManager.Instance.CurrentLoginUserData.Remark;
+            PictureUserIcon.Image = global::OCC.Properties.Resources.logo;
+        }
 
-            if (UserAuthManager.IsHasAuth(userAuthCode, (long)UserAuthEnum.MAIN_MENU))
+        /// <summary>
+        /// 当主界面设置按钮按下
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnSettings_Click(object sender, EventArgs e)
+        {
+            // TODO: 当设置按钮按下
+
+
+
+        }
+
+        #region 创建侧边栏按钮
+
+        /// <summary>
+        /// 根据用户权限更新主页面显示功能
+        /// </summary>
+        private void CreateSideBarButtonByUserAuthority()
+        {            
+            Debug.Info($"{this} CreateSideBarButtonByUserAuthority Level : {DataManager.Instance.CurrentUserAuthData.AuthLevel}");
+
+            // 判断主界面权限
+            if (UserAuthManager.IsHasAuth(DataManager.Instance.CurrentUserAuthData.AuthLevel, (long)UserAuthEnum.MAIN_MENU))
             {
+                PanelContent.Controls.Clear();
+                OCC_Main occ_main = new OCC_Main();
 
+                //occ_main.TopLevel = false;
+                //occ_main.FormBorderStyle = FormBorderStyle.None;
+                //PanelContent.Controls.Add(occ_main);
+                //occ_main.Show();
+
+                occ_main.MdiParent = this;
+                occ_main.Parent = PanelContent;
+                occ_main.FormBorderStyle = FormBorderStyle.None;
+                occ_main.Show();
+                occ_main.Dock = DockStyle.Fill;
+
+                CreateSideBarButton(UserAuthEnum.MAIN_MENU.ToString(), UIText.OCC.MAIN_BUTTON_STRING, global::OCC.Properties.Resources.主页_btn, (sender, e) =>
+                {
+                    Debug.Info("主页按钮 点击");
+                });
             }
-            if (UserAuthManager.IsHasAuth(userAuthCode, (long)UserAuthEnum.DEVICE_MENU))
+            // 判断设备权限
+            if (UserAuthManager.IsHasAuth(DataManager.Instance.CurrentUserAuthData.AuthLevel, (long)UserAuthEnum.DEVICES_MENU))
             {
-
+                CreateSideBarButton(UserAuthEnum.DEVICES_MENU.ToString(), UIText.OCC.DEVICES_BUTTON_STRING, global::OCC.Properties.Resources.主页_btn, (sender, e) =>
+                {
+                    Debug.Info("设备按钮 点击");
+                });
             }
-            if (UserAuthManager.IsHasAuth(userAuthCode, (long)UserAuthEnum.APP_MENU))
+            // 判断APP权限
+            if (UserAuthManager.IsHasAuth(DataManager.Instance.CurrentUserAuthData.AuthLevel, (long)UserAuthEnum.APPS_MENU))
             {
-
+                CreateSideBarButton(UserAuthEnum.APPS_MENU.ToString(), UIText.OCC.APPS_BUTTON_STRING, global::OCC.Properties.Resources.主页_btn, (sender, e) =>
+                {
+                    Debug.Info("设备按钮 点击");
+                });
             }
-            if (UserAuthManager.IsHasAuth(userAuthCode, (long)UserAuthEnum.USERS_MENU))
+            // 判断用户管理权限
+            if (UserAuthManager.IsHasAuth(DataManager.Instance.CurrentUserAuthData.AuthLevel, (long)UserAuthEnum.USERS_MENU))
             {
-
+                CreateSideBarButton(UserAuthEnum.USERS_MENU.ToString(), UIText.OCC.USERS_BUTTON_STRING, global::OCC.Properties.Resources.主页_btn, (sender, e) =>
+                {
+                    Debug.Info("设备按钮 点击");
+                });
             }
-            if (UserAuthManager.IsHasAuth(userAuthCode, (long)UserAuthEnum.DEVICE_GROUP_MENU))
+            // 判断设备分组权限
+            if (UserAuthManager.IsHasAuth(DataManager.Instance.CurrentUserAuthData.AuthLevel, (long)UserAuthEnum.DEVICE_GROUP_MENU))
             {
-
+                CreateSideBarButton(UserAuthEnum.DEVICE_GROUP_MENU.ToString(), UIText.OCC.DEVICE_GROUP_BUTTON_STRING, global::OCC.Properties.Resources.主页_btn, (sender, e) =>
+                {
+                    Debug.Info("设备按钮 点击");
+                });
             }
-            if (UserAuthManager.IsHasAuth(userAuthCode, (long)UserAuthEnum.LOG_MENU))
+            // 判断日志权限
+            if (UserAuthManager.IsHasAuth(DataManager.Instance.CurrentUserAuthData.AuthLevel, (long)UserAuthEnum.LOG_MENU))
             {
-
+                CreateSideBarButton(UserAuthEnum.LOG_MENU.ToString(), UIText.OCC.LOG_BUTTON_STRING, global::OCC.Properties.Resources.主页_btn, (sender, e) =>
+                {
+                    Debug.Info("设备按钮 点击");
+                });
             }
         }
 
@@ -102,20 +156,6 @@ namespace OCC
             SideButtonPanel.Controls.Add(button);
         }
         #endregion
-
-        /// <summary>
-        /// 当主界面设置按钮按下
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void BtnSettings_Click(object sender, EventArgs e)
-        {
-            // TODO: 当设置按钮按下
-
-
-
-        }
-
 
         #region 鼠标拖动
 
@@ -160,5 +200,42 @@ namespace OCC
 
 
         #endregion
+
+        #region 系统按钮
+
+        /// <summary>
+        /// 关闭程序
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnApplicationClose_Click(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
+        }
+
+        private bool isMaximized = false;
+        /// <summary>
+        /// 最大化以及还原
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnMaxMinStateChange_Click(object sender, EventArgs e)
+        {
+            WindowState = isMaximized ? FormWindowState.Normal : FormWindowState.Maximized;
+            isMaximized = !isMaximized;
+        }
+        /// <summary>
+        /// 最小化到任务栏
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnMinimized_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
+        }
+
+        #endregion
+
+
     }
 }

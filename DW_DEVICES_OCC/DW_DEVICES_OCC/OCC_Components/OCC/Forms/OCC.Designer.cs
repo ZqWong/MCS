@@ -33,19 +33,20 @@
             this.LabelAppVersion = new System.Windows.Forms.Label();
             this.SideButtonPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.uiLabel2 = new Sunny.UI.UILabel();
-            this.uiLabel1 = new Sunny.UI.UILabel();
+            this.LabelUserRemark = new Sunny.UI.UILabel();
+            this.LabelUserName = new Sunny.UI.UILabel();
             this.TaskBar = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.PanelContent = new System.Windows.Forms.Panel();
+            this.BtnMinimized = new System.Windows.Forms.Button();
+            this.BtnMaxMinStateChange = new System.Windows.Forms.Button();
             this.BtnApplicationClose = new System.Windows.Forms.Button();
             this.BtnSettings = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.PictureUserIcon = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.TaskBar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureUserIcon)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -90,44 +91,44 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.uiLabel2);
-            this.panel2.Controls.Add(this.uiLabel1);
-            this.panel2.Controls.Add(this.pictureBox1);
+            this.panel2.Controls.Add(this.LabelUserRemark);
+            this.panel2.Controls.Add(this.LabelUserName);
+            this.panel2.Controls.Add(this.PictureUserIcon);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(186, 144);
             this.panel2.TabIndex = 0;
             // 
-            // uiLabel2
+            // LabelUserRemark
             // 
-            this.uiLabel2.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(178)))));
-            this.uiLabel2.Location = new System.Drawing.Point(16, 112);
-            this.uiLabel2.Name = "uiLabel2";
-            this.uiLabel2.Size = new System.Drawing.Size(157, 23);
-            this.uiLabel2.Style = Sunny.UI.UIStyle.Custom;
-            this.uiLabel2.TabIndex = 2;
-            this.uiLabel2.Text = "Some User Text here";
-            this.uiLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.LabelUserRemark.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.LabelUserRemark.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(178)))));
+            this.LabelUserRemark.Location = new System.Drawing.Point(16, 112);
+            this.LabelUserRemark.Name = "LabelUserRemark";
+            this.LabelUserRemark.Size = new System.Drawing.Size(157, 23);
+            this.LabelUserRemark.Style = Sunny.UI.UIStyle.Custom;
+            this.LabelUserRemark.TabIndex = 2;
+            this.LabelUserRemark.Text = "Some User Text here";
+            this.LabelUserRemark.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // uiLabel1
+            // LabelUserName
             // 
-            this.uiLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.uiLabel1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(156)))), ((int)(((byte)(249)))));
-            this.uiLabel1.Location = new System.Drawing.Point(12, 89);
-            this.uiLabel1.Name = "uiLabel1";
-            this.uiLabel1.Size = new System.Drawing.Size(161, 23);
-            this.uiLabel1.Style = Sunny.UI.UIStyle.Custom;
-            this.uiLabel1.TabIndex = 1;
-            this.uiLabel1.Text = "User Name";
-            this.uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.LabelUserName.BackColor = System.Drawing.Color.Transparent;
+            this.LabelUserName.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.LabelUserName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(156)))), ((int)(((byte)(249)))));
+            this.LabelUserName.Location = new System.Drawing.Point(12, 89);
+            this.LabelUserName.Name = "LabelUserName";
+            this.LabelUserName.Size = new System.Drawing.Size(161, 23);
+            this.LabelUserName.Style = Sunny.UI.UIStyle.Custom;
+            this.LabelUserName.TabIndex = 1;
+            this.LabelUserName.Text = "User Name";
+            this.LabelUserName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // TaskBar
             // 
-            this.TaskBar.Controls.Add(this.button2);
-            this.TaskBar.Controls.Add(this.button1);
+            this.TaskBar.Controls.Add(this.BtnMinimized);
+            this.TaskBar.Controls.Add(this.BtnMaxMinStateChange);
             this.TaskBar.Controls.Add(this.BtnApplicationClose);
             this.TaskBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.TaskBar.Location = new System.Drawing.Point(186, 0);
@@ -135,31 +136,41 @@
             this.TaskBar.Size = new System.Drawing.Size(765, 30);
             this.TaskBar.TabIndex = 1;
             // 
-            // button2
+            // PanelContent
             // 
-            this.button2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button2.Image = global::OCC.Properties.Resources.最小化_btn;
-            this.button2.Location = new System.Drawing.Point(675, 0);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(30, 30);
-            this.button2.TabIndex = 2;
-            this.button2.UseVisualStyleBackColor = true;
+            this.PanelContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PanelContent.Location = new System.Drawing.Point(186, 30);
+            this.PanelContent.Name = "PanelContent";
+            this.PanelContent.Size = new System.Drawing.Size(765, 547);
+            this.PanelContent.TabIndex = 2;
             // 
-            // button1
+            // BtnMinimized
             // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button1.Image = global::OCC.Properties.Resources.最大化_btn;
-            this.button1.Location = new System.Drawing.Point(705, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(30, 30);
-            this.button1.TabIndex = 1;
-            this.button1.UseVisualStyleBackColor = true;
+            this.BtnMinimized.Dock = System.Windows.Forms.DockStyle.Right;
+            this.BtnMinimized.FlatAppearance.BorderSize = 0;
+            this.BtnMinimized.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnMinimized.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BtnMinimized.Image = global::OCC.Properties.Resources.最小化_btn;
+            this.BtnMinimized.Location = new System.Drawing.Point(675, 0);
+            this.BtnMinimized.Name = "BtnMinimized";
+            this.BtnMinimized.Size = new System.Drawing.Size(30, 30);
+            this.BtnMinimized.TabIndex = 2;
+            this.BtnMinimized.UseVisualStyleBackColor = true;
+            this.BtnMinimized.Click += new System.EventHandler(this.BtnMinimized_Click);
+            // 
+            // BtnMaxMinStateChange
+            // 
+            this.BtnMaxMinStateChange.Dock = System.Windows.Forms.DockStyle.Right;
+            this.BtnMaxMinStateChange.FlatAppearance.BorderSize = 0;
+            this.BtnMaxMinStateChange.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnMaxMinStateChange.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BtnMaxMinStateChange.Image = global::OCC.Properties.Resources.最大化_btn;
+            this.BtnMaxMinStateChange.Location = new System.Drawing.Point(705, 0);
+            this.BtnMaxMinStateChange.Name = "BtnMaxMinStateChange";
+            this.BtnMaxMinStateChange.Size = new System.Drawing.Size(30, 30);
+            this.BtnMaxMinStateChange.TabIndex = 1;
+            this.BtnMaxMinStateChange.UseVisualStyleBackColor = true;
+            this.BtnMaxMinStateChange.Click += new System.EventHandler(this.BtnMaxMinStateChange_Click);
             // 
             // BtnApplicationClose
             // 
@@ -173,6 +184,7 @@
             this.BtnApplicationClose.Size = new System.Drawing.Size(30, 30);
             this.BtnApplicationClose.TabIndex = 0;
             this.BtnApplicationClose.UseVisualStyleBackColor = true;
+            this.BtnApplicationClose.Click += new System.EventHandler(this.BtnApplicationClose_Click);
             // 
             // BtnSettings
             // 
@@ -194,26 +206,29 @@
             this.BtnSettings.UseVisualStyleBackColor = true;
             this.BtnSettings.Click += new System.EventHandler(this.BtnSettings_Click);
             // 
-            // pictureBox1
+            // PictureUserIcon
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(60, 22);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(64, 64);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.PictureUserIcon.Location = new System.Drawing.Point(60, 22);
+            this.PictureUserIcon.Name = "PictureUserIcon";
+            this.PictureUserIcon.Size = new System.Drawing.Size(64, 64);
+            this.PictureUserIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.PictureUserIcon.TabIndex = 0;
+            this.PictureUserIcon.TabStop = false;
             // 
             // OCC
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(951, 577);
+            this.Controls.Add(this.PanelContent);
             this.Controls.Add(this.TaskBar);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.IsMdiContainer = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(951, 577);
             this.Name = "OCC";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -223,7 +238,7 @@
             this.panel3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.TaskBar.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureUserIcon)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -232,16 +247,17 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private Sunny.UI.UILabel uiLabel1;
-        private Sunny.UI.UILabel uiLabel2;
+        private System.Windows.Forms.PictureBox PictureUserIcon;
+        private Sunny.UI.UILabel LabelUserName;
+        private Sunny.UI.UILabel LabelUserRemark;
         private System.Windows.Forms.FlowLayoutPanel SideButtonPanel;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button BtnSettings;
         private System.Windows.Forms.Label LabelAppVersion;
         private System.Windows.Forms.Panel TaskBar;
         private System.Windows.Forms.Button BtnApplicationClose;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button BtnMinimized;
+        private System.Windows.Forms.Button BtnMaxMinStateChange;
+        private System.Windows.Forms.Panel PanelContent;
     }
 }

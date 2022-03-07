@@ -69,6 +69,7 @@
     <Compile Include="Core\LocalConfig\DataModel\SystemConfigDataModel.cs" />
     <Compile Include="Core\LocalConfig\LocalConifgManager.cs" />
     <Compile Include="Core\ProcessInstanceCheck\ProcessInstanceCheck.cs" />
+    <Compile Include="Core\UIText.cs" />
     <Compile Include="Forms\OCC.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,11 +82,11 @@
     <Compile Include="Forms\OCC_Login\OCC_Login.Designer.cs">
       <DependentUpon>OCC_Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\OCC_MAIN.cs">
+    <Compile Include="Forms\OCC_Main\OCC_Main.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\OCC_MAIN.Designer.cs">
-      <DependentUpon>OCC_MAIN.cs</DependentUpon>
+    <Compile Include="Forms\OCC_Main\OCC_Main.Designer.cs">
+      <DependentUpon>OCC_Main.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -95,8 +96,8 @@
     <EmbeddedResource Include="Forms\OCC_Login\OCC_Login.resx">
       <DependentUpon>OCC_Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\OCC_MAIN.resx">
-      <DependentUpon>OCC_MAIN.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\OCC_Main\OCC_Main.resx">
+      <DependentUpon>OCC_Main.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -168,6 +169,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\最小化_btn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
