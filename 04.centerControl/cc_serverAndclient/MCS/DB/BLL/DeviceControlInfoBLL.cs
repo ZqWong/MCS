@@ -37,6 +37,7 @@ namespace MCS.DB.BLL
 
         public DataSet GetDeviceIPInfo()
         {
+            // GetDeviceIPInfo
             string cmdText = StoredProcedureName.GetDeviceIPInfo;
             //string[] para = { };
             //object[] value = { };

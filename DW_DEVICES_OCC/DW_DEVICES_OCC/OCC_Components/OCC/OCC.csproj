@@ -82,6 +82,18 @@
     <Compile Include="Forms\OCC_Controls\MessageDialog.Designer.cs">
       <DependentUpon>MessageDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\OCC_Devices\OCC_Device.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\OCC_Devices\OCC_Device.Designer.cs">
+      <DependentUpon>OCC_Device.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\OCC_Devices\OCC_DeviceDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\OCC_Devices\OCC_DeviceDetail.Designer.cs">
+      <DependentUpon>OCC_DeviceDetail.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\OCC_Login\OCC_Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,6 +125,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\OCC_Controls\MessageDialog.resx">
       <DependentUpon>MessageDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\OCC_Devices\OCC_Device.resx">
+      <DependentUpon>OCC_Device.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\OCC_Devices\OCC_DeviceDetail.resx">
+      <DependentUpon>OCC_DeviceDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\OCC_Login\OCC_Login.resx">
       <DependentUpon>OCC_Login.cs</DependentUpon>

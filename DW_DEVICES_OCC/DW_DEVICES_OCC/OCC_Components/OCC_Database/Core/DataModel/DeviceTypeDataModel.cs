@@ -7,25 +7,24 @@ using System.Threading.Tasks;
 
 namespace DataModel
 {
-    [SugarTable("occ_user_type")]
-    public class UserTypeDataModel : DataModelBase
+    public class DeviceTypeDataModel : DataModelBase
     {
         /// <summary>
         /// 主键ID
         /// </summary>
         [SugarColumn(IsPrimaryKey = true, IsIdentity = true)]
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         /// <summary>
-        /// 用户类型名称
+        /// 公司名
         /// </summary>
         [SugarColumn(ColumnName = "name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// 用户类型2进制码
+        /// 备注
         /// </summary>
-        [SugarColumn(ColumnName = "authority_level")]
-        public int AuthLevel { get; set; }
+        [SugarColumn(ColumnName = "remark")]
+        public string Remark { get; set; }
     }
 }

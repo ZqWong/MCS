@@ -205,6 +205,31 @@ public class DataBaseCRUDManager : LockedSingletonClass<DataBaseCRUDManager>
     }
 
 
+    /// <summary>
+    /// 硬件设备信息
+    /// </summary>
+    /// <param name="deviceDatas"></param>
+    /// <returns></returns>
+    public List<DeviceDataModel> GetAllActivatedDeviceInfo()
+    {
+        List<DeviceDataModel> ret = new List<DeviceDataModel> ();
+        try
+        {
+            var userTypeDatas = DataBaseManager.Instance.DB.Queryable<DeviceDataModel>().Where(d => d.DelFlag.Equals(0)).ToList();
+            if (null == userTypeDatas)
+            {
+                Debug.Error($"Get TryGetAllActivatedDeviceInfo data failed");
+            }
+            ret = userTypeDatas;
+        }
+        catch (Exception ex)
+        {
+            Debug.Error($"{this} DataManager TryGetAllActivatedDeviceInfo failed {ex}");
+            throw;
+        }
+        return ret;
+    }
+
     #endregion
 
     #region U

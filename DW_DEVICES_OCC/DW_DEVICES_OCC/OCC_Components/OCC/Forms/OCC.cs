@@ -18,6 +18,7 @@ namespace OCC
 {
     public partial class OCC : Form
     {
+        private Form preForm;
 
         public OCC()
         {
@@ -65,6 +66,8 @@ namespace OCC
 
         private void ShowTargetForm(Form targetForm)
         {
+            if (PanelContent.Controls.Count > 0)
+                PanelContent.Controls.Remove(PanelContent.Controls[0]);
             PanelContent.Controls.Clear();
             targetForm.MdiParent = this;
             targetForm.Parent = PanelContent;
@@ -95,6 +98,8 @@ namespace OCC
             {
                 CreateSideBarButton(UserAuthEnum.DEVICES_MENU.ToString(), UIText.OCC.DEVICES_BUTTON_STRING, global::OCC.Properties.Resources.主页_btn, (sender, e) =>
                 {
+                    OCC_Device occ = new OCC_Device();
+                    ShowTargetForm(occ);
                     Debug.Info("设备按钮 点击");
                 });
             }
@@ -111,8 +116,8 @@ namespace OCC
             {
                 CreateSideBarButton(UserAuthEnum.USERS_MENU.ToString(), UIText.OCC.USERS_BUTTON_STRING, global::OCC.Properties.Resources.主页_btn, (sender, e) =>
                 {
-                    OCC_Users occ_main = new OCC_Users();
-                    ShowTargetForm(occ_main);
+                    OCC_Users occ = new OCC_Users();
+                    ShowTargetForm(occ);
                     Debug.Info("用户按钮 点击");
                 });
             }

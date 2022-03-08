@@ -68,6 +68,7 @@
     <Compile Include="Managers\LocalFileSerialization\LocalDataModelBase.cs" />
     <Compile Include="Managers\LocalFileSerialization\demo\LocalDataManager.cs" />
     <Compile Include="Managers\LocalFileSerialization\IDataManager.cs" />
+    <Compile Include="Managers\SystemStatus\DevicePingManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tools\DateTimeHelper.cs" />
     <Compile Include="Tools\Debug.cs" />
