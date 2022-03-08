@@ -161,6 +161,8 @@ namespace OCC.Forms.OCC_Users
             var targetUser = UserList.Rows[index].Tag as UserDataModel;
             DataBaseCRUDManager.Instance.DeleteUserInfoById(targetUser.Id);
             index = -1;
+
+            UserListInitialize();
         }
 
         #endregion

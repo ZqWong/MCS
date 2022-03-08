@@ -29,7 +29,7 @@ namespace OCC.Forms.OCC_Users
         {
             InitializeComponent();
             ComboBoxSex.SelectedIndex = 0;
-            BtnConfirm.Enabled = Type.Equals(FormType.ADJUST);
+            BtnConfirm.Enabled = Type.Equals(FormType.ADJUST);           
         }
 
         private void OCC_UserDetail_Load(object sender, EventArgs e)
@@ -221,6 +221,7 @@ namespace OCC.Forms.OCC_Users
 
         private void OCC_UserDetail_Shown(object sender, EventArgs e)
         {
+            this.Text = Type.Equals(FormType.ADJUST) ? "用户信息修改." : "添加新用户.";
             if (Type.Equals(FormType.ADJUST))
             {
                 var targetUser = Tag as UserDataModel;
