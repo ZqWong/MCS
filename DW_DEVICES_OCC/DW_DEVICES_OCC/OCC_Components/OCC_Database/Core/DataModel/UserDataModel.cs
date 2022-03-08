@@ -10,6 +10,19 @@ namespace DataModel
     [SugarTable("occ_user")]
     public class UserDataModel : DataModelBase
     {
+        //public UserDataModel(string userName, string loginName, string password, int userType, string sex, string companyId, string phonenumber, string remark, string email)
+        //{
+        //    UserName = userName;
+        //    LoginName = loginName;
+        //    Password = password;
+        //    UserType = userType;
+        //    Sex = sex;
+        //    CompanyId = companyId;
+        //    Phonenumber = phonenumber;
+        //    Remark = remark;
+        //    Email = email;
+        //}
+
         /// <summary>
         /// 主键ID
         /// </summary>

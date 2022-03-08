@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\DataBaseConst.cs" />
+    <Compile Include="Core\DataBaseCRUDManager.cs" />
     <Compile Include="Core\DataBaseManager.cs" />
     <Compile Include="Core\DataModel\CompanyDataModel.cs" />
     <Compile Include="Core\DataModel\DataModelBase.cs" />

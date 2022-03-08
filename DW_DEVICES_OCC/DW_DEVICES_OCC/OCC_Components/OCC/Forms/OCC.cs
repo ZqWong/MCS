@@ -12,6 +12,7 @@ using System.Drawing.Drawing2D;
 using OCC.Core.LocalConfig;
 using OCC.Core;
 using OCC.Forms.OCC_Main;
+using OCC.Forms.OCC_Users;
 
 namespace OCC
 {
@@ -27,8 +28,14 @@ namespace OCC
 
         private void OCC_Load(object sender, EventArgs e)
         {
+            DataManager.Instance.GetCommonInfos();
+
             UpdateUserInfo();
+
             CreateSideBarButtonByUserAuthority();
+
+            OCC_Main occ_main = new OCC_Main();
+            ShowTargetForm(occ_main);
         }
 
         /// <summary>
@@ -54,7 +61,17 @@ namespace OCC
 
         }
 
-        #region 创建侧边栏按钮
+        #region 创建侧边栏按钮以及点击页面显示
+
+        private void ShowTargetForm(Form targetForm)
+        {
+            PanelContent.Controls.Clear();
+            targetForm.MdiParent = this;
+            targetForm.Parent = PanelContent;
+            targetForm.FormBorderStyle = FormBorderStyle.None;
+            targetForm.Show();
+            targetForm.Dock = DockStyle.Fill;
+        }
 
         /// <summary>
         /// 根据用户权限更新主页面显示功能
@@ -66,22 +83,10 @@ namespace OCC
             // 判断主界面权限
             if (UserAuthManager.IsHasAuth(DataManager.Instance.CurrentUserAuthData.AuthLevel, (long)UserAuthEnum.MAIN_MENU))
             {
-                PanelContent.Controls.Clear();
-                OCC_Main occ_main = new OCC_Main();
-
-                //occ_main.TopLevel = false;
-                //occ_main.FormBorderStyle = FormBorderStyle.None;
-                //PanelContent.Controls.Add(occ_main);
-                //occ_main.Show();
-
-                occ_main.MdiParent = this;
-                occ_main.Parent = PanelContent;
-                occ_main.FormBorderStyle = FormBorderStyle.None;
-                occ_main.Show();
-                occ_main.Dock = DockStyle.Fill;
-
                 CreateSideBarButton(UserAuthEnum.MAIN_MENU.ToString(), UIText.OCC.MAIN_BUTTON_STRING, global::OCC.Properties.Resources.主页_btn, (sender, e) =>
                 {
+                    OCC_Main occ_main = new OCC_Main();
+                    ShowTargetForm(occ_main);
                     Debug.Info("主页按钮 点击");
                 });
             }
@@ -98,7 +103,7 @@ namespace OCC
             {
                 CreateSideBarButton(UserAuthEnum.APPS_MENU.ToString(), UIText.OCC.APPS_BUTTON_STRING, global::OCC.Properties.Resources.主页_btn, (sender, e) =>
                 {
-                    Debug.Info("设备按钮 点击");
+                    Debug.Info("app按钮 点击");
                 });
             }
             // 判断用户管理权限
@@ -106,7 +111,9 @@ namespace OCC
             {
                 CreateSideBarButton(UserAuthEnum.USERS_MENU.ToString(), UIText.OCC.USERS_BUTTON_STRING, global::OCC.Properties.Resources.主页_btn, (sender, e) =>
                 {
-                    Debug.Info("设备按钮 点击");
+                    OCC_Users occ_main = new OCC_Users();
+                    ShowTargetForm(occ_main);
+                    Debug.Info("用户按钮 点击");
                 });
             }
             // 判断设备分组权限
@@ -114,7 +121,7 @@ namespace OCC
             {
                 CreateSideBarButton(UserAuthEnum.DEVICE_GROUP_MENU.ToString(), UIText.OCC.DEVICE_GROUP_BUTTON_STRING, global::OCC.Properties.Resources.主页_btn, (sender, e) =>
                 {
-                    Debug.Info("设备按钮 点击");
+                    Debug.Info("分组按钮 点击");
                 });
             }
             // 判断日志权限
@@ -122,7 +129,7 @@ namespace OCC
             {
                 CreateSideBarButton(UserAuthEnum.LOG_MENU.ToString(), UIText.OCC.LOG_BUTTON_STRING, global::OCC.Properties.Resources.主页_btn, (sender, e) =>
                 {
-                    Debug.Info("设备按钮 点击");
+                    Debug.Info("日志按钮 点击");
                 });
             }
         }

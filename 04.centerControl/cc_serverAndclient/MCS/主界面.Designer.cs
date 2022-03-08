@@ -31,49 +31,22 @@ namespace MCS
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cbAllSelect = new System.Windows.Forms.CheckBox();
             this.btnControlExamPC = new System.Windows.Forms.Button();
-            this.MCS_DataGridView = new System.Windows.Forms.DataGridView();
-            this.CheckBox = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.No = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ExamPCName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OpenOrClosePCState = new System.Windows.Forms.DataGridViewImageColumn();
-            this.ConnectionState = new System.Windows.Forms.DataGridViewImageColumn();
-            this.ExamAppOpenState = new System.Windows.Forms.DataGridViewImageColumn();
-            this.ExaminationContent = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ExamineeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ExamState = new System.Windows.Forms.DataGridViewImageColumn();
-            this.ExamPCState = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Client_system_tick_count = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ResetButton = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Mac = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ExaminationResultID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ExaminationID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ExamineeID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cpu_ratio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.memory_available = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gpu_ratio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gpu_memory = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.netDelay = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stereo_state = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.leftRight_state = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.process_state = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbControlMainArea = new System.Windows.Forms.GroupBox();
             this.cbAction = new System.Windows.Forms.ComboBox();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
@@ -142,7 +115,33 @@ namespace MCS
             this.label_cur = new System.Windows.Forms.Label();
             this.label_next = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            ((System.ComponentModel.ISupportInitialize)(this.MCS_DataGridView)).BeginInit();
+            this.process_state = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.leftRight_state = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stereo_state = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.netDelay = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gpu_memory = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gpu_ratio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.memory_available = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cpu_ratio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ExamineeID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ExaminationID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ExaminationResultID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Mac = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ResetButton = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Client_system_tick_count = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ExamPCState = new System.Windows.Forms.DataGridViewImageColumn();
+            this.ExamState = new System.Windows.Forms.DataGridViewImageColumn();
+            this.ExamineeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ExaminationContent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ExamAppOpenState = new System.Windows.Forms.DataGridViewImageColumn();
+            this.ConnectionState = new System.Windows.Forms.DataGridViewImageColumn();
+            this.OpenOrClosePCState = new System.Windows.Forms.DataGridViewImageColumn();
+            this.IP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ExamPCName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.No = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CheckBox = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.MCS_DataGridView = new System.Windows.Forms.DataGridView();
             this.gbControlMainArea.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -153,6 +152,7 @@ namespace MCS
             this.groupBox_groupInfo.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MCS_DataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // cbAllSelect
@@ -179,327 +179,6 @@ namespace MCS
             this.btnControlExamPC.Text = "应用";
             this.btnControlExamPC.UseVisualStyleBackColor = true;
             this.btnControlExamPC.Click += new System.EventHandler(this.btnControlExamPC_Click);
-            // 
-            // MCS_DataGridView
-            // 
-            this.MCS_DataGridView.AllowUserToAddRows = false;
-            this.MCS_DataGridView.AllowUserToDeleteRows = false;
-            this.MCS_DataGridView.AllowUserToResizeColumns = false;
-            this.MCS_DataGridView.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.MCS_DataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.MCS_DataGridView.ColumnHeadersHeight = 30;
-            this.MCS_DataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.MCS_DataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.CheckBox,
-            this.No,
-            this.ExamPCName,
-            this.IP,
-            this.OpenOrClosePCState,
-            this.ConnectionState,
-            this.ExamAppOpenState,
-            this.ExaminationContent,
-            this.ExamineeName,
-            this.ExamState,
-            this.ExamPCState,
-            this.Client_system_tick_count,
-            this.ResetButton,
-            this.Mac,
-            this.Type,
-            this.ExaminationResultID,
-            this.ExaminationID,
-            this.ExamineeID,
-            this.cpu_ratio,
-            this.memory_available,
-            this.gpu_ratio,
-            this.gpu_memory,
-            this.netDelay,
-            this.stereo_state,
-            this.leftRight_state,
-            this.process_state});
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.MCS_DataGridView.DefaultCellStyle = dataGridViewCellStyle13;
-            this.MCS_DataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MCS_DataGridView.Location = new System.Drawing.Point(3, 17);
-            this.MCS_DataGridView.Name = "MCS_DataGridView";
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("微软雅黑", 10F);
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.MCS_DataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle14;
-            this.MCS_DataGridView.RowHeadersVisible = false;
-            this.MCS_DataGridView.RowHeadersWidth = 40;
-            this.MCS_DataGridView.RowTemplate.Height = 40;
-            this.MCS_DataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.MCS_DataGridView.Size = new System.Drawing.Size(1060, 879);
-            this.MCS_DataGridView.TabIndex = 4;
-            this.MCS_DataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.MCS_DataGridView_CellContentClick);
-            this.MCS_DataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.MCS_DataGridView_CellValueChanged);
-            this.MCS_DataGridView.CurrentCellDirtyStateChanged += new System.EventHandler(this.MCS_DataGridView_CurrentCellDirtyStateChanged);
-            // 
-            // CheckBox
-            // 
-            this.CheckBox.HeaderText = "";
-            this.CheckBox.MinimumWidth = 30;
-            this.CheckBox.Name = "CheckBox";
-            this.CheckBox.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.CheckBox.Width = 30;
-            // 
-            // No
-            // 
-            this.No.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.No.DefaultCellStyle = dataGridViewCellStyle2;
-            this.No.HeaderText = "编号";
-            this.No.MinimumWidth = 10;
-            this.No.Name = "No";
-            this.No.ReadOnly = true;
-            this.No.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.No.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.No.Visible = false;
-            this.No.Width = 38;
-            // 
-            // ExamPCName
-            // 
-            this.ExamPCName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ExamPCName.DefaultCellStyle = dataGridViewCellStyle3;
-            this.ExamPCName.HeaderText = "名称";
-            this.ExamPCName.MinimumWidth = 10;
-            this.ExamPCName.Name = "ExamPCName";
-            this.ExamPCName.ReadOnly = true;
-            this.ExamPCName.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.ExamPCName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ExamPCName.Width = 38;
-            // 
-            // IP
-            // 
-            this.IP.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.IP.DefaultCellStyle = dataGridViewCellStyle4;
-            this.IP.HeaderText = "IP地址";
-            this.IP.MinimumWidth = 10;
-            this.IP.Name = "IP";
-            this.IP.ReadOnly = true;
-            this.IP.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.IP.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.IP.Width = 49;
-            // 
-            // OpenOrClosePCState
-            // 
-            this.OpenOrClosePCState.HeaderText = "开/关机状态";
-            this.OpenOrClosePCState.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.OpenOrClosePCState.MinimumWidth = 90;
-            this.OpenOrClosePCState.Name = "OpenOrClosePCState";
-            this.OpenOrClosePCState.ReadOnly = true;
-            this.OpenOrClosePCState.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.OpenOrClosePCState.Width = 90;
-            // 
-            // ConnectionState
-            // 
-            this.ConnectionState.HeaderText = "连接状态";
-            this.ConnectionState.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.ConnectionState.MinimumWidth = 90;
-            this.ConnectionState.Name = "ConnectionState";
-            this.ConnectionState.ReadOnly = true;
-            this.ConnectionState.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.ConnectionState.Width = 90;
-            // 
-            // ExamAppOpenState
-            // 
-            this.ExamAppOpenState.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.ExamAppOpenState.HeaderText = "考试系统状态";
-            this.ExamAppOpenState.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.ExamAppOpenState.MinimumWidth = 100;
-            this.ExamAppOpenState.Name = "ExamAppOpenState";
-            this.ExamAppOpenState.ReadOnly = true;
-            this.ExamAppOpenState.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.ExamAppOpenState.Visible = false;
-            // 
-            // ExaminationContent
-            // 
-            this.ExaminationContent.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ExaminationContent.HeaderText = "考试内容";
-            this.ExaminationContent.MinimumWidth = 300;
-            this.ExaminationContent.Name = "ExaminationContent";
-            this.ExaminationContent.ReadOnly = true;
-            this.ExaminationContent.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.ExaminationContent.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ExaminationContent.Visible = false;
-            // 
-            // ExamineeName
-            // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ExamineeName.DefaultCellStyle = dataGridViewCellStyle5;
-            this.ExamineeName.HeaderText = "考生姓名";
-            this.ExamineeName.MinimumWidth = 100;
-            this.ExamineeName.Name = "ExamineeName";
-            this.ExamineeName.ReadOnly = true;
-            this.ExamineeName.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.ExamineeName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ExamineeName.Visible = false;
-            // 
-            // ExamState
-            // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.NullValue = null;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ExamState.DefaultCellStyle = dataGridViewCellStyle6;
-            this.ExamState.HeaderText = "考试状态";
-            this.ExamState.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.ExamState.MinimumWidth = 100;
-            this.ExamState.Name = "ExamState";
-            this.ExamState.ReadOnly = true;
-            this.ExamState.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.ExamState.Visible = false;
-            // 
-            // ExamPCState
-            // 
-            this.ExamPCState.HeaderText = "考试机状态";
-            this.ExamPCState.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.ExamPCState.MinimumWidth = 90;
-            this.ExamPCState.Name = "ExamPCState";
-            this.ExamPCState.ReadOnly = true;
-            this.ExamPCState.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.ExamPCState.Visible = false;
-            this.ExamPCState.Width = 90;
-            // 
-            // Client_system_tick_count
-            // 
-            this.Client_system_tick_count.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Client_system_tick_count.DefaultCellStyle = dataGridViewCellStyle7;
-            this.Client_system_tick_count.HeaderText = "  开机时间  ";
-            this.Client_system_tick_count.Name = "Client_system_tick_count";
-            this.Client_system_tick_count.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Client_system_tick_count.Width = 78;
-            // 
-            // ResetButton
-            // 
-            this.ResetButton.HeaderText = "";
-            this.ResetButton.MinimumWidth = 100;
-            this.ResetButton.Name = "ResetButton";
-            this.ResetButton.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.ResetButton.Visible = false;
-            // 
-            // Mac
-            // 
-            this.Mac.HeaderText = "Mac";
-            this.Mac.Name = "Mac";
-            this.Mac.Visible = false;
-            // 
-            // Type
-            // 
-            this.Type.HeaderText = "Type";
-            this.Type.Name = "Type";
-            this.Type.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Type.Visible = false;
-            // 
-            // ExaminationResultID
-            // 
-            this.ExaminationResultID.HeaderText = "ExaminationResultID";
-            this.ExaminationResultID.Name = "ExaminationResultID";
-            this.ExaminationResultID.Visible = false;
-            // 
-            // ExaminationID
-            // 
-            this.ExaminationID.HeaderText = "ExaminationID";
-            this.ExaminationID.Name = "ExaminationID";
-            this.ExaminationID.Visible = false;
-            // 
-            // ExamineeID
-            // 
-            this.ExamineeID.HeaderText = "ExamineeID";
-            this.ExamineeID.Name = "ExamineeID";
-            this.ExamineeID.Visible = false;
-            // 
-            // cpu_ratio
-            // 
-            this.cpu_ratio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.cpu_ratio.DefaultCellStyle = dataGridViewCellStyle8;
-            this.cpu_ratio.HeaderText = "CPU %";
-            this.cpu_ratio.Name = "cpu_ratio";
-            this.cpu_ratio.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.cpu_ratio.Width = 53;
-            // 
-            // memory_available
-            // 
-            this.memory_available.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.memory_available.DefaultCellStyle = dataGridViewCellStyle9;
-            this.memory_available.HeaderText = "可用内存(G)";
-            this.memory_available.Name = "memory_available";
-            this.memory_available.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.memory_available.Width = 79;
-            // 
-            // gpu_ratio
-            // 
-            this.gpu_ratio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.gpu_ratio.HeaderText = "GPU %";
-            this.gpu_ratio.Name = "gpu_ratio";
-            this.gpu_ratio.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.gpu_ratio.Width = 54;
-            // 
-            // gpu_memory
-            // 
-            this.gpu_memory.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.gpu_memory.HeaderText = "显存占用 %";
-            this.gpu_memory.Name = "gpu_memory";
-            this.gpu_memory.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.gpu_memory.Width = 77;
-            // 
-            // netDelay
-            // 
-            this.netDelay.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.netDelay.HeaderText = "PING ms";
-            this.netDelay.Name = "netDelay";
-            this.netDelay.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.netDelay.Width = 65;
-            // 
-            // stereo_state
-            // 
-            this.stereo_state.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.stereo_state.DefaultCellStyle = dataGridViewCellStyle10;
-            this.stereo_state.HeaderText = "立体状态";
-            this.stereo_state.Name = "stereo_state";
-            this.stereo_state.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.stereo_state.Width = 62;
-            // 
-            // leftRight_state
-            // 
-            this.leftRight_state.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.leftRight_state.DefaultCellStyle = dataGridViewCellStyle11;
-            this.leftRight_state.HeaderText = "左右眼状态";
-            this.leftRight_state.Name = "leftRight_state";
-            this.leftRight_state.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.leftRight_state.Width = 74;
-            // 
-            // process_state
-            // 
-            this.process_state.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.process_state.DefaultCellStyle = dataGridViewCellStyle12;
-            this.process_state.HeaderText = "运行进程";
-            this.process_state.Name = "process_state";
-            this.process_state.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // gbControlMainArea
             // 
@@ -1206,6 +885,327 @@ namespace MCS
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "播放管理";
             // 
+            // process_state
+            // 
+            this.process_state.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.process_state.DefaultCellStyle = dataGridViewCellStyle12;
+            this.process_state.HeaderText = "运行进程";
+            this.process_state.Name = "process_state";
+            this.process_state.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // leftRight_state
+            // 
+            this.leftRight_state.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.leftRight_state.DefaultCellStyle = dataGridViewCellStyle11;
+            this.leftRight_state.HeaderText = "左右眼状态";
+            this.leftRight_state.Name = "leftRight_state";
+            this.leftRight_state.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.leftRight_state.Width = 74;
+            // 
+            // stereo_state
+            // 
+            this.stereo_state.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.stereo_state.DefaultCellStyle = dataGridViewCellStyle10;
+            this.stereo_state.HeaderText = "立体状态";
+            this.stereo_state.Name = "stereo_state";
+            this.stereo_state.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.stereo_state.Width = 62;
+            // 
+            // netDelay
+            // 
+            this.netDelay.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.netDelay.HeaderText = "PING ms";
+            this.netDelay.Name = "netDelay";
+            this.netDelay.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.netDelay.Width = 65;
+            // 
+            // gpu_memory
+            // 
+            this.gpu_memory.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.gpu_memory.HeaderText = "显存占用 %";
+            this.gpu_memory.Name = "gpu_memory";
+            this.gpu_memory.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.gpu_memory.Width = 77;
+            // 
+            // gpu_ratio
+            // 
+            this.gpu_ratio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.gpu_ratio.HeaderText = "GPU %";
+            this.gpu_ratio.Name = "gpu_ratio";
+            this.gpu_ratio.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.gpu_ratio.Width = 54;
+            // 
+            // memory_available
+            // 
+            this.memory_available.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.memory_available.DefaultCellStyle = dataGridViewCellStyle9;
+            this.memory_available.HeaderText = "可用内存(G)";
+            this.memory_available.Name = "memory_available";
+            this.memory_available.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.memory_available.Width = 79;
+            // 
+            // cpu_ratio
+            // 
+            this.cpu_ratio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.cpu_ratio.DefaultCellStyle = dataGridViewCellStyle8;
+            this.cpu_ratio.HeaderText = "CPU %";
+            this.cpu_ratio.Name = "cpu_ratio";
+            this.cpu_ratio.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.cpu_ratio.Width = 53;
+            // 
+            // ExamineeID
+            // 
+            this.ExamineeID.HeaderText = "ExamineeID";
+            this.ExamineeID.Name = "ExamineeID";
+            this.ExamineeID.Visible = false;
+            // 
+            // ExaminationID
+            // 
+            this.ExaminationID.HeaderText = "ExaminationID";
+            this.ExaminationID.Name = "ExaminationID";
+            this.ExaminationID.Visible = false;
+            // 
+            // ExaminationResultID
+            // 
+            this.ExaminationResultID.HeaderText = "ExaminationResultID";
+            this.ExaminationResultID.Name = "ExaminationResultID";
+            this.ExaminationResultID.Visible = false;
+            // 
+            // Type
+            // 
+            this.Type.HeaderText = "Type";
+            this.Type.Name = "Type";
+            this.Type.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Type.Visible = false;
+            // 
+            // Mac
+            // 
+            this.Mac.HeaderText = "Mac";
+            this.Mac.Name = "Mac";
+            this.Mac.Visible = false;
+            // 
+            // ResetButton
+            // 
+            this.ResetButton.HeaderText = "";
+            this.ResetButton.MinimumWidth = 100;
+            this.ResetButton.Name = "ResetButton";
+            this.ResetButton.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.ResetButton.Visible = false;
+            // 
+            // Client_system_tick_count
+            // 
+            this.Client_system_tick_count.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Client_system_tick_count.DefaultCellStyle = dataGridViewCellStyle7;
+            this.Client_system_tick_count.HeaderText = "  开机时间  ";
+            this.Client_system_tick_count.Name = "Client_system_tick_count";
+            this.Client_system_tick_count.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Client_system_tick_count.Width = 78;
+            // 
+            // ExamPCState
+            // 
+            this.ExamPCState.HeaderText = "考试机状态";
+            this.ExamPCState.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.ExamPCState.MinimumWidth = 90;
+            this.ExamPCState.Name = "ExamPCState";
+            this.ExamPCState.ReadOnly = true;
+            this.ExamPCState.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.ExamPCState.Visible = false;
+            this.ExamPCState.Width = 90;
+            // 
+            // ExamState
+            // 
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.NullValue = null;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ExamState.DefaultCellStyle = dataGridViewCellStyle6;
+            this.ExamState.HeaderText = "考试状态";
+            this.ExamState.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.ExamState.MinimumWidth = 100;
+            this.ExamState.Name = "ExamState";
+            this.ExamState.ReadOnly = true;
+            this.ExamState.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.ExamState.Visible = false;
+            // 
+            // ExamineeName
+            // 
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ExamineeName.DefaultCellStyle = dataGridViewCellStyle5;
+            this.ExamineeName.HeaderText = "考生姓名";
+            this.ExamineeName.MinimumWidth = 100;
+            this.ExamineeName.Name = "ExamineeName";
+            this.ExamineeName.ReadOnly = true;
+            this.ExamineeName.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.ExamineeName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ExamineeName.Visible = false;
+            // 
+            // ExaminationContent
+            // 
+            this.ExaminationContent.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ExaminationContent.HeaderText = "考试内容";
+            this.ExaminationContent.MinimumWidth = 300;
+            this.ExaminationContent.Name = "ExaminationContent";
+            this.ExaminationContent.ReadOnly = true;
+            this.ExaminationContent.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.ExaminationContent.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ExaminationContent.Visible = false;
+            // 
+            // ExamAppOpenState
+            // 
+            this.ExamAppOpenState.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.ExamAppOpenState.HeaderText = "考试系统状态";
+            this.ExamAppOpenState.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.ExamAppOpenState.MinimumWidth = 100;
+            this.ExamAppOpenState.Name = "ExamAppOpenState";
+            this.ExamAppOpenState.ReadOnly = true;
+            this.ExamAppOpenState.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.ExamAppOpenState.Visible = false;
+            // 
+            // ConnectionState
+            // 
+            this.ConnectionState.HeaderText = "连接状态";
+            this.ConnectionState.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.ConnectionState.MinimumWidth = 90;
+            this.ConnectionState.Name = "ConnectionState";
+            this.ConnectionState.ReadOnly = true;
+            this.ConnectionState.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.ConnectionState.Width = 90;
+            // 
+            // OpenOrClosePCState
+            // 
+            this.OpenOrClosePCState.HeaderText = "开/关机状态";
+            this.OpenOrClosePCState.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.OpenOrClosePCState.MinimumWidth = 90;
+            this.OpenOrClosePCState.Name = "OpenOrClosePCState";
+            this.OpenOrClosePCState.ReadOnly = true;
+            this.OpenOrClosePCState.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.OpenOrClosePCState.Width = 90;
+            // 
+            // IP
+            // 
+            this.IP.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.IP.DefaultCellStyle = dataGridViewCellStyle4;
+            this.IP.HeaderText = "IP地址";
+            this.IP.MinimumWidth = 10;
+            this.IP.Name = "IP";
+            this.IP.ReadOnly = true;
+            this.IP.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.IP.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.IP.Width = 49;
+            // 
+            // ExamPCName
+            // 
+            this.ExamPCName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ExamPCName.DefaultCellStyle = dataGridViewCellStyle3;
+            this.ExamPCName.HeaderText = "名称";
+            this.ExamPCName.MinimumWidth = 10;
+            this.ExamPCName.Name = "ExamPCName";
+            this.ExamPCName.ReadOnly = true;
+            this.ExamPCName.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.ExamPCName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ExamPCName.Width = 38;
+            // 
+            // No
+            // 
+            this.No.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.No.DefaultCellStyle = dataGridViewCellStyle2;
+            this.No.HeaderText = "编号";
+            this.No.MinimumWidth = 10;
+            this.No.Name = "No";
+            this.No.ReadOnly = true;
+            this.No.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.No.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.No.Visible = false;
+            this.No.Width = 38;
+            // 
+            // CheckBox
+            // 
+            this.CheckBox.HeaderText = "";
+            this.CheckBox.MinimumWidth = 30;
+            this.CheckBox.Name = "CheckBox";
+            this.CheckBox.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.CheckBox.Width = 30;
+            // 
+            // MCS_DataGridView
+            // 
+            this.MCS_DataGridView.AllowUserToAddRows = false;
+            this.MCS_DataGridView.AllowUserToDeleteRows = false;
+            this.MCS_DataGridView.AllowUserToResizeColumns = false;
+            this.MCS_DataGridView.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.MCS_DataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.MCS_DataGridView.ColumnHeadersHeight = 30;
+            this.MCS_DataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.MCS_DataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.CheckBox,
+            this.No,
+            this.ExamPCName,
+            this.IP,
+            this.OpenOrClosePCState,
+            this.ConnectionState,
+            this.ExamAppOpenState,
+            this.ExaminationContent,
+            this.ExamineeName,
+            this.ExamState,
+            this.ExamPCState,
+            this.Client_system_tick_count,
+            this.ResetButton,
+            this.Mac,
+            this.Type,
+            this.ExaminationResultID,
+            this.ExaminationID,
+            this.ExamineeID,
+            this.cpu_ratio,
+            this.memory_available,
+            this.gpu_ratio,
+            this.gpu_memory,
+            this.netDelay,
+            this.stereo_state,
+            this.leftRight_state,
+            this.process_state});
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.MCS_DataGridView.DefaultCellStyle = dataGridViewCellStyle13;
+            this.MCS_DataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MCS_DataGridView.Location = new System.Drawing.Point(3, 17);
+            this.MCS_DataGridView.Name = "MCS_DataGridView";
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("微软雅黑", 10F);
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.MCS_DataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            this.MCS_DataGridView.RowHeadersVisible = false;
+            this.MCS_DataGridView.RowHeadersWidth = 40;
+            this.MCS_DataGridView.RowTemplate.Height = 40;
+            this.MCS_DataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.MCS_DataGridView.Size = new System.Drawing.Size(1060, 879);
+            this.MCS_DataGridView.TabIndex = 4;
+            this.MCS_DataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.MCS_DataGridView_CellContentClick);
+            this.MCS_DataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.MCS_DataGridView_CellValueChanged);
+            this.MCS_DataGridView.CurrentCellDirtyStateChanged += new System.EventHandler(this.MCS_DataGridView_CurrentCellDirtyStateChanged);
+            // 
             // 主界面
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1231,7 +1231,6 @@ namespace MCS
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.主界面_FormClosed);
             this.Load += new System.EventHandler(this.主界面_Load_1);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.主界面_KeyDown);
-            ((System.ComponentModel.ISupportInitialize)(this.MCS_DataGridView)).EndInit();
             this.gbControlMainArea.ResumeLayout(false);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
@@ -1246,6 +1245,7 @@ namespace MCS
             this.panel1.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MCS_DataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1255,7 +1255,6 @@ namespace MCS
         #endregion
         private System.Windows.Forms.CheckBox cbAllSelect;
         private System.Windows.Forms.Button btnControlExamPC;
-        public System.Windows.Forms.DataGridView MCS_DataGridView;
         private System.Windows.Forms.GroupBox gbControlMainArea;
         public System.Windows.Forms.ComboBox cbAction;
 
@@ -1308,6 +1307,25 @@ namespace MCS
         public System.Windows.Forms.ComboBox comboBox_group;
         private System.Windows.Forms.Button button_groupOn;
         private System.Windows.Forms.ToolStripMenuItem 刷新StripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem 播放管理toolStripMenuItem;
+        public System.Windows.Forms.Button button_allPowerOn;
+        public System.Windows.Forms.Button button_allPowerOff;
+        private System.Windows.Forms.Timer timer_power;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button button_playOn;
+        public System.Windows.Forms.ComboBox comboBox_playList;
+        private System.Windows.Forms.Button button_playOff;
+        private System.Windows.Forms.Button button_last;
+        private System.Windows.Forms.Button button_next;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label_last;
+        private System.Windows.Forms.Label label_cur;
+        private System.Windows.Forms.Label label_next;
+        private System.Windows.Forms.GroupBox groupBox5;
+        public System.Windows.Forms.DataGridView MCS_DataGridView;
         private System.Windows.Forms.DataGridViewCheckBoxColumn CheckBox;
         private System.Windows.Forms.DataGridViewTextBoxColumn No;
         private System.Windows.Forms.DataGridViewTextBoxColumn ExamPCName;
@@ -1334,23 +1352,5 @@ namespace MCS
         private System.Windows.Forms.DataGridViewTextBoxColumn stereo_state;
         private System.Windows.Forms.DataGridViewTextBoxColumn leftRight_state;
         private System.Windows.Forms.DataGridViewTextBoxColumn process_state;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem 播放管理toolStripMenuItem;
-        public System.Windows.Forms.Button button_allPowerOn;
-        public System.Windows.Forms.Button button_allPowerOff;
-        private System.Windows.Forms.Timer timer_power;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button_playOn;
-        public System.Windows.Forms.ComboBox comboBox_playList;
-        private System.Windows.Forms.Button button_playOff;
-        private System.Windows.Forms.Button button_last;
-        private System.Windows.Forms.Button button_next;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label_last;
-        private System.Windows.Forms.Label label_cur;
-        private System.Windows.Forms.Label label_next;
-        private System.Windows.Forms.GroupBox groupBox5;
     }
 }

@@ -76,6 +76,12 @@
     <Compile Include="Forms\OCC.Designer.cs">
       <DependentUpon>OCC.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\OCC_Controls\MessageDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\OCC_Controls\MessageDialog.Designer.cs">
+      <DependentUpon>MessageDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\OCC_Login\OCC_Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,16 +94,37 @@
     <Compile Include="Forms\OCC_Main\OCC_Main.Designer.cs">
       <DependentUpon>OCC_Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\OCC_Users\OCC_UserDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\OCC_Users\OCC_UserDetail.Designer.cs">
+      <DependentUpon>OCC_UserDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\OCC_Users\OCC_Users.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\OCC_Users\OCC_Users.Designer.cs">
+      <DependentUpon>OCC_Users.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\OCC.resx">
       <DependentUpon>OCC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\OCC_Controls\MessageDialog.resx">
+      <DependentUpon>MessageDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\OCC_Login\OCC_Login.resx">
       <DependentUpon>OCC_Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\OCC_Main\OCC_Main.resx">
       <DependentUpon>OCC_Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\OCC_Users\OCC_UserDetail.resx">
+      <DependentUpon>OCC_UserDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\OCC_Users\OCC_Users.resx">
+      <DependentUpon>OCC_Users.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -143,9 +170,7 @@
       <Name>OCC_Database</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Forms\OCC_Controls\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\主页.png" />
   </ItemGroup>
