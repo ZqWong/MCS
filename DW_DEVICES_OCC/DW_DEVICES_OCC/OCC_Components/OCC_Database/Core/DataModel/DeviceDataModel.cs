@@ -44,6 +44,6 @@ namespace DataModel
         /// 设备类型
         /// </summary>
         [SugarColumn(ColumnName = "type")]
-        public string DeviceType { get; set; }
+        public int DeviceType { get; set; }
     }
 }

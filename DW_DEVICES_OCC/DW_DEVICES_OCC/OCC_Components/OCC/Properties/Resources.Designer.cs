@@ -133,6 +133,26 @@ namespace OCC.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap 红灯_icon {
+            get {
+                object obj = ResourceManager.GetObject("红灯_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap 绿灯_icon {
+            get {
+                object obj = ResourceManager.GetObject("绿灯_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap 设置_btn {
             get {
                 object obj = ResourceManager.GetObject("设置_btn", resourceCulture);

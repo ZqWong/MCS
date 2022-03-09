@@ -76,6 +76,12 @@
     <Compile Include="Forms\OCC.Designer.cs">
       <DependentUpon>OCC.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\OCC_APPs\OCC_AppDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\OCC_APPs\OCC_AppDetail.Designer.cs">
+      <DependentUpon>OCC_AppDetail.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\OCC_Controls\MessageDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,6 +128,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\OCC.resx">
       <DependentUpon>OCC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\OCC_APPs\OCC_AppDetail.resx">
+      <DependentUpon>OCC_AppDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\OCC_Controls\MessageDialog.resx">
       <DependentUpon>MessageDialog.cs</DependentUpon>
@@ -188,7 +197,9 @@
       <Name>OCC_Database</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\红灯_icon.png" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\主页.png" />
   </ItemGroup>
@@ -215,6 +226,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\绿灯_icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

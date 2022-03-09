@@ -35,8 +35,9 @@ namespace OCC
 
             CreateSideBarButtonByUserAuthority();
 
-            OCC_Main occ_main = new OCC_Main();
+            OCC_Main occ_main = new OCC_Main();        
             ShowTargetForm(occ_main);
+            preForm = occ_main;
         }
 
         /// <summary>
@@ -66,14 +67,14 @@ namespace OCC
 
         private void ShowTargetForm(Form targetForm)
         {
-            if (PanelContent.Controls.Count > 0)
-                PanelContent.Controls.Remove(PanelContent.Controls[0]);
+            preForm?.Close();
+            preForm = targetForm;
             PanelContent.Controls.Clear();
             targetForm.MdiParent = this;
             targetForm.Parent = PanelContent;
             targetForm.FormBorderStyle = FormBorderStyle.None;
             targetForm.Show();
-            targetForm.Dock = DockStyle.Fill;
+            targetForm.Dock = DockStyle.Fill;            
         }
 
         /// <summary>

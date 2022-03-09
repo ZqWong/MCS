@@ -1217,6 +1217,8 @@ namespace MCS
             public string ip { get; set; }
             public bool connect { get; set; }
         }
+
+
         public void UpdateCC_ClientConnectionState(object state)
         {
             string ip = ((UpdateCC_ClientConnectionState_Args) state).ip;

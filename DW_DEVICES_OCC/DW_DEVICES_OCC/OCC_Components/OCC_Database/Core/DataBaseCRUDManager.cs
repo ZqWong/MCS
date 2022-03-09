@@ -28,13 +28,55 @@ public class DataBaseCRUDManager : LockedSingletonClass<DataBaseCRUDManager>
         {
 
             throw;
-        }
-     
-
+        }     
         return ret;
     }
 
-    #endregion
+    /// <summary>
+    /// 创建新设备
+    /// </summary>
+    /// <param name="deviceData"></param>
+    /// <returns></returns>
+    public bool TryCreateDeviceInfo(DeviceDataModel deviceData)
+    {
+        bool ret = false;
+        try
+        {
+            int newDevice =DataBaseManager.Instance.DB.Insertable(deviceData).ExecuteCommand();
+            if (newDevice >= 1)
+                ret = true;
+        }
+        catch (Exception)
+        {
+
+            throw;
+        }
+        return ret;
+    }
+
+    /// <summary>
+    /// 创建新APP
+    /// </summary>
+    /// <param name="deviceData"></param>
+    /// <returns></returns>
+    public bool TryCreateAppInfo(AppDataModel appData)
+    {
+        bool ret = false;
+        try
+        {
+            int newDevice = DataBaseManager.Instance.DB.Insertable(appData).ExecuteCommand();
+            if (newDevice >= 1)
+                ret = true;
+        }
+        catch (Exception)
+        {
+
+            throw;
+        }
+        return ret;
+    }
+
+    #endregion 
 
 
     #region R
@@ -229,6 +271,32 @@ public class DataBaseCRUDManager : LockedSingletonClass<DataBaseCRUDManager>
         }
         return ret;
     }
+
+    /// <summary>
+    /// 通过设备ID获取所有应用信息
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    public List<AppDataModel> GetAllAppsByDeviceId(string id)
+    {
+        List<AppDataModel> ret = new List<AppDataModel> ();
+        try
+        {
+            var appDatas = DataBaseManager.Instance.DB.Queryable<AppDataModel>().Where(a => a.DelFlag.Equals(0) && a.BindingedDeviceId.Equals(id)).ToList();
+            if (null == appDatas)
+            {
+                Debug.Error($"Get GetAllAppsByDeviceId data failed");
+            }
+            ret = appDatas;
+        }
+        catch (Exception ex)
+        {
+            Debug.Error($"{this} DataManager GetAllAppsByDeviceId failed {ex}");
+            throw;
+        }
+        return ret;
+    }
+
 
     #endregion
 
