@@ -165,10 +165,9 @@ namespace OCC
             TabControlMain.TabPages.Add(newTabPage);
             TabControlMain.SizeMode = TabSizeMode.FillToRight;
             //标签页属性设置
-            subForm.TopLevel = false;
-            subForm.Dock = DockStyle.Fill;
+            subForm.TopLevel = false;            
             subForm.FormBorderStyle = FormBorderStyle.None;
-            //subForm.AutoScroll = true;
+            subForm.Dock = DockStyle.Fill;
             subForm.Show();            
             subForm.Parent = TabControlMain.TabPages[btnName];
         }

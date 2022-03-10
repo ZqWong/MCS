@@ -21,8 +21,8 @@ namespace OCC.Forms.OCC_Devices
             InitializeComponent();
             
             // 开启定时器
-            PingTimer.Enabled = true;
-            PingTimer.Interval = Convert.ToInt32(1000);
+            //PingTimer.Enabled = true;
+            //PingTimer.Interval = Convert.ToInt32(1000);
 
         }
 
@@ -164,7 +164,7 @@ namespace OCC.Forms.OCC_Devices
             foreach (var ping in DevicePingManager.Instance.IPDict)
             {
                 Debug.Error($"ping myself ip: {ping.Key} ping: {ping.Value}");
-            }          
+            }
         }
     }
 }

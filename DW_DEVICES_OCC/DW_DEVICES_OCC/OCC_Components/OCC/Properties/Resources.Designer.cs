@@ -73,6 +73,26 @@ namespace OCC.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap switch_关 {
+            get {
+                object obj = ResourceManager.GetObject("switch_关", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap switch_开 {
+            get {
+                object obj = ResourceManager.GetObject("switch_开", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap 主页_btn {
             get {
                 object obj = ResourceManager.GetObject("主页_btn", resourceCulture);
@@ -106,6 +126,16 @@ namespace OCC.Properties {
         internal static System.Drawing.Bitmap 对号_icon {
             get {
                 object obj = ResourceManager.GetObject("对号_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap 开_关机中 {
+            get {
+                object obj = ResourceManager.GetObject("开/关机中", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

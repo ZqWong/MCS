@@ -28,78 +28,248 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OCC_Main));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.DataGridViewDevice = new System.Windows.Forms.DataGridView();
+            this.uiGroupBox4 = new Sunny.UI.UIGroupBox();
+            this.uiGroupBox3 = new Sunny.UI.UIGroupBox();
+            this.BtnGroupStart = new Sunny.UI.UIButton();
+            this.ComboBoxGroup = new Sunny.UI.UIComboBox();
+            this.uiGroupBox2 = new Sunny.UI.UIGroupBox();
+            this.BtnAppStart = new Sunny.UI.UIButton();
+            this.ComboBoxApp = new Sunny.UI.UIComboBox();
+            this.uiGroupBox1 = new Sunny.UI.UIGroupBox();
+            this.DataGridViewDevice = new Sunny.UI.UIDataGridView();
+            this.DeviceStatusTimer = new System.Windows.Forms.Timer(this.components);
+            this.PowerSwitchImage = new System.Windows.Forms.ImageList(this.components);
             this.DeviceName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Selected = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.SwitchButton = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.SwitchButton = new System.Windows.Forms.DataGridViewImageColumn();
             this.ConnectionStatus = new System.Windows.Forms.DataGridViewImageColumn();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.uiGroupBox3.SuspendLayout();
+            this.uiGroupBox2.SuspendLayout();
+            this.uiGroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewDevice)).BeginInit();
-            this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.BackColor = System.Drawing.SystemColors.Window;
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.groupBox1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.groupBox2, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.groupBox3, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.groupBox4, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.uiGroupBox4, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.uiGroupBox3, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.uiGroupBox2, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.uiGroupBox1, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 400F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 120F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 120F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 240F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1264, 921);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // groupBox1
+            // uiGroupBox4
             // 
-            this.groupBox1.Controls.Add(this.DataGridViewDevice);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupBox1.Location = new System.Drawing.Point(3, 3);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1258, 394);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "选择设备";
+            this.uiGroupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uiGroupBox4.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiGroupBox4.Location = new System.Drawing.Point(4, 686);
+            this.uiGroupBox4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.uiGroupBox4.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiGroupBox4.Name = "uiGroupBox4";
+            this.uiGroupBox4.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
+            this.uiGroupBox4.Size = new System.Drawing.Size(1256, 230);
+            this.uiGroupBox4.TabIndex = 3;
+            this.uiGroupBox4.Text = "实时控制";
+            this.uiGroupBox4.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // uiGroupBox3
+            // 
+            this.uiGroupBox3.Controls.Add(this.BtnGroupStart);
+            this.uiGroupBox3.Controls.Add(this.ComboBoxGroup);
+            this.uiGroupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uiGroupBox3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiGroupBox3.Location = new System.Drawing.Point(4, 586);
+            this.uiGroupBox3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.uiGroupBox3.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiGroupBox3.Name = "uiGroupBox3";
+            this.uiGroupBox3.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
+            this.uiGroupBox3.Size = new System.Drawing.Size(1256, 90);
+            this.uiGroupBox3.TabIndex = 2;
+            this.uiGroupBox3.Text = "选择分组";
+            this.uiGroupBox3.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // BtnGroupStart
+            // 
+            this.BtnGroupStart.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnGroupStart.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnGroupStart.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.BtnGroupStart.Location = new System.Drawing.Point(1098, 37);
+            this.BtnGroupStart.MinimumSize = new System.Drawing.Size(1, 1);
+            this.BtnGroupStart.Name = "BtnGroupStart";
+            this.BtnGroupStart.Size = new System.Drawing.Size(150, 35);
+            this.BtnGroupStart.TabIndex = 2;
+            this.BtnGroupStart.Text = "开始培训";
+            this.BtnGroupStart.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            // 
+            // ComboBoxGroup
+            // 
+            this.ComboBoxGroup.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.ComboBoxGroup.DataSource = null;
+            this.ComboBoxGroup.FillColor = System.Drawing.Color.White;
+            this.ComboBoxGroup.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
+            this.ComboBoxGroup.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ComboBoxGroup.ItemHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
+            this.ComboBoxGroup.Location = new System.Drawing.Point(9, 37);
+            this.ComboBoxGroup.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ComboBoxGroup.MinimumSize = new System.Drawing.Size(63, 0);
+            this.ComboBoxGroup.Name = "ComboBoxGroup";
+            this.ComboBoxGroup.Padding = new System.Windows.Forms.Padding(0, 0, 30, 2);
+            this.ComboBoxGroup.Size = new System.Drawing.Size(1082, 35);
+            this.ComboBoxGroup.TabIndex = 1;
+            this.ComboBoxGroup.Text = "uiComboBox2";
+            this.ComboBoxGroup.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // uiGroupBox2
+            // 
+            this.uiGroupBox2.Controls.Add(this.BtnAppStart);
+            this.uiGroupBox2.Controls.Add(this.ComboBoxApp);
+            this.uiGroupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uiGroupBox2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiGroupBox2.Location = new System.Drawing.Point(4, 486);
+            this.uiGroupBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.uiGroupBox2.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiGroupBox2.Name = "uiGroupBox2";
+            this.uiGroupBox2.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
+            this.uiGroupBox2.Size = new System.Drawing.Size(1256, 90);
+            this.uiGroupBox2.TabIndex = 1;
+            this.uiGroupBox2.Text = "选择系统";
+            this.uiGroupBox2.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // BtnAppStart
+            // 
+            this.BtnAppStart.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnAppStart.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnAppStart.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.BtnAppStart.Location = new System.Drawing.Point(1098, 37);
+            this.BtnAppStart.Margin = new System.Windows.Forms.Padding(3, 10, 3, 10);
+            this.BtnAppStart.MinimumSize = new System.Drawing.Size(1, 1);
+            this.BtnAppStart.Name = "BtnAppStart";
+            this.BtnAppStart.Size = new System.Drawing.Size(150, 35);
+            this.BtnAppStart.TabIndex = 1;
+            this.BtnAppStart.Text = "开始培训";
+            this.BtnAppStart.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            // 
+            // ComboBoxApp
+            // 
+            this.ComboBoxApp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.ComboBoxApp.DataSource = null;
+            this.ComboBoxApp.FillColor = System.Drawing.Color.White;
+            this.ComboBoxApp.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
+            this.ComboBoxApp.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ComboBoxApp.ItemHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
+            this.ComboBoxApp.Location = new System.Drawing.Point(9, 37);
+            this.ComboBoxApp.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ComboBoxApp.MinimumSize = new System.Drawing.Size(63, 0);
+            this.ComboBoxApp.Name = "ComboBoxApp";
+            this.ComboBoxApp.Padding = new System.Windows.Forms.Padding(0, 0, 30, 2);
+            this.ComboBoxApp.Size = new System.Drawing.Size(1082, 35);
+            this.ComboBoxApp.TabIndex = 0;
+            this.ComboBoxApp.Text = "uiComboBox2";
+            this.ComboBoxApp.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // uiGroupBox1
+            // 
+            this.uiGroupBox1.Controls.Add(this.DataGridViewDevice);
+            this.uiGroupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uiGroupBox1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiGroupBox1.Location = new System.Drawing.Point(4, 5);
+            this.uiGroupBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.uiGroupBox1.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiGroupBox1.Name = "uiGroupBox1";
+            this.uiGroupBox1.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
+            this.uiGroupBox1.Size = new System.Drawing.Size(1256, 471);
+            this.uiGroupBox1.TabIndex = 0;
+            this.uiGroupBox1.Text = "设备名称";
+            this.uiGroupBox1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // DataGridViewDevice
             // 
             this.DataGridViewDevice.AllowUserToAddRows = false;
             this.DataGridViewDevice.AllowUserToDeleteRows = false;
-            this.DataGridViewDevice.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
-            this.DataGridViewDevice.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
+            this.DataGridViewDevice.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.DataGridViewDevice.BackgroundColor = System.Drawing.Color.White;
+            this.DataGridViewDevice.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DataGridViewDevice.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.DataGridViewDevice.ColumnHeadersHeight = 32;
+            this.DataGridViewDevice.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.DataGridViewDevice.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.DeviceName,
             this.Selected,
             this.SwitchButton,
             this.ConnectionStatus});
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DataGridViewDevice.DefaultCellStyle = dataGridViewCellStyle3;
             this.DataGridViewDevice.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DataGridViewDevice.Location = new System.Drawing.Point(3, 19);
+            this.DataGridViewDevice.EnableHeadersVisualStyles = false;
+            this.DataGridViewDevice.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.DataGridViewDevice.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
+            this.DataGridViewDevice.Location = new System.Drawing.Point(0, 32);
             this.DataGridViewDevice.Name = "DataGridViewDevice";
-            this.DataGridViewDevice.RowTemplate.Height = 23;
-            this.DataGridViewDevice.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.DataGridViewDevice.Size = new System.Drawing.Size(1252, 372);
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DataGridViewDevice.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.DataGridViewDevice.RowHeadersVisible = false;
+            this.DataGridViewDevice.RowHeight = 40;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
+            this.DataGridViewDevice.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.DataGridViewDevice.RowTemplate.Height = 40;
+            this.DataGridViewDevice.SelectedIndex = -1;
+            this.DataGridViewDevice.ShowGridLine = true;
+            this.DataGridViewDevice.Size = new System.Drawing.Size(1256, 439);
             this.DataGridViewDevice.TabIndex = 0;
+            this.DataGridViewDevice.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewDevice_CellContentClick);
+            // 
+            // DeviceStatusTimer
+            // 
+            this.DeviceStatusTimer.Tick += new System.EventHandler(this.DeviceStatusTimer_Tick);
+            // 
+            // PowerSwitchImage
+            // 
+            this.PowerSwitchImage.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("PowerSwitchImage.ImageStream")));
+            this.PowerSwitchImage.TransparentColor = System.Drawing.Color.Transparent;
+            this.PowerSwitchImage.Images.SetKeyName(0, "switch-关.png");
+            this.PowerSwitchImage.Images.SetKeyName(1, "switch-开.png");
+            this.PowerSwitchImage.Images.SetKeyName(2, "关闭中.png");
             // 
             // DeviceName
             // 
@@ -118,6 +288,7 @@
             // 
             this.SwitchButton.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.SwitchButton.HeaderText = "启动开关";
+            this.SwitchButton.Image = global::OCC.Properties.Resources.switch_关;
             this.SwitchButton.Name = "SwitchButton";
             this.SwitchButton.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
@@ -128,84 +299,9 @@
             this.ConnectionStatus.Name = "ConnectionStatus";
             this.ConnectionStatus.ReadOnly = true;
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.button1);
-            this.groupBox2.Controls.Add(this.comboBox1);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupBox2.Location = new System.Drawing.Point(3, 403);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1258, 114);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "选择系统";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(1129, 41);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(120, 30);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(9, 42);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(1114, 27);
-            this.comboBox1.TabIndex = 0;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.comboBox2);
-            this.groupBox3.Controls.Add(this.button2);
-            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox3.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupBox3.Location = new System.Drawing.Point(3, 523);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1258, 114);
-            this.groupBox3.TabIndex = 2;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "选择分组";
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(9, 47);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(1114, 27);
-            this.comboBox2.TabIndex = 3;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(1129, 46);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(120, 30);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox4.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupBox4.Location = new System.Drawing.Point(3, 643);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(1258, 275);
-            this.groupBox4.TabIndex = 3;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "实时控制";
-            // 
             // OCC_Main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1264, 921);
             this.Controls.Add(this.tableLayoutPanel1);
@@ -214,10 +310,10 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "OCC_Main";
             this.tableLayoutPanel1.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
+            this.uiGroupBox3.ResumeLayout(false);
+            this.uiGroupBox2.ResumeLayout(false);
+            this.uiGroupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewDevice)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -225,18 +321,20 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.DataGridView DataGridViewDevice;
+        private Sunny.UI.UIGroupBox uiGroupBox4;
+        private Sunny.UI.UIGroupBox uiGroupBox3;
+        private Sunny.UI.UIGroupBox uiGroupBox2;
+        private Sunny.UI.UIGroupBox uiGroupBox1;
+        private Sunny.UI.UIDataGridView DataGridViewDevice;
+        private Sunny.UI.UIComboBox ComboBoxGroup;
+        private Sunny.UI.UIComboBox ComboBoxApp;
+        private Sunny.UI.UIButton BtnGroupStart;
+        private Sunny.UI.UIButton BtnAppStart;
+        private System.Windows.Forms.Timer DeviceStatusTimer;
+        private System.Windows.Forms.ImageList PowerSwitchImage;
         private System.Windows.Forms.DataGridViewTextBoxColumn DeviceName;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Selected;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn SwitchButton;
+        private System.Windows.Forms.DataGridViewImageColumn SwitchButton;
         private System.Windows.Forms.DataGridViewImageColumn ConnectionStatus;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.Button button2;
     }
 }

@@ -248,6 +248,14 @@
   <ItemGroup>
     <None Include="Resources\绿灯_icon.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\switch-关.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\switch-开.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\关闭中.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
