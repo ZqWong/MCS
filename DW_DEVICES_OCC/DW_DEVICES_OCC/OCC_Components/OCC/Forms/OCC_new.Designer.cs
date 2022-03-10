@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.TabControlMain = new System.Windows.Forms.TabControl();
+            this.TabControlMain = new Sunny.UI.UITabControl();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -46,15 +46,17 @@
             // TabControlMain
             // 
             this.TabControlMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TabControlMain.ItemSize = new System.Drawing.Size(100, 30);
+            this.TabControlMain.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
+            this.TabControlMain.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.TabControlMain.ItemSize = new System.Drawing.Size(150, 40);
             this.TabControlMain.Location = new System.Drawing.Point(0, 0);
-            this.TabControlMain.Margin = new System.Windows.Forms.Padding(0);
-            this.TabControlMain.Multiline = true;
+            this.TabControlMain.MainPage = "";
             this.TabControlMain.Name = "TabControlMain";
             this.TabControlMain.SelectedIndex = 0;
             this.TabControlMain.Size = new System.Drawing.Size(1264, 921);
-            this.TabControlMain.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
-            this.TabControlMain.TabIndex = 4;
+            this.TabControlMain.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
+            this.TabControlMain.TabIndex = 5;
+            this.TabControlMain.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             // 
             // OCC
             // 
@@ -79,6 +81,6 @@
 
         #endregion
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TabControl TabControlMain;
+        private Sunny.UI.UITabControl TabControlMain;
     }
 }
