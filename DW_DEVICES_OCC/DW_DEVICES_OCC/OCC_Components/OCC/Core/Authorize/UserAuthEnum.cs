@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 public enum UserAuthEnum
 {
-    MAIN_MENU = 1,                  // 主界面
-    DEVICES_MENU = 2,                // 设备管理界面
-    APPS_MENU = 4,                   // App管理界面
-    USERS_MENU = 8,                 // 用户管理界面
-    DEVICE_GROUP_MENU = 16,         // 分组管理界面
-    LOG_MENU = 32                   // 日志管理界面
+    MAIN_MENU = 1,                  // 首页
+    DEVICES_MENU = 2,               // 设备管理界面
+    APPS_MENU = 4,                  // （系统）App管理界面
+    DATAS_MENU = 8,                 // （数据管理）用户管理界面
+    GROUP_MENU = 16,                // 分组管理界面
+    SYSTEM_MENU = 32                // 系统管理界面
 }
 

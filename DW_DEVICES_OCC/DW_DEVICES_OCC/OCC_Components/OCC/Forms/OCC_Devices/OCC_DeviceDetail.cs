@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace OCC.Forms.OCC_Users
+namespace OCC.Forms.OCC_Devices
 {
     public partial class OCC_DeviceDetail : Form
     {

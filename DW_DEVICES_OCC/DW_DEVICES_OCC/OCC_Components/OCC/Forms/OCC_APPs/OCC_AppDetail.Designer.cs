@@ -1,6 +1,6 @@
-﻿namespace OCC.Forms.OCC_Users
+﻿namespace OCC.Forms.OCC_APPs
 {
-    partial class OCC_AppDetail
+    partial class OCC_APPDetail
     {
         /// <summary>
         /// Required designer variable.

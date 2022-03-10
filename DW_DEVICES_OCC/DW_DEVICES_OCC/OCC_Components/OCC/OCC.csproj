@@ -70,17 +70,29 @@
     <Compile Include="Core\LocalConfig\LocalConifgManager.cs" />
     <Compile Include="Core\ProcessInstanceCheck\ProcessInstanceCheck.cs" />
     <Compile Include="Core\UIText.cs" />
-    <Compile Include="Forms\OCC.cs">
+    <Compile Include="Forms\OCC_APPs\OCC_APPs.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\OCC.Designer.cs">
-      <DependentUpon>OCC.cs</DependentUpon>
+    <Compile Include="Forms\OCC_APPs\OCC_APPs.Designer.cs">
+      <DependentUpon>OCC_APPs.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\OCC_APPs\OCC_AppDetail.cs">
+    <Compile Include="Forms\OCC_Groups\OCC_Groups.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\OCC_APPs\OCC_AppDetail.Designer.cs">
-      <DependentUpon>OCC_AppDetail.cs</DependentUpon>
+    <Compile Include="Forms\OCC_Groups\OCC_Groups.Designer.cs">
+      <DependentUpon>OCC_Groups.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\OCC_new.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\OCC_new.Designer.cs">
+      <DependentUpon>OCC_new.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\OCC_APPs\OCC_APPDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\OCC_APPs\OCC_APPDetail.Designer.cs">
+      <DependentUpon>OCC_APPDetail.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\OCC_Controls\MessageDialog.cs">
       <SubType>Form</SubType>
@@ -112,6 +124,12 @@
     <Compile Include="Forms\OCC_Main\OCC_Main.Designer.cs">
       <DependentUpon>OCC_Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\OCC_Systems\OCC_System.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\OCC_Systems\OCC_System.Designer.cs">
+      <DependentUpon>OCC_System.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\OCC_Users\OCC_UserDetail.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,11 +144,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\OCC.resx">
-      <DependentUpon>OCC.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\OCC_new.resx">
+      <DependentUpon>OCC_new.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\OCC_APPs\OCC_AppDetail.resx">
-      <DependentUpon>OCC_AppDetail.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\OCC_APPs\OCC_APPDetail.resx">
+      <DependentUpon>OCC_APPDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\OCC_Controls\MessageDialog.resx">
       <DependentUpon>MessageDialog.cs</DependentUpon>
@@ -230,5 +248,6 @@
   <ItemGroup>
     <None Include="Resources\绿灯_icon.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

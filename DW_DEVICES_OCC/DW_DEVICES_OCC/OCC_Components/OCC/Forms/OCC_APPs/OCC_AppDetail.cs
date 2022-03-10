@@ -1,6 +1,6 @@
 ﻿using DataModel;
 using OCC.Core;
-using OCC.Forms.OCC_Controls;
+using OCC.Forms.OCC_Devices;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,11 +11,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace OCC.Forms.OCC_Users
+namespace OCC.Forms.OCC_APPs
 {
-    public partial class OCC_AppDetail : Form
+    public partial class OCC_APPDetail : Form
     {
-        public OCC_AppDetail()
+        public OCC_APPDetail()
         {
             InitializeComponent();
       

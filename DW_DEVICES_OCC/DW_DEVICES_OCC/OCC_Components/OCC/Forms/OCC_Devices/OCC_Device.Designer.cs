@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace OCC.Forms.OCC_Users
+namespace OCC.Forms.OCC_Devices
 {
     partial class OCC_Device
     {
