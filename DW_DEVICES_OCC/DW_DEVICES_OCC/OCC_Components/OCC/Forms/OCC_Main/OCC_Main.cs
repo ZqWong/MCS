@@ -41,7 +41,7 @@ namespace OCC.Forms.OCC_Main
 
         // 设备状态缓存
         public List<DeviceStatusStruct> DeviceInfoCollection = new List<DeviceStatusStruct>();
-
+        // 设备数据
         private List<DeviceDataModel> deviceInfoCoollection;
 
         public OCC_Main()
@@ -54,6 +54,10 @@ namespace OCC.Forms.OCC_Main
             DeviceStatusTimer.Interval = Convert.ToInt32(1000); //ms
         }
 
+
+        /// <summary>
+        /// 设备列表初始化
+        /// </summary>
         private void DataGridViewDevicesInitialize()
         {
             DataGridViewDevice.Rows.Clear();
@@ -77,10 +81,15 @@ namespace OCC.Forms.OCC_Main
             }
         }
 
+        /// <summary>
+        /// 设备电源开关检测 计时器
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DeviceStatusTimer_Tick(object sender, EventArgs e)
         {
             List<string> ips = new List<string>();
-            deviceInfoCoollection.ForEach(d => ips.Add(d.IP));
+            DeviceInfoCollection.ForEach(d => ips.Add(d.DataModel.IP));
             DevicePingManager.Instance.PingDevices(ips);
 
             foreach (DeviceDataModel deviceInfo in deviceInfoCoollection)
@@ -120,6 +129,11 @@ namespace OCC.Forms.OCC_Main
             }     
         }
 
+        /// <summary>
+        /// 当表格中有对象被点击时
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DataGridViewDevice_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -135,6 +149,11 @@ namespace OCC.Forms.OCC_Main
             }
         }
 
+        /// <summary>
+        /// 远程开关机设置
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void RemotePowerSet(object sender, DataGridViewCellEventArgs e)
         {
             var targetDevice = DeviceInfoCollection.FirstOrDefault(d => d.Index.Equals(e.RowIndex));
