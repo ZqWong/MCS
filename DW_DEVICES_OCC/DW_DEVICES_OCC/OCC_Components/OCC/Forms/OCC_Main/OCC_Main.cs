@@ -13,6 +13,9 @@ namespace OCC.Forms.OCC_Main
 {
     public partial class OCC_Main : Form
     {
+        /// <summary>
+        /// 开机状态枚举
+        /// </summary>
         public enum DevicePowerStatus
         {
             OPENED = 0,  //开机状态
@@ -21,6 +24,9 @@ namespace OCC.Forms.OCC_Main
             OPENING      //开机中
         }
 
+        /// <summary>
+        /// 设备数据绑定结构
+        /// </summary>
         public class DeviceStatusStruct
         {
             public DeviceStatusStruct() { }
@@ -39,9 +45,13 @@ namespace OCC.Forms.OCC_Main
 
         public const string FORM_NAME = "首页";
 
-        // 设备状态缓存
+        /// <summary>
+        /// 设备状态缓存
+        /// </summary>
         public List<DeviceStatusStruct> DeviceInfoCollection = new List<DeviceStatusStruct>();
-        // 设备数据
+        /// <summary>
+        /// 设备数据
+        /// </summary>
         private List<DeviceDataModel> deviceInfoCoollection;
 
         public OCC_Main()
