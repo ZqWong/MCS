@@ -58,8 +58,10 @@ namespace OCC
         private void BtnSettings_Click(object sender, EventArgs e)
         {
             // TODO: 当设置按钮按下
+                  
+            DevicePowerManager.RemotePowerOn("1C-1B-0D-60-56-D6");
 
-
+            //DevicePowerManager.RemotePowerOff("192.168.0.72");
 
         }
 

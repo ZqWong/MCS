@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Management;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -101,7 +102,7 @@ public static class PathHelper
     }
 
     // 复制文件夹
-    public static void directoryCopy(string sourceDirectory, string targetDirectory)
+    public static void DirectoryCopy(string sourceDirectory, string targetDirectory)
     {
         try
         {
@@ -118,7 +119,7 @@ public static class PathHelper
                         Directory.CreateDirectory(targetDirectory + "\\" + i.Name);
                     }
                     //递归调用复制子文件夹
-                    directoryCopy(i.FullName, targetDirectory + "\\" + i.Name);
+                    DirectoryCopy(i.FullName, targetDirectory + "\\" + i.Name);
                 }
                 else
                 {
@@ -161,6 +162,25 @@ public static class PathHelper
         }
 
         return parentPath;
+    }
+
+    /// <summary>
+    /// 打开文件夹
+    /// </summary>
+    /// <param name="dir"></param>
+    /// 返回错误消息
+    public static string OpenDirectory(string dir)
+    {
+        string errMsg = "";
+        try
+        {
+            System.Diagnostics.Process.Start("explorer.exe", dir);
+        }
+        catch (System.Exception ex)
+        {
+            errMsg = ex.Message;
+        }
+        return errMsg;
     }
 
     /// <summary>
@@ -233,6 +253,35 @@ public static class PathHelper
             DirectoryInfo[] subDirs = dirs[i].GetDirectories();
             FileInfo[] subFileInfos = dirs[i].GetFiles();
             GetFilesLenInFolderRescusively(subDirs, subFileInfos, ref retLen);
+        }
+    }
+
+    /// <summary>
+    /// 获取加载dll的exe所在的文件夹
+    /// </summary>
+    /// <returns></returns>
+    public static string GetAssemblyExeFolder()
+    {
+        Assembly myAssembly = Assembly.GetEntryAssembly();
+        string path = myAssembly.Location;
+        DirectoryInfo dr = new DirectoryInfo(path);
+        return dr.Parent.FullName;
+    }
+
+    /// <summary>
+    /// 是否是硬盘根路径
+    /// </summary>
+    /// <param name="folderPath"></param>
+    /// <returns></returns>
+    public static bool IsDiskRoot(string folderPath)
+    {
+        if (folderPath.Length == 3 && folderPath.IndexOf("\\", 0, 3) == 2)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 }
