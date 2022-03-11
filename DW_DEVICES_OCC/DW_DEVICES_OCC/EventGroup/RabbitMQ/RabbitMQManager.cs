@@ -12,7 +12,7 @@ using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using Newtonsoft.Json;
 
-namespace EventGroup.RabbitMQ
+namespace RabbitMQ
 {
     public class RabbitMQManager : LockedSingletonClass<RabbitMQManager>
     {

@@ -1,4 +1,5 @@
 ﻿using DataModel;
+using EventGroup.RabbitMQ;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -6,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -27,10 +29,10 @@ namespace OCC.Forms.OCC_Main
         /// <summary>
         /// 设备数据绑定结构
         /// </summary>
-        public class DeviceStatusStruct
+        public class DeviceStatusCache
         {
-            public DeviceStatusStruct() { }
-            public DeviceStatusStruct(int index, DevicePowerStatus powerStatus, DeviceDataModel dataModel)
+            public DeviceStatusCache() { }
+            public DeviceStatusCache(int index, DevicePowerStatus powerStatus, DeviceDataModel dataModel)
             {
                 Index = index;
                 PowerStatus = powerStatus;
@@ -44,11 +46,16 @@ namespace OCC.Forms.OCC_Main
 
 
         public const string FORM_NAME = "首页";
+        
+        /// <summary>
+        /// 上下文同步
+        /// </summary>
+        private static SynchronizationContext s_uiContext;
 
         /// <summary>
         /// 设备状态缓存
         /// </summary>
-        public List<DeviceStatusStruct> DeviceInfoCollection = new List<DeviceStatusStruct>();
+        public List<DeviceStatusCache> DeviceInfoCollection = new List<DeviceStatusCache>();
         /// <summary>
         /// 设备数据
         /// </summary>
@@ -83,7 +90,7 @@ namespace OCC.Forms.OCC_Main
                 for (int i = 0; i < deviceInfoCoollection.Count; i++)
                 {
                     // 对设备状态进行缓存
-                    DeviceInfoCollection.Add(new DeviceStatusStruct(i, DevicePowerStatus.CLOSED, deviceInfoCoollection[i]));
+                    DeviceInfoCollection.Add(new DeviceStatusCache(i, DevicePowerStatus.CLOSED, deviceInfoCoollection[i]));
                     Debug.Info($" index {i} {deviceInfoCoollection[i].Name}");
                     DataGridViewDevice.Rows[i].Tag = deviceInfoCoollection[i];                    
                     DataGridViewDevice.Rows[i].Cells["DeviceName"].Value = deviceInfoCoollection[i].Name;                    
@@ -102,6 +109,16 @@ namespace OCC.Forms.OCC_Main
             DeviceInfoCollection.ForEach(d => ips.Add(d.DataModel.IP));
             DevicePingManager.Instance.PingDevices(ips);
 
+            UpdateDevicePowerStatus();
+            UpdateDeviceConnectStatus();
+
+        }
+
+        /// <summary>
+        /// 更新设备电源状态
+        /// </summary>
+        private void UpdateDevicePowerStatus()
+        {
             foreach (DeviceDataModel deviceInfo in deviceInfoCoollection)
             {
                 Debug.Error($" DevicePingManager.Instance.IPDict {deviceInfo.IP}");
@@ -136,9 +153,22 @@ namespace OCC.Forms.OCC_Main
                         DeviceInfoCollection[target.Index].PowerStatus = DevicePowerStatus.CLOSED;
                     }
                 }
+            }
+        }
 
-                 
-            }     
+        /// <summary>
+        /// 更新设备连接集控状态
+        /// </summary>
+        private void UpdateDeviceConnectStatus()
+        {
+            List<DeviceStatusCache> devicePowerOnCollection =  DeviceInfoCollection.FindAll(d => d.PowerStatus.Equals(DevicePowerStatus.OPENED));
+
+            foreach (DeviceStatusCache deviceStatus in devicePowerOnCollection)
+            {
+                // 发送获取客户端状态的消息
+                //RabbitMQEventBus.GetSingleton().Trigger<R_C_SystemStateData>(showIP, new R_C_SystemStateData());//直接通过事件总线触发
+                RabbitMQManager.Instance.Trigger(deviceStatus.DataModel.IP, new OCC_TO_CLIENT.R_C_SystemStateData());
+            }
         }
 
         /// <summary>

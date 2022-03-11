@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace EventGroup
+namespace RabbitMQ
 {
     [Obsolete]
     public interface IEventStore
