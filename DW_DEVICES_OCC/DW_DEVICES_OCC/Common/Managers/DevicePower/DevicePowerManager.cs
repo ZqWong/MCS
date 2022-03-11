@@ -13,11 +13,11 @@ public class DevicePowerManager
     /// </summary>
     /// <param name="ip"></param>
     /// <returns></returns>
-    public static bool RemotePowerOff(string ip)
+    public static bool RemotePowerOff(string ip, int delay = 1)
     {
         bool ret = false;
 
-        string tmpCmd = "shutdown -s -m \\\\" + ip + " -t 1";
+        string tmpCmd = $"shutdown -s -m \\\\{ip} -t {delay}";
         string[] cmd = new string[]
         {
                tmpCmd
@@ -41,11 +41,11 @@ public class DevicePowerManager
     /// </summary>
     /// <param name="ip"></param>
     /// <returns></returns>
-    public static bool RemoteRestart(string ip)
+    public static bool RemoteRestart(string ip, int delay = 1)
     {
         bool ret = false;
 
-        string tmpCmd = "shutdown -r -m \\\\" + ip + " -t 1";
+        string tmpCmd = $"shutdown -r -m \\\\{ip} -t {delay}";
 
         string[] cmd = new string[]
         {

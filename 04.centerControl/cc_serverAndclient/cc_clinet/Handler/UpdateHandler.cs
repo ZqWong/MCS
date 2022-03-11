@@ -20,7 +20,7 @@ using Utilities;
 namespace cc_clinet
 {
     /// <summary>
-    /// 关机和重启
+    /// 更新
     /// </summary>
     public class UpdateHandler : IEventHandler<R_C_UpdateData>
     {

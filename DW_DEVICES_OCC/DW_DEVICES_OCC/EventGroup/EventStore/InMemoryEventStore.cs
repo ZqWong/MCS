@@ -5,6 +5,9 @@ using System.Linq;
 
 namespace EventGroup
 {
+    /// <summary>
+    /// 内存中的事件缓存
+    /// </summary>
     public class InMemoryEventStore : IEventStore
     {
         /// <summary>
@@ -12,11 +15,14 @@ namespace EventGroup
         /// </summary>
         private static readonly object LockObj = new object();
 
-        private readonly ConcurrentDictionary<Type, List<Type>> _eventAndHandlerMapping;
+        /// <summary>
+        /// 多线程字典
+        /// </summary>
+        private readonly ConcurrentDictionary<Type, List<Type>> m_eventAndHandlerMapping;
 
         public InMemoryEventStore()
         {
-            _eventAndHandlerMapping = new ConcurrentDictionary<Type, List<Type>>();
+            m_eventAndHandlerMapping = new ConcurrentDictionary<Type, List<Type>>();
         }
         public void AddRegister<T, TH>() where T : IEventData where TH : IEventHandler
         {
@@ -31,6 +37,11 @@ namespace EventGroup
             AddRegister(typeof(T), actionHandler.GetType());
         }
 
+        /// <summary>
+        /// 添加事件到字典中
+        /// </summary>
+        /// <param name="eventData"></param>
+        /// <param name="eventHandler"></param>
         public void AddRegister(Type eventData, Type eventHandler)
         {
             lock (LockObj)
@@ -38,12 +49,12 @@ namespace EventGroup
                 if (!HasRegisterForEvent(eventData))
                 {
                     var handlers = new List<Type>();
-                    _eventAndHandlerMapping.TryAdd(eventData, handlers);
+                    m_eventAndHandlerMapping.TryAdd(eventData, handlers);
                 }
 
-                if (_eventAndHandlerMapping[eventData].All(h => h != eventHandler))
+                if (m_eventAndHandlerMapping[eventData].All(h => h != eventHandler))
                 {
-                    _eventAndHandlerMapping[eventData].Add(eventHandler);
+                    m_eventAndHandlerMapping[eventData].Add(eventHandler);
                 }
             }
         }
@@ -67,11 +78,11 @@ namespace EventGroup
             {
                 lock (LockObj)
                 {
-                    _eventAndHandlerMapping[eventData].Remove(eventHandler);
-                    if (!_eventAndHandlerMapping[eventData].Any())
+                    m_eventAndHandlerMapping[eventData].Remove(eventHandler);
+                    if (!m_eventAndHandlerMapping[eventData].Any())
                     {
                         List<Type> removedHandlers;
-                        _eventAndHandlerMapping.TryRemove(eventData, out removedHandlers);
+                        m_eventAndHandlerMapping.TryRemove(eventData, out removedHandlers);
                     }
                 }
             }
@@ -84,17 +95,22 @@ namespace EventGroup
                 return null;
             }
 
-            return _eventAndHandlerMapping[eventData].FirstOrDefault(eh => eh == eventHandler);
+            return m_eventAndHandlerMapping[eventData].FirstOrDefault(eh => eh == eventHandler);
         }
 
         public bool HasRegisterForEvent<T>() where T : IEventData
         {
-            return _eventAndHandlerMapping.ContainsKey(typeof(T));
+            return m_eventAndHandlerMapping.ContainsKey(typeof(T));
         }
 
+        /// <summary>
+        /// 检测是否有不表事件存在
+        /// </summary>
+        /// <param name="eventData"></param>
+        /// <returns></returns>
         public bool HasRegisterForEvent(Type eventData)
         {
-            return _eventAndHandlerMapping.ContainsKey(eventData);
+            return m_eventAndHandlerMapping.ContainsKey(eventData);
         }
 
         public IEnumerable<Type> GetHandlersForEvent<T>() where T : IEventData
@@ -106,7 +122,7 @@ namespace EventGroup
         {
             if (HasRegisterForEvent(eventData))
             {
-                return _eventAndHandlerMapping[eventData];
+                return m_eventAndHandlerMapping[eventData];
             }
 
             return new List<Type>();
@@ -114,11 +130,11 @@ namespace EventGroup
 
         public Type GetEventTypeByName(string eventName)
         {
-            return _eventAndHandlerMapping.Keys.FirstOrDefault(eh => eh.Name == eventName);
+            return m_eventAndHandlerMapping.Keys.FirstOrDefault(eh => eh.Name == eventName);
         }
 
-        public bool IsEmpty => !_eventAndHandlerMapping.Keys.Any();
+        public bool IsEmpty => !m_eventAndHandlerMapping.Keys.Any();
 
-        public void Clear() => _eventAndHandlerMapping.Clear();
+        public void Clear() => m_eventAndHandlerMapping.Clear();
     }
 }

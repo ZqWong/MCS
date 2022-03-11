@@ -43,7 +43,7 @@ namespace OCC
                             //"192.169.0.198",
                             LocalConifgManager.Instance.SystemConfig.DataModel.Password);
 
-
+                        //注册当前程序集中实现的所有IEventHandler<T> （(Assembly.GetExecutingAssembly()：获取包含当前执行的代码的程序集）
                         RabbitMQManager.Instance.RegisterAllEventHandlerFromAssembly(Assembly.GetExecutingAssembly());
                         RabbitMQManager.Instance.CreatePluginEventConsumerChannel();
                     }

@@ -105,6 +105,7 @@ namespace DW_CC_NET.RabbitMQ
                 _connectionFactory.Ssl.Version = SslProtocols.Tls12;
             }
 
+
             CreateConsumerChannel();
         }
 
@@ -233,10 +234,11 @@ namespace DW_CC_NET.RabbitMQ
             //channel.BasicReturn += evreturn;
 
 
-            _channel.BasicPublish(exchange: _brokerName,
-                routingKey: eventData.GetType().Name,
-                basicProperties: null,
-                body: body);
+            _channel.BasicPublish(
+                exchange: _brokerName,                  // 交换器名称
+                routingKey: eventData.GetType().Name,   // 路由键
+                basicProperties: null,                  // 参数
+                body: body);                            // 消息体，payload真正需要发送的消息
 
             //    }
             //}

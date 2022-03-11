@@ -1532,6 +1532,11 @@ namespace MCS
             public float gpu_memory_ratio { get; set; }
 
         }
+
+        /// <summary>
+        /// 应该是无用的
+        /// </summary>
+        /// <param name="state"></param>
         public void UpdateSystemState(object state)
         {
             string ip = ((UpdateSystemState_Args) state).ip;
@@ -1550,8 +1555,7 @@ namespace MCS
 
                 if (dgvShowIP == ip)
                 {
-                    if (this.MCS_DataGridView.Rows[i].Cells[ExaminationPCModel.ColumnName_ConnectionState].Tag !=
-                        Const.Tag_ConnectionState_Connected)
+                    if (this.MCS_DataGridView.Rows[i].Cells[ExaminationPCModel.ColumnName_ConnectionState].Tag !=Const.Tag_ConnectionState_Connected)
                     {
                         this.MCS_DataGridView.Rows[i].Cells[ExaminationPCModel.ColumnName_ConnectionState].Value = Image.FromFile(_AppStartPath + Const.ConnectionState_Connected_PicRPath);
                         this.MCS_DataGridView.Rows[i].Cells[ExaminationPCModel.ColumnName_ConnectionState].Tag = Const.Tag_ConnectionState_Connected;
