@@ -1,7 +1,7 @@
-﻿using EventGroup.RabbitMQ;
-using OCC.Core;
+﻿using OCC.Core;
 using OCC.Core.LocalConfig;
 using OCC.Forms.OCC_Login;
+using RabbitMQEvent;
 using SqlSugar;
 using System;
 using System.Diagnostics;
@@ -27,31 +27,7 @@ namespace OCC
             {       
                 LocalConifgManager.Instance.OnInitialized = () =>
                 {
-                    /// RabbitMQ 链接 与 本地配置文件初始化
-                    try
-                    {
-                        //RabbitMQManager.Instance.Initialize("event_bus", GetIP(), Process.GetCurrentProcess().ProcessName, "topic", "client_duowei", "192.169.0.198", "duowei");
-                        //RabbitMQManager.Instance.Initialize("event_bus", NetworkHelper.GetIP(), Process.GetCurrentProcess().ProcessName, "topic", "client_duowei", "127.0.0.1", "duowei");
-
-                        RabbitMQManager.Instance.Initialize(
-                            LocalConifgManager.Instance.SystemConfig.DataModel.RabbitMQBrokerName,
-                            NetworkHelper.GetIP(),
-                            Process.GetCurrentProcess().ProcessName,
-                            LocalConifgManager.Instance.SystemConfig.DataModel.RabbitMQExchangeType,
-                            LocalConifgManager.Instance.SystemConfig.DataModel.Username,
-                            "127.0.0.1",
-                            //"192.169.0.198",
-                            LocalConifgManager.Instance.SystemConfig.DataModel.Password);
-
-                        //注册当前程序集中实现的所有IEventHandler<T> （(Assembly.GetExecutingAssembly()：获取包含当前执行的代码的程序集）
-                        RabbitMQManager.Instance.RegisterAllEventHandlerFromAssembly(Assembly.GetExecutingAssembly());
-                        RabbitMQManager.Instance.CreatePluginEventConsumerChannel();
-                    }
-                    catch (Exception ex)
-                    {
-                        Debug.Error($"[OCC] RabbitMQ Initialize failed :{ex}");
-                    }
-
+                   
                     /// 数据库读取
                     try
                     {

@@ -1,4 +1,4 @@
-﻿using EventGroup;
+﻿using RabbitMQEvent;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OCC_TO_CLIENT
 {
-    public class GetSystemInfoEventArgs: EventData
+    public class GetSystemInfoEventArgs : EventData
     {
         
     }

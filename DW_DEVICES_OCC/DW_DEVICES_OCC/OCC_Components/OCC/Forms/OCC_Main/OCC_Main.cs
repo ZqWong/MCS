@@ -1,5 +1,5 @@
 ﻿using DataModel;
-using EventGroup.RabbitMQ;
+using RabbitMQEvent;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,8 +13,48 @@ using System.Windows.Forms;
 
 namespace OCC.Forms.OCC_Main
 {
-    public partial class OCC_Main : LockedSingletonFormClass<OCC_Main>
+    public partial class OCC_Main : Form
     {
+        public class UpdateSystemStateArgs
+        {
+            public string ip { get; set; }
+            public float cpu { get; set; }
+            public float memory { get; set; }
+            public int tickCount { get; set; }
+            public float gpu_ratio { get; set; }
+            public float gpu_memory_ratio { get; set; }
+        }
+
+        public class UpdateConnectionStateArgs
+        {
+            public string ip { get; set; }
+            public bool connect { get; set; }
+        }
+
+
+        #region 单例
+        private static OCC_Main s_instance = null;
+        private static readonly object syslock = new object();
+        public static OCC_Main Instance
+        {
+            get
+            {
+                if (s_instance == null)
+                {
+                    lock (syslock)
+                    {
+                        if (s_instance == null)
+                        {
+                            s_instance = new OCC_Main();
+                        }
+                    }
+                }
+                return s_instance;
+            }
+        }
+
+        #endregion
+
         /// <summary>
         /// 开机状态枚举
         /// </summary>
@@ -44,13 +84,12 @@ namespace OCC.Forms.OCC_Main
             public DeviceDataModel DataModel;
         }
 
-
         public const string FORM_NAME = "首页";
         
         /// <summary>
         /// 上下文同步
         /// </summary>
-        private static SynchronizationContext s_uiContext;
+        public static SynchronizationContext UiContext;
 
         /// <summary>
         /// 设备状态缓存
@@ -65,6 +104,8 @@ namespace OCC.Forms.OCC_Main
         {
             InitializeComponent();
 
+            UiContext = new SynchronizationContext();
+         
             DataGridViewDevicesInitialize();
 
             DeviceStatusTimer.Enabled = true;
@@ -110,7 +151,7 @@ namespace OCC.Forms.OCC_Main
             DevicePingManager.Instance.PingDevices(ips);
 
             UpdateDevicePowerStatus();
-            UpdateDeviceConnectStatus();
+            SendDeviceConnectStatusEvent();
 
         }
 
@@ -159,7 +200,7 @@ namespace OCC.Forms.OCC_Main
         /// <summary>
         /// 更新设备连接集控状态
         /// </summary>
-        private void UpdateDeviceConnectStatus()
+        private void SendDeviceConnectStatusEvent()
         {
             List<DeviceStatusCache> devicePowerOnCollection =  DeviceInfoCollection.FindAll(d => d.PowerStatus.Equals(DevicePowerStatus.OPENED));
 
@@ -172,13 +213,61 @@ namespace OCC.Forms.OCC_Main
         }
 
         /// <summary>
+        /// 更新客户端发送过来的消息
+        /// </summary>
+        /// <param name="state"></param>
+        public void UpdateDeviceSystemInfoEventHandler(object state)
+        {
+            string ip = ((UpdateSystemStateArgs)state).ip;
+            float cpu = ((UpdateSystemStateArgs)state).cpu;
+            float memory = ((UpdateSystemStateArgs)state).memory;
+            int tickCount = ((UpdateSystemStateArgs)state).tickCount;
+            float gpu_ratio = ((UpdateSystemStateArgs)state).gpu_ratio;
+            float gpu_memory_ratio = ((UpdateSystemStateArgs)state).gpu_memory_ratio;
+
+            List<DeviceStatusCache> devicePowerOnCollection = DeviceInfoCollection.FindAll(d => d.PowerStatus.Equals(DevicePowerStatus.OPENED));
+
+            foreach (DeviceStatusCache deviceStatus in devicePowerOnCollection)
+            {
+                // 发送获取客户端状态的消息
+                //RabbitMQEventBus.GetSingleton().Trigger<R_C_SystemStateData>(showIP, new R_C_SystemStateData());//直接通过事件总线触发
+                //RabbitMQManager.Instance.Trigger(deviceStatus.DataModel.IP, new OCC_TO_CLIENT.R_C_SystemStateData());
+                if (deviceStatus.DataModel.IP.Equals(ip))
+                {
+                    this.DataGridViewDevice.Rows[deviceStatus.Index].Cells["ConnectionStatus"].Value = global::OCC.Properties.Resources.switch_开;
+                    Debug.Info($"Rows {deviceStatus.Index} {deviceStatus.DataModel.Name} Cells[ConnectionStatus] switch_开 ");
+                    this.DataGridViewDevice.Rows[deviceStatus.Index].Cells["ConnectionStatus"].Value = global::OCC.Properties.Resources.switch_开;                    
+                }
+            }
+            //Debug.Info($"ip {((UpdateSystemStateArgs)state).ip} {((UpdateSystemStateArgs)state).cpu} {((UpdateSystemStateArgs)state)}");
+        }
+
+        public void UpdateDeviceConnectionState(object state)
+        {
+            //string ip = ((UpdateConnectionStateArgs)state).ip;
+            //bool connect = ((UpdateConnectionStateArgs)state).connect;
+
+            //if (null != ip)
+            //{
+            //    var device = DeviceInfoCollection.FirstOrDefault(d => d.DataModel.IP.Equals(ip));
+            //    if (null != device)
+            //    {
+            //        DataGridViewDevice.Rows[device.Index].Cells["ConnectionStatus "].Value =
+            //            connect ?
+            //            global::OCC.Properties.Resources.switch_开 :
+            //            global::OCC.Properties.Resources.switch_关;
+            //    }
+            //}
+        }
+
+
+        /// <summary>
         /// 当表格中有对象被点击时
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void DataGridViewDevice_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
             // 点击了列表中的关机按钮
             // TODO: 是否需要添加确认窗口 在关机
             if (DataGridViewDevice.Columns[e.ColumnIndex].Name == "SwitchButton")

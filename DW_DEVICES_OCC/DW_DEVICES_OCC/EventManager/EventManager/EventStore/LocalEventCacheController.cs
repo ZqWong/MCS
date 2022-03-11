@@ -3,7 +3,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace RabbitMQ
+namespace RabbitMQEvent
 {
     /// <summary>
     /// 内存中的事件缓存

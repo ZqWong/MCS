@@ -1,4 +1,4 @@
-﻿using EventGroup;
+﻿using RabbitMQEvent;
 using System;
 using System.Collections.Generic;
 using System.Linq;

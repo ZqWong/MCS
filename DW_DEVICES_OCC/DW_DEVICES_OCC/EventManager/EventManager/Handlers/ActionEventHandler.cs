@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RabbitMQ
+namespace RabbitMQEvent
 {
     /// <summary>
     /// 支持Action的事件处理器

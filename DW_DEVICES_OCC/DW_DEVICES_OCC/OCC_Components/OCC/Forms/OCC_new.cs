@@ -17,18 +17,76 @@ using OCC.Forms.OCC_APPs;
 using OCC.Forms.OCC_Groups;
 using OCC.Forms.OCC_Systems;
 using OCC.Forms.OCC_Devices;
+using System.Threading;
+using RabbitMQEvent;
+using System.Diagnostics;
+using System.Reflection;
 
 namespace OCC
 {
     public partial class OCC : Form
     {
-        private Form preForm;
+        // 同步上下文
+        public static SynchronizationContext s_uiContext;
+
+        private static OCC s_instance = null;
+        private static readonly object syslock = new object();
+        public static OCC Instance
+        {
+            get
+            {
+                if (s_instance == null)
+                {
+                    lock (syslock)
+                    {
+                        if (s_instance == null)
+                        {
+                            s_instance = new OCC();
+                        }
+                    }
+                }
+                return s_instance;
+            }
+        }
 
         public OCC()
         {
             InitializeComponent();
             this.IsMdiContainer = true;
+            s_uiContext = SynchronizationContext.Current;
+
+            RabbitMQServerInitialize();
+
             //MoouseDrag();
+        }
+
+        private void RabbitMQServerInitialize()
+        {
+            RabbitMQManager.Instance.UIContext = s_uiContext;
+            /// RabbitMQ 链接 与 本地配置文件初始化
+            try
+            {
+                //RabbitMQManager.Instance.Initialize("event_bus", GetIP(), Process.GetCurrentProcess().ProcessName, "topic", "client_duowei", "192.169.0.198", "duowei");
+                //RabbitMQManager.Instance.Initialize("event_bus", NetworkHelper.GetIP(), Process.GetCurrentProcess().ProcessName, "topic", "client_duowei", "127.0.0.1", "duowei");
+
+                RabbitMQManager.Instance.Initialize(
+                    LocalConifgManager.Instance.SystemConfig.DataModel.RabbitMQBrokerName,
+                    NetworkHelper.GetIP(),
+                    Process.GetCurrentProcess().ProcessName,
+                    LocalConifgManager.Instance.SystemConfig.DataModel.RabbitMQExchangeType,
+                    LocalConifgManager.Instance.SystemConfig.DataModel.Username,
+                    "127.0.0.1",
+                    //"192.169.0.198",
+                    LocalConifgManager.Instance.SystemConfig.DataModel.Password);
+
+                //注册当前程序集中实现的所有IEventHandler<T> （(Assembly.GetExecutingAssembly()：获取包含当前执行的代码的程序集）
+                RabbitMQManager.Instance.RegisterAllEventHandlerFromAssembly(Assembly.GetExecutingAssembly());
+                RabbitMQManager.Instance.CreatePluginEventConsumerChannel();
+            }
+            catch (Exception ex)
+            {
+                Debug.Error($"[OCC] RabbitMQ Initialize failed :{ex}");
+            }
         }
 
         private void OCC_Load(object sender, EventArgs e)

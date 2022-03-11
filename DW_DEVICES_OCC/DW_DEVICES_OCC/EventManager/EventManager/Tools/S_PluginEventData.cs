@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RabbitMQ
+namespace RabbitMQEvent
 {
     public class S_PluginEventData : EventData
     {

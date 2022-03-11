@@ -6,7 +6,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RabbitMQ
+namespace RabbitMQEvent
 {
     /// <summary>
     /// 事件源：描述事件信息，用于参数传递

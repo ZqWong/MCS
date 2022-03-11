@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RabbitMQ
+namespace RabbitMQEvent
 {
     /// <summary>
     /// 定义事件源接口，所有的事件源都要实现该接口

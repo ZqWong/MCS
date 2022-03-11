@@ -65,6 +65,9 @@
     <Compile Include="Core\Authorize\UserAuthManager.cs" />
     <Compile Include="Core\Authorize\TestAuth.cs" />
     <Compile Include="Core\DataManager.cs" />
+    <Compile Include="Core\EventHandler\C_SystemStateEventHandler.cs" />
+    <Compile Include="Core\EventHandler\GetSystemInfoEventHandler-Template.cs" />
+    <Compile Include="Core\EventHandler\RemotePluginEventHandler.cs" />
     <Compile Include="Core\Global.cs" />
     <Compile Include="Core\LocalConfig\DataModel\SystemConfigDataModel.cs" />
     <Compile Include="Core\LocalConfig\LocalConifgManager.cs" />
@@ -206,9 +209,13 @@
       <Project>{5a76d0c5-134d-4771-b8f3-bb0c9e0bb7e9}</Project>
       <Name>Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\EventGroup\EventGroup.csproj">
-      <Project>{61AF9826-B863-443D-B10A-361FF9FCEAD3}</Project>
-      <Name>EventGroup</Name>
+    <ProjectReference Include="..\..\EventManager\EventArgsCommon\EventArgsCommon.csproj">
+      <Project>{6A70578A-763C-4702-A99A-0E7C4232F5F5}</Project>
+      <Name>EventArgsCommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\EventManager\EventManager\EventManager.csproj">
+      <Project>{853BE0F3-C243-404B-9392-2FF13C1F8A37}</Project>
+      <Name>EventManager</Name>
     </ProjectReference>
     <ProjectReference Include="..\OCC_Database\OCC_Database.csproj">
       <Project>{ad64ad7b-5644-4576-a1cb-27067b12d606}</Project>

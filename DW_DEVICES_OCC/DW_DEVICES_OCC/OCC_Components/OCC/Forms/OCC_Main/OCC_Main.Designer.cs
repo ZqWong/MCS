@@ -290,14 +290,16 @@
             this.SwitchButton.HeaderText = "启动开关";
             this.SwitchButton.Image = global::OCC.Properties.Resources.switch_关;
             this.SwitchButton.Name = "SwitchButton";
-            this.SwitchButton.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.SwitchButton.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // ConnectionStatus
             // 
             this.ConnectionStatus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.ConnectionStatus.HeaderText = "连接状态";
+            this.ConnectionStatus.Image = global::OCC.Properties.Resources.switch_关;
             this.ConnectionStatus.Name = "ConnectionStatus";
             this.ConnectionStatus.ReadOnly = true;
+            this.ConnectionStatus.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // OCC_Main
             // 

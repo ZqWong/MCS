@@ -8,16 +8,18 @@ using System.Threading;
 using System.Threading.Tasks;
 using Castle.MicroKernel.Registration;
 using Castle.Windsor;
+using Newtonsoft.Json;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
-using Newtonsoft.Json;
 
-namespace RabbitMQ
+namespace RabbitMQEvent
 {
     public class RabbitMQManager : LockedSingletonClass<RabbitMQManager>
     {
-        // 同步上下文
-        private static SynchronizationContext m_uiContext;
+        /// <summary>
+        /// 这个中间件需要外部传过来
+        /// </summary>
+        public SynchronizationContext UIContext;
 
         //private readonly IEventStore m_eventCacheInMemory;
         private readonly LocalEventCacheController m_eventCacheInMemory;
@@ -74,8 +76,6 @@ namespace RabbitMQ
 
         public RabbitMQManager()
         {
-            // 创建上下文同步
-            m_uiContext = SynchronizationContext.Current;
             // 初始化事件缓存
             m_eventCacheInMemory = new LocalEventCacheController();
             // 初始化Ioc容器 （Castle Windsor）
@@ -246,7 +246,7 @@ namespace RabbitMQ
                 {
                     // 同步上下文
                     HandlerEventArgs args = new HandlerEventArgs() { EventName = eventName, Message = message };
-                    m_uiContext.Post(HandlerEventCallback, args);
+                    UIContext.Post(HandlerEventCallback, args);
                 }
 
                 //手动应答(用IModel.BasicAck来确认您已成功接收并处理该消息)
@@ -295,7 +295,6 @@ namespace RabbitMQ
                 {
                     if (objectList.GetType() == typeof(List<System.Object>))
                     {
-
                         List<System.Object> tmp = (List<System.Object>)objectList;
                         for (int i = 0; i < tmp.Count; i++)
                         {

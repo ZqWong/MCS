@@ -26,7 +26,7 @@ public class SingletonClass<T> : object where T : new()
 /// </summary>
 /// <typeparam name="T"></typeparam>
 [Serializable]
-public class LockedSingletonClass<T> : object where T : new()
+public class LockedSingletonClass<T> where T: class , new()
 {
     private static T s_instance = default(T);
 
