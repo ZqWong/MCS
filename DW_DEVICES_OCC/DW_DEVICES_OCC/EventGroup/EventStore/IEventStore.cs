@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace EventGroup
 {
+    [Obsolete]
     public interface IEventStore
     {
         void AddRegister<T, TH>() where T : IEventData where TH : IEventHandler;

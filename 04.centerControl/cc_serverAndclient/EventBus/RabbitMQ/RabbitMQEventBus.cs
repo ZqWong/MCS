@@ -267,9 +267,9 @@ namespace DW_CC_NET.RabbitMQ
             //});
             //channel.BasicReturn += evreturn;
 
-
+            string routing = $"{ip}.{eventData.GetType().Name}";            
             _channel.BasicPublish(exchange: _brokerName,
-                routingKey: ip + '.' + eventData.GetType().Name,
+                routingKey: routing,
                 basicProperties: null,
                 body: body);
 
@@ -395,7 +395,7 @@ namespace DW_CC_NET.RabbitMQ
         {
             var eventType = _eventStore.GetEventTypeByName(eventName);
 
-            if (eventType != null)
+             if (eventType != null)
             {
                 if (_eventStore.HasRegisterForEvent(eventType))
                 {
@@ -410,7 +410,7 @@ namespace DW_CC_NET.RabbitMQ
                         var eventHandlers = IocContainer.ResolveAll(handlerInterface);
                         //循环遍历，仅当解析的实例类型与映射字典中事件处理类型一致时，才触发事件
                         foreach (var eventHandler in eventHandlers)
-                        {
+                        { 
                             if (eventHandler.GetType() == handlerType)
                             {
                                 var concreteType = typeof(IEventHandler<>).MakeGenericType(eventType);

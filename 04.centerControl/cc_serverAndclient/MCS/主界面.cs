@@ -1533,10 +1533,7 @@ namespace MCS
 
         }
 
-        /// <summary>
-        /// 应该是无用的
-        /// </summary>
-        /// <param name="state"></param>
+
         public void UpdateSystemState(object state)
         {
             string ip = ((UpdateSystemState_Args) state).ip;

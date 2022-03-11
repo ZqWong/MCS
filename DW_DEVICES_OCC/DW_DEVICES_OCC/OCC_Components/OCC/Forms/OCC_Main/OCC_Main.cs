@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace OCC.Forms.OCC_Main
 {
-    public partial class OCC_Main : Form
+    public partial class OCC_Main : LockedSingletonFormClass<OCC_Main>
     {
         /// <summary>
         /// 开机状态枚举
@@ -92,7 +92,7 @@ namespace OCC.Forms.OCC_Main
         }
 
         /// <summary>
-        /// 设备电源开关检测 计时器
+        /// 设备状态检测 计时器
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -136,6 +136,8 @@ namespace OCC.Forms.OCC_Main
                         DeviceInfoCollection[target.Index].PowerStatus = DevicePowerStatus.CLOSED;
                     }
                 }
+
+                 
             }     
         }
 

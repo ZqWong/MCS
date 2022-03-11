@@ -84,10 +84,9 @@
     <Compile Include="EventArgs\R_C_ControlProcessData.cs" />
     <Compile Include="EventArgs\UserEventData\R_C_SystemStateData.cs" />
     <Compile Include="EventStore\EventData.cs" />
-    <Compile Include="EventStore\IEventBase.cs" />
     <Compile Include="EventStore\IEventData.cs" />
     <Compile Include="EventStore\IEventStore.cs" />
-    <Compile Include="EventStore\InMemoryEventStore.cs" />
+    <Compile Include="EventStore\LocalEventCacheController.cs" />
     <Compile Include="Handlers\ActionEventHandler.cs" />
     <Compile Include="Handlers\IEventHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -20,7 +20,7 @@ namespace EventGroup.RabbitMQ
         private static SynchronizationContext m_uiContext;
 
         //private readonly IEventStore m_eventCacheInMemory;
-        private readonly InMemoryEventStore m_eventCacheInMemory;
+        private readonly LocalEventCacheController m_eventCacheInMemory;
 
         public IWindsorContainer IocContainer { get; private set; }
 
@@ -77,7 +77,7 @@ namespace EventGroup.RabbitMQ
             // 创建上下文同步
             m_uiContext = SynchronizationContext.Current;
             // 初始化事件缓存
-            m_eventCacheInMemory = new InMemoryEventStore();
+            m_eventCacheInMemory = new LocalEventCacheController();
             // 初始化Ioc容器 （Castle Windsor）
             IocContainer = new WindsorContainer();
             // 初始化RabbitMQ 连接对象
@@ -442,18 +442,18 @@ namespace EventGroup.RabbitMQ
         /// <summary>
         /// 注册事件
         /// </summary>
-        /// <typeparam name="TEventData"></typeparam>
+        /// <typeparam name="T"></typeparam>
         /// <param name="action"></param>
-        public void Register<TEventData>(Action<TEventData> action) where TEventData : IEventData
+        public void Register<T>(Action<T> action) where T : EventData
         {
             //1.构造ActionEventHandler
-            var actionHandler = new ActionEventHandler<TEventData>(action);
+            var actionHandler = new ActionEventHandler<T>(action);
 
             //2.将ActionEventHandler的实例注入到Ioc容器
-            IocContainer.Register(Component.For<IEventHandler<TEventData>>().UsingFactoryMethod(() => actionHandler));
+            IocContainer.Register(Component.For<IEventHandler<T>>().UsingFactoryMethod(() => actionHandler));
 
             //注册到事件总线
-            Register<TEventData>(actionHandler);
+            Register<T>(actionHandler);
         }
 
 
@@ -607,13 +607,20 @@ namespace EventGroup.RabbitMQ
 
         #endregion
 
+        #region Event execute
 
+        /// <summary>
+        /// 接收到的消息处理, 简单的阐述一下工作原理，就是RabbitMQ接收到消息后进行处理，因为初始化时已经做了所有的IEventHandler<T>类型缓存，
+        /// 对 handlerType -> eventHandlers 进行遍历，找到对应的IEventHandler<>类，并执行其中的HandleEvent方法
+        /// </summary>
+        /// <param name="eventName"></param>
+        /// <param name="message"></param>
         private void HandleEvent(string eventName, string message)
         {
             var eventType = m_eventCacheInMemory.GetEventTypeByName(eventName);
 
             if (eventType != null)
-            {
+            {               
                 if (m_eventCacheInMemory.HasRegisterForEvent(eventType))
                 {
                     var eventData = JsonConvert.DeserializeObject(message, eventType) as IEventData;
@@ -624,7 +631,7 @@ namespace EventGroup.RabbitMQ
                         //获取类型实现的泛型接口
                         var handlerInterface = handlerType.GetInterface("IEventHandler`1");
 
-                        var eventHandlers = IocContainer.ResolveAll(handlerInterface);
+                        var eventHandlers = IocContainer.ResolveAll(handlerInterface); 
                         //循环遍历，仅当解析的实例类型与映射字典中事件处理类型一致时，才触发事件
                         foreach (var eventHandler in eventHandlers)
                         {
@@ -685,6 +692,6 @@ namespace EventGroup.RabbitMQ
             }
         }
 
-
+        #endregion
     }
 }

@@ -59,7 +59,7 @@ namespace EventGroup
             }
             catch (Exception ex)
             {
-
+                Debug.Error($"获取IP失败 {ex}");
                 return "";
             }
         }

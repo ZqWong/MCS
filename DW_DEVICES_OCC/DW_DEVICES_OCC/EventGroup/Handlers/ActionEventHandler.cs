@@ -9,15 +9,15 @@ namespace EventGroup
     /// <summary>
     /// 支持Action的事件处理器
     /// </summary>
-    /// <typeparam name="TEventData"></typeparam>
-    internal class ActionEventHandler<TEventData> : IEventHandler<TEventData> where TEventData : IEventData
+    /// <typeparam name="T"></typeparam>
+    internal class ActionEventHandler<T> : IEventHandler<T> where T : EventData
     {
         /// <summary>
         /// 定义Action的引用，并通过构造函数传参初始化
         /// </summary>
-        public Action<TEventData> Action { get; private set; }
+        public Action<T> Action { get; private set; }
 
-        public ActionEventHandler(Action<TEventData> handler)
+        public ActionEventHandler(Action<T> handler)
         {
             Action = handler;
         }
@@ -26,7 +26,7 @@ namespace EventGroup
         /// 调用具体的Action来处理事件逻辑
         /// </summary>
         /// <param name="eventData"></param>
-        public void HandleEvent(TEventData eventData)
+        public void HandleEvent(T eventData)
         {
             Action(eventData);
         }

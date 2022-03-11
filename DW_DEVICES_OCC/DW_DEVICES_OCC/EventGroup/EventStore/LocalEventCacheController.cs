@@ -8,7 +8,7 @@ namespace EventGroup
     /// <summary>
     /// 内存中的事件缓存
     /// </summary>
-    public class InMemoryEventStore : IEventStore
+    public class LocalEventCacheController/* : IEventStore*/
     {
         /// <summary>
         /// 定义锁对象
@@ -20,7 +20,7 @@ namespace EventGroup
         /// </summary>
         private readonly ConcurrentDictionary<Type, List<Type>> m_eventAndHandlerMapping;
 
-        public InMemoryEventStore()
+        public LocalEventCacheController()
         {
             m_eventAndHandlerMapping = new ConcurrentDictionary<Type, List<Type>>();
         }
@@ -30,7 +30,7 @@ namespace EventGroup
         }
 
 
-        public void AddActionRegister<T>(Action<T> action) where T : IEventData
+        public void AddActionRegister<T>(Action<T> action) where T : EventData
         {
             var actionHandler = new ActionEventHandler<T>(action);
 
@@ -65,7 +65,7 @@ namespace EventGroup
             RemoveRegister(typeof(T), handlerToRemove);
         }
 
-        public void RemoveActionRegister<T>(Action<T> action) where T : IEventData
+        public void RemoveActionRegister<T>(Action<T> action) where T : EventData
         {
             var actionHandler = new ActionEventHandler<T>(action);
             var handlerToRemove = FindRegisterToRemove(typeof(T), actionHandler.GetType());
