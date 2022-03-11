@@ -14,7 +14,7 @@ using Newtonsoft.Json;
 
 namespace EventGroup.RabbitMQ
 {
-    public class RabbitMQManager : LockedSingletonClass<RabbitMQManager>, IEventBase
+    public class RabbitMQManager : LockedSingletonClass<RabbitMQManager>
     {
         // 同步上下文
         private static SynchronizationContext m_uiContext;
@@ -681,8 +681,6 @@ namespace EventGroup.RabbitMQ
                             }
                         }
                     }
-
-
                 }
             }
         }
