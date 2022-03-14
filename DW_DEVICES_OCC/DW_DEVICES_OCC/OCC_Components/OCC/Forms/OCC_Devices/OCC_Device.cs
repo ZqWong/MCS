@@ -46,29 +46,21 @@ namespace OCC.Forms.OCC_Devices
 
 
 
-        public bool InDelectBatchesMode = false;
+        public bool InSelectMode = false;
         public OCC_Device()
         {
             UiContext = SynchronizationContext.Current;
-
             InitializeComponent();
-
             DeviceListInitialize();
 
-            // 开启定时器
-            //PingTimer.Enabled = true;
-            //PingTimer.Interval = Convert.ToInt32(1000);
-
+            DataManager.Instance.GetDeviceTypes();
         }
 
 
         private void OCC_Device_Load(object sender, EventArgs e)
         {
-            //DeviceList.Columns[0].Visible = false;
+            DeviceList.Columns[0].Visible = false;
             //DeviceListInitialize();
-
-
-
         }
 
         private void OCC_Device_Closed(object sender, EventArgs e)
@@ -79,10 +71,7 @@ namespace OCC.Forms.OCC_Devices
 
         public void DeviceListInitialize()
         {
-            Debug.Info("加载用户数据");
-
             DataManager.Instance.GetDeviceData();
-
             DeviceList.Rows.Clear();
 
             DeviceList.Rows.Add(DataManager.Instance.DeviceInfoCollection.Count);
@@ -138,15 +127,26 @@ namespace OCC.Forms.OCC_Devices
             OCC_DeviceDetail userDetailForm = new OCC_DeviceDetail();
             userDetailForm.Owner = this;
             userDetailForm.Type = OCC_DeviceDetail.FormType.CREATE;
+            userDetailForm.Text = "添加设备";
             userDetailForm.ShowDialog();
         }
 
+        private void ButtonEditDevice_Click(object sender, EventArgs e)
+        {
+                                                
+        }
+
+        /// <summary>
+        /// 删除按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ButtonRemoveDevice_Click(object sender, EventArgs e)
         {
-            if (!InDelectBatchesMode)
+            if (!InSelectMode)
             {
-                InDelectBatchesMode = true;
-                DeviceList.Columns[0].Visible = InDelectBatchesMode;
+                InSelectMode = true;
+                DeviceList.Columns[0].Visible = InSelectMode;
             }
             else
             {
@@ -158,7 +158,7 @@ namespace OCC.Forms.OCC_Devices
                         Debug.Info($"Ready to delete {data.Id} {data.Name} {data.IP}  infos");
                         try
                         {
-                            DataBaseCRUDManager.Instance.DeleteUserInfoById(data.Id);
+                            DataBaseCRUDManager.Instance.DeleteDeviceInfoById(data.Id);
                         }
                         catch (Exception ex)
                         {
@@ -170,8 +170,8 @@ namespace OCC.Forms.OCC_Devices
                     }
                 }
 
-                InDelectBatchesMode = false;
-                DeviceList.Columns[0].Visible = InDelectBatchesMode;
+                InSelectMode = false;
+                DeviceList.Columns[0].Visible = InSelectMode;
                 DeviceListInitialize();
             }
         }
@@ -233,8 +233,6 @@ namespace OCC.Forms.OCC_Devices
                 }
             }
         }
-
-
 
 
         #endregion

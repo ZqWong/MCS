@@ -7,13 +7,14 @@ using System.Threading.Tasks;
 
 namespace DataModel
 {
+    [SugarTable("occ_device_type")]
     public class DeviceTypeDataModel : DataModelBase
     {
         /// <summary>
         /// 主键ID
         /// </summary>
         [SugarColumn(IsPrimaryKey = true, IsIdentity = true)]
-        public string Id { get; set; }
+        public int Id { get; set; }
 
         /// <summary>
         /// 公司名

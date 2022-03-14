@@ -49,6 +49,16 @@ namespace OCC.Core
             }            
         }
 
+
+
+
+
+        public List<DeviceTypeDataModel> DeviceTypeCollection = new List<DeviceTypeDataModel>();
+        public void GetDeviceTypes()
+        {
+            DeviceTypeCollection = DataBaseCRUDManager.Instance.GetAllDeviceTypeInfo();
+        }
+
         #endregion
 
 

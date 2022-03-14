@@ -297,6 +297,27 @@ public class DataBaseCRUDManager : LockedSingletonClass<DataBaseCRUDManager>
         return ret;
     }
 
+    public List<DeviceTypeDataModel> GetAllDeviceTypeInfo()
+    {
+        List<DeviceTypeDataModel> ret = new List<DeviceTypeDataModel>();
+        try
+        {
+            var types = DataBaseManager.Instance.DB.Queryable<DeviceTypeDataModel>().Where(t => t.DelFlag.Equals(0)).ToList();
+            if (null == types)
+            {
+                Debug.Error($"Get GetAllDeviceTypeInfo data failed");
+            }
+            ret = types;
+        }
+        catch (Exception ex)
+        {
+            Debug.Error($"{this} DataManager GetAllDeviceTypeInfo failed {ex}");
+            throw;
+        }
+        return ret;
+    }
+
+
 
     #endregion
 
@@ -335,6 +356,24 @@ public class DataBaseCRUDManager : LockedSingletonClass<DataBaseCRUDManager>
         catch (Exception ex)
         {
             Debug.Error($"DataBaseCRUDManager DeleteUserInfoById failed {ex}");
+            throw;
+        }
+    }
+
+
+    /// <summary>
+    /// 删除设备信息（假删除）
+    /// </summary>
+    /// <param name="id"></param>
+    public void DeleteDeviceInfoById(string id)
+    {
+        try
+        {
+            DataBaseManager.Instance.DB.Deleteable<DeviceDataModel>().Where(d => d.Id.Equals(id)).IsLogic().ExecuteCommand("del_flag");
+        }
+        catch (Exception ex)
+        {
+            Debug.Error($"DataBaseCRUDManager DeleteDeviceInfoById failed {ex}");
             throw;
         }
     }

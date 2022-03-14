@@ -148,6 +148,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\OCC_APPs\OCC_APPs.resx">
+      <DependentUpon>OCC_APPs.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\OCC_new.resx">
       <DependentUpon>OCC_new.cs</DependentUpon>
     </EmbeddedResource>

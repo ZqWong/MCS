@@ -40,14 +40,8 @@ namespace OCC.Forms.OCC_Devices
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.DeviceList = new Sunny.UI.UIDataGridView();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.ButtonRemoveDevice = new Sunny.UI.UIButton();
-            this.ButtonAddDevice = new Sunny.UI.UIButton();
-            this.uiGroupBox2 = new Sunny.UI.UIGroupBox();
             this.Selected = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.DeviceName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OpenOrClosePCState = new System.Windows.Forms.DataGridViewImageColumn();
-            this.ConnectionState = new System.Windows.Forms.DataGridViewImageColumn();
             this.CPURatio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BootTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MemoryRatio = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,6 +53,15 @@ namespace OCC.Forms.OCC_Devices
             this.ProcessSate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Remark = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.ButtonEditDevice = new Sunny.UI.UIButton();
+            this.ButtonRemoveDevice = new Sunny.UI.UIButton();
+            this.ButtonAddDevice = new Sunny.UI.UIButton();
+            this.uiGroupBox2 = new Sunny.UI.UIGroupBox();
+            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.OpenOrClosePCState = new System.Windows.Forms.DataGridViewImageColumn();
+            this.ConnectionState = new System.Windows.Forms.DataGridViewImageColumn();
             this.tableLayoutPanel1.SuspendLayout();
             this.uiGroupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -69,6 +72,7 @@ namespace OCC.Forms.OCC_Devices
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.White;
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.uiGroupBox1, 0, 0);
@@ -78,7 +82,7 @@ namespace OCC.Forms.OCC_Devices
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 250F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 240F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1129, 717);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
@@ -92,7 +96,7 @@ namespace OCC.Forms.OCC_Devices
             this.uiGroupBox1.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiGroupBox1.Name = "uiGroupBox1";
             this.uiGroupBox1.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
-            this.uiGroupBox1.Size = new System.Drawing.Size(1121, 457);
+            this.uiGroupBox1.Size = new System.Drawing.Size(1121, 467);
             this.uiGroupBox1.TabIndex = 0;
             this.uiGroupBox1.Text = "设备列表";
             this.uiGroupBox1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -105,7 +109,7 @@ namespace OCC.Forms.OCC_Devices
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 32);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1121, 425);
+            this.panel1.Size = new System.Drawing.Size(1121, 435);
             this.panel1.TabIndex = 0;
             // 
             // panel3
@@ -114,7 +118,7 @@ namespace OCC.Forms.OCC_Devices
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(0, 45);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1121, 380);
+            this.panel3.Size = new System.Drawing.Size(1121, 390);
             this.panel3.TabIndex = 1;
             // 
             // DeviceList
@@ -183,11 +187,122 @@ namespace OCC.Forms.OCC_Devices
             this.DeviceList.SelectedIndex = -1;
             this.DeviceList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DeviceList.ShowGridLine = true;
-            this.DeviceList.Size = new System.Drawing.Size(1121, 380);
+            this.DeviceList.Size = new System.Drawing.Size(1121, 390);
             this.DeviceList.TabIndex = 0;
+            // 
+            // Selected
+            // 
+            this.Selected.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Selected.FillWeight = 86.21924F;
+            this.Selected.HeaderText = "选择";
+            this.Selected.Name = "Selected";
+            // 
+            // DeviceName
+            // 
+            this.DeviceName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.DeviceName.FillWeight = 86.21924F;
+            this.DeviceName.HeaderText = "名称";
+            this.DeviceName.Name = "DeviceName";
+            this.DeviceName.ReadOnly = true;
+            this.DeviceName.Width = 66;
+            // 
+            // CPURatio
+            // 
+            this.CPURatio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CPURatio.FillWeight = 86.21924F;
+            this.CPURatio.HeaderText = "CPU%";
+            this.CPURatio.Name = "CPURatio";
+            this.CPURatio.ReadOnly = true;
+            // 
+            // BootTime
+            // 
+            this.BootTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.BootTime.FillWeight = 103.7138F;
+            this.BootTime.HeaderText = "开机时间";
+            this.BootTime.MinimumWidth = 15;
+            this.BootTime.Name = "BootTime";
+            this.BootTime.ReadOnly = true;
+            // 
+            // MemoryRatio
+            // 
+            this.MemoryRatio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.MemoryRatio.FillWeight = 86.21924F;
+            this.MemoryRatio.HeaderText = "内存%";
+            this.MemoryRatio.Name = "MemoryRatio";
+            this.MemoryRatio.ReadOnly = true;
+            // 
+            // GPURatio
+            // 
+            this.GPURatio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.GPURatio.FillWeight = 86.21924F;
+            this.GPURatio.HeaderText = "GPU%";
+            this.GPURatio.Name = "GPURatio";
+            this.GPURatio.ReadOnly = true;
+            // 
+            // GPUMemory
+            // 
+            this.GPUMemory.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.GPUMemory.FillWeight = 105.1556F;
+            this.GPUMemory.HeaderText = "显存占用";
+            this.GPUMemory.MinimumWidth = 15;
+            this.GPUMemory.Name = "GPUMemory";
+            this.GPUMemory.ReadOnly = true;
+            // 
+            // NetDelay
+            // 
+            this.NetDelay.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.NetDelay.FillWeight = 106.7163F;
+            this.NetDelay.HeaderText = "Ping( ms)";
+            this.NetDelay.MinimumWidth = 15;
+            this.NetDelay.Name = "NetDelay";
+            this.NetDelay.ReadOnly = true;
+            // 
+            // StereoState
+            // 
+            this.StereoState.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.StereoState.FillWeight = 108.4056F;
+            this.StereoState.HeaderText = "立体状态";
+            this.StereoState.MinimumWidth = 15;
+            this.StereoState.Name = "StereoState";
+            this.StereoState.ReadOnly = true;
+            // 
+            // LeftRightEyeState
+            // 
+            this.LeftRightEyeState.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.LeftRightEyeState.FillWeight = 134.498F;
+            this.LeftRightEyeState.HeaderText = "左右眼状态";
+            this.LeftRightEyeState.MinimumWidth = 18;
+            this.LeftRightEyeState.Name = "LeftRightEyeState";
+            this.LeftRightEyeState.ReadOnly = true;
+            // 
+            // ProcessSate
+            // 
+            this.ProcessSate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ProcessSate.FillWeight = 114.2132F;
+            this.ProcessSate.HeaderText = "运行进程";
+            this.ProcessSate.MinimumWidth = 15;
+            this.ProcessSate.Name = "ProcessSate";
+            this.ProcessSate.ReadOnly = true;
+            // 
+            // Remark
+            // 
+            this.Remark.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Remark.FillWeight = 86.21924F;
+            this.Remark.HeaderText = "备注";
+            this.Remark.Name = "Remark";
+            this.Remark.ReadOnly = true;
+            // 
+            // IP
+            // 
+            this.IP.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.IP.FillWeight = 86.21924F;
+            this.IP.HeaderText = "IP地址";
+            this.IP.Name = "IP";
+            this.IP.ReadOnly = true;
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.ButtonEditDevice);
             this.panel2.Controls.Add(this.ButtonRemoveDevice);
             this.panel2.Controls.Add(this.ButtonAddDevice);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
@@ -196,6 +311,22 @@ namespace OCC.Forms.OCC_Devices
             this.panel2.Padding = new System.Windows.Forms.Padding(5);
             this.panel2.Size = new System.Drawing.Size(1121, 45);
             this.panel2.TabIndex = 0;
+            // 
+            // ButtonEditDevice
+            // 
+            this.ButtonEditDevice.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.ButtonEditDevice.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ButtonEditDevice.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ButtonEditDevice.Location = new System.Drawing.Point(217, 5);
+            this.ButtonEditDevice.MinimumSize = new System.Drawing.Size(1, 1);
+            this.ButtonEditDevice.Name = "ButtonEditDevice";
+            this.ButtonEditDevice.Padding = new System.Windows.Forms.Padding(5);
+            this.ButtonEditDevice.Size = new System.Drawing.Size(100, 35);
+            this.ButtonEditDevice.TabIndex = 2;
+            this.ButtonEditDevice.Text = "编辑设备";
+            this.ButtonEditDevice.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ButtonEditDevice.Click += new System.EventHandler(this.ButtonEditDevice_Click);
             // 
             // ButtonRemoveDevice
             // 
@@ -233,32 +364,35 @@ namespace OCC.Forms.OCC_Devices
             // 
             this.uiGroupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uiGroupBox2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiGroupBox2.Location = new System.Drawing.Point(4, 472);
+            this.uiGroupBox2.Location = new System.Drawing.Point(4, 482);
             this.uiGroupBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiGroupBox2.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiGroupBox2.Name = "uiGroupBox2";
             this.uiGroupBox2.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
-            this.uiGroupBox2.Size = new System.Drawing.Size(1121, 240);
+            this.uiGroupBox2.Size = new System.Drawing.Size(1121, 230);
             this.uiGroupBox2.TabIndex = 1;
             this.uiGroupBox2.Text = "设备信息";
             this.uiGroupBox2.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // Selected
+            // dataGridViewImageColumn1
             // 
-            this.Selected.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Selected.FillWeight = 86.21924F;
-            this.Selected.HeaderText = "选择";
-            this.Selected.Name = "Selected";
-            this.Selected.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewImageColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewImageColumn1.FillWeight = 121.3812F;
+            this.dataGridViewImageColumn1.HeaderText = "开关机状态";
+            this.dataGridViewImageColumn1.Image = global::OCC.Properties.Resources.switch_关;
+            this.dataGridViewImageColumn1.MinimumWidth = 18;
+            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
+            this.dataGridViewImageColumn1.ReadOnly = true;
             // 
-            // DeviceName
+            // dataGridViewImageColumn2
             // 
-            this.DeviceName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.DeviceName.FillWeight = 86.21924F;
-            this.DeviceName.HeaderText = "名称";
-            this.DeviceName.Name = "DeviceName";
-            this.DeviceName.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.DeviceName.Width = 66;
+            this.dataGridViewImageColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewImageColumn2.FillWeight = 102.3817F;
+            this.dataGridViewImageColumn2.HeaderText = "连接状态";
+            this.dataGridViewImageColumn2.Image = global::OCC.Properties.Resources.switch_关;
+            this.dataGridViewImageColumn2.MinimumWidth = 15;
+            this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
+            this.dataGridViewImageColumn2.ReadOnly = true;
             // 
             // OpenOrClosePCState
             // 
@@ -268,7 +402,7 @@ namespace OCC.Forms.OCC_Devices
             this.OpenOrClosePCState.Image = global::OCC.Properties.Resources.switch_关;
             this.OpenOrClosePCState.MinimumWidth = 18;
             this.OpenOrClosePCState.Name = "OpenOrClosePCState";
-            this.OpenOrClosePCState.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.OpenOrClosePCState.ReadOnly = true;
             // 
             // ConnectionState
             // 
@@ -278,101 +412,7 @@ namespace OCC.Forms.OCC_Devices
             this.ConnectionState.Image = global::OCC.Properties.Resources.switch_关;
             this.ConnectionState.MinimumWidth = 15;
             this.ConnectionState.Name = "ConnectionState";
-            this.ConnectionState.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // CPURatio
-            // 
-            this.CPURatio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.CPURatio.FillWeight = 86.21924F;
-            this.CPURatio.HeaderText = "CPU%";
-            this.CPURatio.Name = "CPURatio";
-            this.CPURatio.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // BootTime
-            // 
-            this.BootTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.BootTime.FillWeight = 103.7138F;
-            this.BootTime.HeaderText = "开机时间";
-            this.BootTime.MinimumWidth = 15;
-            this.BootTime.Name = "BootTime";
-            this.BootTime.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // MemoryRatio
-            // 
-            this.MemoryRatio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.MemoryRatio.FillWeight = 86.21924F;
-            this.MemoryRatio.HeaderText = "内存%";
-            this.MemoryRatio.Name = "MemoryRatio";
-            this.MemoryRatio.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // GPURatio
-            // 
-            this.GPURatio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.GPURatio.FillWeight = 86.21924F;
-            this.GPURatio.HeaderText = "GPU%";
-            this.GPURatio.Name = "GPURatio";
-            this.GPURatio.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // GPUMemory
-            // 
-            this.GPUMemory.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.GPUMemory.FillWeight = 105.1556F;
-            this.GPUMemory.HeaderText = "显存占用";
-            this.GPUMemory.MinimumWidth = 15;
-            this.GPUMemory.Name = "GPUMemory";
-            this.GPUMemory.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // NetDelay
-            // 
-            this.NetDelay.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.NetDelay.FillWeight = 106.7163F;
-            this.NetDelay.HeaderText = "Ping( ms)";
-            this.NetDelay.MinimumWidth = 15;
-            this.NetDelay.Name = "NetDelay";
-            this.NetDelay.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // StereoState
-            // 
-            this.StereoState.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.StereoState.FillWeight = 108.4056F;
-            this.StereoState.HeaderText = "立体状态";
-            this.StereoState.MinimumWidth = 15;
-            this.StereoState.Name = "StereoState";
-            this.StereoState.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // LeftRightEyeState
-            // 
-            this.LeftRightEyeState.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.LeftRightEyeState.FillWeight = 134.498F;
-            this.LeftRightEyeState.HeaderText = "左右眼状态";
-            this.LeftRightEyeState.MinimumWidth = 18;
-            this.LeftRightEyeState.Name = "LeftRightEyeState";
-            this.LeftRightEyeState.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // ProcessSate
-            // 
-            this.ProcessSate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ProcessSate.FillWeight = 114.2132F;
-            this.ProcessSate.HeaderText = "运行进程";
-            this.ProcessSate.MinimumWidth = 15;
-            this.ProcessSate.Name = "ProcessSate";
-            this.ProcessSate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // Remark
-            // 
-            this.Remark.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Remark.FillWeight = 86.21924F;
-            this.Remark.HeaderText = "备注";
-            this.Remark.Name = "Remark";
-            this.Remark.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // IP
-            // 
-            this.IP.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.IP.FillWeight = 86.21924F;
-            this.IP.HeaderText = "IP地址";
-            this.IP.Name = "IP";
-            this.IP.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.ConnectionState.ReadOnly = true;
             // 
             // OCC_Device
             // 
@@ -406,6 +446,7 @@ namespace OCC.Forms.OCC_Devices
         private Sunny.UI.UIButton ButtonRemoveDevice;
         private Sunny.UI.UIButton ButtonAddDevice;
         public Sunny.UI.UIDataGridView DeviceList;
+        private Sunny.UI.UIButton ButtonEditDevice;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Selected;
         private System.Windows.Forms.DataGridViewTextBoxColumn DeviceName;
         private System.Windows.Forms.DataGridViewImageColumn OpenOrClosePCState;
@@ -421,5 +462,7 @@ namespace OCC.Forms.OCC_Devices
         private System.Windows.Forms.DataGridViewTextBoxColumn ProcessSate;
         private System.Windows.Forms.DataGridViewTextBoxColumn Remark;
         private System.Windows.Forms.DataGridViewTextBoxColumn IP;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
     }
 }

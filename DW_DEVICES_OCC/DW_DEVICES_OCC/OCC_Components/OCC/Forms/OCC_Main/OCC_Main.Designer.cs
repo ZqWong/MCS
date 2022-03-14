@@ -36,7 +36,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OCC_Main));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.uiGroupBox4 = new Sunny.UI.UIGroupBox();
             this.uiGroupBox3 = new Sunny.UI.UIGroupBox();
             this.BtnGroupStart = new Sunny.UI.UIButton();
             this.ComboBoxGroup = new Sunny.UI.UIComboBox();
@@ -49,6 +48,7 @@
             this.Selected = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.SwitchButton = new System.Windows.Forms.DataGridViewImageColumn();
             this.ConnectionStatus = new System.Windows.Forms.DataGridViewImageColumn();
+            this.uiGroupBox4 = new Sunny.UI.UIGroupBox();
             this.DeviceStatusTimer = new System.Windows.Forms.Timer(this.components);
             this.PowerSwitchImage = new System.Windows.Forms.ImageList(this.components);
             this.tableLayoutPanel1.SuspendLayout();
@@ -76,19 +76,6 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 240F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1264, 921);
             this.tableLayoutPanel1.TabIndex = 0;
-            // 
-            // uiGroupBox4
-            // 
-            this.uiGroupBox4.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiGroupBox4.Location = new System.Drawing.Point(4, 686);
-            this.uiGroupBox4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.uiGroupBox4.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiGroupBox4.Name = "uiGroupBox4";
-            this.uiGroupBox4.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
-            this.uiGroupBox4.Size = new System.Drawing.Size(1256, 230);
-            this.uiGroupBox4.TabIndex = 3;
-            this.uiGroupBox4.Text = "实时控制";
-            this.uiGroupBox4.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // uiGroupBox3
             // 
@@ -290,6 +277,20 @@
             this.ConnectionStatus.Name = "ConnectionStatus";
             this.ConnectionStatus.ReadOnly = true;
             this.ConnectionStatus.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // uiGroupBox4
+            // 
+            this.uiGroupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uiGroupBox4.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiGroupBox4.Location = new System.Drawing.Point(4, 686);
+            this.uiGroupBox4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.uiGroupBox4.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiGroupBox4.Name = "uiGroupBox4";
+            this.uiGroupBox4.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
+            this.uiGroupBox4.Size = new System.Drawing.Size(1256, 230);
+            this.uiGroupBox4.TabIndex = 3;
+            this.uiGroupBox4.Text = "实时控制";
+            this.uiGroupBox4.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // DeviceStatusTimer
             // 

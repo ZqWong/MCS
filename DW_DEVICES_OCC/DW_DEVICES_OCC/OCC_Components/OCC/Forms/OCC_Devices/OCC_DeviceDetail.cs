@@ -1,6 +1,7 @@
 ﻿using DataModel;
 using OCC.Core;
 using OCC.Forms.OCC_Controls;
+using Sunny.UI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,7 +14,7 @@ using System.Windows.Forms;
 
 namespace OCC.Forms.OCC_Devices
 {
-    public partial class OCC_DeviceDetail : Form
+    public partial class OCC_DeviceDetail : UIEditForm
     {
         public enum FormType
         {
@@ -25,120 +26,101 @@ namespace OCC.Forms.OCC_Devices
 
 
 
+        private DeviceDataModel deviceData;
+        public DeviceDataModel DeviceData
+        {
+            get
+            {
+                if (null == deviceData)
+                {
+                    deviceData = new DeviceDataModel();
+                }
+                deviceData.Id = Guid.NewGuid().ToString();
+                deviceData.Name = TextBoxDeviceName.Text;
+                deviceData.IP = TextBoxIP.Text;
+                deviceData.MAC = TextBoxMAC.Text;
+                deviceData.Remark = TextBoxRemark.Text;
+
+                return deviceData;
+            }
+            set
+            {
+                deviceData.Id = value.Id;
+                deviceData.Name = value.Name;
+                deviceData.MAC = value.MAC;
+                deviceData.IP = value.IP;
+                deviceData.Remark = value.Remark;
+                deviceData.DeviceType = value.DeviceType;
+                deviceData.Updateby = value.Updateby;
+                deviceData.CreateBy = value.CreateBy;
+                deviceData.CreateTime = value.CreateTime;
+            }
+
+        }
+
+
+        protected override bool CheckData()
+        {
+            return CheckEmpty(TextBoxDeviceName, "请输入设备名")
+                && CheckEmpty(TextBoxIP, "请输入设备IP")
+                && CheckEmpty(ComboBoxDeviceType, "请选择有效设备类型");
+        }
+
+
         public OCC_DeviceDetail()
         {
             InitializeComponent();
-            BtnConfirm.Enabled = Type.Equals(FormType.ADJUST);           
+
+            foreach (var item in DataManager.Instance.DeviceTypeCollection)
+            {
+                ComboBoxDeviceType.Items.Add(item.Name);
+            }
+            ComboBoxDeviceType.SelectedIndex = 0;
+            ButtonOkClick += OCC_DeviceDetail_ButtonOkClick;   
         }
 
-        private void OCC_DeviceDetail_Load(object sender, EventArgs e)
+        private void OCC_DeviceDetail_ButtonOkClick(object sender, EventArgs e)
         {
+            //DeviceData
 
+
+            var deviceType = DataManager.Instance.DeviceTypeCollection.FirstOrDefault(t => t.Name.Equals(ComboBoxDeviceType.SelectedItem));
+            if (null == deviceType)
+            {
+                ShowWarningDialog("请选择正确的设备类型", false);
+                return;
+            }
+
+            DeviceData.DeviceType = deviceType.Id;
+
+            DeviceData.Id = Guid.NewGuid().ToString();
+            DeviceData.CreateBy = DataManager.Instance.CurrentLoginUserData.UserName;
+            DeviceData.CreateTime = DataBaseManager.Instance.DB.GetDate();
+            DeviceData.Updateby = DataManager.Instance.CurrentLoginUserData.UserName;
+            DeviceData.UpdateTime = DataBaseManager.Instance.DB.GetDate();
+            DeviceData.DelFlag = "0";
+
+            try
+            {
+                if (!DataBaseCRUDManager.Instance.TryCreateDeviceInfo(DeviceData))
+                {
+                    Debug.Info($"Create a new user {DeviceData}");
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                MessageDialog msg = new MessageDialog();
+                msg.Message = $"创建新设备失败(ex: {ex})";
+                msg.ShowDialog();
+                return;                
+            }
+
+            var owner = Owner as OCC_Device;
+            owner.DeviceListInitialize();
+            Close();
         }
 
-        private void BtnConfirm_Click(object sender, EventArgs e)
-        {
-            //UserDataModel userData = new UserDataModel();
-
-            //if (Type.Equals(FormType.CREATE))
-            //    userData.Id = Guid.NewGuid().ToString();
-            //else if (Type.Equals(FormType.ADJUST))
-            //{
-            //    var targetUser = Tag as UserDataModel;
-            //    userData.Id = targetUser.Id;
-            //}                
-            //userData.UserName = TextBoxDeviceName.Text;
-            //userData.Password = TextBoxIP.Text;
-            //userData.LoginName = TextBoxMac.Text;
-            //userData.Email = TextBoxEmail.Text;
-            //userData.Phonenumber = TextBoxPhoneNumber.Text;
-            //userData.Remark = RichTextBoxRemark.Text;
-
-            //userData.Sex = ComboBoxSex.SelectedIndex.ToString();
-
-            //try
-            //{
-            //    var targetCompany = DataManager.Instance.CompanyDatas.First(n => n.Name.Equals(ComboBoxCompany.SelectedItem.ToString()));
-            //    if (null != targetCompany)
-            //    {
-            //        userData.CompanyId = targetCompany.Id;
-            //    }
-            //    else
-            //    {
-            //        MessageDialog msg = new MessageDialog();
-            //        msg.Message = $"未找到指定公司信息(c: {ComboBoxCompany.SelectedItem})";
-            //        msg.ShowDialog();
-            //        return;
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageDialog msg = new MessageDialog();
-            //    msg.Message = $"获取公司信息失败(ex: {ex})";
-            //    msg.ShowDialog();
-            //    return;
-            //}
-
-            //try
-            //{
-            //    var targetUserType = DataManager.Instance.UserTypeDatas.First(n => n.Name.Equals(ComboBoxDeviceType.SelectedItem.ToString()));
-            //    if (null != targetUserType)
-            //    {
-            //        userData.UserType = targetUserType.Id;
-            //    }
-            //    else
-            //    {
-            //        MessageDialog msg = new MessageDialog();
-            //        msg.Message = $"未找到指定用户类型信息(u: {ComboBoxDeviceType.SelectedItem})";
-            //        msg.ShowDialog();
-            //        return;
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageDialog msg = new MessageDialog();
-            //    msg.Message = $"获取用户权限信息失败(ex: {ex})";
-            //    msg.ShowDialog();
-            //    return;
-            //}
-
-            //userData.CreateBy = DataManager.Instance.CurrentLoginUserData.UserName;
-            //userData.CreateTime = DataBaseManager.Instance.DB.GetDate();
-            //userData.Updateby = DataManager.Instance.CurrentLoginUserData.UserName;
-            //userData.UpdateTime = DataBaseManager.Instance.DB.GetDate();
-            //userData.DelFlag = "0";
-
-            //if (Type.Equals(FormType.CREATE))
-            //{
-            //    try
-            //    {                    
-            //        if (!DataBaseCRUDManager.Instance.TryCreateUserInfo(userData))
-            //        {
-            //            Debug.Info($"Create a new user {userData}");
-            //        }                        
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        MessageDialog msg = new MessageDialog();
-            //        msg.Message = $"创建新用户失败(ex: {ex})";
-            //        msg.ShowDialog();
-            //        return;
-            //    }
-            //}
-            //else if(Type.Equals(FormType.ADJUST))
-            //{
-            //    DataBaseCRUDManager.Instance.TryUpdateUserInfoById(userData);
-            //}         
-
-            //OCC_Users userForm = (OCC_Users)Owner;
-            //userForm.UserListInitialize();
-            //this.Close();
-        }
-
-        private void BtnCancel_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
 
         private void TextBoxLoginName_TextChanged(object sender, EventArgs e)
         {
@@ -197,15 +179,22 @@ namespace OCC.Forms.OCC_Devices
 
         private void OCC_UserDetail_Shown(object sender, EventArgs e)
         {
-            this.Text = Type.Equals(FormType.ADJUST) ? "用户信息修改." : "添加新用户.";
-            if (Type.Equals(FormType.ADJUST))
-            {
-                var targetUser = Tag as UserDataModel;
-                TextBoxDeviceName.Text = targetUser.UserName;
-                TextBoxIP.Text = targetUser.Password;
-                TextBoxMac.Text = targetUser.LoginName;
-                ComboBoxDeviceType.SelectedIndex = DataManager.Instance.UserTypeDatas.FindIndex(n => n.Id.Equals(targetUser.UserType));
-            }
+            //this.Text = Type.Equals(FormType.ADJUST) ? "用户信息修改." : "添加新用户.";
+            //if (Type.Equals(FormType.ADJUST))
+            //{
+            //    var targetUser = Tag as UserDataModel;
+            //    TextBoxDeviceName.Text = targetUser.UserName;
+            //    TextBoxIP.Text = targetUser.Password;
+            //    TextBoxMac.Text = targetUser.LoginName;
+            //    ComboBoxDeviceType.SelectedIndex = DataManager.Instance.UserTypeDatas.FindIndex(n => n.Id.Equals(targetUser.UserType));
+            //}
+        }
+
+        private void TextBoxIP_Leave(object sender, EventArgs e)
+        {
+            var mac = NetworkHelper.GetMacAddress(TextBoxIP.Text);
+            DeviceData.MAC = mac;
+            TextBoxMAC.Text = mac;
         }
     }
 }
