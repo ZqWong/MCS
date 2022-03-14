@@ -104,35 +104,23 @@ namespace OCC.Forms.OCC_Devices
 
         private int index = -1;
 
-        private void DeviceList_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            //if (e.Button == MouseButtons.Right)
-            //{
-            //    if (e.RowIndex >= 0)
-            //    {
-            //        DeviceList.ClearSelection();
-            //        DeviceList.Rows[e.RowIndex].Selected = true;
-            //        DeviceList.CurrentCell = DeviceList.Rows[e.RowIndex].Cells[e.ColumnIndex];
-            //        DeviceRightClick.Show(MousePosition.X, MousePosition.Y);
+        //private void DeviceList_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
+        //{
+        //    //if (e.Button == MouseButtons.Right)
+        //    //{
+        //    //    if (e.RowIndex >= 0)
+        //    //    {
+        //    //        DeviceList.ClearSelection();
+        //    //        DeviceList.Rows[e.RowIndex].Selected = true;
+        //    //        DeviceList.CurrentCell = DeviceList.Rows[e.RowIndex].Cells[e.ColumnIndex];
+        //    //        DeviceRightClick.Show(MousePosition.X, MousePosition.Y);
 
-            //        index = e.RowIndex;
+        //    //        index = e.RowIndex;
 
-            //        Debug.Info($"UserList_CellMouseUp Selected index {index} {DeviceList.Rows[e.RowIndex].Cells["Username"].Value}");
-            //    }
-            //}
-        }
-
-
-        private void AujustDeviceInfoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //var targetDevice = DeviceList.Rows[index].Tag as DeviceDataModel;
-            //OCC_DeviceDetail userDetailForm = new OCC_DeviceDetail();
-            //userDetailForm.Owner = this;
-            //userDetailForm.Type = OCC_DeviceDetail.FormType.ADJUST;
-            //userDetailForm.Tag = targetDevice;
-            //userDetailForm.ShowDialog();
-            //index = -1;
-        }
+        //    //        Debug.Info($"UserList_CellMouseUp Selected index {index} {DeviceList.Rows[e.RowIndex].Cells["Username"].Value}");
+        //    //    }
+        //    //}
+        //}
 
         #endregion
 
@@ -191,6 +179,15 @@ namespace OCC.Forms.OCC_Devices
 
         #region RabbitMQ Events
 
+        private void SetSystemInfoFormDeviceList(int rowIndex, string cpuRatio, string memeoryRatio, string bootTime, string gpuRatio, string gpuMemory)
+        {
+            DeviceList.Rows[rowIndex].Cells["CPURatio"].Value = cpuRatio;
+            DeviceList.Rows[rowIndex].Cells["MemoryRatio"].Value = memeoryRatio;
+            DeviceList.Rows[rowIndex].Cells["BootTime"].Value = bootTime;
+            DeviceList.Rows[rowIndex].Cells["GPURatio"].Value = gpuRatio;
+            DeviceList.Rows[rowIndex].Cells["GPUMemory"].Value = gpuMemory;
+        }
+
         public void UpdateDeviceSystemInfoEventHandler(object state)
         {
             var ip = ((Handler.C_SystemStateEventHandler.UpdateSystemStateArgs)state).ip;
@@ -208,11 +205,13 @@ namespace OCC.Forms.OCC_Devices
 
                 DeviceList.Rows[target.Index].Cells["NetDelay"].Value = target.Ping;
 
-                DeviceList.Rows[target.Index].Cells["CPURatio"].Value = string.Format("{0}%", cpu.ToString("f2"));
-                DeviceList.Rows[target.Index].Cells["MemoryRatio"].Value = string.Format("{0}G", (memory / 1000).ToString("f2"));
-                DeviceList.Rows[target.Index].Cells["BootTime"].Value = string.Format("{0}h:{1}m", (int)(tickCount / 1000 / 3600), (int)(tickCount / 1000 % 3600 / 60));
-                DeviceList.Rows[target.Index].Cells["GPURatio"].Value = string.Format("{0}%", gpu_ratio.ToString("f2"));
-                DeviceList.Rows[target.Index].Cells["GPUMemory"].Value = string.Format("{0}%", gpu_memory_ratio.ToString("f2"));
+                SetSystemInfoFormDeviceList(
+                        target.Index,
+                        string.Format("{0}%", cpu.ToString("f2")),
+                        string.Format("{0}G", (memory / 1000).ToString("f2")),
+                        string.Format("{0}h:{1}m", (int)(tickCount / 1000 / 3600), (int)(tickCount / 1000 % 3600 / 60)),
+                        string.Format("{0}%", gpu_ratio.ToString("f2")),
+                        string.Format("{0}%", gpu_memory_ratio.ToString("f2")));                    
             }
         }
 
