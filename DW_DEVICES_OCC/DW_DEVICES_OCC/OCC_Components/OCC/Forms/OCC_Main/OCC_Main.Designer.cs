@@ -45,12 +45,12 @@
             this.ComboBoxApp = new Sunny.UI.UIComboBox();
             this.GroupBoxDeviceGroup = new Sunny.UI.UIGroupBox();
             this.DataGridViewDevice = new Sunny.UI.UIDataGridView();
-            this.DeviceStatusTimer = new System.Windows.Forms.Timer(this.components);
-            this.PowerSwitchImage = new System.Windows.Forms.ImageList(this.components);
             this.DeviceName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Selected = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.SwitchButton = new System.Windows.Forms.DataGridViewImageColumn();
             this.ConnectionStatus = new System.Windows.Forms.DataGridViewImageColumn();
+            this.DeviceStatusTimer = new System.Windows.Forms.Timer(this.components);
+            this.PowerSwitchImage = new System.Windows.Forms.ImageList(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.uiGroupBox3.SuspendLayout();
             this.uiGroupBox2.SuspendLayout();
@@ -62,10 +62,10 @@
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.uiGroupBox4, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.uiGroupBox3, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.uiGroupBox2, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.GroupBoxDeviceGroup, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.uiGroupBox4, 0, 3);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -79,7 +79,6 @@
             // 
             // uiGroupBox4
             // 
-            this.uiGroupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uiGroupBox4.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.uiGroupBox4.Location = new System.Drawing.Point(4, 686);
             this.uiGroupBox4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -262,18 +261,6 @@
             this.DataGridViewDevice.TabIndex = 0;
             this.DataGridViewDevice.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewDevice_CellContentClick);
             // 
-            // DeviceStatusTimer
-            // 
-            this.DeviceStatusTimer.Tick += new System.EventHandler(this.DeviceStatusTimer_Tick);
-            // 
-            // PowerSwitchImage
-            // 
-            this.PowerSwitchImage.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("PowerSwitchImage.ImageStream")));
-            this.PowerSwitchImage.TransparentColor = System.Drawing.Color.Transparent;
-            this.PowerSwitchImage.Images.SetKeyName(0, "switch-关.png");
-            this.PowerSwitchImage.Images.SetKeyName(1, "switch-开.png");
-            this.PowerSwitchImage.Images.SetKeyName(2, "关闭中.png");
-            // 
             // DeviceName
             // 
             this.DeviceName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -303,6 +290,18 @@
             this.ConnectionStatus.Name = "ConnectionStatus";
             this.ConnectionStatus.ReadOnly = true;
             this.ConnectionStatus.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // DeviceStatusTimer
+            // 
+            this.DeviceStatusTimer.Tick += new System.EventHandler(this.DeviceStatusTimer_Tick);
+            // 
+            // PowerSwitchImage
+            // 
+            this.PowerSwitchImage.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("PowerSwitchImage.ImageStream")));
+            this.PowerSwitchImage.TransparentColor = System.Drawing.Color.Transparent;
+            this.PowerSwitchImage.Images.SetKeyName(0, "switch-关.png");
+            this.PowerSwitchImage.Images.SetKeyName(1, "switch-开.png");
+            this.PowerSwitchImage.Images.SetKeyName(2, "关闭中.png");
             // 
             // OCC_Main
             // 

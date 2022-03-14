@@ -64,7 +64,8 @@
     <Compile Include="Core\Authorize\UserAuthEnum.cs" />
     <Compile Include="Core\Authorize\UserAuthManager.cs" />
     <Compile Include="Core\Authorize\TestAuth.cs" />
-    <Compile Include="Core\DataManager.cs" />
+    <Compile Include="Core\DataManager\DataManager.cs" />
+    <Compile Include="Core\DataManager\DeviceStatusCache.cs" />
     <Compile Include="Core\EventHandler\C_SystemStateEventHandler.cs" />
     <Compile Include="Core\EventHandler\GetSystemInfoEventHandler-Template.cs" />
     <Compile Include="Core\EventHandler\RemotePluginEventHandler.cs" />
@@ -264,5 +265,6 @@
   <ItemGroup>
     <None Include="Resources\关闭中.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

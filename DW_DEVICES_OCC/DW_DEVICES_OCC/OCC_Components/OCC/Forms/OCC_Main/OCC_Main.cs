@@ -1,4 +1,7 @@
-﻿using DataModel;
+﻿using DataCache;
+using DataModel;
+using OCC.Core;
+using OCC.Forms.OCC_Devices;
 using RabbitMQEvent;
 using System;
 using System.Collections.Generic;
@@ -15,23 +18,6 @@ namespace OCC.Forms.OCC_Main
 {
     public partial class OCC_Main : Form
     {
-        public class UpdateSystemStateArgs
-        {
-            public string ip { get; set; }
-            public float cpu { get; set; }
-            public float memory { get; set; }
-            public int tickCount { get; set; }
-            public float gpu_ratio { get; set; }
-            public float gpu_memory_ratio { get; set; }
-        }
-
-        public class UpdateConnectionStateArgs
-        {
-            public string ip { get; set; }
-            public bool connect { get; set; }
-        }
-
-
         #region 单例
         private static OCC_Main s_instance = null;
         private static readonly object syslock = new object();
@@ -55,34 +41,9 @@ namespace OCC.Forms.OCC_Main
 
         #endregion
 
-        /// <summary>
-        /// 开机状态枚举
-        /// </summary>
-        public enum DevicePowerStatus
-        {
-            OPENED = 0,  //开机状态
-            CLOSED,      //关机状态
-            CLOSEING,    //关机中
-            OPENING      //开机中
-        }
 
-        /// <summary>
-        /// 设备数据绑定结构
-        /// </summary>
-        public class DeviceStatusCache
-        {
-            public DeviceStatusCache() { }
-            public DeviceStatusCache(int index, DevicePowerStatus powerStatus, DeviceDataModel dataModel)
-            {
-                Index = index;
-                PowerStatus = powerStatus;
-                DataModel = dataModel;
-            }
 
-            public int Index;
-            public DevicePowerStatus PowerStatus = DevicePowerStatus.CLOSED;
-            public DeviceDataModel DataModel;
-        }
+
 
         public const string FORM_NAME = "首页";
         
@@ -91,14 +52,8 @@ namespace OCC.Forms.OCC_Main
         /// </summary>
         public static SynchronizationContext UiContext;
 
-        /// <summary>
-        /// 设备状态缓存
-        /// </summary>
-        public List<DeviceStatusCache> DeviceInfoCollection = new List<DeviceStatusCache>();
-        /// <summary>
-        /// 设备数据
-        /// </summary>
-        private List<DeviceDataModel> deviceInfoCoollection;
+
+
 
         public OCC_Main()
         {
@@ -118,23 +73,19 @@ namespace OCC.Forms.OCC_Main
         /// </summary>
         private void DataGridViewDevicesInitialize()
         {
+            DataManager.Instance.GetDeviceData();
+
             DataGridViewDevice.Rows.Clear();
 
-            deviceInfoCoollection = DataBaseCRUDManager.Instance.GetAllActivatedDeviceInfo();
+            DataGridViewDevice.Rows.Add(DataManager.Instance.DeviceInfoCollection.Count);
 
-
-
-            if (deviceInfoCoollection.Count > 0)
+            if (DataManager.Instance.DeviceInfoCollection.Count > 0)
             {
-                DataGridViewDevice.Rows.Add(deviceInfoCoollection.Count);
-
-                for (int i = 0; i < deviceInfoCoollection.Count; i++)
+                for (int i = 0; i < DataManager.Instance.DeviceInfoCollection.Count; i++)
                 {
-                    // 对设备状态进行缓存
-                    DeviceInfoCollection.Add(new DeviceStatusCache(i, DevicePowerStatus.CLOSED, deviceInfoCoollection[i]));
-                    Debug.Info($" index {i} {deviceInfoCoollection[i].Name}");
-                    DataGridViewDevice.Rows[i].Tag = deviceInfoCoollection[i];                    
-                    DataGridViewDevice.Rows[i].Cells["DeviceName"].Value = deviceInfoCoollection[i].Name;                    
+                    Debug.Info($" index {i} {DataManager.Instance.DeviceInfoCollection[i].DataModel.Name}");
+                    DataGridViewDevice.Rows[i].Tag = DataManager.Instance.DeviceInfoCollection[i].DataModel;
+                    DataGridViewDevice.Rows[i].Cells["DeviceName"].Value = DataManager.Instance.DeviceInfoCollection[i].DataModel.Name;
                 }
             }
         }
@@ -147,7 +98,7 @@ namespace OCC.Forms.OCC_Main
         private void DeviceStatusTimer_Tick(object sender, EventArgs e)
         {
             List<string> ips = new List<string>();
-            DeviceInfoCollection.ForEach(d => ips.Add(d.DataModel.IP));
+            DataManager.Instance.DeviceInfoCollection.ForEach(d => ips.Add(d.DataModel.IP));
             DevicePingManager.Instance.PingDevices(ips);
 
             UpdateDevicePowerStatus();
@@ -159,9 +110,9 @@ namespace OCC.Forms.OCC_Main
         /// </summary>
         private void UpdateDevicePowerStatus()
         {
-            foreach (DeviceDataModel deviceInfo in deviceInfoCoollection)
+            foreach (DeviceStatusCache deviceInfo in DataManager.Instance.DeviceInfoCollection)
             {
-                Debug.Error($" DevicePingManager.Instance.IPDict {deviceInfo.IP}");
+                Debug.Error($" DevicePingManager.Instance.IPDict {deviceInfo.DataModel.IP}");
 
 #if DEBUG
                 foreach (var ip in DevicePingManager.Instance.IPDict)
@@ -169,39 +120,43 @@ namespace OCC.Forms.OCC_Main
                     Debug.Error($"ip connected {ip}");
                 }
 #endif
-                var target = DeviceInfoCollection.FirstOrDefault(d => d.DataModel.IP.Equals(deviceInfo.IP));
-
-                if (DevicePingManager.Instance.IPDict.ContainsKey(deviceInfo.IP))
+                
+                if (DevicePingManager.Instance.IPDict.ContainsKey(deviceInfo.DataModel.IP))
                 {
-                    if (DeviceInfoCollection[target.Index].PowerStatus == DevicePowerStatus.CLOSEING)
+                    if (DataManager.Instance.DeviceInfoCollection[deviceInfo.Index].PowerStatus == DevicePowerStatus.CLOSEING)
                         return;
 
-                    if (null != target)
+                    if (null != deviceInfo)
                     {
-                        DataGridViewDevice.Rows[target.Index].Cells["SwitchButton"].Value = global::OCC.Properties.Resources.switch_开;
-                        DeviceInfoCollection[target.Index].PowerStatus = DevicePowerStatus.OPENED;
+                        DataGridViewDevice.Rows[deviceInfo.Index].Cells["SwitchButton"].Value = global::OCC.Properties.Resources.switch_开;
+                        OCC_Device.Instance.DeviceList.Rows[deviceInfo.Index].Cells["OpenOrClosePCState"].Value = global::OCC.Properties.Resources.switch_开;
+                        DataManager.Instance.DeviceInfoCollection[deviceInfo.Index].PowerStatus = DevicePowerStatus.OPENED;
+                        DataManager.Instance.DeviceInfoCollection[deviceInfo.Index].Ping = DevicePingManager.Instance.IPDict[deviceInfo.DataModel.IP];
                     }
                 }
                 else
                 {
-                    if (DeviceInfoCollection[target.Index].PowerStatus == DevicePowerStatus.OPENING)
+                    if (DataManager.Instance.DeviceInfoCollection[deviceInfo.Index].PowerStatus == DevicePowerStatus.OPENING)
                         return;
 
-                    if (null != target)
+                    if (null != deviceInfo)
                     {
-                        DataGridViewDevice.Rows[target.Index].Cells["SwitchButton"].Value = global::OCC.Properties.Resources.switch_关;
-                        DeviceInfoCollection[target.Index].PowerStatus = DevicePowerStatus.CLOSED;
+                        DataGridViewDevice.Rows[deviceInfo.Index].Cells["SwitchButton"].Value = global::OCC.Properties.Resources.switch_关;
+                        OCC_Device.Instance.DeviceList.Rows[deviceInfo.Index].Cells["OpenOrClosePCState"].Value = global::OCC.Properties.Resources.switch_关;
+                        DataManager.Instance.DeviceInfoCollection[deviceInfo.Index].PowerStatus = DevicePowerStatus.CLOSED;
+                        DataManager.Instance.DeviceInfoCollection[deviceInfo.Index].Ping = string.Empty;
                     }
                 }
             }
         }
 
         /// <summary>
+        /// 向已开机的设备发送消息
         /// 更新设备连接集控状态
         /// </summary>
         private void SendDeviceConnectStatusEvent()
         {
-            List<DeviceStatusCache> devicePowerOnCollection =  DeviceInfoCollection.FindAll(d => d.PowerStatus.Equals(DevicePowerStatus.OPENED));
+            List<DeviceStatusCache> devicePowerOnCollection = DataManager.Instance.DeviceInfoCollection.FindAll(d => d.PowerStatus.Equals(DevicePowerStatus.OPENED));
 
             foreach (DeviceStatusCache deviceStatus in devicePowerOnCollection)
             {
@@ -212,25 +167,18 @@ namespace OCC.Forms.OCC_Main
         }
 
         /// <summary>
+        /// 已开机设备回传设备信息消息
         /// 更新客户端发送过来的消息
         /// </summary>
         /// <param name="state"></param>
         public void UpdateDeviceSystemInfoEventHandler(object state)
         {
-            string ip = ((UpdateSystemStateArgs)state).ip;
-            float cpu = ((UpdateSystemStateArgs)state).cpu;
-            float memory = ((UpdateSystemStateArgs)state).memory;
-            int tickCount = ((UpdateSystemStateArgs)state).tickCount;
-            float gpu_ratio = ((UpdateSystemStateArgs)state).gpu_ratio;
-            float gpu_memory_ratio = ((UpdateSystemStateArgs)state).gpu_memory_ratio;
+            string ip = ((Handler.C_SystemStateEventHandler.UpdateSystemStateArgs)state).ip;
 
-            List<DeviceStatusCache> devicePowerOnCollection = DeviceInfoCollection.FindAll(d => d.PowerStatus.Equals(DevicePowerStatus.OPENED));
+            List<DeviceStatusCache> devicePowerOnCollection = DataManager.Instance.DeviceInfoCollection.FindAll(d => d.PowerStatus.Equals(DevicePowerStatus.OPENED));
 
             foreach (DeviceStatusCache deviceStatus in devicePowerOnCollection)
             {                
-                // 发送获取客户端状态的消息
-                //RabbitMQEventBus.GetSingleton().Trigger<R_C_SystemStateData>(showIP, new R_C_SystemStateData());//直接通过事件总线触发
-                //RabbitMQManager.Instance.Trigger(deviceStatus.DataModel.IP, new OCC_TO_CLIENT.R_C_SystemStateData());
                 if (deviceStatus.DataModel.IP.Equals(ip))
                 {
                     Debug.Info($"UpdateDeviceSystemInfoEventHandler ip {ip} name {deviceStatus.DataModel.Name} row index {deviceStatus.Index} Connected");                    
@@ -239,17 +187,20 @@ namespace OCC.Forms.OCC_Main
                     DataGridViewDevice.Refresh();
                 }                
             }
-            //Debug.Info($"ip {((UpdateSystemStateArgs)state).ip} {((UpdateSystemStateArgs)state).cpu} {((UpdateSystemStateArgs)state)}");
         }
 
+        /// <summary>
+        /// 通过RabbitMQ插件获取的设备连接状态，主要是关机
+        /// </summary>
+        /// <param name="state"></param>
         public void UpdateDeviceConnectionState(object state)
         {
-            string ip = ((UpdateConnectionStateArgs)state).ip;
-            bool connect = ((UpdateConnectionStateArgs)state).connect;
+            string ip = ((EventHandler.RemotePluginEventHandler.UpdateConnectionStateArgs)state).ip;
+            bool connect = ((EventHandler.RemotePluginEventHandler.UpdateConnectionStateArgs)state).connect;
 
             if (null != ip)
             {
-                var device = DeviceInfoCollection.FirstOrDefault(d => d.DataModel.IP.Equals(ip));
+                var device = DataManager.Instance.DeviceInfoCollection.FirstOrDefault(d => d.DataModel.IP.Equals(ip));
                 if (null != device)
                 {
                     DataGridViewDevice.Rows[device.Index].Cells["ConnectionStatus "].Value =
@@ -287,7 +238,7 @@ namespace OCC.Forms.OCC_Main
         /// <param name="e"></param>
         private void RemotePowerSet(object sender, DataGridViewCellEventArgs e)
         {
-            var targetDevice = DeviceInfoCollection.FirstOrDefault(d => d.Index.Equals(e.RowIndex));
+            var targetDevice = DataManager.Instance.DeviceInfoCollection.FirstOrDefault(d => d.Index.Equals(e.RowIndex));
             if (null != targetDevice)
             {
                 // 开机

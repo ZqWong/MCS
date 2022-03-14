@@ -30,29 +30,22 @@ namespace OCC.Forms.OCC_Devices
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.uiGroupBox1 = new Sunny.UI.UIGroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.DevicesGroupBox = new System.Windows.Forms.GroupBox();
-            this.DeviceList = new System.Windows.Forms.DataGridView();
-            this.DevicesMenuStrip = new System.Windows.Forms.MenuStrip();
-            this.AddDeviceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.DeleteDeviceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.DeviceRightClick = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.DeleteUserInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.AujustUserInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.DeviceList = new Sunny.UI.UIDataGridView();
             this.Selected = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.DeviceName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ip = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OpenOrClosePCState = new System.Windows.Forms.DataGridViewImageColumn();
             this.ConnectionState = new System.Windows.Forms.DataGridViewImageColumn();
-            this.BootTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CPURatio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BootTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MemoryRatio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GPURatio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GPUMemory = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -61,39 +54,68 @@ namespace OCC.Forms.OCC_Devices
             this.LeftRightEyeState = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProcessSate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Remark = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PingTimer = new System.Windows.Forms.Timer(this.components);
+            this.IP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.ButtonRemoveDevice = new Sunny.UI.UIButton();
+            this.ButtonAddDevice = new Sunny.UI.UIButton();
+            this.uiGroupBox2 = new Sunny.UI.UIGroupBox();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.uiGroupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.DevicesGroupBox.SuspendLayout();
+            this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DeviceList)).BeginInit();
-            this.DevicesMenuStrip.SuspendLayout();
-            this.DeviceRightClick.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.uiGroupBox1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.uiGroupBox2, 0, 1);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 250F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1129, 717);
+            this.tableLayoutPanel1.TabIndex = 1;
+            // 
+            // uiGroupBox1
+            // 
+            this.uiGroupBox1.Controls.Add(this.panel1);
+            this.uiGroupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uiGroupBox1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiGroupBox1.Location = new System.Drawing.Point(4, 5);
+            this.uiGroupBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.uiGroupBox1.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiGroupBox1.Name = "uiGroupBox1";
+            this.uiGroupBox1.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
+            this.uiGroupBox1.Size = new System.Drawing.Size(1121, 457);
+            this.uiGroupBox1.TabIndex = 0;
+            this.uiGroupBox1.Text = "设备列表";
+            this.uiGroupBox1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.DevicesGroupBox);
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.Controls.Add(this.panel3);
+            this.panel1.Controls.Add(this.panel2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Location = new System.Drawing.Point(0, 32);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(749, 508);
+            this.panel1.Size = new System.Drawing.Size(1121, 425);
             this.panel1.TabIndex = 0;
             // 
-            // DevicesGroupBox
+            // panel3
             // 
-            this.DevicesGroupBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.DevicesGroupBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.DevicesGroupBox.Controls.Add(this.DeviceList);
-            this.DevicesGroupBox.Controls.Add(this.DevicesMenuStrip);
-            this.DevicesGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DevicesGroupBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.DevicesGroupBox.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.DevicesGroupBox.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.DevicesGroupBox.Location = new System.Drawing.Point(0, 0);
-            this.DevicesGroupBox.Name = "DevicesGroupBox";
-            this.DevicesGroupBox.Size = new System.Drawing.Size(749, 508);
-            this.DevicesGroupBox.TabIndex = 1;
-            this.DevicesGroupBox.TabStop = false;
-            this.DevicesGroupBox.Text = "设备管理";
+            this.panel3.Controls.Add(this.DeviceList);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(0, 45);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1121, 380);
+            this.panel3.TabIndex = 1;
             // 
             // DeviceList
             // 
@@ -101,34 +123,27 @@ namespace OCC.Forms.OCC_Devices
             this.DeviceList.AllowUserToDeleteRows = false;
             this.DeviceList.AllowUserToResizeColumns = false;
             this.DeviceList.AllowUserToResizeRows = false;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(90)))));
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DeviceList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
-            this.DeviceList.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
+            this.DeviceList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.DeviceList.BackgroundColor = System.Drawing.Color.White;
             this.DeviceList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DeviceList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
-            this.DeviceList.ColumnHeadersHeight = 30;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DeviceList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.DeviceList.ColumnHeadersHeight = 32;
             this.DeviceList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.DeviceList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Selected,
             this.DeviceName,
-            this.Ip,
             this.OpenOrClosePCState,
             this.ConnectionState,
-            this.BootTime,
             this.CPURatio,
+            this.BootTime,
             this.MemoryRatio,
             this.GPURatio,
             this.GPUMemory,
@@ -136,264 +151,279 @@ namespace OCC.Forms.OCC_Devices
             this.StereoState,
             this.LeftRightEyeState,
             this.ProcessSate,
-            this.Remark});
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DeviceList.DefaultCellStyle = dataGridViewCellStyle16;
+            this.Remark,
+            this.IP});
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DeviceList.DefaultCellStyle = dataGridViewCellStyle3;
             this.DeviceList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DeviceList.EnableHeadersVisualStyles = false;
-            this.DeviceList.GridColor = System.Drawing.Color.DimGray;
-            this.DeviceList.Location = new System.Drawing.Point(3, 44);
+            this.DeviceList.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.DeviceList.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
+            this.DeviceList.Location = new System.Drawing.Point(0, 0);
             this.DeviceList.Name = "DeviceList";
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DeviceList.RowHeadersDefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DeviceList.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.DeviceList.RowHeadersVisible = false;
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.White;
-            this.DeviceList.RowsDefaultCellStyle = dataGridViewCellStyle18;
-            this.DeviceList.RowTemplate.Height = 23;
+            this.DeviceList.RowHeight = 40;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
+            this.DeviceList.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.DeviceList.RowTemplate.Height = 40;
+            this.DeviceList.SelectedIndex = -1;
             this.DeviceList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DeviceList.Size = new System.Drawing.Size(743, 461);
+            this.DeviceList.ShowGridLine = true;
+            this.DeviceList.Size = new System.Drawing.Size(1121, 380);
             this.DeviceList.TabIndex = 0;
-            this.DeviceList.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DeviceList_CellMouseUp);
-            // 
-            // DevicesMenuStrip
-            // 
-            this.DevicesMenuStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.DevicesMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.AddDeviceToolStripMenuItem,
-            this.DeleteDeviceToolStripMenuItem});
-            this.DevicesMenuStrip.Location = new System.Drawing.Point(3, 19);
-            this.DevicesMenuStrip.Name = "DevicesMenuStrip";
-            this.DevicesMenuStrip.Size = new System.Drawing.Size(743, 25);
-            this.DevicesMenuStrip.TabIndex = 1;
-            this.DevicesMenuStrip.Text = "menuStrip1";
-            // 
-            // AddDeviceToolStripMenuItem
-            // 
-            this.AddDeviceToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.AddDeviceToolStripMenuItem.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.AddDeviceToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.AddDeviceToolStripMenuItem.Name = "AddDeviceToolStripMenuItem";
-            this.AddDeviceToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
-            this.AddDeviceToolStripMenuItem.Text = "添加设备";
-            this.AddDeviceToolStripMenuItem.Click += new System.EventHandler(this.AddDeviceToolStripMenuItem_Click);
-            // 
-            // DeleteDeviceToolStripMenuItem
-            // 
-            this.DeleteDeviceToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.DeleteDeviceToolStripMenuItem.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.DeleteDeviceToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.DeleteDeviceToolStripMenuItem.Name = "DeleteDeviceToolStripMenuItem";
-            this.DeleteDeviceToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
-            this.DeleteDeviceToolStripMenuItem.Text = "批量删除";
-            this.DeleteDeviceToolStripMenuItem.Click += new System.EventHandler(this.DeleteDeviceToolStripMenuItem_Click);
-            // 
-            // DeviceRightClick
-            // 
-            this.DeviceRightClick.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.DeleteUserInfoToolStripMenuItem,
-            this.AujustUserInfoToolStripMenuItem});
-            this.DeviceRightClick.Name = "UserRightClick";
-            this.DeviceRightClick.Size = new System.Drawing.Size(125, 48);
-            // 
-            // DeleteUserInfoToolStripMenuItem
-            // 
-            this.DeleteUserInfoToolStripMenuItem.Name = "DeleteUserInfoToolStripMenuItem";
-            this.DeleteUserInfoToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.DeleteUserInfoToolStripMenuItem.Text = "删除设备";
-            this.DeleteUserInfoToolStripMenuItem.Click += new System.EventHandler(this.DeleteDeiveInfoToolStripMenuItem_Click);
-            // 
-            // AujustUserInfoToolStripMenuItem
-            // 
-            this.AujustUserInfoToolStripMenuItem.Name = "AujustUserInfoToolStripMenuItem";
-            this.AujustUserInfoToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.AujustUserInfoToolStripMenuItem.Text = "编辑设备";
-            this.AujustUserInfoToolStripMenuItem.Click += new System.EventHandler(this.AujustDeviceInfoToolStripMenuItem_Click);
             // 
             // Selected
             // 
-            this.Selected.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Selected.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Selected.FillWeight = 86.21924F;
             this.Selected.HeaderText = "选择";
             this.Selected.Name = "Selected";
             this.Selected.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Selected.ToolTipText = "选择编辑";
-            this.Selected.Width = 40;
             // 
             // DeviceName
             // 
             this.DeviceName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.DeviceName.DefaultCellStyle = dataGridViewCellStyle15;
+            this.DeviceName.FillWeight = 86.21924F;
             this.DeviceName.HeaderText = "名称";
             this.DeviceName.Name = "DeviceName";
             this.DeviceName.ReadOnly = true;
             this.DeviceName.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.DeviceName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.DeviceName.ToolTipText = "用户的昵称";
-            this.DeviceName.Width = 37;
-            // 
-            // Ip
-            // 
-            this.Ip.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Ip.HeaderText = "IP地址";
-            this.Ip.Name = "Ip";
-            this.Ip.ReadOnly = true;
-            this.Ip.Width = 68;
+            this.DeviceName.Width = 66;
             // 
             // OpenOrClosePCState
             // 
-            this.OpenOrClosePCState.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.OpenOrClosePCState.HeaderText = "开/关机状态";
+            this.OpenOrClosePCState.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.OpenOrClosePCState.FillWeight = 121.3812F;
+            this.OpenOrClosePCState.HeaderText = "开关机状态";
+            this.OpenOrClosePCState.MinimumWidth = 18;
             this.OpenOrClosePCState.Name = "OpenOrClosePCState";
             this.OpenOrClosePCState.ReadOnly = true;
-            this.OpenOrClosePCState.Width = 79;
+            this.OpenOrClosePCState.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // ConnectionState
             // 
-            this.ConnectionState.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ConnectionState.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ConnectionState.FillWeight = 102.3817F;
             this.ConnectionState.HeaderText = "连接状态";
+            this.ConnectionState.MinimumWidth = 15;
             this.ConnectionState.Name = "ConnectionState";
             this.ConnectionState.ReadOnly = true;
-            this.ConnectionState.Width = 61;
-            // 
-            // BootTime
-            // 
-            this.BootTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.BootTime.HeaderText = "开机时间";
-            this.BootTime.Name = "BootTime";
-            this.BootTime.ReadOnly = true;
-            this.BootTime.Width = 80;
+            this.ConnectionState.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // CPURatio
             // 
-            this.CPURatio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.CPURatio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CPURatio.FillWeight = 86.21924F;
             this.CPURatio.HeaderText = "CPU%";
             this.CPURatio.Name = "CPURatio";
             this.CPURatio.ReadOnly = true;
-            this.CPURatio.Width = 68;
+            this.CPURatio.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // BootTime
+            // 
+            this.BootTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.BootTime.FillWeight = 103.7138F;
+            this.BootTime.HeaderText = "开机时间";
+            this.BootTime.MinimumWidth = 15;
+            this.BootTime.Name = "BootTime";
+            this.BootTime.ReadOnly = true;
+            this.BootTime.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // MemoryRatio
             // 
-            this.MemoryRatio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.MemoryRatio.HeaderText = "可用内存%";
+            this.MemoryRatio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.MemoryRatio.FillWeight = 86.21924F;
+            this.MemoryRatio.HeaderText = "内存%";
             this.MemoryRatio.Name = "MemoryRatio";
             this.MemoryRatio.ReadOnly = true;
-            this.MemoryRatio.Width = 91;
+            this.MemoryRatio.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // GPURatio
             // 
-            this.GPURatio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.GPURatio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.GPURatio.FillWeight = 86.21924F;
             this.GPURatio.HeaderText = "GPU%";
             this.GPURatio.Name = "GPURatio";
             this.GPURatio.ReadOnly = true;
-            this.GPURatio.Width = 69;
+            this.GPURatio.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // GPUMemory
             // 
-            this.GPUMemory.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.GPUMemory.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.GPUMemory.FillWeight = 105.1556F;
             this.GPUMemory.HeaderText = "显存占用";
+            this.GPUMemory.MinimumWidth = 15;
             this.GPUMemory.Name = "GPUMemory";
             this.GPUMemory.ReadOnly = true;
-            this.GPUMemory.Width = 80;
+            this.GPUMemory.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // NetDelay
             // 
-            this.NetDelay.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.NetDelay.HeaderText = "Ping(ms)";
+            this.NetDelay.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.NetDelay.FillWeight = 106.7163F;
+            this.NetDelay.HeaderText = "Ping( ms)";
+            this.NetDelay.MinimumWidth = 15;
             this.NetDelay.Name = "NetDelay";
             this.NetDelay.ReadOnly = true;
-            this.NetDelay.Width = 88;
+            this.NetDelay.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // StereoState
             // 
-            this.StereoState.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.StereoState.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.StereoState.FillWeight = 108.4056F;
             this.StereoState.HeaderText = "立体状态";
+            this.StereoState.MinimumWidth = 15;
             this.StereoState.Name = "StereoState";
             this.StereoState.ReadOnly = true;
-            this.StereoState.Width = 80;
+            this.StereoState.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // LeftRightEyeState
             // 
-            this.LeftRightEyeState.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.LeftRightEyeState.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.LeftRightEyeState.FillWeight = 134.498F;
             this.LeftRightEyeState.HeaderText = "左右眼状态";
+            this.LeftRightEyeState.MinimumWidth = 18;
             this.LeftRightEyeState.Name = "LeftRightEyeState";
             this.LeftRightEyeState.ReadOnly = true;
-            this.LeftRightEyeState.Width = 92;
+            this.LeftRightEyeState.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // ProcessSate
             // 
-            this.ProcessSate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ProcessSate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ProcessSate.FillWeight = 114.2132F;
             this.ProcessSate.HeaderText = "运行进程";
+            this.ProcessSate.MinimumWidth = 15;
             this.ProcessSate.Name = "ProcessSate";
             this.ProcessSate.ReadOnly = true;
-            this.ProcessSate.Width = 80;
+            this.ProcessSate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // Remark
             // 
-            this.Remark.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Remark.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Remark.FillWeight = 86.21924F;
             this.Remark.HeaderText = "备注";
             this.Remark.Name = "Remark";
             this.Remark.ReadOnly = true;
-            this.Remark.Width = 56;
+            this.Remark.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
-            // PingTimer
+            // IP
             // 
-            this.PingTimer.Tick += new System.EventHandler(this.PingTimer_Tick);
+            this.IP.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.IP.FillWeight = 86.21924F;
+            this.IP.HeaderText = "IP地址";
+            this.IP.Name = "IP";
+            this.IP.ReadOnly = true;
+            this.IP.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.ButtonRemoveDevice);
+            this.panel2.Controls.Add(this.ButtonAddDevice);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Padding = new System.Windows.Forms.Padding(5);
+            this.panel2.Size = new System.Drawing.Size(1121, 45);
+            this.panel2.TabIndex = 0;
+            // 
+            // ButtonRemoveDevice
+            // 
+            this.ButtonRemoveDevice.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.ButtonRemoveDevice.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ButtonRemoveDevice.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ButtonRemoveDevice.Location = new System.Drawing.Point(111, 5);
+            this.ButtonRemoveDevice.MinimumSize = new System.Drawing.Size(1, 1);
+            this.ButtonRemoveDevice.Name = "ButtonRemoveDevice";
+            this.ButtonRemoveDevice.Padding = new System.Windows.Forms.Padding(5);
+            this.ButtonRemoveDevice.Size = new System.Drawing.Size(100, 35);
+            this.ButtonRemoveDevice.TabIndex = 1;
+            this.ButtonRemoveDevice.Text = "删除设备";
+            this.ButtonRemoveDevice.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ButtonRemoveDevice.Click += new System.EventHandler(this.ButtonRemoveDevice_Click);
+            // 
+            // ButtonAddDevice
+            // 
+            this.ButtonAddDevice.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.ButtonAddDevice.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ButtonAddDevice.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ButtonAddDevice.Location = new System.Drawing.Point(5, 5);
+            this.ButtonAddDevice.MinimumSize = new System.Drawing.Size(1, 1);
+            this.ButtonAddDevice.Name = "ButtonAddDevice";
+            this.ButtonAddDevice.Padding = new System.Windows.Forms.Padding(5);
+            this.ButtonAddDevice.Size = new System.Drawing.Size(100, 35);
+            this.ButtonAddDevice.TabIndex = 0;
+            this.ButtonAddDevice.Text = "添加设备";
+            this.ButtonAddDevice.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ButtonAddDevice.Click += new System.EventHandler(this.ButtonAddDevice_Click);
+            // 
+            // uiGroupBox2
+            // 
+            this.uiGroupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uiGroupBox2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiGroupBox2.Location = new System.Drawing.Point(4, 472);
+            this.uiGroupBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.uiGroupBox2.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiGroupBox2.Name = "uiGroupBox2";
+            this.uiGroupBox2.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
+            this.uiGroupBox2.Size = new System.Drawing.Size(1121, 240);
+            this.uiGroupBox2.TabIndex = 1;
+            this.uiGroupBox2.Text = "设备信息";
+            this.uiGroupBox2.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // OCC_Device
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(749, 508);
-            this.Controls.Add(this.panel1);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.AutoScroll = true;
+            this.ClientSize = new System.Drawing.Size(1129, 717);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.MainMenuStrip = this.DevicesMenuStrip;
             this.Name = "OCC_Device";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "OCC_Users";
             this.Load += new System.EventHandler(this.OCC_Device_Load);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.uiGroupBox1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            this.DevicesGroupBox.ResumeLayout(false);
-            this.DevicesGroupBox.PerformLayout();
+            this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DeviceList)).EndInit();
-            this.DevicesMenuStrip.ResumeLayout(false);
-            this.DevicesMenuStrip.PerformLayout();
-            this.DeviceRightClick.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
+
         }
 
 
         #endregion
-
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private Sunny.UI.UIGroupBox uiGroupBox1;
+        private Sunny.UI.UIGroupBox uiGroupBox2;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DataGridView DeviceList;
-        private System.Windows.Forms.GroupBox DevicesGroupBox;
-        private System.Windows.Forms.MenuStrip DevicesMenuStrip;
-        private System.Windows.Forms.ToolStripMenuItem AddDeviceToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem DeleteDeviceToolStripMenuItem;
-        private System.Windows.Forms.ContextMenuStrip DeviceRightClick;
-        private System.Windows.Forms.ToolStripMenuItem DeleteUserInfoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem AujustUserInfoToolStripMenuItem;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel3;
+        private Sunny.UI.UIButton ButtonRemoveDevice;
+        private Sunny.UI.UIButton ButtonAddDevice;
+        public Sunny.UI.UIDataGridView DeviceList;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Selected;
         private System.Windows.Forms.DataGridViewTextBoxColumn DeviceName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Ip;
         private System.Windows.Forms.DataGridViewImageColumn OpenOrClosePCState;
         private System.Windows.Forms.DataGridViewImageColumn ConnectionState;
-        private System.Windows.Forms.DataGridViewTextBoxColumn BootTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn CPURatio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BootTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn MemoryRatio;
         private System.Windows.Forms.DataGridViewTextBoxColumn GPURatio;
         private System.Windows.Forms.DataGridViewTextBoxColumn GPUMemory;
@@ -402,6 +432,6 @@ namespace OCC.Forms.OCC_Devices
         private System.Windows.Forms.DataGridViewTextBoxColumn LeftRightEyeState;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProcessSate;
         private System.Windows.Forms.DataGridViewTextBoxColumn Remark;
-        private System.Windows.Forms.Timer PingTimer;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IP;
     }
 }
