@@ -921,6 +921,7 @@ namespace MCS
 
         }
 
+        // 远程开关机
         public void DoAction(string action )
         {
             // 获取用户输入延迟时间
@@ -1219,6 +1220,10 @@ namespace MCS
         }
 
 
+        /// <summary>
+        /// 更新客户端连接状态
+        /// </summary>
+        /// <param name="state"></param>
         public void UpdateCC_ClientConnectionState(object state)
         {
             string ip = ((UpdateCC_ClientConnectionState_Args) state).ip;
@@ -1534,6 +1539,10 @@ namespace MCS
         }
 
 
+        /// <summary>
+        /// 更新系统信息
+        /// </summary>
+        /// <param name="state"></param>
         public void UpdateSystemState(object state)
         {
             string ip = ((UpdateSystemState_Args) state).ip;

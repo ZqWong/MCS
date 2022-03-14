@@ -29,6 +29,8 @@ namespace OCC
         // 同步上下文
         public static SynchronizationContext s_uiContext;
 
+        public bool boola;
+
         private static OCC s_instance = null;
         private static readonly object syslock = new object();
         public static OCC Instance
@@ -62,7 +64,6 @@ namespace OCC
 
         private void RabbitMQServerInitialize()
         {
-            RabbitMQManager.Instance.UIContext = s_uiContext;
             /// RabbitMQ 链接 与 本地配置文件初始化
             try
             {
@@ -180,7 +181,8 @@ namespace OCC
             // 判断 首页 权限
             if (UserAuthManager.IsHasAuth(DataManager.Instance.CurrentUserAuthData.AuthLevel, (long)UserAuthEnum.MAIN_MENU))
             {
-                CreateTabControlButton(UserAuthEnum.MAIN_MENU.ToString(), UIText.OCC.MAIN_BUTTON_STRING, new OCC_Main());
+                // 编码时请注意 使用的 OCC_Main.Instance 创建否则线程会出问题
+                CreateTabControlButton(UserAuthEnum.MAIN_MENU.ToString(), UIText.OCC.MAIN_BUTTON_STRING, OCC_Main.Instance);
             }
             // 判断 设备 权限
             if (UserAuthManager.IsHasAuth(DataManager.Instance.CurrentUserAuthData.AuthLevel, (long)UserAuthEnum.DEVICES_MENU))

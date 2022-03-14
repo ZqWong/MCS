@@ -43,7 +43,7 @@
             this.uiGroupBox2 = new Sunny.UI.UIGroupBox();
             this.BtnAppStart = new Sunny.UI.UIButton();
             this.ComboBoxApp = new Sunny.UI.UIComboBox();
-            this.uiGroupBox1 = new Sunny.UI.UIGroupBox();
+            this.GroupBoxDeviceGroup = new Sunny.UI.UIGroupBox();
             this.DataGridViewDevice = new Sunny.UI.UIDataGridView();
             this.DeviceStatusTimer = new System.Windows.Forms.Timer(this.components);
             this.PowerSwitchImage = new System.Windows.Forms.ImageList(this.components);
@@ -54,7 +54,7 @@
             this.tableLayoutPanel1.SuspendLayout();
             this.uiGroupBox3.SuspendLayout();
             this.uiGroupBox2.SuspendLayout();
-            this.uiGroupBox1.SuspendLayout();
+            this.GroupBoxDeviceGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewDevice)).BeginInit();
             this.SuspendLayout();
             // 
@@ -65,7 +65,7 @@
             this.tableLayoutPanel1.Controls.Add(this.uiGroupBox4, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.uiGroupBox3, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.uiGroupBox2, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.uiGroupBox1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.GroupBoxDeviceGroup, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -188,25 +188,27 @@
             this.ComboBoxApp.Text = "uiComboBox2";
             this.ComboBoxApp.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // uiGroupBox1
+            // GroupBoxDeviceGroup
             // 
-            this.uiGroupBox1.Controls.Add(this.DataGridViewDevice);
-            this.uiGroupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uiGroupBox1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiGroupBox1.Location = new System.Drawing.Point(4, 5);
-            this.uiGroupBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.uiGroupBox1.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiGroupBox1.Name = "uiGroupBox1";
-            this.uiGroupBox1.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
-            this.uiGroupBox1.Size = new System.Drawing.Size(1256, 471);
-            this.uiGroupBox1.TabIndex = 0;
-            this.uiGroupBox1.Text = "设备名称";
-            this.uiGroupBox1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.GroupBoxDeviceGroup.Controls.Add(this.DataGridViewDevice);
+            this.GroupBoxDeviceGroup.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.GroupBoxDeviceGroup.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.GroupBoxDeviceGroup.Location = new System.Drawing.Point(4, 5);
+            this.GroupBoxDeviceGroup.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.GroupBoxDeviceGroup.MinimumSize = new System.Drawing.Size(1, 1);
+            this.GroupBoxDeviceGroup.Name = "GroupBoxDeviceGroup";
+            this.GroupBoxDeviceGroup.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
+            this.GroupBoxDeviceGroup.Size = new System.Drawing.Size(1256, 471);
+            this.GroupBoxDeviceGroup.TabIndex = 0;
+            this.GroupBoxDeviceGroup.Text = "设备名称";
+            this.GroupBoxDeviceGroup.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // DataGridViewDevice
             // 
             this.DataGridViewDevice.AllowUserToAddRows = false;
             this.DataGridViewDevice.AllowUserToDeleteRows = false;
+            this.DataGridViewDevice.AllowUserToResizeColumns = false;
+            this.DataGridViewDevice.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
             this.DataGridViewDevice.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.DataGridViewDevice.BackgroundColor = System.Drawing.Color.White;
@@ -254,6 +256,7 @@
             this.DataGridViewDevice.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.DataGridViewDevice.RowTemplate.Height = 40;
             this.DataGridViewDevice.SelectedIndex = -1;
+            this.DataGridViewDevice.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DataGridViewDevice.ShowGridLine = true;
             this.DataGridViewDevice.Size = new System.Drawing.Size(1256, 439);
             this.DataGridViewDevice.TabIndex = 0;
@@ -314,7 +317,7 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.uiGroupBox3.ResumeLayout(false);
             this.uiGroupBox2.ResumeLayout(false);
-            this.uiGroupBox1.ResumeLayout(false);
+            this.GroupBoxDeviceGroup.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewDevice)).EndInit();
             this.ResumeLayout(false);
 
@@ -326,14 +329,14 @@
         private Sunny.UI.UIGroupBox uiGroupBox4;
         private Sunny.UI.UIGroupBox uiGroupBox3;
         private Sunny.UI.UIGroupBox uiGroupBox2;
-        private Sunny.UI.UIGroupBox uiGroupBox1;
-        private Sunny.UI.UIDataGridView DataGridViewDevice;
+        private Sunny.UI.UIGroupBox GroupBoxDeviceGroup;
         private Sunny.UI.UIComboBox ComboBoxGroup;
         private Sunny.UI.UIComboBox ComboBoxApp;
         private Sunny.UI.UIButton BtnGroupStart;
         private Sunny.UI.UIButton BtnAppStart;
         private System.Windows.Forms.Timer DeviceStatusTimer;
         private System.Windows.Forms.ImageList PowerSwitchImage;
+        public Sunny.UI.UIDataGridView DataGridViewDevice;
         private System.Windows.Forms.DataGridViewTextBoxColumn DeviceName;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Selected;
         private System.Windows.Forms.DataGridViewImageColumn SwitchButton;

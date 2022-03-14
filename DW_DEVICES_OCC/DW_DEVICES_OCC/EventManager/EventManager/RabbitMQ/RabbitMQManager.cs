@@ -19,7 +19,7 @@ namespace RabbitMQEvent
         /// <summary>
         /// 这个中间件需要外部传过来
         /// </summary>
-        public SynchronizationContext UIContext;
+        public static SynchronizationContext UIContext;
 
         //private readonly IEventStore m_eventCacheInMemory;
         private readonly LocalEventCacheController m_eventCacheInMemory;
@@ -76,6 +76,7 @@ namespace RabbitMQEvent
 
         public RabbitMQManager()
         {
+            UIContext = SynchronizationContext.Current;
             // 初始化事件缓存
             m_eventCacheInMemory = new LocalEventCacheController();
             // 初始化Ioc容器 （Castle Windsor）

@@ -102,10 +102,10 @@ namespace OCC.Forms.OCC_Main
 
         public OCC_Main()
         {
-            InitializeComponent();
+            UiContext = SynchronizationContext.Current;
 
-            UiContext = new SynchronizationContext();
-         
+            InitializeComponent();
+                    
             DataGridViewDevicesInitialize();
 
             DeviceStatusTimer.Enabled = true;
@@ -152,7 +152,6 @@ namespace OCC.Forms.OCC_Main
 
             UpdateDevicePowerStatus();
             SendDeviceConnectStatusEvent();
-
         }
 
         /// <summary>
@@ -228,36 +227,37 @@ namespace OCC.Forms.OCC_Main
             List<DeviceStatusCache> devicePowerOnCollection = DeviceInfoCollection.FindAll(d => d.PowerStatus.Equals(DevicePowerStatus.OPENED));
 
             foreach (DeviceStatusCache deviceStatus in devicePowerOnCollection)
-            {
+            {                
                 // 发送获取客户端状态的消息
                 //RabbitMQEventBus.GetSingleton().Trigger<R_C_SystemStateData>(showIP, new R_C_SystemStateData());//直接通过事件总线触发
                 //RabbitMQManager.Instance.Trigger(deviceStatus.DataModel.IP, new OCC_TO_CLIENT.R_C_SystemStateData());
                 if (deviceStatus.DataModel.IP.Equals(ip))
                 {
-                    this.DataGridViewDevice.Rows[deviceStatus.Index].Cells["ConnectionStatus"].Value = global::OCC.Properties.Resources.switch_开;
+                    Debug.Info($"UpdateDeviceSystemInfoEventHandler ip {ip} name {deviceStatus.DataModel.Name} row index {deviceStatus.Index} Connected");                    
                     Debug.Info($"Rows {deviceStatus.Index} {deviceStatus.DataModel.Name} Cells[ConnectionStatus] switch_开 ");
                     this.DataGridViewDevice.Rows[deviceStatus.Index].Cells["ConnectionStatus"].Value = global::OCC.Properties.Resources.switch_开;                    
-                }
+                    DataGridViewDevice.Refresh();
+                }                
             }
             //Debug.Info($"ip {((UpdateSystemStateArgs)state).ip} {((UpdateSystemStateArgs)state).cpu} {((UpdateSystemStateArgs)state)}");
         }
 
         public void UpdateDeviceConnectionState(object state)
         {
-            //string ip = ((UpdateConnectionStateArgs)state).ip;
-            //bool connect = ((UpdateConnectionStateArgs)state).connect;
+            string ip = ((UpdateConnectionStateArgs)state).ip;
+            bool connect = ((UpdateConnectionStateArgs)state).connect;
 
-            //if (null != ip)
-            //{
-            //    var device = DeviceInfoCollection.FirstOrDefault(d => d.DataModel.IP.Equals(ip));
-            //    if (null != device)
-            //    {
-            //        DataGridViewDevice.Rows[device.Index].Cells["ConnectionStatus "].Value =
-            //            connect ?
-            //            global::OCC.Properties.Resources.switch_开 :
-            //            global::OCC.Properties.Resources.switch_关;
-            //    }
-            //}
+            if (null != ip)
+            {
+                var device = DeviceInfoCollection.FirstOrDefault(d => d.DataModel.IP.Equals(ip));
+                if (null != device)
+                {
+                    DataGridViewDevice.Rows[device.Index].Cells["ConnectionStatus "].Value =
+                        connect ?
+                        global::OCC.Properties.Resources.switch_开 :
+                        global::OCC.Properties.Resources.switch_关;
+                }
+            }
         }
 
 
