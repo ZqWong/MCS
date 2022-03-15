@@ -424,7 +424,11 @@ public class DataBaseCRUDManager : LockedSingletonClass<DataBaseCRUDManager>
     {
         try
         {
-            DataBaseManager.Instance.DB.Deleteable<DeviceDataModel>().Where(d => d.Id.Equals(id)).IsLogic().ExecuteCommand("del_flag");
+            int count = DataBaseManager.Instance.DB.Deleteable<DeviceDataModel>().Where(d => d.Id.Equals(id)).IsLogic().ExecuteCommand("del_flag");
+            if (count >= 1)
+            {
+                DataBaseManager.Instance.DB.Deleteable<AppDeviceBindDataModel>().Where(ad => ad.DeviceId.Equals(id)).IsLogic().ExecuteCommand("del_flag");
+            }            
         }
         catch (Exception ex)
         {

@@ -494,7 +494,6 @@ namespace RabbitMQEvent
         /// <param name="eventData"></param>
         public void Trigger<TEventData>(string ip, TEventData eventData) where TEventData : IEventData
         {
-
             var message = JsonConvert.SerializeObject(eventData);
             var body = Encoding.UTF8.GetBytes(message);
 

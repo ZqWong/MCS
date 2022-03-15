@@ -1,6 +1,7 @@
 ﻿using DataCache;
 using DataModel;
 using OCC.Core;
+using Sunny.UI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -101,7 +102,7 @@ namespace OCC.Forms
             OCC_DeviceDetail userDetailForm = new OCC_DeviceDetail();
             userDetailForm.Owner = this;
             userDetailForm.Text = "添加设备";
-            userDetailForm.ShowDialog();
+            userDetailForm.ShowDialogWithMask();
         }
 
         /// <summary>
@@ -117,7 +118,7 @@ namespace OCC.Forms
 
             var device = DeviceList.Rows[currentSelectRowIndex].Tag as DeviceStatusCache;
             userDetailForm.DeviceData = device.DataModel;
-            userDetailForm.ShowDialog();
+            userDetailForm.ShowDialogWithMask();
         }
 
         /// <summary>
@@ -156,7 +157,8 @@ namespace OCC.Forms
 
                 inSelectMode = false;
                 DeviceList.Columns[0].Visible = inSelectMode;
-                DeviceListInitialize();
+                RefreshDataModel();
+                //DeviceListInitialize();
             }
         }
 

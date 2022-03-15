@@ -216,13 +216,8 @@ namespace OCC.Forms
         {
             foreach (DeviceStatusCache deviceInfo in DataManager.Instance.DeviceInfoCollection)
             {
-                Debug.Error($" DevicePingManager.Instance.IPDict {deviceInfo.DataModel.IP}");
-
 #if DEBUG
-                foreach (var ip in DevicePingManager.Instance.IPDict)
-                {
-                    Debug.Error($"ip connected {ip}");
-                }
+                Debug.Info($" DevicePingManager.Instance.IPDict {deviceInfo.DataModel.IP}");
 #endif
                 
                 if (DevicePingManager.Instance.IPDict.ContainsKey(deviceInfo.DataModel.IP))
@@ -266,6 +261,7 @@ namespace OCC.Forms
             {
                 // 发送获取客户端状态的消息
                 //RabbitMQEventBus.GetSingleton().Trigger<R_C_SystemStateData>(showIP, new R_C_SystemStateData());//直接通过事件总线触发
+                Debug.Info($"{this} Trigger {deviceStatus.DataModel.IP} R_C_SystemStateData");
                 RabbitMQManager.Instance.Trigger(deviceStatus.DataModel.IP, new OCC_TO_CLIENT.R_C_SystemStateData());
             }
         }

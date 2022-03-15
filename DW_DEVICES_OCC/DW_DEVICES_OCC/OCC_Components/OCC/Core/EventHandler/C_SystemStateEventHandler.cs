@@ -34,6 +34,7 @@ namespace Handler
                 gpu_memory_ratio = eventData.gpu_memory_ratio,
             };
 
+
             OCC_Main.UiContext.Post(OCC_Main.Instance.UpdateDeviceSystemInfoEventHandler, args);
             OCC_Device.UiContext.Post(OCC_Device.Instance.UpdateDeviceSystemInfoEventHandler, args);
         }
