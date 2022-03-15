@@ -38,9 +38,9 @@
             this.panel1.BackColor = System.Drawing.SystemColors.Window;
             this.panel1.Controls.Add(this.TabControlMain);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 35);
+            this.panel1.Location = new System.Drawing.Point(2, 35);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1264, 886);
+            this.panel1.Size = new System.Drawing.Size(1260, 884);
             this.panel1.TabIndex = 6;
             // 
             // TabControlMain
@@ -53,7 +53,7 @@
             this.TabControlMain.MainPage = "";
             this.TabControlMain.Name = "TabControlMain";
             this.TabControlMain.SelectedIndex = 0;
-            this.TabControlMain.Size = new System.Drawing.Size(1264, 886);
+            this.TabControlMain.Size = new System.Drawing.Size(1260, 884);
             this.TabControlMain.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.TabControlMain.Style = Sunny.UI.UIStyle.Custom;
             this.TabControlMain.TabIndex = 5;
@@ -64,14 +64,24 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(1264, 921);
+            this.CloseAskString = "确定要推出系统吗？";
             this.Controls.Add(this.panel1);
+            this.ExtendBox = true;
+            this.ExtendSymbol = 61529;
+            this.ExtendSymbolOffset = new System.Drawing.Point(0, 2);
+            this.ExtendSymbolSize = 23;
             this.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ForeColor = System.Drawing.Color.White;
             this.IsMdiContainer = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(951, 577);
             this.Name = "OCC";
+            this.Padding = new System.Windows.Forms.Padding(2, 35, 2, 2);
+            this.ShowDragStretch = true;
             this.ShowIcon = false;
+            this.ShowRadius = false;
+            this.ShowShadow = true;
             this.Style = Sunny.UI.UIStyle.Custom;
             this.Text = "OCC";
             this.panel1.ResumeLayout(false);
