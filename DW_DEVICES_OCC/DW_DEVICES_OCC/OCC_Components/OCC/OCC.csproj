@@ -64,6 +64,7 @@
     <Compile Include="Core\Authorize\UserAuthEnum.cs" />
     <Compile Include="Core\Authorize\UserAuthManager.cs" />
     <Compile Include="Core\Authorize\TestAuth.cs" />
+    <Compile Include="Core\DataManager\AppDeviceBindedCache.cs" />
     <Compile Include="Core\DataManager\DataManager.cs" />
     <Compile Include="Core\DataManager\DeviceStatusCache.cs" />
     <Compile Include="Core\EventHandler\C_SystemStateEventHandler.cs" />
@@ -91,12 +92,6 @@
     </Compile>
     <Compile Include="Forms\OCC_new.Designer.cs">
       <DependentUpon>OCC_new.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\OCC_APPs\OCC_APPDetail.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\OCC_APPs\OCC_APPDetail.Designer.cs">
-      <DependentUpon>OCC_APPDetail.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\OCC_Controls\MessageDialog.cs">
       <SubType>Form</SubType>
@@ -153,9 +148,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\OCC_new.resx">
       <DependentUpon>OCC_new.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\OCC_APPs\OCC_APPDetail.resx">
-      <DependentUpon>OCC_APPDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\OCC_Controls\MessageDialog.resx">
       <DependentUpon>MessageDialog.cs</DependentUpon>

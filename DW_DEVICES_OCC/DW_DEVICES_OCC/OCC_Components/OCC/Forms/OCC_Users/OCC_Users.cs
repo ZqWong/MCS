@@ -38,7 +38,7 @@ namespace OCC.Forms.OCC_Users
             try
             {
                 UserList.Rows.Clear();
-                userInfoCoollection = DataBaseCRUDManager.Instance.GetAllActivatedUserInfo();
+                userInfoCoollection = DataBaseCRUDManager.Instance.TryGetAllUserInfo();
                 if (userInfoCoollection.Count >= 1)
                 {
                     UserList.Rows.Add(userInfoCoollection.Count);

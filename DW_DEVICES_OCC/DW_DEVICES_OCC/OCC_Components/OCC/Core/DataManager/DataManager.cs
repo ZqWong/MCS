@@ -11,6 +11,49 @@ namespace OCC.Core
 {
     public class DataManager : LockedSingletonClass<DataManager>
     {
+        #region App Data
+
+        public List<AppDeviceBindedCache> AppDeviceBindedCollection = new List<AppDeviceBindedCache>();
+
+        /// <summary>
+        /// App数据
+        /// </summary>
+        private List<AppDataModel> AppInfoCollection = new List<AppDataModel>();
+        /// <summary>
+        /// APP与设备绑定数据
+        /// </summary>
+        private List<AppDeviceBindDataModel> AppDeviceBindCollection = new List<AppDeviceBindDataModel>();
+
+        public void GetAppData()
+        {
+            try
+            {
+                AppDeviceBindedCollection.Clear();
+                AppInfoCollection.Clear();
+                if(DataBaseCRUDManager.Instance.TryGetAllAppDataInfo(out AppInfoCollection))
+                {      
+                    foreach (AppDataModel app in AppInfoCollection)
+                    {
+                        AppDeviceBindCollection.Clear();
+                        AppDeviceBindedCache cache = new AppDeviceBindedCache();
+                        cache.AppData = app;
+                        if (DataBaseCRUDManager.Instance.TryGetAppDeviceBindDataInfoByAppId(app.Id, out AppDeviceBindCollection))
+                        {                                                     
+                            cache.DeviceBindData = AppDeviceBindCollection;                        
+                        }
+                        AppDeviceBindedCollection.Add(cache);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.Error($"{this} AppInfoCollection failed : {ex}");
+            }
+        }
+
+
+
+        #endregion
 
         #region Device Data
 
@@ -31,15 +74,16 @@ namespace OCC.Core
                 deviceInfoCoollection.Clear();
                 DeviceInfoCollection.Clear();
 
-                deviceInfoCoollection = DataBaseCRUDManager.Instance.GetAllActivatedDeviceInfo();
-
-                if (deviceInfoCoollection.Count > 0)
+                if (DataBaseCRUDManager.Instance.TryGetAllDeviceInfo(out deviceInfoCoollection))
                 {
-                    for (int i = 0; i < deviceInfoCoollection.Count; i++)
+                    if (deviceInfoCoollection.Count > 0)
                     {
-                        // 对设备状态进行缓存
-                        DeviceInfoCollection.Add(new DeviceStatusCache(i, DevicePowerStatus.CLOSED, deviceInfoCoollection[i]));
-                        Debug.Info($" index {i} {deviceInfoCoollection[i].Name}");
+                        for (int i = 0; i < deviceInfoCoollection.Count; i++)
+                        {
+                            // 对设备状态进行缓存
+                            DeviceInfoCollection.Add(new DeviceStatusCache(i, DevicePowerStatus.CLOSED, deviceInfoCoollection[i]));
+                            Debug.Info($" index {i} {deviceInfoCoollection[i].Name}");
+                        }
                     }
                 }
             }
@@ -56,7 +100,10 @@ namespace OCC.Core
         public List<DeviceTypeDataModel> DeviceTypeCollection = new List<DeviceTypeDataModel>();
         public void GetDeviceTypes()
         {
-            DeviceTypeCollection = DataBaseCRUDManager.Instance.GetAllDeviceTypeInfo();
+            if (DataBaseCRUDManager.Instance.TryGetAllDeviceTypeInfo(out DeviceTypeCollection))
+            {
+
+            }            
         }
 
         #endregion

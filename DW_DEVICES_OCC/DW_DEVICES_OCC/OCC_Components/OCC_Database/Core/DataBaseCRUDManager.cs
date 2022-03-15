@@ -5,6 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/// <summary>
+/// 统一一下注释, 添加异常抛出
+/// </summary>
 
 public class DataBaseCRUDManager : LockedSingletonClass<DataBaseCRUDManager>
 {
@@ -76,6 +79,32 @@ public class DataBaseCRUDManager : LockedSingletonClass<DataBaseCRUDManager>
         return ret;
     }
 
+    /// <summary>
+    /// 创建新的设备系统绑定
+    /// </summary>
+    /// <param name="appDeviceData"></param>
+    /// <returns></returns>
+    public bool TryCreateAppAndDeviceBindInfo(List<AppDeviceBindDataModel> appDeviceData)
+    {
+        bool ret = false;
+        try
+        {
+            int newData = DataBaseManager.Instance.DB.Insertable(appDeviceData).ExecuteCommand();
+            if (newData >= 1)
+            {
+                ret = true;
+            }
+        }
+        catch (Exception)
+        {
+
+            throw;
+        }
+        return ret;
+    }
+    
+
+    
     #endregion 
 
 
@@ -87,14 +116,14 @@ public class DataBaseCRUDManager : LockedSingletonClass<DataBaseCRUDManager>
     /// <param name="username"></param>
     /// <param name="password"></param>
     /// <returns></returns>
-    public bool TryGetUserData(string username, string password, out UserDataModel userData)
+    public bool TryGetUserInfo(string username, string password, out UserDataModel userData)
     {
         bool ret = false;
         userData = null;
         try
         {
             Debug.Warn($"userName {username}  password  {password}");
-            var targetUserData = DataBaseManager.Instance.DB.Queryable<UserDataModel>().First(u => u.LoginName.Equals(username));
+            var targetUserData = DataBaseManager.Instance.DB.Queryable<UserDataModel>().First(u => u.LoginName.Equals(username) && u.DelFlag.Equals(0));
 
             if (null != targetUserData)
             {
@@ -121,7 +150,7 @@ public class DataBaseCRUDManager : LockedSingletonClass<DataBaseCRUDManager>
     /// 获取所有激活状态的用户信息
     /// </summary>
     /// <returns></returns>
-    public List<UserDataModel> GetAllActivatedUserInfo()
+    public List<UserDataModel> TryGetAllUserInfo()
     {
         List<UserDataModel> ret = new List<UserDataModel>();
         try
@@ -142,7 +171,7 @@ public class DataBaseCRUDManager : LockedSingletonClass<DataBaseCRUDManager>
     /// </summary>
     /// <param name="username"></param>
     /// <returns></returns>
-    public bool CheckUsernameExist(string username)
+    public bool TryCheckUsernameExist(string username)
     {
         bool ret = false;
         try
@@ -252,17 +281,18 @@ public class DataBaseCRUDManager : LockedSingletonClass<DataBaseCRUDManager>
     /// </summary>
     /// <param name="deviceDatas"></param>
     /// <returns></returns>
-    public List<DeviceDataModel> GetAllActivatedDeviceInfo()
+    public bool TryGetAllDeviceInfo(out List<DeviceDataModel> deviceData)
     {
-        List<DeviceDataModel> ret = new List<DeviceDataModel> ();
+        bool ret = false;
         try
         {
-            var userTypeDatas = DataBaseManager.Instance.DB.Queryable<DeviceDataModel>().Where(d => d.DelFlag.Equals(0)).ToList();
-            if (null == userTypeDatas)
+            var deviceDatas = DataBaseManager.Instance.DB.Queryable<DeviceDataModel>().Where(d => d.DelFlag.Equals(0)).ToList();
+            if (null == deviceDatas)
             {
                 Debug.Error($"Get TryGetAllActivatedDeviceInfo data failed");
             }
-            ret = userTypeDatas;
+            deviceData = deviceDatas;
+            ret = true;
         }
         catch (Exception ex)
         {
@@ -273,41 +303,21 @@ public class DataBaseCRUDManager : LockedSingletonClass<DataBaseCRUDManager>
     }
 
     /// <summary>
-    /// 通过设备ID获取所有应用信息
+    /// 获取设备类型数据
     /// </summary>
-    /// <param name="id"></param>
     /// <returns></returns>
-    public List<AppDataModel> GetAllAppsByDeviceId(string id)
+    public bool TryGetAllDeviceTypeInfo(out List<DeviceTypeDataModel> deviceTypeData)
     {
-        List<AppDataModel> ret = new List<AppDataModel> ();
-        try
-        {
-            var appDatas = DataBaseManager.Instance.DB.Queryable<AppDataModel>().Where(a => a.DelFlag.Equals(0) && a.BindingedDeviceId.Equals(id)).ToList();
-            if (null == appDatas)
-            {
-                Debug.Error($"Get GetAllAppsByDeviceId data failed");
-            }
-            ret = appDatas;
-        }
-        catch (Exception ex)
-        {
-            Debug.Error($"{this} DataManager GetAllAppsByDeviceId failed {ex}");
-            throw;
-        }
-        return ret;
-    }
-
-    public List<DeviceTypeDataModel> GetAllDeviceTypeInfo()
-    {
-        List<DeviceTypeDataModel> ret = new List<DeviceTypeDataModel>();
+        bool ret = false;      
         try
         {
             var types = DataBaseManager.Instance.DB.Queryable<DeviceTypeDataModel>().Where(t => t.DelFlag.Equals(0)).ToList();
             if (null == types)
             {
-                Debug.Error($"Get GetAllDeviceTypeInfo data failed");
+                Debug.Error($"{this} Get GetAllDeviceTypeInfo data failed");
             }
-            ret = types;
+            deviceTypeData = types;
+            ret = true;
         }
         catch (Exception ex)
         {
@@ -317,6 +327,46 @@ public class DataBaseCRUDManager : LockedSingletonClass<DataBaseCRUDManager>
         return ret;
     }
 
+
+    public bool TryGetAllAppDataInfo(out List<AppDataModel> appData)
+    {
+        bool ret = false;
+        try
+        {
+            var apps = DataBaseManager.Instance.DB.Queryable<AppDataModel>().Where(a => a.DelFlag.Equals(0)).ToList();
+            if (null == apps)
+            {
+                Debug.Error($"{this} Get TryGetAllAppDataInfo data failed");
+            }
+            appData = apps;
+            ret = true;
+        }
+        catch (Exception ex)
+        {
+            Debug.Error($"{this} DataManager GetAllDeviceTypeInfo failed {ex}");
+            throw;
+        }
+        return ret;
+    }
+
+    public bool TryGetAppDeviceBindDataInfoByAppId(string id, out List<AppDeviceBindDataModel> appDeviceBindData)
+    {
+        bool ret = false;
+        try
+        {
+            var binds = DataBaseManager.Instance.DB.Queryable<AppDeviceBindDataModel>().Where(ad => ad.AppId.Equals(id) && ad.DelFlag.Equals(0)).ToList();
+            if (null == binds)
+                Debug.Error($"{this} Get TryGetAppDeviceBindDataInfoByAppId data failed");
+            appDeviceBindData = binds;
+            ret = true;
+        }
+        catch (Exception ex)
+        {
+            Debug.Error($"{this} DataManager TryGetAppDeviceBindDataInfoByAppId failed {ex}");
+            throw;
+        }
+        return ret;
+    }
 
 
     #endregion

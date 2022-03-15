@@ -168,7 +168,7 @@ namespace OCC.Forms.OCC_Users
 
         private void TextBoxLoginName_TextChanged(object sender, EventArgs e)
         {
-            bool isExist = DataBaseCRUDManager.Instance.CheckUsernameExist(TextBoxLoginName.Text);
+            bool isExist = DataBaseCRUDManager.Instance.TryCheckUsernameExist(TextBoxLoginName.Text);
             if (!Type.Equals(FormType.ADJUST))
             {
                 labelUserRepetition.Visible = isExist;
@@ -208,7 +208,7 @@ namespace OCC.Forms.OCC_Users
                 return true;
             }
 
-            bool ret = !DataBaseCRUDManager.Instance.CheckUsernameExist(TextBoxLoginName.Text) &&
+            bool ret = !DataBaseCRUDManager.Instance.TryCheckUsernameExist(TextBoxLoginName.Text) &&
                     ComboBoxUserType.SelectedIndex != -1 &&
                     ComboBoxCompany.SelectedIndex != -1 &&
                     TextBoxUsername.Text != String.Empty &&

@@ -32,7 +32,7 @@ namespace OCC.Forms.OCC_Login
         private void BtnConfirm_Click(object sender, EventArgs e)
         {
             UserDataModel userData = null;
-            if (DataBaseCRUDManager.Instance.TryGetUserData(TextUsername.Text, TextPassword.Text, out userData))
+            if (DataBaseCRUDManager.Instance.TryGetUserInfo(TextUsername.Text, TextPassword.Text, out userData))
             {
                 DataManager.Instance.CurrentLoginUserData = userData;
 
