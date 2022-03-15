@@ -10,6 +10,8 @@ namespace OCC.Core
     {
         public class OCC
         {
+            public const string LOGIN_BUTTON_STRING = "用户登录";
+
             public const string MAIN_BUTTON_STRING = "主页";
             public const string DEVICES_BUTTON_STRING = "设备管理";
             public const string APPS_BUTTON_STRING = "系统管理";

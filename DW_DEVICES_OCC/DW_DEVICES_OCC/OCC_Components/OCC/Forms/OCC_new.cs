@@ -16,10 +16,11 @@ using RabbitMQEvent;
 using System.Diagnostics;
 using System.Reflection;
 using OCC.Forms;
+using Sunny.UI;
 
 namespace OCC
 {
-    public partial class OCC : Form
+    public partial class OCC : UIForm
     {
         // 同步上下文
         public static SynchronizationContext s_uiContext;
@@ -52,10 +53,25 @@ namespace OCC
             this.IsMdiContainer = true;
             s_uiContext = SynchronizationContext.Current;
 
-            RabbitMQServerInitialize();
+            if (LocalConifgManager.Instance.SystemConfig.DataModel.ShowLoginForm)
+            {
+                OCC_Login login = new OCC_Login();
+                login.Owner = this;
 
-            //MoouseDrag();
+                login.LoginCompleteAction = () =>
+                {
+                    RemoveTabControlButton(0);
+                    RabbitMQServerInitialize();
+                    DataManager.Instance.GetCommonInfos();
+                    CreateTabButtonByUserAuthority();
+                };
+
+                CreateTabControlButton(UserAuthEnum.DEVICES_MENU.ToString(), UIText.OCC.LOGIN_BUTTON_STRING, login);
+            }
+
+            
         }
+        
 
         private void RabbitMQServerInitialize()
         {
@@ -85,86 +101,7 @@ namespace OCC
             }
         }
 
-        private void OCC_Load(object sender, EventArgs e)
-        {
-            DataManager.Instance.GetCommonInfos();
-
-            UpdateUserInfo();
-
-            CreateTabButtonByUserAuthority();
-
-            //OCC_Main occ_main = new OCC_Main();        
-            //ShowTargetForm(occ_main);
-            //preForm = occ_main;
-        }
-
-
-        //private void ShowTargetForm(TabPage page, Form form)
-        //{            
-        //    form.TopLevel = false;
-        //    form.Dock = DockStyle.Fill;
-        //    page.Controls.Add(form);
-        //    form.Show();
-        //}
-
-        //private void CreatePathContent(int index, TabPage page)
-        //{
-        //    switch (index)
-        //    {
-        //        case 0:
-        //            OCC_Main occ_Main = new OCC_Main();
-        //            TabControlMain.SelectedTab.Text = OCC_Main.FORM_NAME;
-        //            ShowTargetForm(page, occ_Main);
-        //            break;
-        //        case 1:
-        //            break;
-        //        default:
-        //            Debug.Error($"");
-        //            break;
-        //    }
-
-        //    TabControlMain.SelectedIndex = 0;
-
-        //}
-
-        //private void TabControlInitialize()
-        //{
-        //    for (int i = 0; i < TabControlMain.TabPages.Count; i++)
-        //    {
-        //        CreatePathContent(i, TabControlMain.TabPages[i]);
-
-
-        //    }         
-        //}
-
-        /// <summary>
-        /// 更新主页面登录用户信息
-        /// </summary>
-        private void UpdateUserInfo()
-        {
-            //LabelUserName.Text = DataManager.Instance.CurrentLoginUserData.UserName;
-            //LabelUserRemark.Text = DataManager.Instance.CurrentLoginUserData.Remark;
-            //PictureUserIcon.Image = global::OCC.Properties.Resources.logo;
-        }
-
-        /// <summary>
-        /// 当主界面设置按钮按下
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void BtnSettings_Click(object sender, EventArgs e)
-        {
-            // TODO: 当设置按钮按下
-                  
-            DevicePowerManager.RemotePowerOn("1C-1B-0D-60-56-D6");
-
-            //DevicePowerManager.RemotePowerOff("192.168.0.72");
-
-        }
-
         #region 创建侧边栏按钮以及点击页面显示
-
-
 
         /// <summary>
         /// 根据用户权限更新主页面显示功能
@@ -207,7 +144,7 @@ namespace OCC
         }
 
         /// <summary>
-        /// 创建侧边栏按钮
+        /// 创建分页按钮
         /// </summary>
         /// <param name="btnName"></param>
         /// <param name="btnText"></param>
@@ -225,6 +162,18 @@ namespace OCC
             subForm.Dock = DockStyle.Fill;
             subForm.Show();            
             subForm.Parent = TabControlMain.TabPages[btnName];
+        }
+
+        /// <summary>
+        /// 删除分页按钮
+        /// </summary>
+        /// <param name="btnName"></param>
+        /// <param name="btnText"></param>
+        /// <param name="image"></param>
+        /// <param name="clickAction"></param>
+        private void RemoveTabControlButton(int index)
+        {
+            TabControlMain.TabPages.RemoveAt(index);
         }
 
         #endregion

@@ -13,8 +13,10 @@ using System.Windows.Forms;
 
 namespace OCC.Forms
 {
-    public partial class OCC_Login : Form
+    public partial class OCC_Login : UIForm
     {
+        public Action LoginCompleteAction;
+
         public OCC_Login()
         {
             InitializeComponent();
@@ -25,8 +27,9 @@ namespace OCC.Forms
 #endif
         }
 
-        private void OCC_Login_Load(object sender, EventArgs e)
+        private void ButtonCancel_Click(object sender, EventArgs e)
         {
+            System.Environment.Exit(0);
         }
 
         private void BtnConfirm_Click(object sender, EventArgs e)
@@ -39,10 +42,8 @@ namespace OCC.Forms
                 if (!DataBaseCRUDManager.Instance.TryGetUserAuthById(DataManager.Instance.CurrentLoginUserData.UserType, out DataManager.Instance.CurrentUserAuthData))
                 {
                     Debug.Error($"DataBaseCRUDManager TryGetUserAuthById Failed Type: {DataManager.Instance.CurrentLoginUserData.UserType}");
-                } 
-                this.Hide();
-                OCC occ = new OCC();
-                occ.ShowDialog();                
+                }
+                LoginCompleteAction?.Invoke();
             }
         }
     }

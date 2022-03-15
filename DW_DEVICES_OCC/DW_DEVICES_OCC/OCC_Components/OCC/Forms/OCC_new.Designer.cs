@@ -38,9 +38,9 @@
             this.panel1.BackColor = System.Drawing.SystemColors.Window;
             this.panel1.Controls.Add(this.TabControlMain);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Location = new System.Drawing.Point(0, 35);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1264, 921);
+            this.panel1.Size = new System.Drawing.Size(1264, 886);
             this.panel1.TabIndex = 6;
             // 
             // TabControlMain
@@ -53,8 +53,9 @@
             this.TabControlMain.MainPage = "";
             this.TabControlMain.Name = "TabControlMain";
             this.TabControlMain.SelectedIndex = 0;
-            this.TabControlMain.Size = new System.Drawing.Size(1264, 921);
+            this.TabControlMain.Size = new System.Drawing.Size(1264, 886);
             this.TabControlMain.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
+            this.TabControlMain.Style = Sunny.UI.UIStyle.Custom;
             this.TabControlMain.TabIndex = 5;
             this.TabControlMain.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             // 
@@ -71,9 +72,8 @@
             this.MinimumSize = new System.Drawing.Size(951, 577);
             this.Name = "OCC";
             this.ShowIcon = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Style = Sunny.UI.UIStyle.Custom;
             this.Text = "OCC";
-            this.Load += new System.EventHandler(this.OCC_Load);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 

@@ -40,14 +40,14 @@ namespace OCC
                     }
 
                     Debug.Info($"Lanuch");
-                    if (LocalConifgManager.Instance.SystemConfig.DataModel.ShowLoginForm)
-                    {
-                        Application.Run(new OCC_Login());
-                    }
-                    else
-                    {
+                    //if (LocalConifgManager.Instance.SystemConfig.DataModel.ShowLoginForm)
+                    //{
+                    //    Application.Run(new OCC_Login());
+                    //}
+                    //else
+                    //{
                         Application.Run(new OCC());
-                    }       
+                    //}       
                 };
                 LocalConifgManager.Instance.Initialize();              
             });           
