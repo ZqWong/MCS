@@ -147,7 +147,9 @@ namespace OCC.Forms
             }
 
             var owner = Owner as OCC_Device;
+            owner.RefreshDataModel();
             owner.DeviceListInitialize();
+            OCC_Main.Instance.DataGridViewDevicesInitialize();
             Close();
         }
 

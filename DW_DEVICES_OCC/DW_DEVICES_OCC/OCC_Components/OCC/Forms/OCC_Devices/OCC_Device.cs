@@ -56,7 +56,7 @@ namespace OCC.Forms
             UiContext = SynchronizationContext.Current;
             InitializeComponent();
             RefreshDataModel();
-
+            DeviceListInitialize();
             DeviceList.Columns[0].Visible = false;
 
             DataManager.Instance.GetDeviceTypes();
@@ -67,8 +67,7 @@ namespace OCC.Forms
         /// </summary>
         public void RefreshDataModel()
         {
-            DataManager.Instance.GetDeviceData();
-            DeviceListInitialize();
+            DataManager.Instance.GetDeviceData();         
         }
 
         /// <summary>
@@ -158,7 +157,8 @@ namespace OCC.Forms
                 inSelectMode = false;
                 DeviceList.Columns[0].Visible = inSelectMode;
                 RefreshDataModel();
-                //DeviceListInitialize();
+                DeviceListInitialize();
+                OCC_Main.Instance.DataGridViewDevicesInitialize();
             }
         }
 

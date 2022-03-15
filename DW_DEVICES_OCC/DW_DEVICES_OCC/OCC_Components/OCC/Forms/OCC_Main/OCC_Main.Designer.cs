@@ -323,16 +323,14 @@
             // 
             // OCC_Main
             // 
-            //this.AllowShowTitle = false;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1264, 921);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "OCC_Main";
             this.Padding = new System.Windows.Forms.Padding(0);
-            //this.ShowTitle = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            //this.Style = Sunny.UI.UIStyle.Custom;
+            this.Style = Sunny.UI.UIStyle.Custom;
             this.Text = "OCC_Main";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.uiGroupBox3.ResumeLayout(false);

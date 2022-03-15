@@ -60,22 +60,22 @@ namespace OCC.Forms
             UiContext = SynchronizationContext.Current;
 
             InitializeComponent();
-                    
+
+            DataManager.Instance.GetDeviceData();
             DataGridViewDevicesInitialize();
-
-
+       
             DeviceStatusTimer.Enabled = true;
             DeviceStatusTimer.Interval = Convert.ToInt32(1000); //ms
         }
 
 
+
+
         /// <summary>
         /// 设备列表初始化
         /// </summary>
-        private void DataGridViewDevicesInitialize()
-        {
-            DataManager.Instance.GetDeviceData();
-
+        public void DataGridViewDevicesInitialize()
+        {         
             DataGridViewDevice.Rows.Clear();
 
             DataGridViewDevice.Rows.Add(DataManager.Instance.DeviceInfoCollection.Count);
@@ -218,8 +218,7 @@ namespace OCC.Forms
             {
 #if DEBUG
                 Debug.Info($" DevicePingManager.Instance.IPDict {deviceInfo.DataModel.IP}");
-#endif
-                
+#endif                
                 if (DevicePingManager.Instance.IPDict.ContainsKey(deviceInfo.DataModel.IP))
                 {
                     if (DataManager.Instance.DeviceInfoCollection[deviceInfo.Index].PowerStatus == DevicePowerStatus.CLOSEING)
@@ -235,6 +234,10 @@ namespace OCC.Forms
                 }
                 else
                 {
+                    // 这里是为了避免新加入的设备会造成数据列表不匹配的问题
+                    if (DataManager.Instance.DeviceInfoCollection.Count != DataGridViewDevice.Rows.Count)
+                        return;
+
                     if (DataManager.Instance.DeviceInfoCollection[deviceInfo.Index].PowerStatus == DevicePowerStatus.OPENING)
                         return;
 
