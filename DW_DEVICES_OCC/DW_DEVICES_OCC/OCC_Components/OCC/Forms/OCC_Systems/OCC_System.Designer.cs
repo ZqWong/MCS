@@ -1,4 +1,4 @@
-﻿namespace OCC.Forms.OCC_Systems
+﻿namespace OCC.Forms
 {
     partial class OCC_System
     {

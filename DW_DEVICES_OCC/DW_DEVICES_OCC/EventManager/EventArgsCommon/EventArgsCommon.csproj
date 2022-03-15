@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="EventArgs\CLIENT_TO_OCC\C_SystemStateData.cs" />
     <Compile Include="EventArgs\OCC_TO_CLIENT\GetSystemInfoEventArgs-Template.cs" />
+    <Compile Include="EventArgs\OCC_TO_CLIENT\R_C_ControlProcessData.cs" />
     <Compile Include="EventArgs\OCC_TO_CLIENT\R_C_SystemStateData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

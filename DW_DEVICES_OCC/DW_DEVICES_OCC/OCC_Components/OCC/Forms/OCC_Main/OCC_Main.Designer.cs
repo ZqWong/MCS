@@ -1,4 +1,4 @@
-﻿namespace OCC.Forms.OCC_Main
+﻿namespace OCC.Forms
 {
     partial class OCC_Main
     {
@@ -89,6 +89,7 @@
             this.uiGroupBox3.Name = "uiGroupBox3";
             this.uiGroupBox3.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
             this.uiGroupBox3.Size = new System.Drawing.Size(1256, 90);
+            this.uiGroupBox3.Style = Sunny.UI.UIStyle.Custom;
             this.uiGroupBox3.TabIndex = 2;
             this.uiGroupBox3.Text = "选择分组";
             this.uiGroupBox3.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -103,17 +104,21 @@
             this.BtnGroupStart.MinimumSize = new System.Drawing.Size(1, 1);
             this.BtnGroupStart.Name = "BtnGroupStart";
             this.BtnGroupStart.Size = new System.Drawing.Size(150, 35);
+            this.BtnGroupStart.Style = Sunny.UI.UIStyle.Custom;
             this.BtnGroupStart.TabIndex = 2;
             this.BtnGroupStart.Text = "开始培训";
             this.BtnGroupStart.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.BtnGroupStart.Click += new System.EventHandler(this.BtnGroupStart_Click);
             // 
             // ComboBoxGroup
             // 
             this.ComboBoxGroup.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.ComboBoxGroup.DataSource = null;
+            this.ComboBoxGroup.DropDownStyle = Sunny.UI.UIDropDownStyle.DropDownList;
             this.ComboBoxGroup.FillColor = System.Drawing.Color.White;
             this.ComboBoxGroup.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
             this.ComboBoxGroup.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ComboBoxGroup.ItemHeight = 30;
             this.ComboBoxGroup.ItemHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
             this.ComboBoxGroup.Location = new System.Drawing.Point(9, 37);
             this.ComboBoxGroup.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -121,9 +126,11 @@
             this.ComboBoxGroup.Name = "ComboBoxGroup";
             this.ComboBoxGroup.Padding = new System.Windows.Forms.Padding(0, 0, 30, 2);
             this.ComboBoxGroup.Size = new System.Drawing.Size(1082, 35);
+            this.ComboBoxGroup.Style = Sunny.UI.UIStyle.Custom;
             this.ComboBoxGroup.TabIndex = 1;
             this.ComboBoxGroup.Text = "uiComboBox2";
             this.ComboBoxGroup.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ComboBoxGroup.Watermark = "选择要启动的分组";
             // 
             // uiGroupBox2
             // 
@@ -137,6 +144,7 @@
             this.uiGroupBox2.Name = "uiGroupBox2";
             this.uiGroupBox2.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
             this.uiGroupBox2.Size = new System.Drawing.Size(1256, 90);
+            this.uiGroupBox2.Style = Sunny.UI.UIStyle.Custom;
             this.uiGroupBox2.TabIndex = 1;
             this.uiGroupBox2.Text = "选择系统";
             this.uiGroupBox2.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -152,17 +160,21 @@
             this.BtnAppStart.MinimumSize = new System.Drawing.Size(1, 1);
             this.BtnAppStart.Name = "BtnAppStart";
             this.BtnAppStart.Size = new System.Drawing.Size(150, 35);
+            this.BtnAppStart.Style = Sunny.UI.UIStyle.Custom;
             this.BtnAppStart.TabIndex = 1;
             this.BtnAppStart.Text = "开始培训";
             this.BtnAppStart.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.BtnAppStart.Click += new System.EventHandler(this.BtnAppStart_Click);
             // 
             // ComboBoxApp
             // 
             this.ComboBoxApp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.ComboBoxApp.DataSource = null;
+            this.ComboBoxApp.DropDownStyle = Sunny.UI.UIDropDownStyle.DropDownList;
             this.ComboBoxApp.FillColor = System.Drawing.Color.White;
             this.ComboBoxApp.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
             this.ComboBoxApp.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ComboBoxApp.ItemHeight = 30;
             this.ComboBoxApp.ItemHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
             this.ComboBoxApp.Location = new System.Drawing.Point(9, 37);
             this.ComboBoxApp.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -170,9 +182,11 @@
             this.ComboBoxApp.Name = "ComboBoxApp";
             this.ComboBoxApp.Padding = new System.Windows.Forms.Padding(0, 0, 30, 2);
             this.ComboBoxApp.Size = new System.Drawing.Size(1082, 35);
+            this.ComboBoxApp.Style = Sunny.UI.UIStyle.Custom;
             this.ComboBoxApp.TabIndex = 0;
             this.ComboBoxApp.Text = "uiComboBox2";
             this.ComboBoxApp.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ComboBoxApp.Watermark = "选择要培训的系统";
             // 
             // GroupBoxDeviceGroup
             // 
@@ -185,6 +199,7 @@
             this.GroupBoxDeviceGroup.Name = "GroupBoxDeviceGroup";
             this.GroupBoxDeviceGroup.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
             this.GroupBoxDeviceGroup.Size = new System.Drawing.Size(1256, 471);
+            this.GroupBoxDeviceGroup.Style = Sunny.UI.UIStyle.Custom;
             this.GroupBoxDeviceGroup.TabIndex = 0;
             this.GroupBoxDeviceGroup.Text = "设备名称";
             this.GroupBoxDeviceGroup.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -245,6 +260,7 @@
             this.DataGridViewDevice.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DataGridViewDevice.ShowGridLine = true;
             this.DataGridViewDevice.Size = new System.Drawing.Size(1256, 439);
+            this.DataGridViewDevice.Style = Sunny.UI.UIStyle.Custom;
             this.DataGridViewDevice.TabIndex = 0;
             this.DataGridViewDevice.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewDevice_CellContentClick);
             // 
@@ -288,6 +304,7 @@
             this.uiGroupBox4.Name = "uiGroupBox4";
             this.uiGroupBox4.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
             this.uiGroupBox4.Size = new System.Drawing.Size(1256, 230);
+            this.uiGroupBox4.Style = Sunny.UI.UIStyle.Custom;
             this.uiGroupBox4.TabIndex = 3;
             this.uiGroupBox4.Text = "实时控制";
             this.uiGroupBox4.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -306,13 +323,16 @@
             // 
             // OCC_Main
             // 
+            this.AllowShowTitle = false;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1264, 921);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "OCC_Main";
+            this.Padding = new System.Windows.Forms.Padding(0);
+            this.ShowTitle = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Style = Sunny.UI.UIStyle.Custom;
             this.Text = "OCC_Main";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.uiGroupBox3.ResumeLayout(false);

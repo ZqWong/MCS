@@ -1,6 +1,5 @@
 ﻿using DataModel;
 using OCC.Core;
-using OCC.Forms.OCC_Controls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace OCC.Forms.OCC_Users
+namespace OCC.Forms
 {
     public partial class OCC_Users : Form
     {

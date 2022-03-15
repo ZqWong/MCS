@@ -1,4 +1,4 @@
-﻿namespace OCC.Forms.OCC_Devices
+﻿namespace OCC.Forms
 {
     partial class OCC_DeviceDetail
     {
@@ -294,8 +294,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "OCC_DeviceDetail";
             this.Style = Sunny.UI.UIStyle.Custom;
-            this.Text = "OCC_UserDetail";
-            this.Shown += new System.EventHandler(this.OCC_UserDetail_Shown);
+            this.Text = "OCC_UserDetail";            
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.pnlBtm, 0);
             this.pnlBtm.ResumeLayout(false);

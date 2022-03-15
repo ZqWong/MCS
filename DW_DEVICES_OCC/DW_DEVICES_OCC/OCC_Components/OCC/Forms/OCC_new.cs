@@ -11,16 +11,11 @@ using System.Runtime.InteropServices;
 using System.Drawing.Drawing2D;
 using OCC.Core.LocalConfig;
 using OCC.Core;
-using OCC.Forms.OCC_Main;
-using OCC.Forms.OCC_Users;
-using OCC.Forms.OCC_APPs;
-using OCC.Forms.OCC_Groups;
-using OCC.Forms.OCC_Systems;
-using OCC.Forms.OCC_Devices;
 using System.Threading;
 using RabbitMQEvent;
 using System.Diagnostics;
 using System.Reflection;
+using OCC.Forms;
 
 namespace OCC
 {
@@ -192,7 +187,7 @@ namespace OCC
             // 判断 系统 APP权限 
             if (UserAuthManager.IsHasAuth(DataManager.Instance.CurrentUserAuthData.AuthLevel, (long)UserAuthEnum.APPS_MENU))
             {
-                CreateTabControlButton(UserAuthEnum.APPS_MENU.ToString(), UIText.OCC.APPS_BUTTON_STRING, OCC_APPs.Instance);
+                CreateTabControlButton(UserAuthEnum.APPS_MENU.ToString(), UIText.OCC.APPS_BUTTON_STRING, OCC_APP.Instance);
             }
             // 判断 数据管理 管理权限 （用户）
             if (UserAuthManager.IsHasAuth(DataManager.Instance.CurrentUserAuthData.AuthLevel, (long)UserAuthEnum.DATAS_MENU))

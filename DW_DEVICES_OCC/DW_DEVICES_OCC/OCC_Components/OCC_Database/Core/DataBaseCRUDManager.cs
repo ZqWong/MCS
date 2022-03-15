@@ -40,13 +40,18 @@ public class DataBaseCRUDManager : LockedSingletonClass<DataBaseCRUDManager>
     /// </summary>
     /// <param name="deviceData"></param>
     /// <returns></returns>
-    public bool TryCreateDeviceInfo(DeviceDataModel deviceData)
+    public bool TryCreateOrUpdateDeviceInfo(DeviceDataModel deviceData)
     {
         bool ret = false;
         try
         {
-            int newDevice =DataBaseManager.Instance.DB.Insertable(deviceData).ExecuteCommand();
-            if (newDevice >= 1)
+            int execute = 0;
+            var x = DataBaseManager.Instance.DB.Storageable<DeviceDataModel>(deviceData).ToStorage();
+            execute = x.AsUpdateable.ExecuteCommand();
+            execute = x.AsInsertable.ExecuteCommand();
+
+            //int newDevice =DataBaseManager.Instance.DB.Insertable(deviceData).ExecuteCommand();
+            if (execute >= 1)
                 ret = true;
         }
         catch (Exception)
@@ -349,12 +354,12 @@ public class DataBaseCRUDManager : LockedSingletonClass<DataBaseCRUDManager>
         return ret;
     }
 
-    public bool TryGetAppDeviceBindDataInfoByAppId(string id, out List<AppDeviceBindDataModel> appDeviceBindData)
+    public bool TryGetAppDeviceBindDataInfoByAppId(string appId, out List<AppDeviceBindDataModel> appDeviceBindData)
     {
         bool ret = false;
         try
         {
-            var binds = DataBaseManager.Instance.DB.Queryable<AppDeviceBindDataModel>().Where(ad => ad.AppId.Equals(id) && ad.DelFlag.Equals(0)).ToList();
+            var binds = DataBaseManager.Instance.DB.Queryable<AppDeviceBindDataModel>().Where(ad => ad.AppId.Equals(appId) && ad.DelFlag.Equals(0)).ToList();
             if (null == binds)
                 Debug.Error($"{this} Get TryGetAppDeviceBindDataInfoByAppId data failed");
             appDeviceBindData = binds;

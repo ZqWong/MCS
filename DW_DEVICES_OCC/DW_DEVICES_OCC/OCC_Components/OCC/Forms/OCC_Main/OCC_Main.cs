@@ -1,8 +1,8 @@
 ﻿using DataCache;
 using DataModel;
 using OCC.Core;
-using OCC.Forms.OCC_Devices;
 using RabbitMQEvent;
+using Sunny.UI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,9 +14,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace OCC.Forms.OCC_Main
+namespace OCC.Forms
 {
-    public partial class OCC_Main : Form
+    public partial class OCC_Main : UIForm
     {
         #region 单例
         private static OCC_Main s_instance = null;
@@ -63,6 +63,7 @@ namespace OCC.Forms.OCC_Main
                     
             DataGridViewDevicesInitialize();
 
+
             DeviceStatusTimer.Enabled = true;
             DeviceStatusTimer.Interval = Convert.ToInt32(1000); //ms
         }
@@ -84,11 +85,114 @@ namespace OCC.Forms.OCC_Main
                 for (int i = 0; i < DataManager.Instance.DeviceInfoCollection.Count; i++)
                 {
                     Debug.Info($" index {i} {DataManager.Instance.DeviceInfoCollection[i].DataModel.Name}");
-                    DataGridViewDevice.Rows[i].Tag = DataManager.Instance.DeviceInfoCollection[i].DataModel;
+                    DataGridViewDevice.Rows[i].Tag = DataManager.Instance.DeviceInfoCollection[i];
                     DataGridViewDevice.Rows[i].Cells["DeviceName"].Value = DataManager.Instance.DeviceInfoCollection[i].DataModel.Name;
                 }
             }
         }
+
+        #region 选择系统
+
+        /// <summary>
+        /// 刷新系统数据 通过上下文模式
+        /// </summary>
+        /// <param name="args"></param>
+        public void ComboBoxAppInitialize(object args)
+        {
+            ComboBoxApp.Items.Clear();
+            foreach (var item in DataManager.Instance.AppDeviceBindedCollection)
+            {                
+                ComboBoxApp.Items.Add(item.AppData.AppName);
+            }
+        }
+
+        /// <summary>
+        /// 系统开始
+        /// </summary> 
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnAppStart_Click(object sender, EventArgs e)
+        {
+            if (GetCheckBoxCheckedCount().Equals(0))
+            {
+                ShowWarningDialog("请选择一个或多个要启动的设备");
+            }
+            else if (-1 != ComboBoxApp.SelectedIndex)
+            {
+                Debug.Info($"Current Select App {ComboBoxApp.SelectedItem}");
+
+                var appDeviceBinded = DataManager.Instance.GetAppDeviceBindedCacheByAppName(ComboBoxApp.SelectedItem.ToString());
+
+                // 先遍历出用户已选择的设备id                
+                for (int i = 0; i < DataGridViewDevice.Rows.Count; i++)
+                {
+                    if (DataGridViewDevice.Rows[i].Cells["Selected"].Selected.Equals(true))
+                    {
+                        var cache = DataGridViewDevice.Rows[i].Tag as DeviceStatusCache;
+
+                        var config = appDeviceBinded.DeviceBindData.FirstOrDefault(d => d.DeviceId.Equals(cache.DataModel.Id));
+
+                        if (null != config)
+                        {
+                            var mi = RemoteProcessLanuchHelper.CreateRemoteLanuchAppTask(cache.DataModel.IP, config.Path, true);
+                            OCC_Main.Instance.Invoke(mi);
+                        }                     
+                    }                        
+                }
+            }
+            else
+            {
+                ShowWarningDialog("请选择要培训的系统");
+            }
+        }
+
+        private int GetCheckBoxCheckedCount()
+        {
+            int selectCount = 0;
+
+            for (int i = 0; i < this.DataGridViewDevice.Rows.Count; i++)
+            {
+                if (Convert.ToBoolean(DataGridViewDevice.Rows[i].Cells["Selected"].Value) == true)
+                {
+                    selectCount++;
+                }
+            }
+
+            return selectCount;
+        }
+
+        #endregion
+
+        #region 选择分组
+
+        /// <summary>
+        /// 刷新组分数据 通过上下文模式
+        /// </summary>
+        /// <param name="args"></param>
+        public void ComboBoxGroupInitialize(object args)
+        {
+            ComboBoxGroup.Items.Clear();
+
+        }
+
+        /// <summary>
+        /// 分组开始
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnGroupStart_Click(object sender, EventArgs e)
+        {
+            if (-1 != ComboBoxGroup.SelectedIndex)
+            {
+                Debug.Info($"Current Select App {ComboBoxGroup.SelectedItem}");
+            }
+            else
+            {
+                ShowWarningDialog("请选择要启动的分组");
+            }
+        }
+
+        #endregion
 
         /// <summary>
         /// 设备状态检测 计时器
@@ -203,7 +307,7 @@ namespace OCC.Forms.OCC_Main
                 var device = DataManager.Instance.DeviceInfoCollection.FirstOrDefault(d => d.DataModel.IP.Equals(ip));
                 if (null != device)
                 {
-                    DataGridViewDevice.Rows[device.Index].Cells["ConnectionStatus "].Value =
+                    DataGridViewDevice.Rows[device.Index].Cells["ConnectionStatus"].Value =
                         connect ?
                         global::OCC.Properties.Resources.switch_开 :
                         global::OCC.Properties.Resources.switch_关;

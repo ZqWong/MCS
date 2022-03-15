@@ -1,4 +1,4 @@
-﻿namespace OCC.Forms.OCC_Controls
+﻿namespace OCC.Forms
 {
     partial class MessageDialog
     {

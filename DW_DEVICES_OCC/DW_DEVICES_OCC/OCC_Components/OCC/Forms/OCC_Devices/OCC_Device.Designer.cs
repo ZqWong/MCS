@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace OCC.Forms.OCC_Devices
+namespace OCC.Forms
 {
     partial class OCC_Device
     {
@@ -42,6 +42,8 @@ namespace OCC.Forms.OCC_Devices
             this.DeviceList = new Sunny.UI.UIDataGridView();
             this.Selected = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.DeviceName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OpenOrClosePCState = new System.Windows.Forms.DataGridViewImageColumn();
+            this.ConnectionState = new System.Windows.Forms.DataGridViewImageColumn();
             this.CPURatio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BootTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MemoryRatio = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,8 +62,6 @@ namespace OCC.Forms.OCC_Devices
             this.uiGroupBox2 = new Sunny.UI.UIGroupBox();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.OpenOrClosePCState = new System.Windows.Forms.DataGridViewImageColumn();
-            this.ConnectionState = new System.Windows.Forms.DataGridViewImageColumn();
             this.tableLayoutPanel1.SuspendLayout();
             this.uiGroupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -189,6 +189,7 @@ namespace OCC.Forms.OCC_Devices
             this.DeviceList.ShowGridLine = true;
             this.DeviceList.Size = new System.Drawing.Size(1121, 390);
             this.DeviceList.TabIndex = 0;
+            this.DeviceList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DeviceList_CellClick);
             // 
             // Selected
             // 
@@ -205,6 +206,26 @@ namespace OCC.Forms.OCC_Devices
             this.DeviceName.Name = "DeviceName";
             this.DeviceName.ReadOnly = true;
             this.DeviceName.Width = 66;
+            // 
+            // OpenOrClosePCState
+            // 
+            this.OpenOrClosePCState.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.OpenOrClosePCState.FillWeight = 121.3812F;
+            this.OpenOrClosePCState.HeaderText = "开关机状态";
+            this.OpenOrClosePCState.Image = global::OCC.Properties.Resources.switch_关;
+            this.OpenOrClosePCState.MinimumWidth = 18;
+            this.OpenOrClosePCState.Name = "OpenOrClosePCState";
+            this.OpenOrClosePCState.ReadOnly = true;
+            // 
+            // ConnectionState
+            // 
+            this.ConnectionState.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ConnectionState.FillWeight = 102.3817F;
+            this.ConnectionState.HeaderText = "连接状态";
+            this.ConnectionState.Image = global::OCC.Properties.Resources.switch_关;
+            this.ConnectionState.MinimumWidth = 15;
+            this.ConnectionState.Name = "ConnectionState";
+            this.ConnectionState.ReadOnly = true;
             // 
             // CPURatio
             // 
@@ -318,7 +339,7 @@ namespace OCC.Forms.OCC_Devices
             | System.Windows.Forms.AnchorStyles.Left)));
             this.ButtonEditDevice.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ButtonEditDevice.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ButtonEditDevice.Location = new System.Drawing.Point(217, 5);
+            this.ButtonEditDevice.Location = new System.Drawing.Point(221, 5);
             this.ButtonEditDevice.MinimumSize = new System.Drawing.Size(1, 1);
             this.ButtonEditDevice.Name = "ButtonEditDevice";
             this.ButtonEditDevice.Padding = new System.Windows.Forms.Padding(5);
@@ -334,7 +355,7 @@ namespace OCC.Forms.OCC_Devices
             | System.Windows.Forms.AnchorStyles.Left)));
             this.ButtonRemoveDevice.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ButtonRemoveDevice.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ButtonRemoveDevice.Location = new System.Drawing.Point(111, 5);
+            this.ButtonRemoveDevice.Location = new System.Drawing.Point(113, 5);
             this.ButtonRemoveDevice.MinimumSize = new System.Drawing.Size(1, 1);
             this.ButtonRemoveDevice.Name = "ButtonRemoveDevice";
             this.ButtonRemoveDevice.Padding = new System.Windows.Forms.Padding(5);
@@ -394,26 +415,6 @@ namespace OCC.Forms.OCC_Devices
             this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
             this.dataGridViewImageColumn2.ReadOnly = true;
             // 
-            // OpenOrClosePCState
-            // 
-            this.OpenOrClosePCState.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.OpenOrClosePCState.FillWeight = 121.3812F;
-            this.OpenOrClosePCState.HeaderText = "开关机状态";
-            this.OpenOrClosePCState.Image = global::OCC.Properties.Resources.switch_关;
-            this.OpenOrClosePCState.MinimumWidth = 18;
-            this.OpenOrClosePCState.Name = "OpenOrClosePCState";
-            this.OpenOrClosePCState.ReadOnly = true;
-            // 
-            // ConnectionState
-            // 
-            this.ConnectionState.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ConnectionState.FillWeight = 102.3817F;
-            this.ConnectionState.HeaderText = "连接状态";
-            this.ConnectionState.Image = global::OCC.Properties.Resources.switch_关;
-            this.ConnectionState.MinimumWidth = 15;
-            this.ConnectionState.Name = "ConnectionState";
-            this.ConnectionState.ReadOnly = true;
-            // 
             // OCC_Device
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
@@ -424,7 +425,6 @@ namespace OCC.Forms.OCC_Devices
             this.Name = "OCC_Device";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "OCC_Users";
-            this.Load += new System.EventHandler(this.OCC_Device_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.uiGroupBox1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);

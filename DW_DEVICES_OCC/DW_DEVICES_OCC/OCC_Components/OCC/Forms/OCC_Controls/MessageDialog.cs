@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace OCC.Forms.OCC_Controls
+namespace OCC.Forms
 {
     public partial class MessageDialog : Form
     {

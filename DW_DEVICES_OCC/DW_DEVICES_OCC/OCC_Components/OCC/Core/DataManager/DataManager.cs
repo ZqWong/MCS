@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using DataCache;
 using DataModel;
-using OCC.Forms.OCC_Controls;
 
 namespace OCC.Core
 {
@@ -18,28 +17,24 @@ namespace OCC.Core
         /// <summary>
         /// App数据
         /// </summary>
-        private List<AppDataModel> AppInfoCollection = new List<AppDataModel>();
-        /// <summary>
-        /// APP与设备绑定数据
-        /// </summary>
-        private List<AppDeviceBindDataModel> AppDeviceBindCollection = new List<AppDeviceBindDataModel>();
+        private List<AppDataModel> app = new List<AppDataModel>();
 
         public void GetAppData()
         {
             try
             {
                 AppDeviceBindedCollection.Clear();
-                AppInfoCollection.Clear();
-                if(DataBaseCRUDManager.Instance.TryGetAllAppDataInfo(out AppInfoCollection))
+                app.Clear();
+                if(DataBaseCRUDManager.Instance.TryGetAllAppDataInfo(out app))
                 {      
-                    foreach (AppDataModel app in AppInfoCollection)
+                    foreach (AppDataModel app in app)
                     {
-                        AppDeviceBindCollection.Clear();
-                        AppDeviceBindedCache cache = new AppDeviceBindedCache();
+                        List<AppDeviceBindDataModel> appDeviceBinded = new List<AppDeviceBindDataModel>();
+                        AppDeviceBindedCache cache = new AppDeviceBindedCache();              
                         cache.AppData = app;
-                        if (DataBaseCRUDManager.Instance.TryGetAppDeviceBindDataInfoByAppId(app.Id, out AppDeviceBindCollection))
+                        if (DataBaseCRUDManager.Instance.TryGetAppDeviceBindDataInfoByAppId(app.Id, out appDeviceBinded))
                         {                                                     
-                            cache.DeviceBindData = AppDeviceBindCollection;                        
+                            cache.DeviceBindData = appDeviceBinded;                        
                         }
                         AppDeviceBindedCollection.Add(cache);
                     }
@@ -51,6 +46,10 @@ namespace OCC.Core
             }
         }
 
+        public AppDeviceBindedCache GetAppDeviceBindedCacheByAppName(string name)
+        {
+            return AppDeviceBindedCollection.FirstOrDefault(ad => ad.AppData.AppName.Equals(name));
+        }
 
 
         #endregion
@@ -93,8 +92,10 @@ namespace OCC.Core
             }            
         }
 
-
-
+        public DeviceStatusCache GetDeviceDataById(string id)
+        {
+            return DeviceInfoCollection.FirstOrDefault(d => d.DataModel.Id.Equals(id));
+        }
 
 
         public List<DeviceTypeDataModel> DeviceTypeCollection = new List<DeviceTypeDataModel>();

@@ -1,4 +1,4 @@
-﻿namespace OCC.Forms.OCC_Users
+﻿namespace OCC.Forms
 {
     partial class OCC_Users
     {

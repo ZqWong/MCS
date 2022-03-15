@@ -18,7 +18,11 @@ namespace DataCache
 
         public AppDeviceBindedCache() { }
 
-
+        public AppDeviceBindedCache(AppDataModel app, List<AppDeviceBindDataModel> bind) 
+        {
+            AppData = app;
+            DeviceBindData = bind;
+        }
 
 
     }

@@ -1,6 +1,6 @@
-﻿using DataModel;
+﻿using DataCache;
+using DataModel;
 using OCC.Core;
-using OCC.Forms.OCC_Controls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,16 +12,17 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace OCC.Forms.OCC_Devices
+namespace OCC.Forms
 {
     public partial class OCC_Device : Form
     {
+        #region 单例 & 上下文
+
         /// <summary>
         /// 上下文同步
         /// </summary>
         public static SynchronizationContext UiContext;
 
-        #region 单例
         private static OCC_Device s_instance = null;
         private static readonly object syslock = new object();
         public static OCC_Device Instance
@@ -45,43 +46,44 @@ namespace OCC.Forms.OCC_Devices
         #endregion
 
 
+        private bool inSelectMode = false;
 
-        public bool InSelectMode = false;
+        private int currentSelectRowIndex = -1;
+
         public OCC_Device()
         {
             UiContext = SynchronizationContext.Current;
             InitializeComponent();
-            DeviceListInitialize();
+            RefreshDataModel();
+
+            DeviceList.Columns[0].Visible = false;
 
             DataManager.Instance.GetDeviceTypes();
         }
 
-
-        private void OCC_Device_Load(object sender, EventArgs e)
-        {
-            DeviceList.Columns[0].Visible = false;
-            //DeviceListInitialize();
-        }
-
-        private void OCC_Device_Closed(object sender, EventArgs e)
-        {
-           
-        }
-
-
-        public void DeviceListInitialize()
+        /// <summary>
+        /// 刷新数据
+        /// </summary>
+        public void RefreshDataModel()
         {
             DataManager.Instance.GetDeviceData();
+            DeviceListInitialize();
+        }
+
+        /// <summary>
+        /// 初始化列表
+        /// </summary>
+        public void DeviceListInitialize()
+        {         
             DeviceList.Rows.Clear();
-
-            DeviceList.Rows.Add(DataManager.Instance.DeviceInfoCollection.Count);
-
+            
             if (DataManager.Instance.DeviceInfoCollection.Count > 0)
             {
+                DeviceList.Rows.Add(DataManager.Instance.DeviceInfoCollection.Count);
                 for (int i = 0; i < DataManager.Instance.DeviceInfoCollection.Count; i++)
                 {
                     Debug.Info($" index {i} {DataManager.Instance.DeviceInfoCollection[i].DataModel.Name}");
-                    DeviceList.Rows[i].Tag = DataManager.Instance.DeviceInfoCollection[i].DataModel;
+                    DeviceList.Rows[i].Tag = DataManager.Instance.DeviceInfoCollection[i];
                     DeviceList.Rows[i].Cells["DeviceName"].Value = DataManager.Instance.DeviceInfoCollection[i].DataModel.Name;
                     DeviceList.Rows[i].Cells["Remark"].Value = DataManager.Instance.DeviceInfoCollection[i].DataModel.Remark;
                     DeviceList.Rows[i].Cells["IP"].Value = DataManager.Instance.DeviceInfoCollection[i].DataModel.IP;                    
@@ -89,64 +91,46 @@ namespace OCC.Forms.OCC_Devices
             }
         }
 
-        #region Mouse right button functions
-
-        private int index = -1;
-
-        //private void DeviceList_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
-        //{
-        //    //if (e.Button == MouseButtons.Right)
-        //    //{
-        //    //    if (e.RowIndex >= 0)
-        //    //    {
-        //    //        DeviceList.ClearSelection();
-        //    //        DeviceList.Rows[e.RowIndex].Selected = true;
-        //    //        DeviceList.CurrentCell = DeviceList.Rows[e.RowIndex].Cells[e.ColumnIndex];
-        //    //        DeviceRightClick.Show(MousePosition.X, MousePosition.Y);
-
-        //    //        index = e.RowIndex;
-
-        //    //        Debug.Info($"UserList_CellMouseUp Selected index {index} {DeviceList.Rows[e.RowIndex].Cells["Username"].Value}");
-        //    //    }
-        //    //}
-        //}
-
-        #endregion
-
-        private void PingTimer_Tick(object sender, EventArgs e)
-        {
-            DevicePingManager.Instance.PingDevices(new List<string> { "192.168.0.198", "192.168.0.181", "192.168.0.148", "192.168.0.140" });
-            foreach (var ping in DevicePingManager.Instance.IPDict)
-            {
-                Debug.Error($"ping myself ip: {ping.Key} ping: {ping.Value}");
-            }
-        }
-
+        /// <summary>
+        /// 创建设备按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ButtonAddDevice_Click(object sender, EventArgs e)
         {
             OCC_DeviceDetail userDetailForm = new OCC_DeviceDetail();
             userDetailForm.Owner = this;
-            userDetailForm.Type = OCC_DeviceDetail.FormType.CREATE;
             userDetailForm.Text = "添加设备";
             userDetailForm.ShowDialog();
         }
 
+        /// <summary>
+        /// 编辑设备按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ButtonEditDevice_Click(object sender, EventArgs e)
         {
-                                                
+            OCC_DeviceDetail userDetailForm = new OCC_DeviceDetail();
+            userDetailForm.Owner = this;
+            userDetailForm.Text = "编辑设备";
+
+            var device = DeviceList.Rows[currentSelectRowIndex].Tag as DeviceStatusCache;
+            userDetailForm.DeviceData = device.DataModel;
+            userDetailForm.ShowDialog();
         }
 
         /// <summary>
-        /// 删除按钮
+        /// 删除设备按钮
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void ButtonRemoveDevice_Click(object sender, EventArgs e)
         {
-            if (!InSelectMode)
+            if (!inSelectMode)
             {
-                InSelectMode = true;
-                DeviceList.Columns[0].Visible = InSelectMode;
+                inSelectMode = true;
+                DeviceList.Columns[0].Visible = inSelectMode;
             }
             else
             {
@@ -154,11 +138,11 @@ namespace OCC.Forms.OCC_Devices
                 {
                     if (row.Cells["Selected"].EditedFormattedValue.Equals(true))
                     {
-                        var data = row.Tag as DeviceDataModel;
-                        Debug.Info($"Ready to delete {data.Id} {data.Name} {data.IP}  infos");
+                        var data = row.Tag as DeviceStatusCache;
+                        Debug.Info($"Ready to delete {data.DataModel.Id} {data.DataModel.Name} {data.DataModel.IP}  infos");
                         try
                         {
-                            DataBaseCRUDManager.Instance.DeleteDeviceInfoById(data.Id);
+                            DataBaseCRUDManager.Instance.DeleteDeviceInfoById(data.DataModel.Id);
                         }
                         catch (Exception ex)
                         {
@@ -170,8 +154,8 @@ namespace OCC.Forms.OCC_Devices
                     }
                 }
 
-                InSelectMode = false;
-                DeviceList.Columns[0].Visible = InSelectMode;
+                inSelectMode = false;
+                DeviceList.Columns[0].Visible = inSelectMode;
                 DeviceListInitialize();
             }
         }
@@ -188,6 +172,10 @@ namespace OCC.Forms.OCC_Devices
             DeviceList.Rows[rowIndex].Cells["GPUMemory"].Value = gpuMemory;
         }
 
+        /// <summary>
+        /// 接收到的消息
+        /// </summary>
+        /// <param name="state"></param>
         public void UpdateDeviceSystemInfoEventHandler(object state)
         {
             var ip = ((Handler.C_SystemStateEventHandler.UpdateSystemStateArgs)state).ip;
@@ -215,7 +203,10 @@ namespace OCC.Forms.OCC_Devices
             }
         }
 
-
+        /// <summary>
+        /// 接收到的消息
+        /// </summary>
+        /// <param name="state"></param>
         public void UpdateDeviceConnectionState(object state)
         {
             string ip = ((EventHandler.RemotePluginEventHandler.UpdateConnectionStateArgs)state).ip;
@@ -236,5 +227,15 @@ namespace OCC.Forms.OCC_Devices
 
 
         #endregion
+
+        /// <summary>
+        /// 获取行选择
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DeviceList_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            currentSelectRowIndex = e.RowIndex;
+        }
     }
 }

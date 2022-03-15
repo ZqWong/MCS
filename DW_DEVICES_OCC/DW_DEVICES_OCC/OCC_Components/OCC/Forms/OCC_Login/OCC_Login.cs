@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace OCC.Forms.OCC_Login
+namespace OCC.Forms
 {
     public partial class OCC_Login : Form
     {

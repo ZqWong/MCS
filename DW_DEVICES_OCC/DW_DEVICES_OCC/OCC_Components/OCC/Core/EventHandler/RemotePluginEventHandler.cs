@@ -1,5 +1,4 @@
-﻿using OCC.Forms.OCC_Devices;
-using OCC.Forms.OCC_Main;
+﻿using OCC.Forms;
 using RabbitMQEvent;
 using System;
 using System.Collections.Generic;

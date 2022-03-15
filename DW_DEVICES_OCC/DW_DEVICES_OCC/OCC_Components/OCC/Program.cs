@@ -1,6 +1,6 @@
 ﻿using OCC.Core;
 using OCC.Core.LocalConfig;
-using OCC.Forms.OCC_Login;
+using OCC.Forms;
 using RabbitMQEvent;
 using SqlSugar;
 using System;
