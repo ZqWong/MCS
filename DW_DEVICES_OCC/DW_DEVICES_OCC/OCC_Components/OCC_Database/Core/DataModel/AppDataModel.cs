@@ -22,11 +22,11 @@ namespace DataModel
         [SugarColumn(ColumnName = "app_name")]
         public string AppName { get; set; }
 
-        ///// <summary>
-        ///// 应用路径（绝对）
-        ///// </summary>
-        //[SugarColumn(ColumnName = "app_path")]
-        //public string AppPath { get; set; }
+        /// <summary>
+        /// 应用路径（绝对）
+        /// </summary>
+        [SugarColumn(ColumnName = "default_path")]
+        public string AppPath { get; set; }
 
         ///// <summary>
         ///// 绑定设备ID

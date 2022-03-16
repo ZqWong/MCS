@@ -103,14 +103,16 @@ namespace OCC.Forms
                 AppData.CreateBy = DataManager.Instance.CurrentLoginUserData.UserName;
                 AppData.CreateTime = DataBaseManager.Instance.DB.GetDate();
             }
-            AppData.AppName = TextBoxAppName.Text;
-            AppData.Remark = TextBoxRemark.Text;
-            AppData.Updateby = DataManager.Instance.CurrentLoginUserData.UserName;
-            AppData.UpdateTime = DataBaseManager.Instance.DB.GetDate();
-            AppData.DelFlag = "0";
 
             var defaultPath = TextBoxPath.Text;
 
+            AppData.AppName = TextBoxAppName.Text;
+            AppData.Remark = TextBoxRemark.Text;
+            AppData.AppPath = defaultPath;
+            AppData.Updateby = DataManager.Instance.CurrentLoginUserData.UserName;
+            AppData.UpdateTime = DataBaseManager.Instance.DB.GetDate();
+            AppData.DelFlag = "0";
+         
             try
             {
                 if (DataBaseCRUDManager.Instance.TryCreateOrUpdateAppInfo(AppData))

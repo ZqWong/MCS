@@ -17,12 +17,15 @@ namespace OCC.Forms
 {
     public partial class OCC_APP : UIPage
     {
+
+
+        #region 单例 & 上下文
+
         /// <summary>
         /// 上下文同步
         /// </summary>
         public static SynchronizationContext UiContext;
 
-        #region 单例
         private static OCC_APP s_instance = null;
         private static readonly object syslock = new object();
         public static OCC_APP Instance
@@ -45,11 +48,17 @@ namespace OCC.Forms
 
         #endregion
 
+        private AppDeviceBindedCache CurrentSelectedAppDeviceData = null;
+
+        private bool inSelectMode = false;
+
         public OCC_APP()
         {
             UiContext = SynchronizationContext.Current;
 
             InitializeComponent();
+
+            DataGridViewApp.Columns[0].Visible = false;
 
             RefreshDataModel();
         }
@@ -132,7 +141,47 @@ namespace OCC.Forms
         /// <param name="e"></param>
         private void ButtonDeleteApp_Click(object sender, EventArgs e)
         {
+            if (!inSelectMode)
+            {
+                inSelectMode = true;
+                DataGridViewApp.Columns[0].Visible = inSelectMode;
+            }
+            else
+            {
+                try
+                {
 
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+                foreach (DataGridViewRow row in DataGridViewApp.Rows)
+                {
+                    if (row.Cells["Selected"].EditedFormattedValue.Equals(true))
+                    {
+                        var data = row.Tag as AppDeviceBindedCache;
+                        Debug.Info($"Ready to delete {data.AppData.Id} {data.AppData.AppName} infos");
+                        try
+                        {
+                            if (DataBaseCRUDManager.Instance.DeleteAppInfoById(data.AppData.Id))
+                            {
+                                ShowSuccessNotifier($"删除APP信息成功");
+                            }                                                      
+                        }
+                        catch (Exception ex)
+                        {
+                            ShowErrorNotifier($"删除APP信息失败(ex: {ex}");
+                        }
+
+                    }
+                }
+
+                inSelectMode = false;
+                DataGridViewApp.Columns[0].Visible = inSelectMode;
+                RefreshDataModel();                                
+            }
         }
 
         /// <summary>
@@ -153,7 +202,10 @@ namespace OCC.Forms
         /// <param name="e"></param>
         private void ButtonAddDeviceBind_Click(object sender, EventArgs e)
         {
+            if (null != CurrentSelectedAppDeviceData)
+            {
 
+            }
         }
 
         /// <summary>
@@ -190,11 +242,10 @@ namespace OCC.Forms
             if (e.RowIndex.Equals(-1))
                 return;
 
-            var appDeviceBindedCache = DataGridViewApp.Rows[e.RowIndex].Tag as AppDeviceBindedCache;
-
-            if (null != appDeviceBindedCache)
+            CurrentSelectedAppDeviceData = DataGridViewApp.Rows[e.RowIndex].Tag as AppDeviceBindedCache;
+            if (null != CurrentSelectedAppDeviceData)
             {
-                DeviceDataGridViewInitialize(appDeviceBindedCache);
+                DeviceDataGridViewInitialize(CurrentSelectedAppDeviceData);
             }
         }
     }

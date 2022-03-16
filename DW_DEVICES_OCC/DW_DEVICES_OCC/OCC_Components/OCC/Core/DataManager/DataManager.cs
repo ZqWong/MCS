@@ -12,6 +12,9 @@ namespace OCC.Core
     {
         #region App Data
 
+        /// <summary>
+        /// 所有系统以及绑定设备信息
+        /// </summary>
         public List<AppDeviceBindedCache> AppDeviceBindedCollection = new List<AppDeviceBindedCache>();
 
         /// <summary>
@@ -19,6 +22,9 @@ namespace OCC.Core
         /// </summary>
         private List<AppDataModel> app = new List<AppDataModel>();
 
+        /// <summary>
+        /// 获取系统信息
+        /// </summary>
         public void GetAppData()
         {
             try
@@ -46,6 +52,11 @@ namespace OCC.Core
             }
         }
 
+        /// <summary>
+        /// 通过系统名获取对应绑定数据
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public AppDeviceBindedCache GetAppDeviceBindedCacheByAppName(string name)
         {
             return AppDeviceBindedCollection.FirstOrDefault(ad => ad.AppData.AppName.Equals(name));
@@ -66,6 +77,9 @@ namespace OCC.Core
         /// </summary>
         public List<DeviceStatusCache> DeviceInfoCollection = new List<DeviceStatusCache>();
 
+        /// <summary>
+        /// 获取设备信息
+        /// </summary>
         public void GetDeviceData()
         {
             try
@@ -92,19 +106,14 @@ namespace OCC.Core
             }            
         }
 
+        /// <summary>
+        /// 通过ID获取设备信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public DeviceStatusCache GetDeviceDataById(string id)
         {
             return DeviceInfoCollection.FirstOrDefault(d => d.DataModel.Id.Equals(id));
-        }
-
-
-        public List<DeviceTypeDataModel> DeviceTypeCollection = new List<DeviceTypeDataModel>();
-        public void GetDeviceTypes()
-        {
-            if (DataBaseCRUDManager.Instance.TryGetAllDeviceTypeInfo(out DeviceTypeCollection))
-            {
-
-            }            
         }
 
         #endregion
@@ -113,9 +122,14 @@ namespace OCC.Core
 
         #region UserData
 
+        /// <summary>
+        /// 当前登录用户信息
+        /// </summary>
         public UserDataModel CurrentLoginUserData;
 
-
+        /// <summary>
+        /// 当前登录用户权限信息
+        /// </summary>
         public UserTypeDataModel CurrentUserAuthData;
 
 
@@ -125,29 +139,45 @@ namespace OCC.Core
 
         #region Commom Info
 
+        /// <summary>
+        /// 公司信息
+        /// </summary>
         public List<CompanyDataModel> CompanyDatas;
 
+        /// <summary>
+        /// 用户类型信息
+        /// </summary>
         public List<UserTypeDataModel> UserTypeDatas;
 
+        /// <summary>
+        /// 设备类型列表
+        /// </summary>
+        public List<DeviceTypeDataModel> DeviceTypeCollection;
+
+
+        /// <summary>
+        /// 获取一些通用数据
+        /// </summary>
         public void GetCommonInfos()
         {
             CompanyDatas = new List<CompanyDataModel>();
             if (DataBaseCRUDManager.Instance.TryGetAllCompanyInfo(out CompanyDatas))
             {
-
+                
             }
-
             UserTypeDatas = new List<UserTypeDataModel>();
             if (DataBaseCRUDManager.Instance.TryGetAllUserTypeInfo(out UserTypeDatas))
             {
 
-            }            
+            }
+            DeviceTypeCollection = new List<DeviceTypeDataModel>();
+            if (DataBaseCRUDManager.Instance.TryGetAllDeviceTypeInfo(out DeviceTypeCollection))
+            {
+
+            }
         }
 
-
-
-        
-      
+              
         #endregion
 
     }

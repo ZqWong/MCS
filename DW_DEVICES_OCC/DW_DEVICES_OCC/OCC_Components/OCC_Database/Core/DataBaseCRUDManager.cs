@@ -402,17 +402,23 @@ public class DataBaseCRUDManager : LockedSingletonClass<DataBaseCRUDManager>
     /// 删除用户信息（假删除）
     /// </summary>
     /// <param name="id"></param>
-    public void DeleteUserInfoById(string id)
+    public bool DeleteUserInfoById(string id)
     {
+        bool ret = false;
         try
         {
-            DataBaseManager.Instance.DB.Deleteable<UserDataModel>().Where(u => u.Id.Equals(id)).IsLogic().ExecuteCommand("del_flag");
+            int count = DataBaseManager.Instance.DB.Deleteable<UserDataModel>().Where(u => u.Id.Equals(id)).IsLogic().ExecuteCommand("del_flag");
+            if (count >= 1)
+            {
+                ret = true; ;
+            }          
         }
         catch (Exception ex)
         {
             Debug.Error($"DataBaseCRUDManager DeleteUserInfoById failed {ex}");
             throw;
         }
+        return ret;
     }
 
 
@@ -420,14 +426,16 @@ public class DataBaseCRUDManager : LockedSingletonClass<DataBaseCRUDManager>
     /// 删除设备信息（假删除）
     /// </summary>
     /// <param name="id"></param>
-    public void DeleteDeviceInfoById(string id)
+    public bool DeleteDeviceInfoById(string id)
     {
+        bool ret = false;
         try
         {
             int count = DataBaseManager.Instance.DB.Deleteable<DeviceDataModel>().Where(d => d.Id.Equals(id)).IsLogic().ExecuteCommand("del_flag");
             if (count >= 1)
             {
                 DataBaseManager.Instance.DB.Deleteable<AppDeviceBindDataModel>().Where(ad => ad.DeviceId.Equals(id)).IsLogic().ExecuteCommand("del_flag");
+                ret = true; ;
             }            
         }
         catch (Exception ex)
@@ -435,7 +443,34 @@ public class DataBaseCRUDManager : LockedSingletonClass<DataBaseCRUDManager>
             Debug.Error($"DataBaseCRUDManager DeleteDeviceInfoById failed {ex}");
             throw;
         }
+        return ret;
     }
+
+    /// <summary>
+    /// 删除APP信息（假删除）
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    public bool DeleteAppInfoById(string id)
+    {
+        bool ret = false;
+        try
+        {
+            int count = DataBaseManager.Instance.DB.Deleteable<AppDataModel>().Where(d => d.Id.Equals(id)).IsLogic().ExecuteCommand("del_flag");
+            if (count >= 1)
+            {
+                DataBaseManager.Instance.DB.Deleteable<AppDeviceBindDataModel>().Where(ad => ad.AppId.Equals(id)).IsLogic().ExecuteCommand("del_flag");
+                ret = true; ;
+            }
+        }
+        catch (Exception ex)
+        {
+            Debug.Error($"DataBaseCRUDManager DeleteAppInfoById failed {ex}");
+            throw;
+        }
+        return ret;
+    }
+
 
     #endregion
 }

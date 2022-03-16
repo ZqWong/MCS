@@ -58,8 +58,6 @@ namespace OCC.Forms
             RefreshDataModel();
             DeviceListInitialize();
             DeviceList.Columns[0].Visible = false;
-
-            DataManager.Instance.GetDeviceTypes();
         }
 
         /// <summary>
