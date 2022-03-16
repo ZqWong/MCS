@@ -1,4 +1,5 @@
-﻿using DataModel;
+﻿using DataCache;
+using DataModel;
 using OCC.Core;
 using Sunny.UI;
 using System;
@@ -17,11 +18,6 @@ namespace OCC.Forms
     {
         private bool isEdit = false;
         private AppDataModel appData;
-
-        public OCC_APPDetail()
-        {
-            InitializeComponent();
-        }
 
         public AppDataModel AppData
         {
@@ -72,7 +68,99 @@ namespace OCC.Forms
             //DataManager.Instance.DeviceInfoCollection.All(d => d.DataModel.DeviceType.Equals())
         }
 
+        public OCC_APPDetail()
+        {
+            InitializeComponent();
+
+            ButtonOkClick += ButtonOkClickHandler;
 
 
+            CheckBoxGroupDeviceUIInitialize();
+           
+        }
+
+        private void CheckBoxGroupDeviceUIInitialize()
+        {
+            var windowsDevices = DataManager.Instance.DeviceInfoCollection.FindAll(d => d.DataModel.DeviceType.Equals(1));
+
+            if (windowsDevices.Count > 0)
+            {
+                DataGridViewDeviceBind.Rows.Add(windowsDevices.Count);
+
+                for (int i = 0; i < windowsDevices.Count; i++)
+                {
+                    DataGridViewDeviceBind.Rows[i].Tag = windowsDevices[i];
+                    DataGridViewDeviceBind.Rows[i].Cells["DeviceName"].Value = windowsDevices[i].DataModel.Name;
+                }
+            }
+        }
+
+        private void ButtonOkClickHandler(object sender, EventArgs e)
+        {
+            if (!isEdit)
+            {
+                AppData.Id = Guid.NewGuid().ToString();
+                AppData.CreateBy = DataManager.Instance.CurrentLoginUserData.UserName;
+                AppData.CreateTime = DataBaseManager.Instance.DB.GetDate();
+            }
+            AppData.AppName = TextBoxAppName.Text;
+            AppData.Remark = TextBoxRemark.Text;
+            AppData.Updateby = DataManager.Instance.CurrentLoginUserData.UserName;
+            AppData.UpdateTime = DataBaseManager.Instance.DB.GetDate();
+            AppData.DelFlag = "0";
+
+            var defaultPath = TextBoxPath.Text;
+
+            try
+            {
+                if (DataBaseCRUDManager.Instance.TryCreateOrUpdateAppInfo(AppData))
+                {
+                    List<AppDeviceBindDataModel> appDeviceBindCollection = new List<AppDeviceBindDataModel>();
+
+                    for (int i = 0; i < DataGridViewDeviceBind.Rows.Count; i++)
+                    {
+                        if (Convert.ToBoolean(DataGridViewDeviceBind.Rows[i].Cells["Selected"].Value) == true)
+                        {                        
+                            var deviceData = DataGridViewDeviceBind.Rows[i].Tag as DeviceStatusCache;
+                            Debug.Info($"DataGridViewDeviceBind.Rows {deviceData.DataModel.Name}");
+                            AppDeviceBindDataModel appDeviceBind = new AppDeviceBindDataModel();
+
+                            appDeviceBind.AppId = AppData.Id;
+                            appDeviceBind.DeviceId = deviceData.DataModel.Id;
+                            appDeviceBind.Path = defaultPath;
+
+                            appDeviceBind.CreateBy = DataManager.Instance.CurrentLoginUserData.UserName;
+                            appDeviceBind.CreateTime = DataBaseManager.Instance.DB.GetDate();
+                            appDeviceBind.Updateby = DataManager.Instance.CurrentLoginUserData.UserName;
+                            appDeviceBind.UpdateTime = DataBaseManager.Instance.DB.GetDate();
+                            appDeviceBind.DelFlag = "0";
+
+                            appDeviceBindCollection.Add(appDeviceBind);
+                        }
+                    }
+                    try
+                    {
+                        Debug.Info($"appDeviceBindCollection {appDeviceBindCollection.Count}");
+                        DataBaseCRUDManager.Instance.TryCreateAppAndDeviceBindInfo(appDeviceBindCollection);                                        
+                    }                    
+                    catch (Exception ex)
+                    {
+                        ShowErrorNotifier($"创建系统设备绑定数据失败: \n{ex}");
+                        return;
+                    }                   
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowErrorNotifier($"创建系统设备绑定数据失败: \n{ex}");
+                return;
+            }
+
+            ShowSuccessNotifier($"添加系统信息成功 \n{AppData.AppName}");
+
+            var occApp = Owner as OCC_APP;
+            occApp.RefreshDataModel();
+            Close();
+        }
     }
 }

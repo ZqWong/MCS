@@ -15,7 +15,7 @@ using System.Windows.Forms;
 
 namespace OCC.Forms
 {
-    public partial class OCC_Device : Form
+    public partial class OCC_Device : UIPage
     {
         #region 单例 & 上下文
 
@@ -237,6 +237,8 @@ namespace OCC.Forms
         /// <param name="e"></param>
         private void DeviceList_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex.Equals(-1))
+                return;
             currentSelectRowIndex = e.RowIndex;
         }
     }

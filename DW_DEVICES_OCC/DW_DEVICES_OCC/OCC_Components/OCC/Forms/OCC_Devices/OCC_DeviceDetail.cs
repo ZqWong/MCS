@@ -116,17 +116,14 @@ namespace OCC.Forms
             if (!isEdit)
             {
                 DeviceData.Id = Guid.NewGuid().ToString();
+                DeviceData.CreateBy = DataManager.Instance.CurrentLoginUserData.UserName;
+                DeviceData.CreateTime = DataBaseManager.Instance.DB.GetDate();
             }            
             DeviceData.Name = TextBoxDeviceName.Text;
             DeviceData.DeviceType = deviceType.Id;
             DeviceData.IP = TextBoxIP.Text;
             DeviceData.MAC = TextBoxMAC.Text;
             DeviceData.Remark = TextBoxRemark.Text;
-            if (!isEdit)
-            {
-                DeviceData.CreateBy = DataManager.Instance.CurrentLoginUserData.UserName;
-                DeviceData.CreateTime = DataBaseManager.Instance.DB.GetDate();
-            }
             DeviceData.Updateby = DataManager.Instance.CurrentLoginUserData.UserName;
             DeviceData.UpdateTime = DataBaseManager.Instance.DB.GetDate();
             DeviceData.DelFlag = "0";

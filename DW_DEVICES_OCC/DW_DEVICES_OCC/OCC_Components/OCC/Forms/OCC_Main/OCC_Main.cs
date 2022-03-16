@@ -16,7 +16,7 @@ using System.Windows.Forms;
 
 namespace OCC.Forms
 {
-    public partial class OCC_Main : UIForm
+    public partial class OCC_Main : UIPage
     {
         #region 单例
         private static OCC_Main s_instance = null;
@@ -126,7 +126,7 @@ namespace OCC.Forms
                 // 先遍历出用户已选择的设备id                
                 for (int i = 0; i < DataGridViewDevice.Rows.Count; i++)
                 {
-                    if (DataGridViewDevice.Rows[i].Cells["Selected"].Selected.Equals(true))
+                    if (Convert.ToBoolean(DataGridViewDevice.Rows[i].Cells["Selected"].Selected) == true)
                     {
                         var cache = DataGridViewDevice.Rows[i].Tag as DeviceStatusCache;
 
@@ -136,7 +136,11 @@ namespace OCC.Forms
                         {
                             var mi = RemoteProcessLanuchHelper.CreateRemoteLanuchAppTask(cache.DataModel.IP, config.Path, true);
                             OCC_Main.Instance.Invoke(mi);
-                        }                     
+                        }
+                        else
+                        {
+                            ShowErrorNotifier($"设备 {cache.DataModel.Name} 启动系统 {appDeviceBinded.AppData.AppName} 失败！请确认是否正确配置启动路径。");
+                        }
                     }                        
                 }
             }

@@ -1,6 +1,7 @@
 ﻿using DataCache;
 using DataModel;
 using OCC.Core;
+using Sunny.UI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,7 +15,7 @@ using System.Windows.Forms;
 
 namespace OCC.Forms
 {
-    public partial class OCC_APP : Form
+    public partial class OCC_APP : UIPage
     {
         /// <summary>
         /// 上下文同步
@@ -116,7 +117,11 @@ namespace OCC.Forms
         /// <param name="e"></param>
         private void ButtonAddApp_Click(object sender, EventArgs e)
         {
-
+            OCC_APPDetail userDetailForm = new OCC_APPDetail();
+            userDetailForm.Owner = this;
+            userDetailForm.Text = "添加系统";
+            
+            userDetailForm.ShowDialogWithMask();
 
         }
 
@@ -181,6 +186,9 @@ namespace OCC.Forms
         private void DataGridViewApp_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             Debug.Info($"Select Row {e.RowIndex}");
+
+            if (e.RowIndex.Equals(-1))
+                return;
 
             var appDeviceBindedCache = DataGridViewApp.Rows[e.RowIndex].Tag as AppDeviceBindedCache;
 

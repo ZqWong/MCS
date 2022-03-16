@@ -67,7 +67,7 @@ public class DataBaseCRUDManager : LockedSingletonClass<DataBaseCRUDManager>
     /// </summary>
     /// <param name="deviceData"></param>
     /// <returns></returns>
-    public bool TryCreateAppInfo(AppDataModel appData)
+    public bool TryCreateOrUpdateAppInfo(AppDataModel appData)
     {
         bool ret = false;
         try

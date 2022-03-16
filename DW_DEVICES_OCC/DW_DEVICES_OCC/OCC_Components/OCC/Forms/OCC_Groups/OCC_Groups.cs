@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sunny.UI;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,7 +11,7 @@ using System.Windows.Forms;
 
 namespace OCC.Forms
 {
-    public partial class OCC_Groups : Form
+    public partial class OCC_Groups : UIPage
     {
         public OCC_Groups()
         {

@@ -30,6 +30,8 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.TextBoxRemark = new Sunny.UI.UITextBox();
+            this.uiLabel4 = new Sunny.UI.UILabel();
             this.TextBoxSerial = new Sunny.UI.UITextBox();
             this.uiLabel5 = new Sunny.UI.UILabel();
             this.TextBoxIP = new Sunny.UI.UITextBox();
@@ -40,8 +42,6 @@
             this.TextBoxDeviceName = new Sunny.UI.UITextBox();
             this.uiLabel1 = new Sunny.UI.UILabel();
             this.uiLabel2 = new Sunny.UI.UILabel();
-            this.TextBoxRemark = new Sunny.UI.UITextBox();
-            this.uiLabel4 = new Sunny.UI.UILabel();
             this.pnlBtm.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -49,7 +49,7 @@
             // 
             // pnlBtm
             // 
-            this.pnlBtm.Location = new System.Drawing.Point(1, 340);
+            this.pnlBtm.Location = new System.Drawing.Point(1, 317);
             this.pnlBtm.Size = new System.Drawing.Size(481, 55);
             this.pnlBtm.Style = Sunny.UI.UIStyle.Custom;
             // 
@@ -69,7 +69,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(1, 35);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(481, 360);
+            this.panel1.Size = new System.Drawing.Size(481, 337);
             this.panel1.TabIndex = 0;
             // 
             // panel4
@@ -90,8 +90,40 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(481, 360);
+            this.panel4.Size = new System.Drawing.Size(481, 337);
             this.panel4.TabIndex = 1;
+            // 
+            // TextBoxRemark
+            // 
+            this.TextBoxRemark.ButtonSymbol = 61761;
+            this.TextBoxRemark.ButtonSymbolOffset = new System.Drawing.Point(0, 1);
+            this.TextBoxRemark.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.TextBoxRemark.EnterAsTab = true;
+            this.TextBoxRemark.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
+            this.TextBoxRemark.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.TextBoxRemark.Location = new System.Drawing.Point(115, 200);
+            this.TextBoxRemark.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.TextBoxRemark.Maximum = 2147483647D;
+            this.TextBoxRemark.Minimum = -2147483648D;
+            this.TextBoxRemark.MinimumSize = new System.Drawing.Size(1, 16);
+            this.TextBoxRemark.Name = "TextBoxRemark";
+            this.TextBoxRemark.Padding = new System.Windows.Forms.Padding(5);
+            this.TextBoxRemark.Size = new System.Drawing.Size(340, 29);
+            this.TextBoxRemark.Style = Sunny.UI.UIStyle.Custom;
+            this.TextBoxRemark.TabIndex = 11;
+            this.TextBoxRemark.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // uiLabel4
+            // 
+            this.uiLabel4.AutoSize = true;
+            this.uiLabel4.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.uiLabel4.Location = new System.Drawing.Point(21, 204);
+            this.uiLabel4.Name = "uiLabel4";
+            this.uiLabel4.Size = new System.Drawing.Size(42, 21);
+            this.uiLabel4.Style = Sunny.UI.UIStyle.Custom;
+            this.uiLabel4.TabIndex = 12;
+            this.uiLabel4.Text = "备注";
+            this.uiLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // TextBoxSerial
             // 
@@ -253,48 +285,16 @@
             this.uiLabel2.Text = "设备类型";
             this.uiLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // TextBoxRemark
-            // 
-            this.TextBoxRemark.ButtonSymbol = 61761;
-            this.TextBoxRemark.ButtonSymbolOffset = new System.Drawing.Point(0, 1);
-            this.TextBoxRemark.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.TextBoxRemark.EnterAsTab = true;
-            this.TextBoxRemark.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
-            this.TextBoxRemark.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.TextBoxRemark.Location = new System.Drawing.Point(115, 200);
-            this.TextBoxRemark.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.TextBoxRemark.Maximum = 2147483647D;
-            this.TextBoxRemark.Minimum = -2147483648D;
-            this.TextBoxRemark.MinimumSize = new System.Drawing.Size(1, 16);
-            this.TextBoxRemark.Name = "TextBoxRemark";
-            this.TextBoxRemark.Padding = new System.Windows.Forms.Padding(5);
-            this.TextBoxRemark.Size = new System.Drawing.Size(340, 29);
-            this.TextBoxRemark.Style = Sunny.UI.UIStyle.Custom;
-            this.TextBoxRemark.TabIndex = 11;
-            this.TextBoxRemark.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // uiLabel4
-            // 
-            this.uiLabel4.AutoSize = true;
-            this.uiLabel4.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.uiLabel4.Location = new System.Drawing.Point(21, 204);
-            this.uiLabel4.Name = "uiLabel4";
-            this.uiLabel4.Size = new System.Drawing.Size(42, 21);
-            this.uiLabel4.Style = Sunny.UI.UIStyle.Custom;
-            this.uiLabel4.TabIndex = 12;
-            this.uiLabel4.Text = "备注";
-            this.uiLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // OCC_DeviceDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.ClientSize = new System.Drawing.Size(483, 398);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
+            this.ClientSize = new System.Drawing.Size(483, 375);
             this.Controls.Add(this.panel1);
             this.Name = "OCC_DeviceDetail";
-            this.Style = Sunny.UI.UIStyle.Custom;
-            this.Text = "OCC_UserDetail";            
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "OCC_UserDetail";
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.pnlBtm, 0);
             this.pnlBtm.ResumeLayout(false);
