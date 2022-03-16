@@ -166,7 +166,7 @@ namespace OCC.Core
                 
             }
             UserTypeDatas = new List<UserTypeDataModel>();
-            if (DataBaseCRUDManager.Instance.TryGetAllUserTypeInfo(out UserTypeDatas))
+            if (DataBaseCRUDManager.Instance.TryGetAllUserTypeInfo(out UserTypeDatas)) 
             {
 
             }

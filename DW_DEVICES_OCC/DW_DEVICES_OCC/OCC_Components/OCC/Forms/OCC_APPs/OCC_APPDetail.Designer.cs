@@ -51,18 +51,20 @@
             // pnlBtm
             // 
             this.pnlBtm.Location = new System.Drawing.Point(1, 425);
-            this.pnlBtm.Size = new System.Drawing.Size(465, 55);
+            this.pnlBtm.Size = new System.Drawing.Size(469, 55);
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(337, 12);
+            this.btnCancel.Location = new System.Drawing.Point(341, 12);
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(222, 12);
+            this.btnOK.Location = new System.Drawing.Point(226, 12);
             // 
             // TextBoxAppName
             // 
+            this.TextBoxAppName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.TextBoxAppName.ButtonSymbol = 61761;
             this.TextBoxAppName.ButtonSymbolOffset = new System.Drawing.Point(0, 1);
             this.TextBoxAppName.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -93,6 +95,8 @@
             // 
             // TextBoxRemark
             // 
+            this.TextBoxRemark.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.TextBoxRemark.ButtonSymbol = 61761;
             this.TextBoxRemark.ButtonSymbolOffset = new System.Drawing.Point(0, 1);
             this.TextBoxRemark.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -123,6 +127,8 @@
             // 
             // TextBoxPath
             // 
+            this.TextBoxPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.TextBoxPath.ButtonSymbol = 61761;
             this.TextBoxPath.ButtonSymbolOffset = new System.Drawing.Point(0, 1);
             this.TextBoxPath.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -164,7 +170,7 @@
             this.uiGroupBox1.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiGroupBox1.Name = "uiGroupBox1";
             this.uiGroupBox1.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
-            this.uiGroupBox1.Size = new System.Drawing.Size(413, 248);
+            this.uiGroupBox1.Size = new System.Drawing.Size(417, 248);
             this.uiGroupBox1.TabIndex = 16;
             this.uiGroupBox1.Text = "绑定设备选择";
             this.uiGroupBox1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -219,7 +225,7 @@
             this.DataGridViewDeviceBind.RowTemplate.Height = 30;
             this.DataGridViewDeviceBind.SelectedIndex = -1;
             this.DataGridViewDeviceBind.ShowGridLine = true;
-            this.DataGridViewDeviceBind.Size = new System.Drawing.Size(413, 216);
+            this.DataGridViewDeviceBind.Size = new System.Drawing.Size(417, 216);
             this.DataGridViewDeviceBind.TabIndex = 0;
             // 
             // Selected
@@ -238,7 +244,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(467, 483);
+            this.ClientSize = new System.Drawing.Size(471, 483);
             this.Controls.Add(this.uiGroupBox1);
             this.Controls.Add(this.TextBoxPath);
             this.Controls.Add(this.uiLabel3);

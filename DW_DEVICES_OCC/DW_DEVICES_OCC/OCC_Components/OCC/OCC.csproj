@@ -89,6 +89,12 @@
     <Compile Include="Forms\OCC_APPs\OCC_APPDetail.Designer.cs">
       <DependentUpon>OCC_APPDetail.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\OCC_APPs\OCC_APPDeviceBind.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\OCC_APPs\OCC_APPDeviceBind.Designer.cs">
+      <DependentUpon>OCC_APPDeviceBind.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\OCC_Groups\OCC_Groups.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -156,6 +162,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\OCC_APPs\OCC_APPDetail.resx">
       <DependentUpon>OCC_APPDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\OCC_APPs\OCC_APPDeviceBind.resx">
+      <DependentUpon>OCC_APPDeviceBind.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\OCC_new.resx">
       <DependentUpon>OCC_new.cs</DependentUpon>

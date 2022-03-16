@@ -392,6 +392,43 @@ public class DataBaseCRUDManager : LockedSingletonClass<DataBaseCRUDManager>
      
     }
 
+    public bool TryUpdateAppInfoById(AppDataModel appData)
+    {
+        bool ret = false;
+        try
+        {
+            var result = DataBaseManager.Instance.DB.Updateable<AppDataModel>(appData).ExecuteCommand();
+            if (result > 0)
+                ret = true;
+        }
+        catch (Exception ex)
+        {
+            Debug.Error($"DataBaseCRUDManager TryUpdateAppInfoById failed {ex}");
+            throw;
+        }
+        return ret;
+    }
+
+    public bool TryCreateOrUpdateAppDeviceBindInfo(List<AppDeviceBindDataModel> appDeviceBinds)
+    {
+        bool ret = false;
+        try
+        {
+            int execute = 0;
+            var x = DataBaseManager.Instance.DB.Storageable(appDeviceBinds).ToStorage();
+            execute = x.AsUpdateable.ExecuteCommand();
+            execute = x.AsInsertable.ExecuteCommand();
+
+            if (execute >= 1)
+                ret = true;
+        }
+        catch (Exception)
+        {
+
+            throw;
+        }
+        return ret;
+    }
 
     #endregion
 

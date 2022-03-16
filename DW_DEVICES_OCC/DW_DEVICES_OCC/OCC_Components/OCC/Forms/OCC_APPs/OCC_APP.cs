@@ -48,7 +48,7 @@ namespace OCC.Forms
 
         #endregion
 
-        private AppDeviceBindedCache CurrentSelectedAppDeviceData = null;
+        public AppDeviceBindedCache CurrentSelectedAppDeviceData = null;
 
         private bool inSelectMode = false;
 
@@ -60,7 +60,7 @@ namespace OCC.Forms
 
             DataGridViewApp.Columns[0].Visible = false;
 
-            RefreshDataModel();
+            RefreshDataModel();           
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace OCC.Forms
         {
             DataManager.Instance.GetAppData();
             AppDataGridViewInitialize();
-
+            CurrentSelectedAppDeviceData = DataGridViewApp.Rows[0].Tag as AppDeviceBindedCache;
             UiContext.Post(OCC_Main.Instance.ComboBoxAppInitialize, null);
         }
 
@@ -191,41 +191,13 @@ namespace OCC.Forms
         /// <param name="e"></param>
         private void ButtonEditApp_Click(object sender, EventArgs e)
         {
-
-        }
-
-
-        /// <summary>
-        /// 添加设备绑定按钮
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ButtonAddDeviceBind_Click(object sender, EventArgs e)
-        {
             if (null != CurrentSelectedAppDeviceData)
             {
-
+                OCC_APPDeviceBind appDeviceBind = new OCC_APPDeviceBind();
+                appDeviceBind.Owner = this;
+                appDeviceBind.Text = "编辑设备绑定";
+                appDeviceBind.ShowDialogWithMask();
             }
-        }
-
-        /// <summary>
-        /// 删除设备绑定按钮
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ButtonDeleteDeviceBind_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        /// <summary>
-        /// 编辑设备绑定按钮
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ButtonEditDeviceBind_Click(object sender, EventArgs e)
-        {
-
         }
 
         #endregion
