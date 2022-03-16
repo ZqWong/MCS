@@ -219,7 +219,7 @@ namespace OCC.Forms
                 var device = DataManager.Instance.DeviceInfoCollection.FirstOrDefault(d => d.DataModel.IP.Equals(ip));
                 if (null != device)
                 {
-                    DeviceList.Rows[device.Index].Cells["ConnectionStatus "].Value =
+                    DeviceList.Rows[device.Index].Cells["ConnectionStatus"].Value =
                         connect ?
                         global::OCC.Properties.Resources.switch_开 :
                         global::OCC.Properties.Resources.switch_关;

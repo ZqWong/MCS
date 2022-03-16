@@ -83,6 +83,12 @@
     <Compile Include="Forms\OCC_APPs\OCC_APP.Designer.cs">
       <DependentUpon>OCC_APP.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\OCC_APPs\OCC_APPDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\OCC_APPs\OCC_APPDetail.Designer.cs">
+      <DependentUpon>OCC_APPDetail.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\OCC_Groups\OCC_Groups.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -147,6 +153,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\OCC_APPs\OCC_APP.resx">
       <DependentUpon>OCC_APP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\OCC_APPs\OCC_APPDetail.resx">
+      <DependentUpon>OCC_APPDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\OCC_new.resx">
       <DependentUpon>OCC_new.cs</DependentUpon>
