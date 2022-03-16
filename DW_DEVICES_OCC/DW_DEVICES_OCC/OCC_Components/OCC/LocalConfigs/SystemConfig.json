@@ -8,8 +8,8 @@
   "RabbitMQSSL": "0",
   "DatabaseUsername": "root",
   "DatabasePassword": "duowei",
-  "DatabaseHost": "127.0.0.1",
+  "DatabaseHost": "192.168.0.198",
   "DatabasePort": "3306",
-  "DatabaseRepName": "DW",
+  "DatabaseRepName": "occ",
   "WindowsCanMoved": true
 }

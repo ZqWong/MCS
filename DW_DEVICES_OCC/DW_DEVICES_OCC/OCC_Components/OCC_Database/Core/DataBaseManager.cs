@@ -11,7 +11,7 @@ using SqlSugar;
 public class DataBaseManager: LockedSingletonClass<DataBaseManager>
 {
     public SqlSugarClient DB;
-    public void Initialize(string connectionString, bool isAutoCloseConnection = true, DbType dbType = DbType.MySql, bool needLogExecutingSql = false)
+    public bool Initialize(string connectionString, bool isAutoCloseConnection = true, DbType dbType = DbType.MySql, bool needLogExecutingSql = false)
     {
         try
         {
@@ -21,11 +21,12 @@ public class DataBaseManager: LockedSingletonClass<DataBaseManager>
             {
                 Debug.Info($"执行 sql : {sql} \n pars: {pars}");
             };
-        }
-        catch (Exception)
-        {
 
-            throw;
+            return true;
+        }
+        catch (Exception ex)
+        {
+            throw ex;
         }     
     }
 
@@ -40,10 +41,9 @@ public class DataBaseManager: LockedSingletonClass<DataBaseManager>
                 DbType = dbType
             });
         }
-        catch (Exception)
+        catch (Exception ex)
         {
-
-            throw;
+            throw ex;
         }        
     }
 }

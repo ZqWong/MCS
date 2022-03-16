@@ -1,14 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Runtime.InteropServices;
-using System.Drawing.Drawing2D;
 using OCC.Core.LocalConfig;
 using OCC.Core;
 using System.Threading;
@@ -53,13 +45,15 @@ namespace OCC
             this.IsMdiContainer = true;
             s_uiContext = SynchronizationContext.Current;
 
+            DataBaseInitialize();
+
             if (LocalConifgManager.Instance.SystemConfig.DataModel.ShowLoginForm)
             {
                 OCC_Login login = new OCC_Login();
                 login.Owner = this;
 
                 login.LoginCompleteAction = () =>
-                {
+                {                    
                     RemoveTabControlButton(0);
                     RabbitMQServerInitialize();
                     DataManager.Instance.GetCommonInfos();
@@ -71,7 +65,35 @@ namespace OCC
 
             
         }
-        
+
+
+        private void DataBaseInitialize()
+        {
+            /// 数据库读取
+            try
+            {
+                var connectionString = string.Format(
+                    DataBaseConst.SQL_SUGAR_CONNECTION_STRING_FORMAT,
+                    LocalConifgManager.Instance.SystemConfig.DataModel.DatabaseHost,
+                    LocalConifgManager.Instance.SystemConfig.DataModel.DatabaseRepName,
+                    LocalConifgManager.Instance.SystemConfig.DataModel.DatabaseUsername,
+                    LocalConifgManager.Instance.SystemConfig.DataModel.DatabasePassword,
+                    null,
+                    true);
+
+                if (DataBaseManager.Instance.Initialize(connectionString, true, SqlSugar.DbType.MySql, true))
+                {
+                    ShowSuccessNotifier($"数据库初始化成功.");
+                }                
+            }
+            catch (Exception ex)
+            {
+                ShowErrorDialog($"[OCC] 数据库初始化失败 :\n{ex}");
+                Debug.Error($"[OCC] Database Initialize failed :{ex}");
+            }
+
+        }
+
 
         private void RabbitMQServerInitialize()
         {
@@ -81,23 +103,36 @@ namespace OCC
                 //RabbitMQManager.Instance.Initialize("event_bus", GetIP(), Process.GetCurrentProcess().ProcessName, "topic", "client_duowei", "192.169.0.198", "duowei");
                 //RabbitMQManager.Instance.Initialize("event_bus", NetworkHelper.GetIP(), Process.GetCurrentProcess().ProcessName, "topic", "client_duowei", "127.0.0.1", "duowei");
 
-                RabbitMQManager.Instance.Initialize(
-                    LocalConifgManager.Instance.SystemConfig.DataModel.RabbitMQBrokerName,
-                    NetworkHelper.GetIP(),
-                    Process.GetCurrentProcess().ProcessName,
-                    LocalConifgManager.Instance.SystemConfig.DataModel.RabbitMQExchangeType,
-                    LocalConifgManager.Instance.SystemConfig.DataModel.Username,
-                    "127.0.0.1",
-                    //"192.169.0.198",
-                    LocalConifgManager.Instance.SystemConfig.DataModel.Password);
-
+                try
+                {
+                    RabbitMQManager.Instance.Initialize(
+                      LocalConifgManager.Instance.SystemConfig.DataModel.RabbitMQBrokerName,
+                      NetworkHelper.GetIP(),
+                      Process.GetCurrentProcess().ProcessName,
+                      LocalConifgManager.Instance.SystemConfig.DataModel.RabbitMQExchangeType,
+                      LocalConifgManager.Instance.SystemConfig.DataModel.Username,
+                      //LocalConifgManager.Instance.SystemConfig.DataModel.Hostname,
+                      "127.0.0.1",
+                      LocalConifgManager.Instance.SystemConfig.DataModel.Password);
+                }
+                catch (Exception ex)
+                {
+                    ShowErrorDialog($"[OCC] RabbitMQ 初始化失败 :\n{ex}");
+                    System.Environment.Exit(0);
+                    throw;
+                }
+            
                 //注册当前程序集中实现的所有IEventHandler<T> （(Assembly.GetExecutingAssembly()：获取包含当前执行的代码的程序集）
                 RabbitMQManager.Instance.RegisterAllEventHandlerFromAssembly(Assembly.GetExecutingAssembly());
                 RabbitMQManager.Instance.CreatePluginEventConsumerChannel();
+
+                ShowSuccessNotifier($"RabbitMQ 初始化成功.");
             }
             catch (Exception ex)
             {
+                ShowErrorDialog($"[OCC] RabbitMQ 初始化失败 :\n{ex}");
                 Debug.Error($"[OCC] RabbitMQ Initialize failed :{ex}");
+                System.Environment.Exit(0);
             }
         }
 

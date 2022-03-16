@@ -150,8 +150,10 @@ namespace RabbitMQEvent
             m_connectionFactory.UserName = userName;
             m_connectionFactory.HostName = hostName;
             m_connectionFactory.Password = passWord;
+            m_connectionFactory.Port = AmqpTcpEndpoint.UseDefaultPort;
+            m_connectionFactory.VirtualHost = "/";
             // 设置心跳检测时长
-            m_connectionFactory.RequestedHeartbeat = 20;
+            m_connectionFactory.RequestedHeartbeat = 60;
 
             // 设置SSL相关
 
@@ -189,13 +191,14 @@ namespace RabbitMQEvent
                 {
                     Debug.Error($"{this} RabbitMQ Magaer CreateConsumerChannel Failed : {ex}");
                     if (remainConnectCount == 0)
-                    {
-                        throw;
+                    {                     
                     }
                     else if (remainConnectCount != -1)
                     {
                         remainConnectCount -= 1;
                     }
+
+                    throw ex;
                 }
             }
 

@@ -22,8 +22,6 @@ namespace EventHandler
 
         public void HandleEvent(S_PluginEventData eventData)
         {
-            Debug.Error((eventData.routingKeys == "connection.created").ToString());
-
             if (eventData.routingKeys == "connection.created")
             {
                 // 值为： 192.168.0.73:50325 -> 192.168.0.112:5672
