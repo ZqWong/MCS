@@ -348,37 +348,50 @@ namespace OCC.Forms
             var targetDevice = DataManager.Instance.DeviceInfoCollection.FirstOrDefault(d => d.Index.Equals(e.RowIndex));
             if (null != targetDevice)
             {
-                // 开机
+                // 关机
                 if (targetDevice.PowerStatus == DevicePowerStatus.OPENED)
                 {
-                    if (DevicePowerManager.RemotePowerOff(targetDevice.DataModel.IP))
+                    try
                     {
-                        DataGridViewDevice.Rows[e.RowIndex].Cells["SwitchButton"].Value = global::OCC.Properties.Resources.开_关机中;
-                        targetDevice.PowerStatus = DevicePowerStatus.CLOSEING;
+                        if (DevicePowerManager.RemotePowerOff(targetDevice.DataModel.IP))
+                        {
+                            DataGridViewDevice.Rows[e.RowIndex].Cells["SwitchButton"].Value = global::OCC.Properties.Resources.开_关机中;
+                            targetDevice.PowerStatus = DevicePowerStatus.CLOSEING;
+                        }
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        MessageBox.Show($"关闭计算机 {targetDevice.DataModel.IP} 过程中发生错误!");
-                    }
+                        ShowErrorNotifier($"关闭设备 {DataGridViewDevice.Rows[e.RowIndex].Cells["DeviceName"].Value} 失败!\n{ex}");
+                        throw;
+                    }                
                 }
-                // 关机
+                // 开机
                 else if (targetDevice.PowerStatus == DevicePowerStatus.CLOSED)
                 {
-                    DevicePowerManager.RemotePowerOn(targetDevice.DataModel.MAC);
-                    DataGridViewDevice.Rows[e.RowIndex].Cells["SwitchButton"].Value = global::OCC.Properties.Resources.开_关机中;
-                    targetDevice.PowerStatus = DevicePowerStatus.OPENING;
+                    try
+                    {
+                        DevicePowerManager.RemotePowerOn(targetDevice.DataModel.MAC);
+                        DataGridViewDevice.Rows[e.RowIndex].Cells["SwitchButton"].Value = global::OCC.Properties.Resources.开_关机中;
+                        targetDevice.PowerStatus = DevicePowerStatus.OPENING;
+                    }
+                    catch (Exception ex)
+                    {
+                        ShowErrorNotifier($"启动设备 {DataGridViewDevice.Rows[e.RowIndex].Cells["DeviceName"].Value} 失败!\n{ex}");
+                        throw;
+                    }
+                   
                 }
                 else if (targetDevice.PowerStatus == DevicePowerStatus.OPENING)
                 {
-                    MessageBox.Show($"计算机 {targetDevice.DataModel.IP} 正在启动中!");
+                    ShowWarningNotifier($"设备 {targetDevice.DataModel.IP} 正在启动中!");
                 }
                 else if (targetDevice.PowerStatus == DevicePowerStatus.CLOSEING)
                 {
-                    MessageBox.Show($"计算机 {targetDevice.DataModel.IP} 正在关闭中!");
+                    ShowWarningNotifier($"设备 {targetDevice.DataModel.IP} 正在关闭中!");
                 }
                 else
                 {
-                    MessageBox.Show($"计算机 {targetDevice.DataModel.IP} 发生了未知错误!");
+                    ShowWarningNotifier($"设备 {targetDevice.DataModel.IP} 发生了未知错误!");
                 }
 
             }

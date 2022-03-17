@@ -78,6 +78,7 @@ public class DevicePowerManager
 
     /// <summary>
     /// 远程开启计算机 macAddress should  look like '013FA049'
+    /// 现在发现的问题是第一次断电之后不能启动
     /// </summary>
     /// <param name="macAddress"></param>
     public static void RemotePowerOn(string macAddress)
@@ -118,6 +119,7 @@ public class DevicePowerManager
         catch (Exception e)
         {
             Debug.Error("远程唤醒计算机" + macAddress + " 出现异常：" + e.ToString());
+            throw e;
         }
     }
 }

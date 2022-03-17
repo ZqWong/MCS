@@ -39,10 +39,19 @@ namespace MCS
 
     public partial class 其他设备控制 : Form
     {
+        /// <summary>
+        /// 获取设备信息
+        /// </summary>
         public DeviceControlInfoBLL _GetDeviceInfoBLL = new DeviceControlInfoBLL();
 
+        /// <summary>
+        /// 串口信息
+        /// </summary>
         public Dictionary<string, SerialPort> _serialDict = new Dictionary<string, SerialPort>();
 
+        /// <summary>
+        /// 
+        /// </summary>
         public Dictionary<string, KeyValuePair<string, string>> _ipDict = new Dictionary<string, KeyValuePair<string, string>>();
 
         private static readonly object syslock = new object();
@@ -56,7 +65,7 @@ namespace MCS
         private string CONTROLTYPENET = "网口";
         private string CONTROLTYPESERIAL = "串口";
 
-        // 设备信息列表
+        // 设备信息列表 xml
         public Dictionary<string, DeviceStruct> deviceDict = new Dictionary<string, DeviceStruct>();
         // 分组信息
         public Dictionary<string, List<string>> groupDict = new Dictionary<string, List<string>>();
@@ -67,6 +76,9 @@ namespace MCS
 
         // 保存数据库中的所有deviceInfo
         public DataSet ds_device_all;
+        /// <summary>
+        /// 设备名
+        /// </summary>
         public DataSet ds_device_class;
 
         // 保存初始的datagridview 的 columns
@@ -105,10 +117,11 @@ namespace MCS
             
             InitializeComponent();
 
+            // 获取所有设备名
             ds_device_class = _GetDeviceInfoBLL.GetDeviceClassNameInfo();
-
+            // 获取所有设备基本信息
             ds_device_all = _GetDeviceInfoBLL.GetDeviceInfo();
-
+            // 转换成列数据
             columnList = dataGridView1.Columns.Cast<DataGridViewColumn>().ToList();
 
             // 根据配置文件读取设备信息
@@ -182,12 +195,13 @@ namespace MCS
             _ipDict.Clear();
             _serialDict.Clear();
 
-            // 获取串口信息
+            // 获取一行数据:  投影1   投影   192.168.0.55   COM5
+            // 获取串口信息 获取选择行
             DataRow[] dr = ds_device_all.Tables[0].Select();
 
             for (int i = 0; i < ds_device_all.Tables[0].Rows.Count; i++)
             {
-
+                // 设备名
                 string className = dr[i][DeviceControlModel.DB_CLASS].ToString();
 
                 if (deviceDict.ContainsKey(className))
