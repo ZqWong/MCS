@@ -465,7 +465,7 @@ namespace OCC.Forms
                 {
                     try
                     {
-                        if (DevicePowerManager.RemotePowerOff(targetDevice.DataModel.IP))
+                        if (DevicePowerController.RemotePowerOff(targetDevice.DataModel.IP))
                         {
                             DataGridViewDevice.Rows[e.RowIndex].Cells["SwitchButton"].Value = global::OCC.Properties.Resources.开_关机中;
                             targetDevice.PowerStatus = DevicePowerStatus.CLOSEING;
@@ -482,7 +482,7 @@ namespace OCC.Forms
                 {
                     try
                     {
-                        DevicePowerManager.RemotePowerOn(targetDevice.DataModel.MAC);
+                        DevicePowerController.RemotePowerOn(targetDevice.DataModel.MAC);
                         DataGridViewDevice.Rows[e.RowIndex].Cells["SwitchButton"].Value = global::OCC.Properties.Resources.开_关机中;
                         targetDevice.PowerStatus = DevicePowerStatus.OPENING;
                     }

@@ -64,8 +64,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Managers\DevicePower\PowerOnHelper.cs" />
-    <Compile Include="Managers\HardwareConnect\HardwareConnectManager.cs" />
+    <Compile Include="Managers\DeviceControl\PowerOnHelper.cs" />
+    <Compile Include="Managers\HardwareControl\HardwareConnectManager.cs" />
     <Compile Include="Managers\LocalFileSerialization\DataManagerBase.cs" />
     <Compile Include="Managers\LocalFileSerialization\LocalDataModelBase.cs" />
     <Compile Include="Managers\LocalFileSerialization\demo\LocalDataManager.cs" />
@@ -75,7 +75,7 @@
     <Compile Include="Tools\SystemHelper.cs" />
     <Compile Include="Tools\DateTimeHelper.cs" />
     <Compile Include="Tools\Debug.cs" />
-    <Compile Include="Managers\DevicePower\DevicePowerManager.cs" />
+    <Compile Include="Managers\DeviceControl\DevicePowerController.cs" />
     <Compile Include="Tools\FileHelper\FileUtils.cs" />
     <Compile Include="Tools\FileHelper\Json\Encryption\LocalCryptography.cs" />
     <Compile Include="Tools\FileHelper\Json\JsonConfigFileHelper.cs" />
