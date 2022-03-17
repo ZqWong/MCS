@@ -49,7 +49,7 @@
             // 
             // pnlBtm
             // 
-            this.pnlBtm.Location = new System.Drawing.Point(1, 317);
+            this.pnlBtm.Location = new System.Drawing.Point(1, 307);
             this.pnlBtm.Size = new System.Drawing.Size(481, 55);
             this.pnlBtm.Style = Sunny.UI.UIStyle.Custom;
             // 
@@ -69,7 +69,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(1, 35);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(481, 337);
+            this.panel1.Size = new System.Drawing.Size(481, 327);
             this.panel1.TabIndex = 0;
             // 
             // panel4
@@ -90,7 +90,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(481, 337);
+            this.panel4.Size = new System.Drawing.Size(481, 327);
             this.panel4.TabIndex = 1;
             // 
             // TextBoxRemark
@@ -109,7 +109,6 @@
             this.TextBoxRemark.Name = "TextBoxRemark";
             this.TextBoxRemark.Padding = new System.Windows.Forms.Padding(5);
             this.TextBoxRemark.Size = new System.Drawing.Size(340, 29);
-            this.TextBoxRemark.Style = Sunny.UI.UIStyle.Custom;
             this.TextBoxRemark.TabIndex = 11;
             this.TextBoxRemark.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -120,7 +119,6 @@
             this.uiLabel4.Location = new System.Drawing.Point(21, 204);
             this.uiLabel4.Name = "uiLabel4";
             this.uiLabel4.Size = new System.Drawing.Size(42, 21);
-            this.uiLabel4.Style = Sunny.UI.UIStyle.Custom;
             this.uiLabel4.TabIndex = 12;
             this.uiLabel4.Text = "备注";
             this.uiLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -141,7 +139,6 @@
             this.TextBoxSerial.Name = "TextBoxSerial";
             this.TextBoxSerial.Padding = new System.Windows.Forms.Padding(5);
             this.TextBoxSerial.Size = new System.Drawing.Size(340, 29);
-            this.TextBoxSerial.Style = Sunny.UI.UIStyle.Custom;
             this.TextBoxSerial.TabIndex = 4;
             this.TextBoxSerial.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -152,7 +149,6 @@
             this.uiLabel5.Location = new System.Drawing.Point(21, 165);
             this.uiLabel5.Name = "uiLabel5";
             this.uiLabel5.Size = new System.Drawing.Size(42, 21);
-            this.uiLabel5.Style = Sunny.UI.UIStyle.Custom;
             this.uiLabel5.TabIndex = 10;
             this.uiLabel5.Text = "串口";
             this.uiLabel5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -173,7 +169,6 @@
             this.TextBoxIP.Name = "TextBoxIP";
             this.TextBoxIP.Padding = new System.Windows.Forms.Padding(5);
             this.TextBoxIP.Size = new System.Drawing.Size(340, 29);
-            this.TextBoxIP.Style = Sunny.UI.UIStyle.Custom;
             this.TextBoxIP.TabIndex = 2;
             this.TextBoxIP.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.TextBoxIP.Leave += new System.EventHandler(this.TextBoxIP_Leave);
@@ -185,7 +180,6 @@
             this.Label.Location = new System.Drawing.Point(21, 88);
             this.Label.Name = "Label";
             this.Label.Size = new System.Drawing.Size(57, 21);
-            this.Label.Style = Sunny.UI.UIStyle.Custom;
             this.Label.TabIndex = 10;
             this.Label.Text = "IP地址";
             this.Label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -207,7 +201,6 @@
             this.TextBoxMAC.Padding = new System.Windows.Forms.Padding(5);
             this.TextBoxMAC.ReadOnly = true;
             this.TextBoxMAC.Size = new System.Drawing.Size(340, 29);
-            this.TextBoxMAC.Style = Sunny.UI.UIStyle.Custom;
             this.TextBoxMAC.TabIndex = 3;
             this.TextBoxMAC.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.TextBoxMAC.Watermark = "输入IP后自动填充（也可自行填充）";
@@ -219,7 +212,6 @@
             this.uiLabel3.Location = new System.Drawing.Point(21, 126);
             this.uiLabel3.Name = "uiLabel3";
             this.uiLabel3.Size = new System.Drawing.Size(80, 21);
-            this.uiLabel3.Style = Sunny.UI.UIStyle.Custom;
             this.uiLabel3.TabIndex = 10;
             this.uiLabel3.Text = "MAC地址";
             this.uiLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -228,6 +220,7 @@
             // 
             this.ComboBoxDeviceType.DataSource = null;
             this.ComboBoxDeviceType.FillColor = System.Drawing.Color.White;
+            this.ComboBoxDeviceType.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
             this.ComboBoxDeviceType.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.ComboBoxDeviceType.ItemHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
             this.ComboBoxDeviceType.Location = new System.Drawing.Point(115, 9);
@@ -236,10 +229,10 @@
             this.ComboBoxDeviceType.Name = "ComboBoxDeviceType";
             this.ComboBoxDeviceType.Padding = new System.Windows.Forms.Padding(0, 0, 30, 2);
             this.ComboBoxDeviceType.Size = new System.Drawing.Size(340, 29);
-            this.ComboBoxDeviceType.Style = Sunny.UI.UIStyle.Custom;
             this.ComboBoxDeviceType.TabIndex = 0;
             this.ComboBoxDeviceType.Text = "uiComboBox1";
             this.ComboBoxDeviceType.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ComboBoxDeviceType.SelectedIndexChanged += new System.EventHandler(this.ComboBoxDeviceType_SelectedIndexChanged);
             // 
             // TextBoxDeviceName
             // 
@@ -257,7 +250,6 @@
             this.TextBoxDeviceName.Name = "TextBoxDeviceName";
             this.TextBoxDeviceName.Padding = new System.Windows.Forms.Padding(5);
             this.TextBoxDeviceName.Size = new System.Drawing.Size(340, 29);
-            this.TextBoxDeviceName.Style = Sunny.UI.UIStyle.Custom;
             this.TextBoxDeviceName.TabIndex = 1;
             this.TextBoxDeviceName.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -268,7 +260,6 @@
             this.uiLabel1.Location = new System.Drawing.Point(21, 48);
             this.uiLabel1.Name = "uiLabel1";
             this.uiLabel1.Size = new System.Drawing.Size(74, 21);
-            this.uiLabel1.Style = Sunny.UI.UIStyle.Custom;
             this.uiLabel1.TabIndex = 8;
             this.uiLabel1.Text = "设备名称";
             this.uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -280,7 +271,6 @@
             this.uiLabel2.Location = new System.Drawing.Point(21, 9);
             this.uiLabel2.Name = "uiLabel2";
             this.uiLabel2.Size = new System.Drawing.Size(74, 21);
-            this.uiLabel2.Style = Sunny.UI.UIStyle.Custom;
             this.uiLabel2.TabIndex = 6;
             this.uiLabel2.Text = "设备类型";
             this.uiLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -290,7 +280,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(483, 375);
+            this.ClientSize = new System.Drawing.Size(483, 365);
             this.Controls.Add(this.panel1);
             this.Name = "OCC_DeviceDetail";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

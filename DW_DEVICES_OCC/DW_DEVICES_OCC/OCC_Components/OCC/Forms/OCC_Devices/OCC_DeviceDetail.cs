@@ -27,6 +27,8 @@ namespace OCC.Forms
                     deviceData.Id = Guid.NewGuid().ToString();
                     deviceData.Name = TextBoxDeviceName.Text;
                     deviceData.IP = TextBoxIP.Text;
+                    //deviceData.Port = 
+                    deviceData.Serial = TextBoxSerial.Text;
                     deviceData.MAC = TextBoxMAC.Text;
                     deviceData.Remark = TextBoxRemark.Text;
                     deviceData.CreateBy = DataManager.Instance.CurrentLoginUserData.UserName;
@@ -47,6 +49,8 @@ namespace OCC.Forms
                 deviceData.Name = value.Name;
                 deviceData.MAC = value.MAC;
                 deviceData.IP = value.IP;
+                deviceData.Port = value.Port;
+                deviceData.Serial = value.Serial;
                 deviceData.Remark = value.Remark;
                 deviceData.DeviceType = value.DeviceType;
                 deviceData.Updateby = value.Updateby;
@@ -82,7 +86,7 @@ namespace OCC.Forms
             }
 
             ComboBoxDeviceType.SelectedIndex = 0;
-
+            TextBoxSerial.Enabled = false;
             ButtonOkClick += ButtonOkClickHandler;            
         }
 
@@ -122,8 +126,10 @@ namespace OCC.Forms
             DeviceData.Name = TextBoxDeviceName.Text;
             DeviceData.DeviceType = deviceType.Id;
             DeviceData.IP = TextBoxIP.Text;
+            DeviceData.Serial = TextBoxSerial.Text;
             DeviceData.MAC = TextBoxMAC.Text;
             DeviceData.Remark = TextBoxRemark.Text;
+
             DeviceData.Updateby = DataManager.Instance.CurrentLoginUserData.UserName;
             DeviceData.UpdateTime = DataBaseManager.Instance.DB.GetDate();
             DeviceData.DelFlag = "0";
@@ -155,6 +161,14 @@ namespace OCC.Forms
             var mac = NetworkHelper.GetMacAddress(TextBoxIP.Text);
             DeviceData.MAC = mac;
             TextBoxMAC.Text = mac;
+        }
+
+        private void ComboBoxDeviceType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ComboBoxDeviceType.SelectedIndex != 0)
+            {
+                TextBoxSerial.Enabled = true;
+            }
         }
     }
 }

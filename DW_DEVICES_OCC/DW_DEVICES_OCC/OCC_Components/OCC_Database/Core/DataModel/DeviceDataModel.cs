@@ -35,6 +35,18 @@ namespace DataModel
         public string IP { get; set; }
 
         /// <summary>
+        /// 端口号
+        /// </summary>
+        [SugarColumn(ColumnName = "port")]
+        public string Port { get; set; }
+
+        /// <summary>
+        /// 串口号
+        /// </summary>
+        [SugarColumn(ColumnName = "serial")]
+        public string Serial { get; set; }
+
+        /// <summary>
         /// MAC地址
         /// </summary>
         [SugarColumn(ColumnName = "mac")]
