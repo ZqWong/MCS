@@ -213,9 +213,9 @@ namespace RabbitMQEvent
             _channel.ExchangeDeclare(exchange: m_brokerName, type: m_exchangeType);
 
             // todo 打印出的信息，可以删掉
-            Console.WriteLine("Local port : {0}", m_connection.LocalPort);
-            Console.WriteLine("remote port : {0}", m_connection.RemotePort);
-            Console.WriteLine("end point : {0}", m_connection.Endpoint);
+            Debug.Info($"RabbitMQManager local port : {m_connection.LocalPort}");
+            Debug.Info($"RabbitMQManager remote port : {m_connection.RemotePort}");
+            Debug.Info($"RabbitMQManager end point : {m_connection.Endpoint}");
 
             // 声名
             // todo 只有设置了autoDelete为false ，才能在autoRecover中回复binding成功

@@ -57,5 +57,17 @@ namespace DataModel
         /// </summary>
         [SugarColumn(ColumnName = "type")]
         public int DeviceType { get; set; }
+
+        /// <summary>
+        /// 连接类型 0 网口 1串口
+        /// </summary>
+        [SugarColumn(ColumnName = "connect_type")]
+        public int ConnectType { get; set; }
+
+        /// <summary>
+        /// 串口连接波特率
+        /// </summary>
+        [SugarColumn(ColumnName = "buad")]
+        public int Buad { get; set; }        
     }
 }

@@ -264,14 +264,17 @@ namespace MCS
             
             checkBox_all.CheckState = CheckState.Unchecked;
 
+            // 加载类别名
             loadComboxClass();
 
             DataSet ds_device_all;
 
             ds_device_all = _GetDeviceInfoBLL.GetDeviceInfo();
 
+            // 设置设备名
             AddComboboxClass();
 
+            // 设置串口名
             AddComboboxSerial();
 
             // 加载分组信息
@@ -280,8 +283,7 @@ namespace MCS
             // 加载其他设备控制信息
             AddDeviceControlCodeCombox();
 
-            DataRow[] dr = ds_device_all.Tables[0]
-                .Select(string.Format("{0} = '{1}'", DeviceControlModel.DB_CLASS, _currentClassName));
+            DataRow[] dr = ds_device_all.Tables[0].Select(string.Format("{0} = '{1}'", DeviceControlModel.DB_CLASS, _currentClassName));
 
             // 根据配置文件动态添加column，比如投影机的开机状态
             AddColumnsToDataGridView(_currentClassName);
@@ -388,6 +390,7 @@ namespace MCS
         /// <param name="controlName">进行控制的控制码</param>
         public void DeviceControl(List<string> deviceList, string controlName)
         {
+            // 设备列表判断 
             if (deviceList == null)
                 return;
 
@@ -400,6 +403,7 @@ namespace MCS
 
             DataRow[] dr;
 
+            // 设备名组 用 , 分开的
             string deviceNames = "";
 
             string ControlCodeTemp = "";
@@ -412,6 +416,25 @@ namespace MCS
             // 删除最后一个逗号
             deviceNames = deviceNames.Substring(0, deviceNames.Length - 1);
 
+            // 数据库捞数据
+            /*SQL e.g.:
+             
+                    SELECT
+	                    * 
+                    FROM
+	                    t_device_control_info dtci
+                    WHERE
+	                    dtci.`NAME` 
+	                    IN
+	                    ('投影1','投影2')
+	                    ORDER BY dtci.`NAME` ASC
+
+             Data e.g.:
+            ID  NAME    CLASS   IP              PROT    INTERNET_ON_CODE                INTERNET_OFF_CODE            SERIAL     SERIAL_ON_CODE      SERIAL_OFF_CODE     BAUD    USER_RS232   DELAY   
+            1	投影1	投影	    192.168.0.55	4352	25 31 50 4f 57 52 20 31 0d	    25 31 50 4f 57 52 20 30 0d	 COM5	    30 30 21 0D	        30 30 22 0D	        9600	是	         10
+            2	投影2	投影	    192.168.0.56	4352			                                                     COM2			                                    9600	否	         3   
+             
+             */
             dr = ds_device_all.Tables[0].Select(string.Format("{0} in ({1})", DeviceControlModel.DB_Name, deviceNames), string.Format("{0} Asc", DeviceControlModel.DB_Name));
 
 
@@ -427,27 +450,41 @@ namespace MCS
                     string name = dr[i][DeviceControlModel.DB_Name].ToString();
 
                     /*                            
-                         </ControlCode>
-                          <ControlCode name="3D自动" Code="(tde 0)" Delay="0" AutoExecInterval="0" Show="false">
-                          </ControlCode>
-                          <ControlCode name="3D帧连续" Code="(tde 5)" Delay="0" AutoExecInterval="0" Show="false">
-                          </ControlCode>
-                          <ControlCode name="3D翻转开" Code="(tdi 1)" Delay="0" AutoExecInterval="0" Show="false">
-                          </ControlCode>
-                          <ControlCode name="3D翻转关" Code="(tdi 0)" Delay="0" AutoExecInterval="0" Show="false">
-                          </ControlCode>
-                          <ControlCode name="光闸开" Code="(shu 0)" Delay="0" AutoExecInterval="0" Show="false">
-                          </ControlCode>
-                          <ControlCode name="光闸关" Code="(shu 1)" Delay="0" AutoExecInterval="0" Show="false">
-                          </ControlCode>
-                          <ControlCode name="帧延迟" Code="(fdy 60)" Delay="0" AutoExecInterval="0" Show="false">
-                          </ControlCode>
-                          <ControlCode name="3DSyncOut开" Code="7E 30 30 32 33 31 20 31 0D" Delay="0" AutoExecInterval="0" Show="false">
-                          </ControlCode>
-                          <ControlCode name="3DSyncOut关" Code="7E 30 30 32 33 31 20 30 0D" Delay="0" AutoExecInterval="0" Show="false">
-                          </ControlCode>
+                         <Device name="投影" ControlType="网口" Hex="false" Buad="9600" Port="4352">
+                              <ControlCode name="开启设备" Code="%1POWR 1" Delay="2" AutoExecInterval="0" Show="false">
+                              </ControlCode>
+                              <ControlCode name="关闭设备" Code="%1POWR 0" Delay="0" AutoExecInterval="0" Show="false">
+                              </ControlCode>
+                              <ControlCode name="3D自动" Code="(tde 0)" Delay="0" AutoExecInterval="0" Show="false">
+                              </ControlCode>
+                              <ControlCode name="3D帧连续" Code="(tde 5)" Delay="0" AutoExecInterval="0" Show="false">
+                              </ControlCode>
+                              <ControlCode name="3D翻转开" Code="(tdi 1)" Delay="0" AutoExecInterval="0" Show="false">
+                              </ControlCode>
+                              <ControlCode name="3D翻转关" Code="(tdi 0)" Delay="0" AutoExecInterval="0" Show="false">
+                              </ControlCode>
+                              <ControlCode name="光闸开" Code="(shu 0)" Delay="0" AutoExecInterval="0" Show="false">
+                              </ControlCode>
+                              <ControlCode name="光闸关" Code="(shu 1)" Delay="0" AutoExecInterval="0" Show="false">
+                              </ControlCode>
+                              <ControlCode name="帧延迟" Code="(fdy 60)" Delay="0" AutoExecInterval="0" Show="false">
+                              </ControlCode>
+                              <ControlCode name="3DSyncOut开" Code="7E 30 30 32 33 31 20 31 0D" Delay="0" AutoExecInterval="0" Show="false">
+                              </ControlCode>
+                              <ControlCode name="3DSyncOut关" Code="7E 30 30 32 33 31 20 30 0D" Delay="0" AutoExecInterval="0" Show="false">
+                              </ControlCode>
+                              <ControlCode name="电源状态" Code="%1POWR ?" Delay="0" AutoExecInterval="5" Show="True">
+                                <ReturnCode code="%1POWR=1" Text="开启">
+                                </ReturnCode>
+                                <ReturnCode code="%1POWR=0" Text="关闭">
+                                </ReturnCode>
+                              </ControlCode>
+                            </Device>
                     */
                     // 从AppConfig中读取配置
+
+                    //<DeviceControl> 字段
+                    // <ControlCode name="3DSyncOut关" Code="7E 30 30 32 33 31 20 30 0D" Delay="0" AutoExecInterval="0" Show="false">
                     string controlCode = GetControlCodeByControlName(className, controlName);
 
                     DeviceStruct temp;
@@ -455,6 +492,7 @@ namespace MCS
                     {
                         byte[] cmdBytes;
 
+                        // 是否转成16进制
                         if (temp.isHex)
                         {
                             ControlCodeTemp = controlCode;
@@ -465,6 +503,7 @@ namespace MCS
                             ControlCodeTemp = StringToHex(controlCode);
                         }
 
+                        // 转为二进制数组
                         cmdBytes = HexStringToBinary(ControlCodeTemp);
 
                         // 走网口连接
@@ -498,7 +537,6 @@ namespace MCS
                                 // 发送比较频繁、关闭此log
                                 // NlogHandler.GetSingleton().Info(string.Format("网口控制设备 {0} {1} 异常, ip：{2}", name, controlCode, ip));
                             }
-
                         }
                         // 走串口连接
                         else if (temp.controlType == CONTROLTYPESERIAL)
@@ -1681,7 +1719,7 @@ namespace MCS
 
                         NlogHandler.GetSingleton().Info(string.Format("设备控制。  分组：{0}， 类型：{1}， 控制名称：{2} 开始执行", planDetail.groupName, planDetail.deviceClass, planDetail.controlCodeName));
 
-
+                        // 分组, 设备名, 操作类型
                         DeviceControl(GetDeviceListByGroupAndClass(planDetail.groupName, planDetail.deviceClass),planDetail.controlCodeName);
 
                         NlogHandler.GetSingleton().Info(string.Format("设备控制。  分组：{0}， 类型：{1}， 控制名称：{2} 执行完成", planDetail.groupName, planDetail.deviceClass, planDetail.controlCodeName));

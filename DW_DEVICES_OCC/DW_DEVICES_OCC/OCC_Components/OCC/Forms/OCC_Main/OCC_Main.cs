@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO.Ports;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -18,7 +19,13 @@ namespace OCC.Forms
 {
     public partial class OCC_Main : UIPage
     {
-        #region 单例
+        #region 单例 & 上下文
+
+        /// <summary>
+        /// 上下文同步
+        /// </summary>
+        public static SynchronizationContext UiContext;
+
         private static OCC_Main s_instance = null;
         private static readonly object syslock = new object();
         public static OCC_Main Instance
@@ -42,18 +49,14 @@ namespace OCC.Forms
         #endregion
 
 
-
-
-
         public const string FORM_NAME = "首页";
-        
+
         /// <summary>
-        /// 上下文同步
+        /// 创建串口连接
         /// </summary>
-        public static SynchronizationContext UiContext;
+        private Dictionary<int, SerialPort> serialDictionary = new Dictionary<int, SerialPort>();
 
-
-
+        private Dictionary<string, string> portDictionary = new Dictionary<string, string>();
 
         public OCC_Main()
         {
@@ -64,12 +67,12 @@ namespace OCC.Forms
             DataManager.Instance.GetDeviceData();
             DataGridViewDevicesInitialize();
        
-            DeviceStatusTimer.Enabled = true;
-            DeviceStatusTimer.Interval = Convert.ToInt32(1000); //ms
+            PCDeviceStatusTimer.Enabled = true;
+            PCDeviceStatusTimer.Interval = Convert.ToInt32(1000); //ms
+
+            HardwareDeviceStatusTimer.Enabled = true;
+            HardwareDeviceStatusTimer.Interval = Convert.ToInt32(10000); //ms
         }
-
-
-
 
         /// <summary>
         /// 设备列表初始化
@@ -87,9 +90,21 @@ namespace OCC.Forms
                     Debug.Info($" index {i} {DataManager.Instance.DeviceInfoCollection[i].DataModel.Name}");
                     DataGridViewDevice.Rows[i].Tag = DataManager.Instance.DeviceInfoCollection[i];
                     DataGridViewDevice.Rows[i].Cells["DeviceName"].Value = DataManager.Instance.DeviceInfoCollection[i].DataModel.Name;
+
+                    // 创建串口缓存，用来检测串口连接设备的连接状态
+                    UpdateHardwareConnect(DataManager.Instance.DeviceInfoCollection[i]);
                 }
             }
+
+#if DEBUG
+            foreach (var item in SerialPort.GetPortNames())
+            {
+                Debug.Info($"SerialPort connected: {item}");
+            }
+#endif 
         }
+
+ 
 
         #region 选择系统
 
@@ -198,8 +213,10 @@ namespace OCC.Forms
 
         #endregion
 
+        #region 计时器
+
         /// <summary>
-        /// 设备状态检测 计时器
+        /// PC设备状态检测 计时器
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -209,49 +226,106 @@ namespace OCC.Forms
             DataManager.Instance.DeviceInfoCollection.ForEach(d => ips.Add(d.DataModel.IP));
             DevicePingManager.Instance.PingDevices(ips);
 
-            UpdateDevicePowerStatus();
+            UpdateDevicesPowerStatus();
             SendDeviceConnectStatusEvent();
         }
 
         /// <summary>
+        /// 硬件设备状态检测 计时器
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void HardwareDeviceStatusTimer_Tick(object sender, EventArgs e)
+        {
+            UpdateHardwareConnectStatus();
+        }
+
+        #endregion
+
+        /// <summary>
         /// 更新设备电源状态
         /// </summary>
-        private void UpdateDevicePowerStatus()
+        private void UpdateDevicesPowerStatus()
         {
             foreach (DeviceStatusCache deviceInfo in DataManager.Instance.DeviceInfoCollection)
             {
-//#if DEBUG
-//                Debug.Info($" DevicePingManager.Instance.IPDict {deviceInfo.DataModel.IP}");
-//#endif                
-                if (DevicePingManager.Instance.IPDict.ContainsKey(deviceInfo.DataModel.IP))
-                {
-                    if (DataManager.Instance.DeviceInfoCollection[deviceInfo.Index].PowerStatus == DevicePowerStatus.CLOSEING)
-                        return;
 
-                    if (null != deviceInfo)
-                    {
-                        DataGridViewDevice.Rows[deviceInfo.Index].Cells["SwitchButton"].Value = global::OCC.Properties.Resources.switch_开;
-                        OCC_Device.Instance.DeviceList.Rows[deviceInfo.Index].Cells["OpenOrClosePCState"].Value = global::OCC.Properties.Resources.switch_开;
-                        DataManager.Instance.DeviceInfoCollection[deviceInfo.Index].PowerStatus = DevicePowerStatus.OPENED;
-                        DataManager.Instance.DeviceInfoCollection[deviceInfo.Index].Ping = DevicePingManager.Instance.IPDict[deviceInfo.DataModel.IP];
-                    }
+                if (deviceInfo.DataModel.DeviceType == 1)
+                {
+                    UpdatePcPowerStatus(deviceInfo);
                 }
                 else
                 {
-                    // 这里是为了避免新加入的设备会造成数据列表不匹配的问题
-                    if (DataManager.Instance.DeviceInfoCollection.Count != DataGridViewDevice.Rows.Count)
-                        return;
+                    UpdateHardwareConnect(deviceInfo);
+                }
+            }
+        }
 
-                    if (DataManager.Instance.DeviceInfoCollection[deviceInfo.Index].PowerStatus == DevicePowerStatus.OPENING)
-                        return;
+        private void UpdatePcPowerStatus(DeviceStatusCache data)
+        {
+            if (null == data)
+                return;
 
-                    if (null != deviceInfo)
-                    {
-                        DataGridViewDevice.Rows[deviceInfo.Index].Cells["SwitchButton"].Value = global::OCC.Properties.Resources.switch_关;
-                        OCC_Device.Instance.DeviceList.Rows[deviceInfo.Index].Cells["OpenOrClosePCState"].Value = global::OCC.Properties.Resources.switch_关;
-                        DataManager.Instance.DeviceInfoCollection[deviceInfo.Index].PowerStatus = DevicePowerStatus.CLOSED;
-                        DataManager.Instance.DeviceInfoCollection[deviceInfo.Index].Ping = string.Empty;
-                    }
+            //#if DEBUG
+            //                Debug.Info($" DevicePingManager.Instance.IPDict {deviceInfo.DataModel.IP}");
+            //#endif                
+            if (DevicePingManager.Instance.ConnectedIPDictionary.ContainsKey(data.DataModel.IP))
+            {
+                if (DataManager.Instance.DeviceInfoCollection[data.Index].PowerStatus == DevicePowerStatus.CLOSEING)
+                    return;
+
+                DataGridViewDevice.Rows[data.Index].Cells["SwitchButton"].Value = global::OCC.Properties.Resources.switch_开;
+                OCC_Device.Instance.DeviceList.Rows[data.Index].Cells["OpenOrClosePCState"].Value = global::OCC.Properties.Resources.switch_开;
+                DataManager.Instance.DeviceInfoCollection[data.Index].PowerStatus = DevicePowerStatus.OPENED;
+                DataManager.Instance.DeviceInfoCollection[data.Index].Ping = DevicePingManager.Instance.ConnectedIPDictionary[data.DataModel.IP];                
+            }
+            else
+            {
+                // 这里是为了避免新加入的设备会造成数据列表不匹配的问题
+                if (DataManager.Instance.DeviceInfoCollection.Count != DataGridViewDevice.Rows.Count)
+                    return;
+
+                if (DataManager.Instance.DeviceInfoCollection[data.Index].PowerStatus == DevicePowerStatus.OPENING)
+                    return;
+
+                DataGridViewDevice.Rows[data.Index].Cells["SwitchButton"].Value = global::OCC.Properties.Resources.switch_关;
+                OCC_Device.Instance.DeviceList.Rows[data.Index].Cells["OpenOrClosePCState"].Value = global::OCC.Properties.Resources.switch_关;
+                DataManager.Instance.DeviceInfoCollection[data.Index].PowerStatus = DevicePowerStatus.CLOSED;
+                DataManager.Instance.DeviceInfoCollection[data.Index].Ping = string.Empty;                
+            }
+        }
+
+        /// <summary>
+        /// 更新非电脑设备连接状态
+        /// </summary>
+        private void UpdateHardwareConnect(DeviceStatusCache data)
+        {
+            // 如果是串口类型则创建串口连接
+            if (data.DataModel.ConnectType.Equals(1))
+            {
+                SerialPort outer;
+                SerialPortExecute.CreateSerialConnect(data.DataModel.IP, data.DataModel.Serial, data.DataModel.Buad, (sender, e) => {
+                },
+                out outer);
+                serialDictionary.Add(data.Index, outer);
+
+                if (outer.IsOpen)
+                {
+                    DataGridViewDevice.Rows[data.Index].Cells["SwitchButton"].Value = global::OCC.Properties.Resources.switch_开;
+                    DataGridViewDevice.Rows[data.Index].Cells["ConnectionStatus"].Value = global::OCC.Properties.Resources.switch_开;
+                }
+            }
+            else if (data.DataModel.ConnectType.Equals(0))
+            {
+                if (DevicePingManager.Instance.ConnectedIPDictionary.ContainsKey(data.DataModel.IP))
+                {
+                    DataGridViewDevice.Rows[data.Index].Cells["SwitchButton"].Value = global::OCC.Properties.Resources.switch_开;
+                    DataGridViewDevice.Rows[data.Index].Cells["ConnectionStatus"].Value = global::OCC.Properties.Resources.switch_开;
+                }
+                else
+                {
+                    DataGridViewDevice.Rows[data.Index].Cells["SwitchButton"].Value = global::OCC.Properties.Resources.switch_关;
+                    DataGridViewDevice.Rows[data.Index].Cells["ConnectionStatus"].Value = global::OCC.Properties.Resources.switch_关;
                 }
             }
         }
@@ -266,10 +340,13 @@ namespace OCC.Forms
 
             foreach (DeviceStatusCache deviceStatus in devicePowerOnCollection)
             {
-                // 发送获取客户端状态的消息
-                //RabbitMQEventBus.GetSingleton().Trigger<R_C_SystemStateData>(showIP, new R_C_SystemStateData());//直接通过事件总线触发
-                //Debug.Info($"{this} Trigger {deviceStatus.DataModel.IP} R_C_SystemStateData");
-                RabbitMQManager.Instance.Trigger(deviceStatus.DataModel.IP, new OCC_TO_CLIENT.R_C_SystemStateData());
+                if (deviceStatus.DataModel.DeviceType == 1)
+                {
+                    // 发送获取客户端状态的消息
+                    //RabbitMQEventBus.GetSingleton().Trigger<R_C_SystemStateData>(showIP, new R_C_SystemStateData());//直接通过事件总线触发
+                    //Debug.Info($"{this} Trigger {deviceStatus.DataModel.IP} R_C_SystemStateData");
+                    RabbitMQManager.Instance.Trigger(deviceStatus.DataModel.IP, new OCC_TO_CLIENT.R_C_SystemStateData());
+                }
             }
         }
 
@@ -318,6 +395,37 @@ namespace OCC.Forms
             }
         }
 
+        /// <summary>
+        /// 更新硬件设备连接状态
+        /// </summary>
+        private void UpdateHardwareConnectStatus()
+        {
+            foreach (DeviceStatusCache deviceInfo in DataManager.Instance.DeviceInfoCollection)
+            {
+                if (deviceInfo.DataModel.DeviceType != 1)
+                {
+                    // 网口连接
+                    if (deviceInfo.DataModel.ConnectType == 1)
+                    {
+
+                    }
+                    // 串口连接
+                    else if(deviceInfo.DataModel.ConnectType == 2)
+                    {
+                        SerialPort serial;
+                        if (HardwareConnectManager.SerialPortConnect(deviceInfo.DataModel.IP, deviceInfo.DataModel.Buad, out serial))
+                        {
+                            DataGridViewDevice.Rows[deviceInfo.Index].Cells["SwitchButton"].Value = global::OCC.Properties.Resources.switch_开;
+                            OCC_Device.Instance.DeviceList.Rows[deviceInfo.Index].Cells["OpenOrClosePCState"].Value = global::OCC.Properties.Resources.switch_开;
+                        }                     
+                    }
+                    else
+                    {
+
+                    }
+                }
+            }
+        }
 
         /// <summary>
         /// 当表格中有对象被点击时
@@ -330,11 +438,15 @@ namespace OCC.Forms
             // TODO: 是否需要添加确认窗口 在关机
             if (DataGridViewDevice.Columns[e.ColumnIndex].Name == "SwitchButton")
             {
-                RemotePowerSet(sender, e);
+                var deviceData = DataGridViewDevice.Rows[e.RowIndex].Tag as DeviceStatusCache;
+                if (deviceData.DataModel.DeviceType == 1)
+                {
+                    RemotePowerSet(sender, e);
+                }                
             }
             if (DataGridViewDevice.Columns[e.ColumnIndex].Name == "Selected")
             {
-                MessageBox.Show("行: " + e.RowIndex.ToString() + ", 列: " + e.ColumnIndex.ToString() + "; 选中了");
+                //MessageBox.Show("行: " + e.RowIndex.ToString() + ", 列: " + e.ColumnIndex.ToString() + "; 选中了");
             }
         }
 

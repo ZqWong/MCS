@@ -19,7 +19,7 @@ public class DevicePingManager : LockedSingletonClass<DevicePingManager>
     /// <summary>
     /// 真正拿到的可ping通的信息
     /// </summary>
-    public ConcurrentDictionary<string, string> IPDict = new ConcurrentDictionary<string, string>();
+    public ConcurrentDictionary<string, string> ConnectedIPDictionary = new ConcurrentDictionary<string, string>();
 
 
     public void PingDevices(List<string> ips)
@@ -31,10 +31,10 @@ public class DevicePingManager : LockedSingletonClass<DevicePingManager>
             {
                 // 将上次查找的ip保存。防止在两次查找间隔过程中清空了_IPBag导致应用到_IPBag的里面为空
                 // 这样会导致IPList是_IPBag延迟定长的结果
-                IPDict.Clear();
+                ConnectedIPDictionary.Clear();
                 foreach (var item in canPingIpCacheDictionary)
                 {
-                    IPDict[item.Key] = item.Value;
+                    ConnectedIPDictionary[item.Key] = item.Value;
                 }
             }
             

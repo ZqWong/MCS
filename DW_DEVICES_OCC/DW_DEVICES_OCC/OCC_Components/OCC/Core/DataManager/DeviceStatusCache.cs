@@ -1,6 +1,7 @@
 ﻿using DataModel;
 using System;
 using System.Collections.Generic;
+using System.IO.Ports;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,6 +37,11 @@ namespace DataCache
         public DevicePowerStatus PowerStatus = DevicePowerStatus.CLOSED;
         public DeviceDataModel DataModel;
         public string Ping;
+
+        /// <summary>
+        /// 串口连接
+        /// </summary>
+        public SerialPort SerialPort;
     }
     
 }

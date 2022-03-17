@@ -76,6 +76,7 @@
     <Compile Include="Core\LocalConfig\LocalConifgManager.cs" />
     <Compile Include="Core\ProcessInstanceCheck\ProcessInstanceCheck.cs" />
     <Compile Include="Core\RemoteProcessLanuch\RemoteProcessLanuchHelper.cs" />
+    <Compile Include="Core\SerialPort\SerialPortExecute.cs" />
     <Compile Include="Core\UIText.cs" />
     <Compile Include="Forms\OCC_APPs\OCC_APP.cs">
       <SubType>Form</SubType>

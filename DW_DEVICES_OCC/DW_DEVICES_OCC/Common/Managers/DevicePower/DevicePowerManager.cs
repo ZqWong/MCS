@@ -122,5 +122,7 @@ public class DevicePowerManager
             throw e;
         }
     }
+
+
 }
 
