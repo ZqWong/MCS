@@ -413,7 +413,7 @@ namespace OCC.Forms
                     else if(deviceInfo.DataModel.ConnectType == 2)
                     {
                         SerialPort serial;
-                        if (HardwareConnectManager.SerialPortConnect(deviceInfo.DataModel.IP, deviceInfo.DataModel.Buad, out serial))
+                        if (HardwareConnectController.SerialPortConnect(deviceInfo.DataModel.IP, deviceInfo.DataModel.Buad, out serial))
                         {
                             DataGridViewDevice.Rows[deviceInfo.Index].Cells["SwitchButton"].Value = global::OCC.Properties.Resources.switch_开;
                             OCC_Device.Instance.DeviceList.Rows[deviceInfo.Index].Cells["OpenOrClosePCState"].Value = global::OCC.Properties.Resources.switch_开;

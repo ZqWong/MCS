@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-public class HardwareConnectManager
+public class HardwareConnectController
 {
     /// <summary>
     /// 创建串口连接
