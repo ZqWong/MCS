@@ -1,5 +1,6 @@
 ﻿using DataModel;
 using OCC.Core;
+using Sunny.UI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,7 +13,7 @@ using System.Windows.Forms;
 
 namespace OCC.Forms
 {
-    public partial class OCC_UserDetail : Form
+    public partial class OCC_UserDetail : UIEditForm
     {
         public enum FormType
         {
@@ -72,12 +73,13 @@ namespace OCC.Forms
                 var targetUser = Tag as UserDataModel;
                 userData.Id = targetUser.Id;
             }                
-            userData.UserName = TextBoxUsername.Text;
+            userData.UserName = TextBoxUserName.Text;
             userData.Password = TextBoxPassword.Text;
             userData.LoginName = TextBoxLoginName.Text;
             userData.Email = TextBoxEmail.Text;
             userData.Phonenumber = TextBoxPhoneNumber.Text;
             userData.Remark = RichTextBoxRemark.Text;
+            userData.IdentityId = TextBoxIdentityId.Text;
 
             userData.Sex = ComboBoxSex.SelectedIndex.ToString();
 
@@ -210,7 +212,7 @@ namespace OCC.Forms
             bool ret = !DataBaseCRUDManager.Instance.TryCheckUsernameExist(TextBoxLoginName.Text) &&
                     ComboBoxUserType.SelectedIndex != -1 &&
                     ComboBoxCompany.SelectedIndex != -1 &&
-                    TextBoxUsername.Text != String.Empty &&
+                    TextBoxUserName.Text != String.Empty &&
                     TextBoxPassword.Text != String.Empty;
 
             BtnConfirm.Enabled = ret;
@@ -224,9 +226,10 @@ namespace OCC.Forms
             if (Type.Equals(FormType.ADJUST))
             {
                 var targetUser = Tag as UserDataModel;
-                TextBoxUsername.Text = targetUser.UserName;
+                TextBoxUserName.Text = targetUser.UserName;
                 TextBoxPassword.Text = targetUser.Password;
                 TextBoxLoginName.Text = targetUser.LoginName;
+                TextBoxIdentityId.Text = targetUser.IdentityId;
                 TextBoxEmail.Text = targetUser.Email;
                 TextBoxPhoneNumber.Text = targetUser.Phonenumber;
                 RichTextBoxRemark.Text = targetUser.Remark;

@@ -13,7 +13,7 @@ namespace OCC
         [STAThread]
         static void Main()
         {
-            Debug.Error($"OCC System loading...");
+            Debug.Info($"OCC System loading...");
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

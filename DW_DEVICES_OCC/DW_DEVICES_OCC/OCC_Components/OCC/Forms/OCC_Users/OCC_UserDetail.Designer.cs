@@ -36,81 +36,94 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.RichTextBoxRemark = new System.Windows.Forms.RichTextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.ComboBoxUserType = new System.Windows.Forms.ComboBox();
-            this.ComboBoxCompany = new System.Windows.Forms.ComboBox();
-            this.ComboBoxSex = new System.Windows.Forms.ComboBox();
-            this.TextBoxPassword = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.TextBoxLoginName = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.TextBoxPhoneNumber = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.TextBoxEmail = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.TextBoxUsername = new System.Windows.Forms.TextBox();
-            this.UserNameLabel = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.BtnConfirm = new System.Windows.Forms.Button();
-            this.BtnCancel = new System.Windows.Forms.Button();
+            this.ComboBoxUserType = new Sunny.UI.UIComboBox();
+            this.uiLabel2 = new Sunny.UI.UILabel();
+            this.TextBoxUserName = new Sunny.UI.UITextBox();
+            this.uiLabel1 = new Sunny.UI.UILabel();
+            this.ComboBoxCompany = new Sunny.UI.UIComboBox();
+            this.uiLabel3 = new Sunny.UI.UILabel();
+            this.TextBoxLoginName = new Sunny.UI.UITextBox();
+            this.uiLabel4 = new Sunny.UI.UILabel();
+            this.TextBoxPassword = new Sunny.UI.UITextBox();
+            this.uiLabel5 = new Sunny.UI.UILabel();
+            this.TextBoxEmail = new Sunny.UI.UITextBox();
+            this.uiLabel6 = new Sunny.UI.UILabel();
+            this.ComboBoxSex = new Sunny.UI.UIComboBox();
+            this.uiLabel7 = new Sunny.UI.UILabel();
+            this.TextBoxIdentityId = new Sunny.UI.UITextBox();
+            this.uiLabel8 = new Sunny.UI.UILabel();
+            this.TextBoxPhoneNumber = new Sunny.UI.UITextBox();
+            this.uiLabel9 = new Sunny.UI.UILabel();
+            this.RichTextBoxRemark = new Sunny.UI.UITextBox();
+            this.uiLabel10 = new Sunny.UI.UILabel();
+            this.pnlBtm.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // pnlBtm
+            // 
+            this.pnlBtm.Location = new System.Drawing.Point(1, 483);
+            this.pnlBtm.Size = new System.Drawing.Size(607, 55);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Location = new System.Drawing.Point(479, 12);
+            // 
+            // btnOK
+            // 
+            this.btnOK.Location = new System.Drawing.Point(364, 12);
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.panel4);
-            this.panel1.Controls.Add(this.panel3);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Location = new System.Drawing.Point(1, 35);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(504, 396);
+            this.panel1.Size = new System.Drawing.Size(607, 503);
             this.panel1.TabIndex = 0;
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.RichTextBoxRemark);
+            this.panel4.Controls.Add(this.uiLabel10);
+            this.panel4.Controls.Add(this.TextBoxPhoneNumber);
+            this.panel4.Controls.Add(this.uiLabel9);
+            this.panel4.Controls.Add(this.TextBoxIdentityId);
+            this.panel4.Controls.Add(this.uiLabel8);
+            this.panel4.Controls.Add(this.ComboBoxSex);
+            this.panel4.Controls.Add(this.uiLabel7);
+            this.panel4.Controls.Add(this.TextBoxEmail);
+            this.panel4.Controls.Add(this.uiLabel6);
+            this.panel4.Controls.Add(this.TextBoxPassword);
+            this.panel4.Controls.Add(this.uiLabel5);
+            this.panel4.Controls.Add(this.TextBoxLoginName);
+            this.panel4.Controls.Add(this.uiLabel4);
+            this.panel4.Controls.Add(this.ComboBoxCompany);
+            this.panel4.Controls.Add(this.uiLabel3);
+            this.panel4.Controls.Add(this.TextBoxUserName);
+            this.panel4.Controls.Add(this.uiLabel1);
+            this.panel4.Controls.Add(this.ComboBoxUserType);
+            this.panel4.Controls.Add(this.uiLabel2);
             this.panel4.Controls.Add(this.labelUserRepetition);
             this.panel4.Controls.Add(this.label13);
             this.panel4.Controls.Add(this.label12);
             this.panel4.Controls.Add(this.label11);
             this.panel4.Controls.Add(this.label10);
             this.panel4.Controls.Add(this.label9);
-            this.panel4.Controls.Add(this.RichTextBoxRemark);
-            this.panel4.Controls.Add(this.label1);
-            this.panel4.Controls.Add(this.ComboBoxUserType);
-            this.panel4.Controls.Add(this.ComboBoxCompany);
-            this.panel4.Controls.Add(this.ComboBoxSex);
-            this.panel4.Controls.Add(this.TextBoxPassword);
-            this.panel4.Controls.Add(this.label8);
-            this.panel4.Controls.Add(this.TextBoxLoginName);
-            this.panel4.Controls.Add(this.label7);
-            this.panel4.Controls.Add(this.label6);
-            this.panel4.Controls.Add(this.TextBoxPhoneNumber);
-            this.panel4.Controls.Add(this.label5);
-            this.panel4.Controls.Add(this.label4);
-            this.panel4.Controls.Add(this.TextBoxEmail);
-            this.panel4.Controls.Add(this.label3);
-            this.panel4.Controls.Add(this.label2);
-            this.panel4.Controls.Add(this.TextBoxUsername);
-            this.panel4.Controls.Add(this.UserNameLabel);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(384, 396);
+            this.panel4.Size = new System.Drawing.Size(607, 503);
             this.panel4.TabIndex = 1;
             // 
             // labelUserRepetition
             // 
             this.labelUserRepetition.AutoSize = true;
             this.labelUserRepetition.ForeColor = System.Drawing.Color.Red;
-            this.labelUserRepetition.Location = new System.Drawing.Point(333, 96);
+            this.labelUserRepetition.Location = new System.Drawing.Point(481, 133);
             this.labelUserRepetition.Name = "labelUserRepetition";
-            this.labelUserRepetition.Size = new System.Drawing.Size(65, 12);
+            this.labelUserRepetition.Size = new System.Drawing.Size(90, 21);
             this.labelUserRepetition.TabIndex = 29;
             this.labelUserRepetition.Text = "用户名重复";
             this.labelUserRepetition.Visible = false;
@@ -119,9 +132,9 @@
             // 
             this.label13.AutoSize = true;
             this.label13.ForeColor = System.Drawing.Color.Red;
-            this.label13.Location = new System.Drawing.Point(316, 66);
+            this.label13.Location = new System.Drawing.Point(458, 95);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(11, 12);
+            this.label13.Size = new System.Drawing.Size(17, 21);
             this.label13.TabIndex = 28;
             this.label13.Text = "*";
             // 
@@ -129,9 +142,9 @@
             // 
             this.label12.AutoSize = true;
             this.label12.ForeColor = System.Drawing.Color.Red;
-            this.label12.Location = new System.Drawing.Point(316, 125);
+            this.label12.Location = new System.Drawing.Point(458, 133);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(11, 12);
+            this.label12.Size = new System.Drawing.Size(17, 21);
             this.label12.TabIndex = 27;
             this.label12.Text = "*";
             // 
@@ -139,9 +152,9 @@
             // 
             this.label11.AutoSize = true;
             this.label11.ForeColor = System.Drawing.Color.Red;
-            this.label11.Location = new System.Drawing.Point(316, 96);
+            this.label11.Location = new System.Drawing.Point(458, 172);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(11, 12);
+            this.label11.Size = new System.Drawing.Size(17, 21);
             this.label11.TabIndex = 26;
             this.label11.Text = "*";
             // 
@@ -149,9 +162,9 @@
             // 
             this.label10.AutoSize = true;
             this.label10.ForeColor = System.Drawing.Color.Red;
-            this.label10.Location = new System.Drawing.Point(316, 37);
+            this.label10.Location = new System.Drawing.Point(458, 57);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(11, 12);
+            this.label10.Size = new System.Drawing.Size(17, 21);
             this.label10.TabIndex = 25;
             this.label10.Text = "*";
             // 
@@ -159,288 +172,324 @@
             // 
             this.label9.AutoSize = true;
             this.label9.ForeColor = System.Drawing.Color.Red;
-            this.label9.Location = new System.Drawing.Point(316, 9);
+            this.label9.Location = new System.Drawing.Point(458, 16);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(11, 12);
+            this.label9.Size = new System.Drawing.Size(17, 21);
             this.label9.TabIndex = 24;
             this.label9.Text = "*";
             // 
-            // RichTextBoxRemark
-            // 
-            this.RichTextBoxRemark.Location = new System.Drawing.Point(110, 235);
-            this.RichTextBoxRemark.Name = "RichTextBoxRemark";
-            this.RichTextBoxRemark.Size = new System.Drawing.Size(200, 95);
-            this.RichTextBoxRemark.TabIndex = 9;
-            this.RichTextBoxRemark.Text = "";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label1.Location = new System.Drawing.Point(3, 235);
-            this.label1.Margin = new System.Windows.Forms.Padding(3);
-            this.label1.Name = "label1";
-            this.label1.Padding = new System.Windows.Forms.Padding(3);
-            this.label1.Size = new System.Drawing.Size(50, 23);
-            this.label1.TabIndex = 22;
-            this.label1.Text = "备注：";
-            // 
             // ComboBoxUserType
             // 
-            this.ComboBoxUserType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ComboBoxUserType.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ComboBoxUserType.FormattingEnabled = true;
-            this.ComboBoxUserType.Location = new System.Drawing.Point(110, 31);
+            this.ComboBoxUserType.DataSource = null;
+            this.ComboBoxUserType.FillColor = System.Drawing.Color.White;
+            this.ComboBoxUserType.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
+            this.ComboBoxUserType.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ComboBoxUserType.ItemHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
+            this.ComboBoxUserType.Location = new System.Drawing.Point(111, 51);
+            this.ComboBoxUserType.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ComboBoxUserType.MinimumSize = new System.Drawing.Size(63, 0);
             this.ComboBoxUserType.Name = "ComboBoxUserType";
-            this.ComboBoxUserType.Size = new System.Drawing.Size(200, 25);
-            this.ComboBoxUserType.TabIndex = 2;
-            this.ComboBoxUserType.SelectedIndexChanged += new System.EventHandler(this.ComboBoxUserType_SelectedIndexChanged);
+            this.ComboBoxUserType.Padding = new System.Windows.Forms.Padding(0, 0, 30, 2);
+            this.ComboBoxUserType.Size = new System.Drawing.Size(340, 29);
+            this.ComboBoxUserType.TabIndex = 30;
+            this.ComboBoxUserType.Text = "uiComboBox1";
+            this.ComboBoxUserType.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // uiLabel2
+            // 
+            this.uiLabel2.AutoSize = true;
+            this.uiLabel2.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.uiLabel2.Location = new System.Drawing.Point(17, 51);
+            this.uiLabel2.Name = "uiLabel2";
+            this.uiLabel2.Size = new System.Drawing.Size(74, 21);
+            this.uiLabel2.TabIndex = 31;
+            this.uiLabel2.Text = "用户类型";
+            this.uiLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // TextBoxUserName
+            // 
+            this.TextBoxUserName.ButtonSymbol = 61761;
+            this.TextBoxUserName.ButtonSymbolOffset = new System.Drawing.Point(0, 1);
+            this.TextBoxUserName.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.TextBoxUserName.EnterAsTab = true;
+            this.TextBoxUserName.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
+            this.TextBoxUserName.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.TextBoxUserName.Location = new System.Drawing.Point(111, 12);
+            this.TextBoxUserName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.TextBoxUserName.Maximum = 2147483647D;
+            this.TextBoxUserName.Minimum = -2147483648D;
+            this.TextBoxUserName.MinimumSize = new System.Drawing.Size(1, 16);
+            this.TextBoxUserName.Name = "TextBoxUserName";
+            this.TextBoxUserName.Padding = new System.Windows.Forms.Padding(5);
+            this.TextBoxUserName.Size = new System.Drawing.Size(340, 29);
+            this.TextBoxUserName.TabIndex = 32;
+            this.TextBoxUserName.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // uiLabel1
+            // 
+            this.uiLabel1.AutoSize = true;
+            this.uiLabel1.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.uiLabel1.Location = new System.Drawing.Point(17, 16);
+            this.uiLabel1.Name = "uiLabel1";
+            this.uiLabel1.Size = new System.Drawing.Size(97, 21);
+            this.uiLabel1.TabIndex = 33;
+            this.uiLabel1.Text = "用户名/昵称";
+            this.uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // ComboBoxCompany
             // 
-            this.ComboBoxCompany.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ComboBoxCompany.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ComboBoxCompany.FormattingEnabled = true;
-            this.ComboBoxCompany.Location = new System.Drawing.Point(110, 60);
+            this.ComboBoxCompany.DataSource = null;
+            this.ComboBoxCompany.FillColor = System.Drawing.Color.White;
+            this.ComboBoxCompany.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
+            this.ComboBoxCompany.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ComboBoxCompany.ItemHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
+            this.ComboBoxCompany.Location = new System.Drawing.Point(111, 91);
+            this.ComboBoxCompany.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ComboBoxCompany.MinimumSize = new System.Drawing.Size(63, 0);
             this.ComboBoxCompany.Name = "ComboBoxCompany";
-            this.ComboBoxCompany.Size = new System.Drawing.Size(200, 25);
-            this.ComboBoxCompany.TabIndex = 3;
-            this.ComboBoxCompany.SelectedIndexChanged += new System.EventHandler(this.ComboBoxCompany_SelectedIndexChanged);
+            this.ComboBoxCompany.Padding = new System.Windows.Forms.Padding(0, 0, 30, 2);
+            this.ComboBoxCompany.Size = new System.Drawing.Size(340, 29);
+            this.ComboBoxCompany.TabIndex = 34;
+            this.ComboBoxCompany.Text = "uiComboBox1";
+            this.ComboBoxCompany.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // ComboBoxSex
+            // uiLabel3
             // 
-            this.ComboBoxSex.AutoCompleteCustomSource.AddRange(new string[] {
-            "未知",
-            "男",
-            "女"});
-            this.ComboBoxSex.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ComboBoxSex.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ComboBoxSex.FormattingEnabled = true;
-            this.ComboBoxSex.Items.AddRange(new object[] {
-            "未知",
-            "男",
-            "女"});
-            this.ComboBoxSex.Location = new System.Drawing.Point(110, 176);
-            this.ComboBoxSex.Name = "ComboBoxSex";
-            this.ComboBoxSex.Size = new System.Drawing.Size(200, 25);
-            this.ComboBoxSex.TabIndex = 7;
-            // 
-            // TextBoxPassword
-            // 
-            this.TextBoxPassword.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.TextBoxPassword.Location = new System.Drawing.Point(110, 119);
-            this.TextBoxPassword.Name = "TextBoxPassword";
-            this.TextBoxPassword.PasswordChar = '*';
-            this.TextBoxPassword.Size = new System.Drawing.Size(200, 23);
-            this.TextBoxPassword.TabIndex = 5;
-            this.TextBoxPassword.TextChanged += new System.EventHandler(this.TextBoxPassword_TextChanged);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label8.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label8.Location = new System.Drawing.Point(3, 119);
-            this.label8.Margin = new System.Windows.Forms.Padding(3);
-            this.label8.Name = "label8";
-            this.label8.Padding = new System.Windows.Forms.Padding(3);
-            this.label8.Size = new System.Drawing.Size(74, 23);
-            this.label8.TabIndex = 17;
-            this.label8.Text = "登录密码：";
+            this.uiLabel3.AutoSize = true;
+            this.uiLabel3.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.uiLabel3.Location = new System.Drawing.Point(17, 90);
+            this.uiLabel3.Name = "uiLabel3";
+            this.uiLabel3.Size = new System.Drawing.Size(74, 21);
+            this.uiLabel3.TabIndex = 35;
+            this.uiLabel3.Text = "所属公司";
+            this.uiLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // TextBoxLoginName
             // 
-            this.TextBoxLoginName.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.TextBoxLoginName.Location = new System.Drawing.Point(110, 90);
+            this.TextBoxLoginName.ButtonSymbol = 61761;
+            this.TextBoxLoginName.ButtonSymbolOffset = new System.Drawing.Point(0, 1);
+            this.TextBoxLoginName.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.TextBoxLoginName.EnterAsTab = true;
+            this.TextBoxLoginName.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
+            this.TextBoxLoginName.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.TextBoxLoginName.Location = new System.Drawing.Point(111, 129);
+            this.TextBoxLoginName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.TextBoxLoginName.Maximum = 2147483647D;
+            this.TextBoxLoginName.Minimum = -2147483648D;
+            this.TextBoxLoginName.MinimumSize = new System.Drawing.Size(1, 16);
             this.TextBoxLoginName.Name = "TextBoxLoginName";
-            this.TextBoxLoginName.Size = new System.Drawing.Size(200, 23);
-            this.TextBoxLoginName.TabIndex = 4;
-            this.TextBoxLoginName.TextChanged += new System.EventHandler(this.TextBoxLoginName_TextChanged);
+            this.TextBoxLoginName.Padding = new System.Windows.Forms.Padding(5);
+            this.TextBoxLoginName.Size = new System.Drawing.Size(340, 29);
+            this.TextBoxLoginName.TabIndex = 36;
+            this.TextBoxLoginName.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label7
+            // uiLabel4
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label7.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label7.Location = new System.Drawing.Point(3, 90);
-            this.label7.Margin = new System.Windows.Forms.Padding(3);
-            this.label7.Name = "label7";
-            this.label7.Padding = new System.Windows.Forms.Padding(3);
-            this.label7.Size = new System.Drawing.Size(74, 23);
-            this.label7.TabIndex = 15;
-            this.label7.Text = "登陆账号：";
+            this.uiLabel4.AutoSize = true;
+            this.uiLabel4.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.uiLabel4.Location = new System.Drawing.Point(17, 133);
+            this.uiLabel4.Name = "uiLabel4";
+            this.uiLabel4.Size = new System.Drawing.Size(74, 21);
+            this.uiLabel4.TabIndex = 37;
+            this.uiLabel4.Text = "登陆账号";
+            this.uiLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label6
+            // TextBoxPassword
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label6.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label6.Location = new System.Drawing.Point(3, 61);
-            this.label6.Margin = new System.Windows.Forms.Padding(3);
-            this.label6.Name = "label6";
-            this.label6.Padding = new System.Windows.Forms.Padding(3);
-            this.label6.Size = new System.Drawing.Size(74, 23);
-            this.label6.TabIndex = 13;
-            this.label6.Text = "所属公司：";
+            this.TextBoxPassword.ButtonSymbol = 61761;
+            this.TextBoxPassword.ButtonSymbolOffset = new System.Drawing.Point(0, 1);
+            this.TextBoxPassword.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.TextBoxPassword.EnterAsTab = true;
+            this.TextBoxPassword.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
+            this.TextBoxPassword.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.TextBoxPassword.Location = new System.Drawing.Point(111, 168);
+            this.TextBoxPassword.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.TextBoxPassword.Maximum = 2147483647D;
+            this.TextBoxPassword.Minimum = -2147483648D;
+            this.TextBoxPassword.MinimumSize = new System.Drawing.Size(1, 16);
+            this.TextBoxPassword.Name = "TextBoxPassword";
+            this.TextBoxPassword.Padding = new System.Windows.Forms.Padding(5);
+            this.TextBoxPassword.Size = new System.Drawing.Size(340, 29);
+            this.TextBoxPassword.TabIndex = 34;
+            this.TextBoxPassword.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // TextBoxPhoneNumber
+            // uiLabel5
             // 
-            this.TextBoxPhoneNumber.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.TextBoxPhoneNumber.Location = new System.Drawing.Point(110, 206);
-            this.TextBoxPhoneNumber.Name = "TextBoxPhoneNumber";
-            this.TextBoxPhoneNumber.Size = new System.Drawing.Size(200, 23);
-            this.TextBoxPhoneNumber.TabIndex = 8;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label5.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label5.Location = new System.Drawing.Point(3, 206);
-            this.label5.Margin = new System.Windows.Forms.Padding(3);
-            this.label5.Name = "label5";
-            this.label5.Padding = new System.Windows.Forms.Padding(3);
-            this.label5.Size = new System.Drawing.Size(62, 23);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "手机号：";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label4.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label4.Location = new System.Drawing.Point(3, 177);
-            this.label4.Margin = new System.Windows.Forms.Padding(3);
-            this.label4.Name = "label4";
-            this.label4.Padding = new System.Windows.Forms.Padding(3);
-            this.label4.Size = new System.Drawing.Size(50, 23);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "性别：";
+            this.uiLabel5.AutoSize = true;
+            this.uiLabel5.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.uiLabel5.Location = new System.Drawing.Point(17, 172);
+            this.uiLabel5.Name = "uiLabel5";
+            this.uiLabel5.Size = new System.Drawing.Size(74, 21);
+            this.uiLabel5.TabIndex = 35;
+            this.uiLabel5.Text = "登陆密码";
+            this.uiLabel5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // TextBoxEmail
             // 
-            this.TextBoxEmail.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.TextBoxEmail.Location = new System.Drawing.Point(110, 148);
+            this.TextBoxEmail.ButtonSymbol = 61761;
+            this.TextBoxEmail.ButtonSymbolOffset = new System.Drawing.Point(0, 1);
+            this.TextBoxEmail.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.TextBoxEmail.EnterAsTab = true;
+            this.TextBoxEmail.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
+            this.TextBoxEmail.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.TextBoxEmail.Location = new System.Drawing.Point(111, 207);
+            this.TextBoxEmail.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.TextBoxEmail.Maximum = 2147483647D;
+            this.TextBoxEmail.Minimum = -2147483648D;
+            this.TextBoxEmail.MinimumSize = new System.Drawing.Size(1, 16);
             this.TextBoxEmail.Name = "TextBoxEmail";
-            this.TextBoxEmail.Size = new System.Drawing.Size(200, 23);
-            this.TextBoxEmail.TabIndex = 6;
+            this.TextBoxEmail.Padding = new System.Windows.Forms.Padding(5);
+            this.TextBoxEmail.Size = new System.Drawing.Size(340, 29);
+            this.TextBoxEmail.TabIndex = 34;
+            this.TextBoxEmail.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label3
+            // uiLabel6
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label3.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label3.Location = new System.Drawing.Point(3, 148);
-            this.label3.Margin = new System.Windows.Forms.Padding(3);
-            this.label3.Name = "label3";
-            this.label3.Padding = new System.Windows.Forms.Padding(3);
-            this.label3.Size = new System.Drawing.Size(50, 23);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "邮箱：";
+            this.uiLabel6.AutoSize = true;
+            this.uiLabel6.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.uiLabel6.Location = new System.Drawing.Point(17, 211);
+            this.uiLabel6.Name = "uiLabel6";
+            this.uiLabel6.Size = new System.Drawing.Size(42, 21);
+            this.uiLabel6.TabIndex = 35;
+            this.uiLabel6.Text = "邮箱";
+            this.uiLabel6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label2
+            // ComboBoxSex
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label2.Location = new System.Drawing.Point(3, 32);
-            this.label2.Margin = new System.Windows.Forms.Padding(3);
-            this.label2.Name = "label2";
-            this.label2.Padding = new System.Windows.Forms.Padding(3);
-            this.label2.Size = new System.Drawing.Size(74, 23);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "用户类型：";
+            this.ComboBoxSex.DataSource = null;
+            this.ComboBoxSex.FillColor = System.Drawing.Color.White;
+            this.ComboBoxSex.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
+            this.ComboBoxSex.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ComboBoxSex.ItemHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
+            this.ComboBoxSex.Location = new System.Drawing.Point(111, 246);
+            this.ComboBoxSex.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ComboBoxSex.MinimumSize = new System.Drawing.Size(63, 0);
+            this.ComboBoxSex.Name = "ComboBoxSex";
+            this.ComboBoxSex.Padding = new System.Windows.Forms.Padding(0, 0, 30, 2);
+            this.ComboBoxSex.Size = new System.Drawing.Size(340, 29);
+            this.ComboBoxSex.TabIndex = 36;
+            this.ComboBoxSex.Text = "uiComboBox2";
+            this.ComboBoxSex.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // TextBoxUsername
+            // uiLabel7
             // 
-            this.TextBoxUsername.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.TextBoxUsername.Location = new System.Drawing.Point(110, 3);
-            this.TextBoxUsername.Name = "TextBoxUsername";
-            this.TextBoxUsername.Size = new System.Drawing.Size(200, 23);
-            this.TextBoxUsername.TabIndex = 1;
-            this.TextBoxUsername.TextChanged += new System.EventHandler(this.TextBoxUsername_TextChanged);
+            this.uiLabel7.AutoSize = true;
+            this.uiLabel7.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.uiLabel7.Location = new System.Drawing.Point(17, 246);
+            this.uiLabel7.Name = "uiLabel7";
+            this.uiLabel7.Size = new System.Drawing.Size(42, 21);
+            this.uiLabel7.TabIndex = 37;
+            this.uiLabel7.Text = "性别";
+            this.uiLabel7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // UserNameLabel
+            // TextBoxIdentityId
             // 
-            this.UserNameLabel.AutoSize = true;
-            this.UserNameLabel.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.UserNameLabel.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.UserNameLabel.Location = new System.Drawing.Point(3, 3);
-            this.UserNameLabel.Margin = new System.Windows.Forms.Padding(3);
-            this.UserNameLabel.Name = "UserNameLabel";
-            this.UserNameLabel.Padding = new System.Windows.Forms.Padding(3);
-            this.UserNameLabel.Size = new System.Drawing.Size(103, 23);
-            this.UserNameLabel.TabIndex = 0;
-            this.UserNameLabel.Text = "用户姓名/昵称：";
+            this.TextBoxIdentityId.ButtonSymbol = 61761;
+            this.TextBoxIdentityId.ButtonSymbolOffset = new System.Drawing.Point(0, 1);
+            this.TextBoxIdentityId.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.TextBoxIdentityId.EnterAsTab = true;
+            this.TextBoxIdentityId.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
+            this.TextBoxIdentityId.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.TextBoxIdentityId.Location = new System.Drawing.Point(111, 285);
+            this.TextBoxIdentityId.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.TextBoxIdentityId.Maximum = 2147483647D;
+            this.TextBoxIdentityId.Minimum = -2147483648D;
+            this.TextBoxIdentityId.MinimumSize = new System.Drawing.Size(1, 16);
+            this.TextBoxIdentityId.Name = "TextBoxIdentityId";
+            this.TextBoxIdentityId.Padding = new System.Windows.Forms.Padding(5);
+            this.TextBoxIdentityId.Size = new System.Drawing.Size(340, 29);
+            this.TextBoxIdentityId.TabIndex = 38;
+            this.TextBoxIdentityId.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // panel3
+            // uiLabel8
             // 
-            this.panel3.Controls.Add(this.BtnConfirm);
-            this.panel3.Controls.Add(this.BtnCancel);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel3.Location = new System.Drawing.Point(384, 0);
-            this.panel3.Margin = new System.Windows.Forms.Padding(3, 10, 3, 10);
-            this.panel3.Name = "panel3";
-            this.panel3.Padding = new System.Windows.Forms.Padding(0, 10, 10, 10);
-            this.panel3.Size = new System.Drawing.Size(120, 396);
-            this.panel3.TabIndex = 0;
+            this.uiLabel8.AutoSize = true;
+            this.uiLabel8.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.uiLabel8.Location = new System.Drawing.Point(17, 289);
+            this.uiLabel8.Name = "uiLabel8";
+            this.uiLabel8.Size = new System.Drawing.Size(74, 21);
+            this.uiLabel8.TabIndex = 39;
+            this.uiLabel8.Text = "身份证号";
+            this.uiLabel8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // BtnConfirm
+            // TextBoxPhoneNumber
             // 
-            this.BtnConfirm.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.BtnConfirm.FlatAppearance.BorderSize = 2;
-            this.BtnConfirm.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(30)))), ((int)(((byte)(100)))));
-            this.BtnConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnConfirm.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.BtnConfirm.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnConfirm.Location = new System.Drawing.Point(0, 296);
-            this.BtnConfirm.Margin = new System.Windows.Forms.Padding(3, 10, 3, 10);
-            this.BtnConfirm.MaximumSize = new System.Drawing.Size(180, 45);
-            this.BtnConfirm.MinimumSize = new System.Drawing.Size(100, 45);
-            this.BtnConfirm.Name = "BtnConfirm";
-            this.BtnConfirm.Padding = new System.Windows.Forms.Padding(3);
-            this.BtnConfirm.Size = new System.Drawing.Size(110, 45);
-            this.BtnConfirm.TabIndex = 9;
-            this.BtnConfirm.Text = "确定";
-            this.BtnConfirm.UseVisualStyleBackColor = true;
-            this.BtnConfirm.Click += new System.EventHandler(this.BtnConfirm_Click);
+            this.TextBoxPhoneNumber.ButtonSymbol = 61761;
+            this.TextBoxPhoneNumber.ButtonSymbolOffset = new System.Drawing.Point(0, 1);
+            this.TextBoxPhoneNumber.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.TextBoxPhoneNumber.EnterAsTab = true;
+            this.TextBoxPhoneNumber.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
+            this.TextBoxPhoneNumber.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.TextBoxPhoneNumber.Location = new System.Drawing.Point(111, 324);
+            this.TextBoxPhoneNumber.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.TextBoxPhoneNumber.Maximum = 2147483647D;
+            this.TextBoxPhoneNumber.Minimum = -2147483648D;
+            this.TextBoxPhoneNumber.MinimumSize = new System.Drawing.Size(1, 16);
+            this.TextBoxPhoneNumber.Name = "TextBoxPhoneNumber";
+            this.TextBoxPhoneNumber.Padding = new System.Windows.Forms.Padding(5);
+            this.TextBoxPhoneNumber.Size = new System.Drawing.Size(340, 29);
+            this.TextBoxPhoneNumber.TabIndex = 40;
+            this.TextBoxPhoneNumber.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // BtnCancel
+            // uiLabel9
             // 
-            this.BtnCancel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.BtnCancel.FlatAppearance.BorderSize = 2;
-            this.BtnCancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(30)))), ((int)(((byte)(100)))));
-            this.BtnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnCancel.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.BtnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnCancel.Location = new System.Drawing.Point(0, 341);
-            this.BtnCancel.MaximumSize = new System.Drawing.Size(180, 45);
-            this.BtnCancel.MinimumSize = new System.Drawing.Size(100, 45);
-            this.BtnCancel.Name = "BtnCancel";
-            this.BtnCancel.Padding = new System.Windows.Forms.Padding(3);
-            this.BtnCancel.Size = new System.Drawing.Size(110, 45);
-            this.BtnCancel.TabIndex = 8;
-            this.BtnCancel.Text = "取消";
-            this.BtnCancel.UseVisualStyleBackColor = true;
-            this.BtnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
+            this.uiLabel9.AutoSize = true;
+            this.uiLabel9.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.uiLabel9.Location = new System.Drawing.Point(17, 328);
+            this.uiLabel9.Name = "uiLabel9";
+            this.uiLabel9.Size = new System.Drawing.Size(74, 21);
+            this.uiLabel9.TabIndex = 41;
+            this.uiLabel9.Text = "联系方式";
+            this.uiLabel9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // RichTextBoxRemark
+            // 
+            this.RichTextBoxRemark.ButtonSymbol = 61761;
+            this.RichTextBoxRemark.ButtonSymbolOffset = new System.Drawing.Point(0, 1);
+            this.RichTextBoxRemark.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.RichTextBoxRemark.EnterAsTab = true;
+            this.RichTextBoxRemark.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
+            this.RichTextBoxRemark.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.RichTextBoxRemark.Location = new System.Drawing.Point(111, 363);
+            this.RichTextBoxRemark.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.RichTextBoxRemark.Maximum = 2147483647D;
+            this.RichTextBoxRemark.Minimum = -2147483648D;
+            this.RichTextBoxRemark.MinimumSize = new System.Drawing.Size(1, 16);
+            this.RichTextBoxRemark.Name = "RichTextBoxRemark";
+            this.RichTextBoxRemark.Padding = new System.Windows.Forms.Padding(5);
+            this.RichTextBoxRemark.Size = new System.Drawing.Size(340, 60);
+            this.RichTextBoxRemark.TabIndex = 40;
+            this.RichTextBoxRemark.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // uiLabel10
+            // 
+            this.uiLabel10.AutoSize = true;
+            this.uiLabel10.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.uiLabel10.Location = new System.Drawing.Point(17, 367);
+            this.uiLabel10.Name = "uiLabel10";
+            this.uiLabel10.Size = new System.Drawing.Size(42, 21);
+            this.uiLabel10.TabIndex = 41;
+            this.uiLabel10.Text = "备注";
+            this.uiLabel10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // OCC_UserDetail
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.ClientSize = new System.Drawing.Size(504, 396);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(609, 541);
             this.Controls.Add(this.panel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "OCC_UserDetail";
+            this.Style = Sunny.UI.UIStyle.Custom;
             this.Text = "OCC_UserDetail";
             this.Load += new System.EventHandler(this.OCC_UserDetail_Load);
             this.Shown += new System.EventHandler(this.OCC_UserDetail_Shown);
+            this.Controls.SetChildIndex(this.panel1, 0);
+            this.Controls.SetChildIndex(this.pnlBtm, 0);
+            this.pnlBtm.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -449,32 +498,33 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button BtnCancel;
         private System.Windows.Forms.Button BtnConfirm;
-        private System.Windows.Forms.Label UserNameLabel;
-        private System.Windows.Forms.TextBox TextBoxUsername;
-        private System.Windows.Forms.TextBox TextBoxPassword;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox TextBoxLoginName;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox TextBoxPhoneNumber;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox TextBoxEmail;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox ComboBoxSex;
-        private System.Windows.Forms.ComboBox ComboBoxCompany;
-        private System.Windows.Forms.ComboBox ComboBoxUserType;
-        private System.Windows.Forms.RichTextBox RichTextBoxRemark;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label labelUserRepetition;
+        private Sunny.UI.UIComboBox ComboBoxUserType;
+        private Sunny.UI.UILabel uiLabel2;
+        private Sunny.UI.UITextBox TextBoxUserName;
+        private Sunny.UI.UILabel uiLabel1;
+        private Sunny.UI.UITextBox RichTextBoxRemark;
+        private Sunny.UI.UILabel uiLabel10;
+        private Sunny.UI.UITextBox TextBoxPhoneNumber;
+        private Sunny.UI.UILabel uiLabel9;
+        private Sunny.UI.UITextBox TextBoxIdentityId;
+        private Sunny.UI.UILabel uiLabel8;
+        private Sunny.UI.UIComboBox ComboBoxSex;
+        private Sunny.UI.UILabel uiLabel7;
+        private Sunny.UI.UITextBox TextBoxEmail;
+        private Sunny.UI.UILabel uiLabel6;
+        private Sunny.UI.UITextBox TextBoxPassword;
+        private Sunny.UI.UILabel uiLabel5;
+        private Sunny.UI.UITextBox TextBoxLoginName;
+        private Sunny.UI.UILabel uiLabel4;
+        private Sunny.UI.UIComboBox ComboBoxCompany;
+        private Sunny.UI.UILabel uiLabel3;
     }
 }

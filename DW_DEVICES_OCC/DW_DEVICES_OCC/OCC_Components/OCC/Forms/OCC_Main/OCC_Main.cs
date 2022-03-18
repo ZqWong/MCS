@@ -434,6 +434,9 @@ namespace OCC.Forms
         /// <param name="e"></param>
         private void DataGridViewDevice_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex.Equals(-1))
+                return;
+
             // 点击了列表中的关机按钮
             // TODO: 是否需要添加确认窗口 在关机
             if (DataGridViewDevice.Columns[e.ColumnIndex].Name == "SwitchButton")

@@ -48,6 +48,12 @@ namespace DataModel
         public int UserType { get; set; }
 
         /// <summary>
+        /// 身份证号
+        /// </summary>
+        [SugarColumn(ColumnName = "identity_id")]
+        public string IdentityId { get; set; }
+
+        /// <summary>
         /// 邮箱
         /// </summary>
         [SugarColumn(ColumnName = "email")]

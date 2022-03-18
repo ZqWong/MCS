@@ -1,5 +1,6 @@
 ﻿using DataModel;
 using OCC.Core;
+using Sunny.UI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,10 +13,10 @@ using System.Windows.Forms;
 
 namespace OCC.Forms
 {
-    public partial class OCC_Users : Form
+    public partial class OCC_Users : UIPage
     {
         public bool InDelectBatchesMode = false;
-
+        private int currentSelectRowIndex = -1;
 
         public OCC_Users()
         {
@@ -48,7 +49,7 @@ namespace OCC.Forms
                         UserList.Rows[i].Tag = userInfoCoollection[i];
                         UserList.Rows[i].Cells["Username"].Value = userInfoCoollection[i].UserName;
                         UserList.Rows[i].Cells["AuthLevel"].Value = DataManager.Instance.UserTypeDatas.FirstOrDefault(t => t.Id.Equals(userInfoCoollection[i].UserType)).Name;
-                        UserList.Rows[i].Cells["Email"].Value = userInfoCoollection[i].Email;
+                        //UserList.Rows[i].Cells["Email"].Value = userInfoCoollection[i].Email;
                         switch (userInfoCoollection[i].Sex)
                         {
                             case "-1":
@@ -64,10 +65,11 @@ namespace OCC.Forms
                             default:
                                 break;
                         }
-                        UserList.Rows[i].Cells["PhoneNumber"].Value = userInfoCoollection[i].Phonenumber;
+                        //UserList.Rows[i].Cells["PhoneNumber"].Value = userInfoCoollection[i].Phonenumber;
                         UserList.Rows[i].Cells["Company"].Value = DataManager.Instance.CompanyDatas.FirstOrDefault(c => c.Id.Equals(userInfoCoollection[i].CompanyId)).Name;
-                        UserList.Rows[i].Cells["UserStatus"].Value = userInfoCoollection[i].UserStatus;
+                        //UserList.Rows[i].Cells["UserStatus"].Value = userInfoCoollection[i].UserStatus;
                         UserList.Rows[i].Cells["Remark"].Value = userInfoCoollection[i].Remark;
+                        UserList.Rows[i].Cells["IdentityId"].Value = userInfoCoollection[i].IdentityId;                        
                     }
                 }
             }
@@ -77,13 +79,6 @@ namespace OCC.Forms
             }
         }
 
-        private void AddUserToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            OCC_UserDetail userDetailForm = new OCC_UserDetail();
-            userDetailForm.Owner = this;
-            userDetailForm.Type = OCC_UserDetail.FormType.CREATE;
-            userDetailForm.ShowDialog();
-        }
 
         private void DeleteUserToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -121,49 +116,86 @@ namespace OCC.Forms
         }
 
 
-        #region Mouse right button functions
+        //#region Mouse right button functions
 
-        private int index = -1;
+        //private int index = -1;
 
-        private void UserList_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
+        //private void UserList_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
+        //{
+        //    if (e.Button == MouseButtons.Right)
+        //    {
+        //        if (e.RowIndex >= 0)
+        //        {
+        //            UserList.ClearSelection();
+        //            UserList.Rows[e.RowIndex].Selected = true;
+        //            UserList.CurrentCell = UserList.Rows[e.RowIndex].Cells[e.ColumnIndex];
+        //            UserRightClick.Show(MousePosition.X, MousePosition.Y);
+
+        //            index = e.RowIndex;
+
+        //            Debug.Info($"UserList_CellMouseUp Selected index {index} {UserList.Rows[e.RowIndex].Cells["Username"].Value}");
+        //        }
+        //    }
+        //}
+
+        //#endregion
+
+        private void ButtonAddUser_Click(object sender, EventArgs e)
         {
-            if (e.Button == MouseButtons.Right)
-            {
-                if (e.RowIndex >= 0)
-                {
-                    UserList.ClearSelection();
-                    UserList.Rows[e.RowIndex].Selected = true;
-                    UserList.CurrentCell = UserList.Rows[e.RowIndex].Cells[e.ColumnIndex];
-                    UserRightClick.Show(MousePosition.X, MousePosition.Y);
-
-                    index = e.RowIndex;
-
-                    Debug.Info($"UserList_CellMouseUp Selected index {index} {UserList.Rows[e.RowIndex].Cells["Username"].Value}");
-                }
-            }
+            OCC_UserDetail userDetailForm = new OCC_UserDetail();
+            userDetailForm.Owner = this;
+            userDetailForm.Type = OCC_UserDetail.FormType.CREATE;
+            userDetailForm.ShowDialog();
         }
 
-
-        private void AujustUserInfoToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ButtonDeleteUser_Click(object sender, EventArgs e)
         {
-            var targetUser = UserList.Rows[index].Tag as UserDataModel;
+            if (!InDelectBatchesMode)
+            {
+                InDelectBatchesMode = true;
+                UserList.Columns[0].Visible = true;
+            }
+            else
+            {
+                foreach (DataGridViewRow row in UserList.Rows)
+                {
+                    if (row.Cells["Selected"].EditedFormattedValue.Equals(true))
+                    {
+                        var data = row.Tag as UserDataModel;
+                        try
+                        {
+                            DataBaseCRUDManager.Instance.DeleteDeviceInfoById(data.Id);
+                        }
+                        catch (Exception ex)
+                        {
+                            ShowErrorNotifier($"删除用户{(data.UserName)}信息失败 {ex}");
+                            return;
+                        }
+                    }
+                }
+
+
+                InDelectBatchesMode = false;
+                UserList.Columns[0].Visible = InDelectBatchesMode;
+            }
+            UserListInitialize();
+        }
+
+        private void ButtonEditUser_Click(object sender, EventArgs e)
+        {
+            var targetUser = UserList.Rows[currentSelectRowIndex].Tag as UserDataModel;
             OCC_UserDetail userDetailForm = new OCC_UserDetail();
             userDetailForm.Owner = this;
             userDetailForm.Type = OCC_UserDetail.FormType.ADJUST;
             userDetailForm.Tag = targetUser;
             userDetailForm.ShowDialog();
-            index = -1;
         }
 
-        private void DeleteUserInfoToolStripMenuItem_Click(object sender, EventArgs e)
+        private void UserList_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            var targetUser = UserList.Rows[index].Tag as UserDataModel;
-            DataBaseCRUDManager.Instance.DeleteUserInfoById(targetUser.Id);
-            index = -1;
-
-            UserListInitialize();
+            if (e.RowIndex.Equals(-1))
+                return;
+            currentSelectRowIndex = e.RowIndex;
         }
-
-        #endregion
     }
 }
