@@ -65,7 +65,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Managers\DeviceControl\PowerOnHelper.cs" />
-    <Compile Include="Managers\HardwareControl\HardwareConnectManager.cs" />
+    <Compile Include="Managers\HardwareControl\HardwareActionController.cs" />
+    <Compile Include="Managers\HardwareControl\HardwareConnectController.cs" />
+    <Compile Include="Managers\HardwareControl\HardwareNICConnectHelper.cs" />
     <Compile Include="Managers\LocalFileSerialization\DataManagerBase.cs" />
     <Compile Include="Managers\LocalFileSerialization\LocalDataModelBase.cs" />
     <Compile Include="Managers\LocalFileSerialization\demo\LocalDataManager.cs" />
