@@ -26,8 +26,8 @@ namespace DataModel
         /// <summary>
         /// 主键ID
         /// </summary>
-        [SugarColumn(IsPrimaryKey =true)]
-        public string Id { get; set; }
+        [SugarColumn(IsPrimaryKey =true, IsIdentity = true)]
+        public int Id { get; set; }
         
         /// <summary>
         /// 登陆账号
@@ -69,7 +69,7 @@ namespace DataModel
         /// 所属公司ID
         /// </summary>
         [SugarColumn(ColumnName = "company_id")]
-        public string CompanyId{ get; set; }
+        public int CompanyId{ get; set; }
 
         /// <summary>
         /// 密码

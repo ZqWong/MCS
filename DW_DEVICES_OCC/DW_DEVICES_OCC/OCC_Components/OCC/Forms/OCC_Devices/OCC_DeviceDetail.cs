@@ -24,7 +24,7 @@ namespace OCC.Forms
                 if (null == deviceData)
                 {
                     deviceData = new DeviceDataModel();
-                    deviceData.Id = Guid.NewGuid().ToString();
+                    //deviceData.Id = Guid.NewGuid().ToString();
                     deviceData.Name = TextBoxDeviceName.Text;
                     deviceData.IP = TextBoxIP.Text;
                     //deviceData.Port = 
@@ -119,7 +119,7 @@ namespace OCC.Forms
             }
             if (!isEdit)
             {
-                DeviceData.Id = Guid.NewGuid().ToString();
+                //DeviceData.Id = Guid.NewGuid().ToString();
                 DeviceData.CreateBy = DataManager.Instance.CurrentLoginUserData.UserName;
                 DeviceData.CreateTime = DataBaseManager.Instance.DB.GetDate();
             }            

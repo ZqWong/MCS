@@ -67,14 +67,12 @@ public class DataBaseCRUDManager : LockedSingletonClass<DataBaseCRUDManager>
     /// </summary>
     /// <param name="deviceData"></param>
     /// <returns></returns>
-    public bool TryCreateOrUpdateAppInfo(AppDataModel appData)
+    public AppDataModel TryCreateOrUpdateAppInfo(AppDataModel appData)
     {
-        bool ret = false;
+        AppDataModel ret;
         try
         {
-            int newDevice = DataBaseManager.Instance.DB.Insertable(appData).ExecuteCommand();
-            if (newDevice >= 1)
-                ret = true;
+            ret = DataBaseManager.Instance.DB.Insertable(appData).ExecuteReturnEntity();
         }
         catch (Exception)
         {
@@ -100,10 +98,10 @@ public class DataBaseCRUDManager : LockedSingletonClass<DataBaseCRUDManager>
                 ret = true;
             }
         }
-        catch (Exception)
+        catch (Exception ex)
         {
-
-            throw;
+            Debug.Info($"TryCreateAppAndDeviceBindInfo failed {ex}");
+            throw ex;
         }
         return ret;
     }
@@ -354,7 +352,7 @@ public class DataBaseCRUDManager : LockedSingletonClass<DataBaseCRUDManager>
         return ret;
     }
 
-    public bool TryGetAppDeviceBindDataInfoByAppId(string appId, out List<AppDeviceBindDataModel> appDeviceBindData)
+    public bool TryGetAppDeviceBindDataInfoByAppId(int appId, out List<AppDeviceBindDataModel> appDeviceBindData)
     {
         bool ret = false;
         try
@@ -439,7 +437,7 @@ public class DataBaseCRUDManager : LockedSingletonClass<DataBaseCRUDManager>
     /// 删除用户信息（假删除）
     /// </summary>
     /// <param name="id"></param>
-    public bool DeleteUserInfoById(string id)
+    public bool DeleteUserInfoById(int id)
     {
         bool ret = false;
         try
@@ -463,7 +461,7 @@ public class DataBaseCRUDManager : LockedSingletonClass<DataBaseCRUDManager>
     /// 删除设备信息（假删除）
     /// </summary>
     /// <param name="id"></param>
-    public bool DeleteDeviceInfoById(string id)
+    public bool DeleteDeviceInfoById(int id)
     {
         bool ret = false;
         try
@@ -488,7 +486,7 @@ public class DataBaseCRUDManager : LockedSingletonClass<DataBaseCRUDManager>
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>
-    public bool DeleteAppInfoById(string id)
+    public bool DeleteAppInfoById(int id)
     {
         bool ret = false;
         try

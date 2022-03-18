@@ -21,13 +21,13 @@ namespace DataModel
         /// APPId
         /// </summary>
         [SugarColumn(ColumnName = "app_id")]
-        public string AppId { get; set; }
+        public int AppId { get; set; }
 
         /// <summary>
         /// 设备Id
         /// </summary>
         [SugarColumn(ColumnName = "device_id")]
-        public string DeviceId { get; set; }
+        public int DeviceId { get; set; }
 
 
         /// <summary>

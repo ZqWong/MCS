@@ -69,7 +69,9 @@ namespace OCC.Forms
             UserDataModel userData = new UserDataModel();
 
             if (Type.Equals(FormType.CREATE))
-                userData.Id = Guid.NewGuid().ToString();
+            {
+                //userData.Id = Guid.NewGuid().ToString();
+            }
             else if (Type.Equals(FormType.ADJUST))
             {
                 var targetUser = Tag as UserDataModel;

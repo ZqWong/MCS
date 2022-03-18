@@ -26,7 +26,7 @@ namespace OCC.Forms
                 if (null == appData)
                 {
                    appData = new AppDataModel();
-                   appData.Id = Guid.NewGuid().ToString();
+                   //appData.Id = Guid.NewGuid().ToString();
                    appData.AppName = TextBoxAppName.Text;
                    appData.Remark = TextBoxRemark.Text;
                    appData.CreateBy = Core.DataManager.Instance.CurrentLoginUserData.UserName;
@@ -99,7 +99,7 @@ namespace OCC.Forms
         {
             if (!isEdit)
             {
-                AppData.Id = Guid.NewGuid().ToString();
+                //AppData.Id = Guid.NewGuid().ToString();
                 AppData.CreateBy = DataManager.Instance.CurrentLoginUserData.UserName;
                 AppData.CreateTime = DataBaseManager.Instance.DB.GetDate();
             }
@@ -115,19 +115,21 @@ namespace OCC.Forms
          
             try
             {
-                if (DataBaseCRUDManager.Instance.TryCreateOrUpdateAppInfo(AppData))
+                var newApp = DataBaseCRUDManager.Instance.TryCreateOrUpdateAppInfo(AppData);
+
+                if (null != newApp)
                 {
                     List<AppDeviceBindDataModel> appDeviceBindCollection = new List<AppDeviceBindDataModel>();
 
                     for (int i = 0; i < DataGridViewDeviceBind.Rows.Count; i++)
                     {
                         if (Convert.ToBoolean(DataGridViewDeviceBind.Rows[i].Cells["Selected"].Value) == true)
-                        {                        
+                        {
                             var deviceData = DataGridViewDeviceBind.Rows[i].Tag as DeviceStatusCache;
                             Debug.Info($"DataGridViewDeviceBind.Rows {deviceData.DataModel.Name}");
                             AppDeviceBindDataModel appDeviceBind = new AppDeviceBindDataModel();
 
-                            appDeviceBind.AppId = AppData.Id;
+                            appDeviceBind.AppId = newApp.Id;
                             appDeviceBind.DeviceId = deviceData.DataModel.Id;
                             appDeviceBind.Path = defaultPath;
 
@@ -143,13 +145,13 @@ namespace OCC.Forms
                     try
                     {
                         Debug.Info($"appDeviceBindCollection {appDeviceBindCollection.Count}");
-                        DataBaseCRUDManager.Instance.TryCreateAppAndDeviceBindInfo(appDeviceBindCollection);                                        
-                    }                    
+                        DataBaseCRUDManager.Instance.TryCreateAppAndDeviceBindInfo(appDeviceBindCollection);
+                    }
                     catch (Exception ex)
                     {
                         ShowErrorNotifier($"创建系统设备绑定数据失败: \n{ex}");
                         return;
-                    }                   
+                    }
                 }
             }
             catch (Exception ex)

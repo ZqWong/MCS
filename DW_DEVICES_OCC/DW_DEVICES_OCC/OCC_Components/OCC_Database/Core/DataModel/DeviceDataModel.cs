@@ -13,8 +13,8 @@ namespace DataModel
         /// <summary>
         /// 主键ID
         /// </summary>
-        [SugarColumn(IsPrimaryKey = true)]
-        public string Id { get; set; }
+        [SugarColumn(IsPrimaryKey = true, IsIdentity = true)]
+        public int Id { get; set; }
 
         /// <summary>
         /// 公司名

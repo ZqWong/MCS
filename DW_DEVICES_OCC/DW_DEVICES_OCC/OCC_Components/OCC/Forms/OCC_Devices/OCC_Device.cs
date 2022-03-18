@@ -156,6 +156,7 @@ namespace OCC.Forms
                 DeviceList.Columns[0].Visible = inSelectMode;
                 RefreshDataModel();
                 DeviceListInitialize();
+                currentSelectRowIndex = -1;
                 OCC_Main.Instance.DataGridViewDevicesInitialize();
             }
         }

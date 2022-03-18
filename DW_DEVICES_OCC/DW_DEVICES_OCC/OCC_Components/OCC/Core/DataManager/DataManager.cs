@@ -111,7 +111,7 @@ namespace OCC.Core
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public DeviceStatusCache GetDeviceDataById(string id)
+        public DeviceStatusCache GetDeviceDataById(int id)
         {
             return DeviceInfoCollection.FirstOrDefault(d => d.DataModel.Id.Equals(id));
         }

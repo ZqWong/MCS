@@ -70,7 +70,10 @@ namespace OCC.Forms
         {
             DataManager.Instance.GetAppData();
             AppDataGridViewInitialize();
-            CurrentSelectedAppDeviceData = DataGridViewApp.Rows[0].Tag as AppDeviceBindedCache;
+            if (DataGridViewApp.Rows.Count > 0)
+            {
+                CurrentSelectedAppDeviceData = DataGridViewApp.Rows[0].Tag as AppDeviceBindedCache;
+            }        
             UiContext.Post(OCC_Main.Instance.ComboBoxAppInitialize, null);
         }
 
