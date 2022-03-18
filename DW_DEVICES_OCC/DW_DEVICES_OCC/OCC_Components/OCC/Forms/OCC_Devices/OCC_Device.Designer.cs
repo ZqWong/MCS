@@ -30,11 +30,11 @@ namespace OCC.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.uiGroupBox1 = new Sunny.UI.UIGroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -47,6 +47,21 @@ namespace OCC.Forms
             this.uiGroupBox2 = new Sunny.UI.UIGroupBox();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.uiLabel1 = new Sunny.UI.UILabel();
+            this.uiLabel2 = new Sunny.UI.UILabel();
+            this.ProcessBarCpuRatio = new Sunny.UI.UIProcessBar();
+            this.ProcessBarMemoryRatio = new Sunny.UI.UIProcessBar();
+            this.uiLabel3 = new Sunny.UI.UILabel();
+            this.ProcessBarGpuRatio = new Sunny.UI.UIProcessBar();
+            this.uiLabel4 = new Sunny.UI.UILabel();
+            this.ProcessBarGpuUsed = new Sunny.UI.UIProcessBar();
+            this.uiLabel5 = new Sunny.UI.UILabel();
+            this.uiLabel6 = new Sunny.UI.UILabel();
+            this.LabelBootTime = new Sunny.UI.UILabel();
+            this.LabelPing = new Sunny.UI.UILabel();
+            this.uiLabel9 = new Sunny.UI.UILabel();
+            this.LabelRemark = new Sunny.UI.UILabel();
+            this.uiLabel11 = new Sunny.UI.UILabel();
             this.Selected = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.DeviceName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OpenOrClosePCState = new System.Windows.Forms.DataGridViewImageColumn();
@@ -68,6 +83,7 @@ namespace OCC.Forms
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DeviceList)).BeginInit();
             this.panel2.SuspendLayout();
+            this.uiGroupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -128,18 +144,18 @@ namespace OCC.Forms
             this.DeviceList.AllowUserToDeleteRows = false;
             this.DeviceList.AllowUserToResizeColumns = false;
             this.DeviceList.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
-            this.DeviceList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
+            this.DeviceList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle11;
             this.DeviceList.BackgroundColor = System.Drawing.Color.White;
             this.DeviceList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DeviceList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DeviceList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.DeviceList.ColumnHeadersHeight = 32;
             this.DeviceList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.DeviceList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -158,32 +174,32 @@ namespace OCC.Forms
             this.ProcessSate,
             this.Remark,
             this.IP});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DeviceList.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DeviceList.DefaultCellStyle = dataGridViewCellStyle13;
             this.DeviceList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DeviceList.EnableHeadersVisualStyles = false;
             this.DeviceList.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.DeviceList.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.DeviceList.Location = new System.Drawing.Point(0, 0);
             this.DeviceList.Name = "DeviceList";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DeviceList.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DeviceList.RowHeadersDefaultCellStyle = dataGridViewCellStyle14;
             this.DeviceList.RowHeadersVisible = false;
             this.DeviceList.RowHeight = 40;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
-            this.DeviceList.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle15.BackColor = System.Drawing.Color.White;
+            this.DeviceList.RowsDefaultCellStyle = dataGridViewCellStyle15;
             this.DeviceList.RowTemplate.Height = 40;
             this.DeviceList.SelectedIndex = -1;
             this.DeviceList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -254,6 +270,21 @@ namespace OCC.Forms
             // 
             // uiGroupBox2
             // 
+            this.uiGroupBox2.Controls.Add(this.LabelRemark);
+            this.uiGroupBox2.Controls.Add(this.uiLabel11);
+            this.uiGroupBox2.Controls.Add(this.LabelPing);
+            this.uiGroupBox2.Controls.Add(this.uiLabel9);
+            this.uiGroupBox2.Controls.Add(this.LabelBootTime);
+            this.uiGroupBox2.Controls.Add(this.uiLabel6);
+            this.uiGroupBox2.Controls.Add(this.ProcessBarGpuUsed);
+            this.uiGroupBox2.Controls.Add(this.uiLabel5);
+            this.uiGroupBox2.Controls.Add(this.ProcessBarGpuRatio);
+            this.uiGroupBox2.Controls.Add(this.uiLabel4);
+            this.uiGroupBox2.Controls.Add(this.ProcessBarMemoryRatio);
+            this.uiGroupBox2.Controls.Add(this.uiLabel3);
+            this.uiGroupBox2.Controls.Add(this.ProcessBarCpuRatio);
+            this.uiGroupBox2.Controls.Add(this.uiLabel2);
+            this.uiGroupBox2.Controls.Add(this.uiLabel1);
             this.uiGroupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uiGroupBox2.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
             this.uiGroupBox2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -286,6 +317,170 @@ namespace OCC.Forms
             this.dataGridViewImageColumn2.MinimumWidth = 15;
             this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
             this.dataGridViewImageColumn2.ReadOnly = true;
+            // 
+            // uiLabel1
+            // 
+            this.uiLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.uiLabel1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiLabel1.Location = new System.Drawing.Point(8, 138);
+            this.uiLabel1.Name = "uiLabel1";
+            this.uiLabel1.Size = new System.Drawing.Size(62, 23);
+            this.uiLabel1.TabIndex = 0;
+            this.uiLabel1.Text = "CPU%";
+            this.uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // uiLabel2
+            // 
+            this.uiLabel2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiLabel2.Location = new System.Drawing.Point(132, 207);
+            this.uiLabel2.Name = "uiLabel2";
+            this.uiLabel2.Size = new System.Drawing.Size(8, 8);
+            this.uiLabel2.TabIndex = 1;
+            this.uiLabel2.Text = "uiLabel2";
+            this.uiLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // ProcessBarCpuRatio
+            // 
+            this.ProcessBarCpuRatio.Direction = Sunny.UI.UILine.LineDirection.Vertical;
+            this.ProcessBarCpuRatio.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ProcessBarCpuRatio.Location = new System.Drawing.Point(13, 164);
+            this.ProcessBarCpuRatio.MinimumSize = new System.Drawing.Size(50, 3);
+            this.ProcessBarCpuRatio.Name = "ProcessBarCpuRatio";
+            this.ProcessBarCpuRatio.Size = new System.Drawing.Size(50, 54);
+            this.ProcessBarCpuRatio.TabIndex = 2;
+            this.ProcessBarCpuRatio.Text = "uiProcessBar1";
+            // 
+            // ProcessBarMemoryRatio
+            // 
+            this.ProcessBarMemoryRatio.Direction = Sunny.UI.UILine.LineDirection.Vertical;
+            this.ProcessBarMemoryRatio.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ProcessBarMemoryRatio.Location = new System.Drawing.Point(91, 164);
+            this.ProcessBarMemoryRatio.MinimumSize = new System.Drawing.Size(50, 3);
+            this.ProcessBarMemoryRatio.Name = "ProcessBarMemoryRatio";
+            this.ProcessBarMemoryRatio.Size = new System.Drawing.Size(50, 54);
+            this.ProcessBarMemoryRatio.TabIndex = 4;
+            this.ProcessBarMemoryRatio.Text = "uiProcessBar2";
+            // 
+            // uiLabel3
+            // 
+            this.uiLabel3.BackColor = System.Drawing.Color.Transparent;
+            this.uiLabel3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiLabel3.Location = new System.Drawing.Point(86, 138);
+            this.uiLabel3.Name = "uiLabel3";
+            this.uiLabel3.Size = new System.Drawing.Size(62, 23);
+            this.uiLabel3.TabIndex = 3;
+            this.uiLabel3.Text = "内存%";
+            this.uiLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // ProcessBarGpuRatio
+            // 
+            this.ProcessBarGpuRatio.Direction = Sunny.UI.UILine.LineDirection.Vertical;
+            this.ProcessBarGpuRatio.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ProcessBarGpuRatio.Location = new System.Drawing.Point(164, 164);
+            this.ProcessBarGpuRatio.MinimumSize = new System.Drawing.Size(50, 3);
+            this.ProcessBarGpuRatio.Name = "ProcessBarGpuRatio";
+            this.ProcessBarGpuRatio.Size = new System.Drawing.Size(50, 54);
+            this.ProcessBarGpuRatio.TabIndex = 6;
+            this.ProcessBarGpuRatio.Text = "uiProcessBar3";
+            // 
+            // uiLabel4
+            // 
+            this.uiLabel4.BackColor = System.Drawing.Color.Transparent;
+            this.uiLabel4.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiLabel4.Location = new System.Drawing.Point(157, 138);
+            this.uiLabel4.Name = "uiLabel4";
+            this.uiLabel4.Size = new System.Drawing.Size(62, 23);
+            this.uiLabel4.TabIndex = 5;
+            this.uiLabel4.Text = "GPU%";
+            this.uiLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // ProcessBarGpuUsed
+            // 
+            this.ProcessBarGpuUsed.Direction = Sunny.UI.UILine.LineDirection.Vertical;
+            this.ProcessBarGpuUsed.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ProcessBarGpuUsed.Location = new System.Drawing.Point(235, 164);
+            this.ProcessBarGpuUsed.MinimumSize = new System.Drawing.Size(50, 3);
+            this.ProcessBarGpuUsed.Name = "ProcessBarGpuUsed";
+            this.ProcessBarGpuUsed.Size = new System.Drawing.Size(50, 54);
+            this.ProcessBarGpuUsed.TabIndex = 8;
+            this.ProcessBarGpuUsed.Text = "uiProcessBar4";
+            // 
+            // uiLabel5
+            // 
+            this.uiLabel5.BackColor = System.Drawing.Color.Transparent;
+            this.uiLabel5.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiLabel5.Location = new System.Drawing.Point(230, 138);
+            this.uiLabel5.Name = "uiLabel5";
+            this.uiLabel5.Size = new System.Drawing.Size(62, 23);
+            this.uiLabel5.TabIndex = 7;
+            this.uiLabel5.Text = "显存%";
+            this.uiLabel5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // uiLabel6
+            // 
+            this.uiLabel6.BackColor = System.Drawing.Color.Transparent;
+            this.uiLabel6.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiLabel6.Location = new System.Drawing.Point(9, 32);
+            this.uiLabel6.Name = "uiLabel6";
+            this.uiLabel6.Size = new System.Drawing.Size(94, 23);
+            this.uiLabel6.TabIndex = 9;
+            this.uiLabel6.Text = "开机时间：";
+            this.uiLabel6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // LabelBootTime
+            // 
+            this.LabelBootTime.BackColor = System.Drawing.Color.Transparent;
+            this.LabelBootTime.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.LabelBootTime.Location = new System.Drawing.Point(87, 32);
+            this.LabelBootTime.Name = "LabelBootTime";
+            this.LabelBootTime.Size = new System.Drawing.Size(198, 23);
+            this.LabelBootTime.TabIndex = 10;
+            this.LabelBootTime.Text = "无法获取";
+            this.LabelBootTime.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // LabelPing
+            // 
+            this.LabelPing.BackColor = System.Drawing.Color.Transparent;
+            this.LabelPing.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.LabelPing.Location = new System.Drawing.Point(87, 67);
+            this.LabelPing.Name = "LabelPing";
+            this.LabelPing.Size = new System.Drawing.Size(198, 23);
+            this.LabelPing.TabIndex = 12;
+            this.LabelPing.Text = "无法获取";
+            this.LabelPing.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // uiLabel9
+            // 
+            this.uiLabel9.BackColor = System.Drawing.Color.Transparent;
+            this.uiLabel9.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiLabel9.Location = new System.Drawing.Point(9, 67);
+            this.uiLabel9.Name = "uiLabel9";
+            this.uiLabel9.Size = new System.Drawing.Size(94, 23);
+            this.uiLabel9.TabIndex = 11;
+            this.uiLabel9.Text = "Ping(ms)";
+            this.uiLabel9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // LabelRemark
+            // 
+            this.LabelRemark.BackColor = System.Drawing.Color.Transparent;
+            this.LabelRemark.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.LabelRemark.Location = new System.Drawing.Point(369, 32);
+            this.LabelRemark.Name = "LabelRemark";
+            this.LabelRemark.Size = new System.Drawing.Size(730, 23);
+            this.LabelRemark.TabIndex = 14;
+            this.LabelRemark.Text = "1h";
+            this.LabelRemark.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // uiLabel11
+            // 
+            this.uiLabel11.BackColor = System.Drawing.Color.Transparent;
+            this.uiLabel11.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiLabel11.Location = new System.Drawing.Point(291, 32);
+            this.uiLabel11.Name = "uiLabel11";
+            this.uiLabel11.Size = new System.Drawing.Size(72, 23);
+            this.uiLabel11.TabIndex = 13;
+            this.uiLabel11.Text = "备注：";
+            this.uiLabel11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Selected
             // 
@@ -332,6 +527,7 @@ namespace OCC.Forms
             this.CPURatio.Name = "CPURatio";
             this.CPURatio.ReadOnly = true;
             this.CPURatio.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.CPURatio.Visible = false;
             // 
             // BootTime
             // 
@@ -342,6 +538,7 @@ namespace OCC.Forms
             this.BootTime.Name = "BootTime";
             this.BootTime.ReadOnly = true;
             this.BootTime.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.BootTime.Visible = false;
             // 
             // MemoryRatio
             // 
@@ -351,6 +548,7 @@ namespace OCC.Forms
             this.MemoryRatio.Name = "MemoryRatio";
             this.MemoryRatio.ReadOnly = true;
             this.MemoryRatio.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.MemoryRatio.Visible = false;
             // 
             // GPURatio
             // 
@@ -360,6 +558,7 @@ namespace OCC.Forms
             this.GPURatio.Name = "GPURatio";
             this.GPURatio.ReadOnly = true;
             this.GPURatio.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.GPURatio.Visible = false;
             // 
             // GPUMemory
             // 
@@ -370,6 +569,7 @@ namespace OCC.Forms
             this.GPUMemory.Name = "GPUMemory";
             this.GPUMemory.ReadOnly = true;
             this.GPUMemory.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.GPUMemory.Visible = false;
             // 
             // NetDelay
             // 
@@ -380,6 +580,7 @@ namespace OCC.Forms
             this.NetDelay.Name = "NetDelay";
             this.NetDelay.ReadOnly = true;
             this.NetDelay.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.NetDelay.Visible = false;
             // 
             // StereoState
             // 
@@ -419,6 +620,7 @@ namespace OCC.Forms
             this.Remark.Name = "Remark";
             this.Remark.ReadOnly = true;
             this.Remark.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Remark.Visible = false;
             // 
             // IP
             // 
@@ -444,6 +646,7 @@ namespace OCC.Forms
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DeviceList)).EndInit();
             this.panel2.ResumeLayout(false);
+            this.uiGroupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -462,6 +665,21 @@ namespace OCC.Forms
         private Sunny.UI.UIButton ButtonEditDevice;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
+        private Sunny.UI.UILabel uiLabel2;
+        private Sunny.UI.UILabel uiLabel1;
+        private Sunny.UI.UIProcessBar ProcessBarCpuRatio;
+        private Sunny.UI.UIProcessBar ProcessBarMemoryRatio;
+        private Sunny.UI.UILabel uiLabel3;
+        private Sunny.UI.UIProcessBar ProcessBarGpuRatio;
+        private Sunny.UI.UILabel uiLabel4;
+        private Sunny.UI.UIProcessBar ProcessBarGpuUsed;
+        private Sunny.UI.UILabel uiLabel5;
+        private Sunny.UI.UILabel uiLabel6;
+        private Sunny.UI.UILabel LabelBootTime;
+        private Sunny.UI.UILabel LabelPing;
+        private Sunny.UI.UILabel uiLabel9;
+        private Sunny.UI.UILabel LabelRemark;
+        private Sunny.UI.UILabel uiLabel11;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Selected;
         private System.Windows.Forms.DataGridViewTextBoxColumn DeviceName;
         private System.Windows.Forms.DataGridViewImageColumn OpenOrClosePCState;

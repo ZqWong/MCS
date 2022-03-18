@@ -163,13 +163,15 @@ namespace OCC.Forms
 
         #region RabbitMQ Events
 
-        private void SetSystemInfoFormDeviceList(int rowIndex, string cpuRatio, string memeoryRatio, string bootTime, string gpuRatio, string gpuMemory)
+        private void SetSystemInfoFormDeviceList(int cpuRatio, int memeoryRatio, string bootTime, int gpuRatio, int gpuMemory, string remark, string ping)
         {
-            DeviceList.Rows[rowIndex].Cells["CPURatio"].Value = cpuRatio;
-            DeviceList.Rows[rowIndex].Cells["MemoryRatio"].Value = memeoryRatio;
-            DeviceList.Rows[rowIndex].Cells["BootTime"].Value = bootTime;
-            DeviceList.Rows[rowIndex].Cells["GPURatio"].Value = gpuRatio;
-            DeviceList.Rows[rowIndex].Cells["GPUMemory"].Value = gpuMemory;
+            ProcessBarCpuRatio.Value = cpuRatio;
+            ProcessBarMemoryRatio.Value = memeoryRatio;
+            ProcessBarGpuRatio.Value = gpuRatio;
+            ProcessBarGpuUsed.Value = gpuMemory;
+            LabelBootTime.Text = bootTime;
+            LabelRemark.Text = remark;
+            LabelPing.Text = ping;
         }
 
         /// <summary>
@@ -178,7 +180,7 @@ namespace OCC.Forms
         /// <param name="state"></param>
         public void UpdateDeviceSystemInfoEventHandler(object state)
         {
-            var ip = ((Handler.C_SystemStateEventHandler.UpdateSystemStateArgs)state).ip;
+            var ip = ((Handler.C_SystemStateEventHandler.UpdateSystemStateArgs)state).ip;            
             var cpu = ((Handler.C_SystemStateEventHandler.UpdateSystemStateArgs)state).cpu;
             var memory = ((Handler.C_SystemStateEventHandler.UpdateSystemStateArgs)state).memory;
             var tickCount = ((Handler.C_SystemStateEventHandler.UpdateSystemStateArgs)state).tickCount;
@@ -193,13 +195,21 @@ namespace OCC.Forms
 
                 DeviceList.Rows[target.Index].Cells["NetDelay"].Value = target.Ping;
 
-                SetSystemInfoFormDeviceList(
-                        target.Index,
-                        string.Format("{0}%", cpu.ToString("f2")),
-                        string.Format("{0}G", (memory / 1000).ToString("f2")),
-                        string.Format("{0}h:{1}m", (int)(tickCount / 1000 / 3600), (int)(tickCount / 1000 % 3600 / 60)),
-                        string.Format("{0}%", gpu_ratio.ToString("f2")),
-                        string.Format("{0}%", gpu_memory_ratio.ToString("f2")));                    
+                if (currentSelectRowIndex != -1)
+                {
+                    var device = DeviceList.Rows[currentSelectRowIndex].Tag as DeviceStatusCache;
+                    if (device.DataModel.IP.Equals(ip))
+                    {
+                        SetSystemInfoFormDeviceList(
+                           (int)cpu,
+                           (int)(memory / 1000),
+                           string.Format("{0}h:{1}m", (int)(tickCount / 1000 / 3600), (int)(tickCount / 1000 % 3600 / 60)),
+                           (int)gpu_ratio,
+                           (int)gpu_memory_ratio,
+                           target.DataModel.Remark,
+                           target.Ping);
+                    }
+                }              
             }
         }
 
@@ -238,6 +248,7 @@ namespace OCC.Forms
             if (e.RowIndex.Equals(-1))
                 return;
             currentSelectRowIndex = e.RowIndex;
+            SetSystemInfoFormDeviceList(0, 0, "无法获取", 0, 0, string.Empty, "无法获取");            
         }
     }
 }
