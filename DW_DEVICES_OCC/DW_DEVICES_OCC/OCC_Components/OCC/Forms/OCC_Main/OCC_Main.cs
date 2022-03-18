@@ -154,7 +154,7 @@ namespace OCC.Forms
                         }
                         else
                         {
-                            ShowErrorNotifier($"设备 {cache.DataModel.Name} 启动系统 {appDeviceBinded.AppData.AppName} 失败！请确认是否正确配置启动路径。");
+                            ShowErrorNotifier($"设备 {cache.DataModel.Name} 启动系统 {appDeviceBinded.AppData.AppName} 失败！请检查设备类型，确认是否正确配置启动路径。");
                         }
                     }                        
                 }

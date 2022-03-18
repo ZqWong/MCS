@@ -27,13 +27,13 @@ namespace OCC.Forms
 
         public OCC_UserDetail()
         {
-            InitializeComponent();
-            ComboBoxSex.SelectedIndex = 0;
-            BtnConfirm.Enabled = Type.Equals(FormType.ADJUST);           
+            InitializeComponent();      
         }
 
         private void OCC_UserDetail_Load(object sender, EventArgs e)
         {
+            ComboBoxSex.SelectedIndex = 0;
+
             try
             {
                 var companyCollection = DataBaseManager.Instance.DB.Queryable<CompanyDataModel>().ToList();
@@ -41,6 +41,7 @@ namespace OCC.Forms
                 {
                     ComboBoxCompany.Items.Add(company.Name);
                 }
+                ComboBoxCompany.SelectedIndex = 0;
             }
             catch (Exception)
             {
@@ -55,6 +56,7 @@ namespace OCC.Forms
                 {
                     ComboBoxUserType.Items.Add(userType.Name);
                 }
+                ComboBoxUserType.SelectedIndex = 0;
             }
             catch (Exception)
             {
