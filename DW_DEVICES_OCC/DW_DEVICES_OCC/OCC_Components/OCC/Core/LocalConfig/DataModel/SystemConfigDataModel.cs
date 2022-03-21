@@ -27,5 +27,7 @@ namespace OCC.Core.LocalConfig
         public string DatabaseRepName;
 
         public bool WindowsCanMoved;
+
+        public bool GroupInfoByCompany;
     }
 }

@@ -74,10 +74,52 @@ public class DataBaseCRUDManager : LockedSingletonClass<DataBaseCRUDManager>
         {
             ret = DataBaseManager.Instance.DB.Insertable(appData).ExecuteReturnEntity();
         }
-        catch (Exception)
+        catch (Exception ex)
         {
 
-            throw;
+            throw ex;
+        }
+        return ret;
+    }
+
+    /// <summary>
+    /// 创建新的分组基本信息
+    /// </summary>
+    /// <param name="groupData"></param>
+    /// <returns></returns>
+    public GroupDataModel TryCreateGroupInfo(GroupDataModel groupData)
+    {
+        GroupDataModel ret;
+        try
+        {
+
+            ret = DataBaseManager.Instance.DB.Insertable(groupData).ExecuteReturnEntity();
+        }
+        catch (Exception ex)
+        {
+
+            throw ex;
+        }
+        return ret;
+    }
+
+    /// <summary>
+    /// 创建新的分组设备操作信息
+    /// </summary>
+    /// <param name="executeData"></param>
+    /// <returns></returns>
+    public GroupDeviceExecuteDataModel TryCreateGroupDeviceExecuteInfo(GroupDeviceExecuteDataModel executeData)
+    {
+        GroupDeviceExecuteDataModel ret;
+        try
+        {
+
+            ret = DataBaseManager.Instance.DB.Insertable(executeData).ExecuteReturnEntity();
+        }
+        catch (Exception ex)
+        {
+
+            throw ex;
         }
         return ret;
     }
@@ -105,9 +147,7 @@ public class DataBaseCRUDManager : LockedSingletonClass<DataBaseCRUDManager>
         }
         return ret;
     }
-    
-
-    
+        
     #endregion 
 
 
@@ -224,7 +264,6 @@ public class DataBaseCRUDManager : LockedSingletonClass<DataBaseCRUDManager>
         return ret;
     }
 
-
     /// <summary>
     /// 获取企业信息
     /// </summary>
@@ -250,7 +289,6 @@ public class DataBaseCRUDManager : LockedSingletonClass<DataBaseCRUDManager>
         }
         return ret;
     }
-
 
     /// <summary>
     /// 获取用户类型信息
@@ -278,7 +316,6 @@ public class DataBaseCRUDManager : LockedSingletonClass<DataBaseCRUDManager>
         return ret;
     }
 
-
     /// <summary>
     /// 硬件设备信息
     /// </summary>
@@ -289,7 +326,7 @@ public class DataBaseCRUDManager : LockedSingletonClass<DataBaseCRUDManager>
         bool ret = false;
         try
         {
-            var deviceDatas = DataBaseManager.Instance.DB.Queryable<DeviceDataModel>().Where(d => d.DelFlag.Equals(0)).ToList();
+            var deviceDatas = DataBaseManager.Instance.DB.Queryable<DeviceDataModel>().Where(d => d.DelFlag.Equals(0)).OrderBy(st=>st.DeviceType).ToList();
             if (null == deviceDatas)
             {
                 Debug.Error($"Get TryGetAllActivatedDeviceInfo data failed");
@@ -330,7 +367,11 @@ public class DataBaseCRUDManager : LockedSingletonClass<DataBaseCRUDManager>
         return ret;
     }
 
-
+    /// <summary>
+    /// 获取系统信息
+    /// </summary>
+    /// <param name="appData"></param>
+    /// <returns></returns>
     public bool TryGetAllAppDataInfo(out List<AppDataModel> appData)
     {
         bool ret = false;
@@ -352,6 +393,12 @@ public class DataBaseCRUDManager : LockedSingletonClass<DataBaseCRUDManager>
         return ret;
     }
 
+    /// <summary>
+    /// 获取系统绑定信息
+    /// </summary>
+    /// <param name="appId"></param>
+    /// <param name="appDeviceBindData"></param>
+    /// <returns></returns>
     public bool TryGetAppDeviceBindDataInfoByAppId(int appId, out List<AppDeviceBindDataModel> appDeviceBindData)
     {
         bool ret = false;
@@ -371,11 +418,114 @@ public class DataBaseCRUDManager : LockedSingletonClass<DataBaseCRUDManager>
         return ret;
     }
 
+    /// <summary>
+    /// 获取所有分组信息
+    /// </summary>
+    /// <param name="groupData"></param>
+    /// <returns></returns>
+    public bool TryGetAllGroupInfo(out List<GroupDataModel> groupData)
+    {
+        bool ret = false;
+        try
+        {
+            var binds = DataBaseManager.Instance.DB.Queryable<GroupDataModel>().Where(g => g.DelFlag.Equals(0)).ToList();
+            if (null == binds)
+                Debug.Error($"{this} Get TryGetAllGroupInfo data failed");
+            groupData = binds;
+            ret = true;
+        }
+        catch (Exception ex)
+        {
+            Debug.Error($"{this} DataManager TryGetAllGroupInfo failed {ex}");
+            throw;
+        }
+        return ret;
+    }
+
+    /// <summary>
+    /// 根据公司ID获取分组信息
+    /// </summary>
+    /// <param name="companyId"></param>
+    /// <param name="groupData"></param>
+    /// <returns></returns>
+    public bool TryGetAllGroupInfoByCompanyId(int companyId, out List<GroupDataModel> groupData)
+    {
+        bool ret = false;
+        try
+        {
+            var binds = DataBaseManager.Instance.DB.Queryable<GroupDataModel>().Where(g => g.CompanyId.Equals(companyId) && g.DelFlag.Equals(0)).ToList();
+            if (null == binds)
+                Debug.Error($"{this} Get TryGetAllGroupInfo data failed");
+            groupData = binds;
+            ret = true;
+        }
+        catch (Exception ex)
+        {
+            Debug.Error($"{this} DataManager TryGetAllGroupInfo failed {ex}");
+            throw;
+        }
+        return ret;
+    }
+
+    /// <summary>
+    /// 根据分组Id获取所有设备处理信息
+    /// </summary>
+    /// <param name="groupId"></param>
+    /// <param name="groupDeviceExecuteData"></param>
+    /// <returns></returns>
+    public bool TryGetAllGroupDeviceExecuteInfoByGroupId(int groupId, out List<GroupDeviceExecuteDataModel> groupDeviceExecuteData)
+    {
+        bool ret = false;
+        try
+        {
+            var binds = DataBaseManager.Instance.DB.Queryable<GroupDeviceExecuteDataModel>().Where(g => g.GroupId.Equals(groupId) && g.DelFlag.Equals(0)).ToList();
+            if (null == binds)
+                Debug.Error($"{this} Get TryGetAllGroupDeviceExecuteInfoByGroupId data failed");
+            groupDeviceExecuteData = binds;
+            ret = true;
+        }
+        catch (Exception ex)
+        {
+            Debug.Error($"{this} DataManager TryGetAllGroupDeviceExecuteInfoByGroupId failed {ex}");
+            throw ex;
+        }
+        return ret;
+    }
+
+    /// <summary>
+    /// 获取设备操作
+    /// </summary>
+    /// <param name="id"></param>
+    /// <param name=""></param>
+    /// <returns></returns>
+    public bool TryGetAllExecuteDataInfo(out List<DeviceExecuteDataModel> executeData)
+    {
+        bool ret = false;
+        try
+        {
+            var binds = DataBaseManager.Instance.DB.Queryable<DeviceExecuteDataModel>().Where(e => e.DelFlag.Equals(0)).ToList();
+            if (null == binds)
+                Debug.Error($"{this} Get TryGetAllGroupDeviceExecuteInfoByGroupId data failed");
+            executeData = binds;
+            ret = true;
+        }
+        catch (Exception ex)
+        {
+            Debug.Error($"{this} DataManager TryGetAllGroupDeviceExecuteInfoByGroupId failed {ex}");
+            throw ex;
+        }
+        return ret;
+    }
+
 
     #endregion
 
     #region U
 
+    /// <summary>
+    /// 更新用户信息
+    /// </summary>
+    /// <param name="userData"></param>
     public void TryUpdateUserInfoById(UserDataModel userData)
     {
         try
@@ -390,6 +540,11 @@ public class DataBaseCRUDManager : LockedSingletonClass<DataBaseCRUDManager>
      
     }
 
+    /// <summary>
+    /// 更新系统信息
+    /// </summary>
+    /// <param name="appData"></param>
+    /// <returns></returns>
     public bool TryUpdateAppInfoById(AppDataModel appData)
     {
         bool ret = false;
@@ -407,6 +562,11 @@ public class DataBaseCRUDManager : LockedSingletonClass<DataBaseCRUDManager>
         return ret;
     }
 
+    /// <summary>
+    /// 更新设备绑定系统信息
+    /// </summary>
+    /// <param name="appDeviceBinds"></param>
+    /// <returns></returns>
     public bool TryCreateOrUpdateAppDeviceBindInfo(List<AppDeviceBindDataModel> appDeviceBinds)
     {
         bool ret = false;
@@ -427,6 +587,44 @@ public class DataBaseCRUDManager : LockedSingletonClass<DataBaseCRUDManager>
         }
         return ret;
     }
+
+
+    public bool TryUpdateGroupInfoById(GroupDataModel groupData)
+    {
+        bool ret = false;
+        try
+        {
+            var result = DataBaseManager.Instance.DB.Updateable<GroupDataModel>(groupData).ExecuteCommand();
+            if (result > 0)
+                ret = true;
+        }
+        catch (Exception ex)
+        {
+            Debug.Error($"DataBaseCRUDManager TryUpdateGroupInfoById failed {ex}");
+            throw;
+        }
+        return ret;
+    }
+
+
+    public bool TryUpdateGroupDeviceExecute(GroupDeviceExecuteDataModel executeDataModel)
+    {
+        bool ret = false;
+        try
+        {
+            var result = DataBaseManager.Instance.DB.Updateable<GroupDataModel>(executeDataModel).ExecuteCommand();
+            if (result > 0)
+                ret = true;
+        }
+        catch (Exception ex)
+        {
+            Debug.Error($"DataBaseCRUDManager TryUpdateGroupInfoById failed {ex}");
+            throw;
+        }
+        return ret;
+    }
+
+
 
     #endregion
 
@@ -455,7 +653,6 @@ public class DataBaseCRUDManager : LockedSingletonClass<DataBaseCRUDManager>
         }
         return ret;
     }
-
 
     /// <summary>
     /// 删除设备信息（假删除）
@@ -501,6 +698,50 @@ public class DataBaseCRUDManager : LockedSingletonClass<DataBaseCRUDManager>
         catch (Exception ex)
         {
             Debug.Error($"DataBaseCRUDManager DeleteAppInfoById failed {ex}");
+            throw;
+        }
+        return ret;
+    }
+
+    /// <summary>
+    /// 删除分组信息（加删除）
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    public bool DeleteGroupInfoById(int id)
+    {
+        bool ret = false;
+        try
+        {
+            int count = DataBaseManager.Instance.DB.Deleteable<GroupDataModel>().Where(g => g.Id.Equals(id)).IsLogic().ExecuteCommand("del_flag");
+            if (count >= 1)
+            {
+                DataBaseManager.Instance.DB.Deleteable<GroupDeviceExecuteDataModel>().Where(gd => gd.GroupId.Equals(id)).IsLogic().ExecuteCommand("del_flag");
+                ret = true; ;
+            }
+        }
+        catch (Exception ex)
+        {
+            Debug.Error($"DataBaseCRUDManager DeleteGroupInfoById failed {ex}");
+            throw;
+        }
+        return ret;
+    }
+
+    public bool DeleteGroupDeviceExecuteBy(int id)
+    {        
+        bool ret = false;
+        try
+        {
+            int count = DataBaseManager.Instance.DB.Deleteable<GroupDeviceExecuteDataModel>().Where(g => g.Id.Equals(id)).IsLogic().ExecuteCommand("del_flag");
+            if (count >= 1)
+            {
+                ret = true; ;
+            }
+        }
+        catch (Exception ex)
+        {
+            Debug.Error($"DataBaseCRUDManager DeleteGroupDeviceExecuteBy failed {ex}");
             throw;
         }
         return ret;

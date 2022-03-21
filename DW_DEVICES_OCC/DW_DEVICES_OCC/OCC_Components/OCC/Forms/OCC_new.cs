@@ -169,7 +169,7 @@ namespace OCC
             // 判断 分组 权限 （设备绑定系统）
             if (UserAuthManager.IsHasAuth(DataManager.Instance.CurrentUserAuthData.AuthLevel, (long)UserAuthEnum.GROUP_MENU))
             {
-                CreateTabControlButton(UserAuthEnum.GROUP_MENU.ToString(), UIText.OCC.GROUP_BUTTON_STRING, new OCC_Groups());
+                CreateTabControlButton(UserAuthEnum.GROUP_MENU.ToString(), UIText.OCC.GROUP_BUTTON_STRING, new OCC_Group());
             }
             // 判断日志权限
             if (UserAuthManager.IsHasAuth(DataManager.Instance.CurrentUserAuthData.AuthLevel, (long)UserAuthEnum.SYSTEM_MENU))

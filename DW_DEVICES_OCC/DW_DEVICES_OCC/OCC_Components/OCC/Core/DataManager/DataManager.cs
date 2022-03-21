@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DataCache;
 using DataModel;
+using OCC.Core.LocalConfig;
 
 namespace OCC.Core
 {
@@ -49,6 +50,7 @@ namespace OCC.Core
             catch (Exception ex)
             {
                 Debug.Error($"{this} AppInfoCollection failed : {ex}");
+                throw ex;
             }
         }
 
@@ -102,7 +104,8 @@ namespace OCC.Core
             }
             catch (Exception ex)
             {
-                Debug.Error($"{this} GetDeviceData failed : {ex}");                
+                Debug.Error($"{this} GetDeviceData failed : {ex}");
+                throw ex;
             }            
         }
 
@@ -116,11 +119,72 @@ namespace OCC.Core
             return DeviceInfoCollection.FirstOrDefault(d => d.DataModel.Id.Equals(id));
         }
 
+        public DeviceStatusCache GetDeviceDataByName(string name)
+        {
+            return DeviceInfoCollection.FirstOrDefault(d => d.DataModel.Name.Equals(name));
+        }
+
+        /// <summary>
+        /// 通过ID获取设备操作信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public DeviceExecuteDataModel GetDeviceExecuteById(int id)
+        {
+            return DeviceExecuteCollection.FirstOrDefault(e => e.Id.Equals(id));
+        }
+
+        public DeviceExecuteDataModel GetDeviceExecuteByName(string name)
+        {
+            return DeviceExecuteCollection.FirstOrDefault(e => e.Name.Equals(name));
+        }
+
         #endregion
 
+        #region Group Data
 
+        private List<GroupDataModel> groupInfo = new List<GroupDataModel>();
+        public List<GroupDataCache> GroupInfoCollection = new List<GroupDataCache>();
 
-        #region UserData
+        public void GetGroupData()
+        {
+            try
+            {
+                GroupInfoCollection.Clear();
+
+                bool ret = false;
+
+                ret = LocalConifgManager.Instance.SystemConfig.DataModel.GroupInfoByCompany ?
+                    DataBaseCRUDManager.Instance.TryGetAllGroupInfo(out groupInfo) :
+                    DataBaseCRUDManager.Instance.TryGetAllGroupInfoByCompanyId(DataManager.Instance.CurrentLoginUserData.CompanyId, out groupInfo);
+
+                if (ret)
+                {
+                    foreach (GroupDataModel group in groupInfo)
+                    {                      
+                        if (!GroupInfoCollection.Exists(g => g.GroupId.Equals(group.Id)))
+                        {
+                            List<GroupDeviceExecuteDataModel> groupDeviceExecutes = new List<GroupDeviceExecuteDataModel>();
+                            GroupDataCache cache = new GroupDataCache();
+                            cache.GroupId = group.Id;
+                            cache.GroupData = group;
+                            DataBaseCRUDManager.Instance.TryGetAllGroupDeviceExecuteInfoByGroupId(group.Id, out groupDeviceExecutes);
+                            cache.GroupExecuteDatas = groupDeviceExecutes;
+                            GroupInfoCollection.Add(cache);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.Error($"{this} GetDeviceData failed : {ex}");
+                throw ex;
+            }
+        }
+
+        #endregion
+
+        #region User Data
 
         /// <summary>
         /// 当前登录用户信息
@@ -154,6 +218,10 @@ namespace OCC.Core
         /// </summary>
         public List<DeviceTypeDataModel> DeviceTypeCollection;
 
+        /// <summary>
+        /// 设备操作列表
+        /// </summary>
+        public List<DeviceExecuteDataModel> DeviceExecuteCollection;
 
         /// <summary>
         /// 获取一些通用数据
@@ -175,9 +243,43 @@ namespace OCC.Core
             {
 
             }
+            DeviceExecuteCollection = new List<DeviceExecuteDataModel>();
+            if (DataBaseCRUDManager.Instance.TryGetAllExecuteDataInfo(out DeviceExecuteCollection))
+            {
+
+            }
         }
 
               
+        public int GetCompanyIdByName(string companyName)
+        {
+            int ret = -1;
+
+            var company = CompanyDatas.FirstOrDefault(c => c.Name.Equals(companyName));
+            if (null != company)
+            {
+                ret = company.Id;
+            }
+            return ret;
+        }
+
+        public string GetCompanyNameById(int id)
+        {
+            string ret = string.Empty;
+
+            var company = CompanyDatas.FirstOrDefault(c => c.Id.Equals(id));
+            if (null != company)
+            {
+                ret = company.Name;
+            }
+            return ret;
+        }
+
+        public List<DeviceExecuteDataModel> GetTargetDeiveExecuteByDeviceTypeId(int deviceTypeId)
+        {
+            return DeviceExecuteCollection.FindAll(e => e.DeviceTypeId.Equals(deviceTypeId));
+        }
+
         #endregion
 
     }

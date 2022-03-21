@@ -68,6 +68,7 @@
     <Compile Include="Core\DataManager\AppDeviceBindedCache.cs" />
     <Compile Include="Core\DataManager\DataManager.cs" />
     <Compile Include="Core\DataManager\DeviceStatusCache.cs" />
+    <Compile Include="Core\DataManager\GroupDataCache.cs" />
     <Compile Include="Core\EventHandler\C_SystemStateEventHandler.cs" />
     <Compile Include="Core\EventHandler\GetSystemInfoEventHandler-Template.cs" />
     <Compile Include="Core\EventHandler\RemotePluginEventHandler.cs" />
@@ -96,11 +97,23 @@
     <Compile Include="Forms\OCC_APPs\OCC_APPDeviceBind.Designer.cs">
       <DependentUpon>OCC_APPDeviceBind.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\OCC_Groups\OCC_Groups.cs">
+    <Compile Include="Forms\OCC_Groups\OCC_Group.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\OCC_Groups\OCC_Groups.Designer.cs">
-      <DependentUpon>OCC_Groups.cs</DependentUpon>
+    <Compile Include="Forms\OCC_Groups\OCC_Group.Designer.cs">
+      <DependentUpon>OCC_Group.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\OCC_Groups\OCC_GroupDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\OCC_Groups\OCC_GroupDetail.Designer.cs">
+      <DependentUpon>OCC_GroupDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\OCC_Groups\OCC_GroupDeviceExecuteDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\OCC_Groups\OCC_GroupDeviceExecuteDetail.Designer.cs">
+      <DependentUpon>OCC_GroupDeviceExecuteDetail.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\OCC_new.cs">
       <SubType>Form</SubType>
@@ -167,8 +180,14 @@
     <EmbeddedResource Include="Forms\OCC_APPs\OCC_APPDeviceBind.resx">
       <DependentUpon>OCC_APPDeviceBind.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\OCC_Groups\OCC_Groups.resx">
-      <DependentUpon>OCC_Groups.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\OCC_Groups\OCC_Group.resx">
+      <DependentUpon>OCC_Group.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\OCC_Groups\OCC_GroupDetail.resx">
+      <DependentUpon>OCC_GroupDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\OCC_Groups\OCC_GroupDeviceExecuteDetail.resx">
+      <DependentUpon>OCC_GroupDeviceExecuteDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\OCC_new.resx">
       <DependentUpon>OCC_new.cs</DependentUpon>

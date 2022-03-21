@@ -53,7 +53,10 @@
     <Compile Include="Core\DataModel\CompanyDataModel.cs" />
     <Compile Include="Core\DataModel\DataModelBase.cs" />
     <Compile Include="Core\DataModel\DeviceDataModel.cs" />
+    <Compile Include="Core\DataModel\DeviceExecuteDataModel.cs" />
     <Compile Include="Core\DataModel\DeviceTypeDataModel.cs" />
+    <Compile Include="Core\DataModel\GroupDataModel.cs" />
+    <Compile Include="Core\DataModel\GroupDeviceExecuteDataModel.cs" />
     <Compile Include="Core\DataModel\UserDataModel.cs" />
     <Compile Include="Core\DataModel\UserTypeDataModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
