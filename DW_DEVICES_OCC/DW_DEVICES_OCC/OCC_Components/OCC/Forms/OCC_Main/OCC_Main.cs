@@ -77,6 +77,16 @@ namespace OCC.Forms
         }
 
         /// <summary>
+        /// 控制页面内按钮失效
+        /// </summary>
+        /// <param name="v"></param>
+        private void EnableButton(bool enable)
+        {
+            BtnAppStart.Enabled = enable;
+            BtnGroupStart.Enabled = enable;
+        }
+
+        /// <summary>
         /// 设备列表初始化
         /// </summary>
         public void DataGridViewDevicesInitialize()
@@ -136,6 +146,8 @@ namespace OCC.Forms
             }
             else if (-1 != ComboBoxApp.SelectedIndex)
             {
+                EnableButton(false);
+
                 Debug.Info($"Current Select App {ComboBoxApp.SelectedItem}");
 
                 var appDeviceBinded = DataManager.Instance.GetAppDeviceBindedCacheByAppName(ComboBoxApp.SelectedItem.ToString());
@@ -160,6 +172,8 @@ namespace OCC.Forms
                         }
                     }                        
                 }
+
+                EnableButton(true);
             }
             else
             {
@@ -204,16 +218,78 @@ namespace OCC.Forms
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void BtnGroupStart_Click(object sender, EventArgs e)
+        private void BtnGroupStart_Click(object sender, EventArgs args)
         {
-            if (-1 != ComboBoxGroup.SelectedIndex)
+            if (-1 != ComboBoxGroup.SelectedIndex && null != CurrentSelectedGroupData)
             {
+                EnableButton(false);
+
                 Debug.Info($"Current Select App {ComboBoxGroup.SelectedItem}");
 
-                DataGridViewDevice.EndEdit();
+                //DataGridViewDevice.EndEdit();
 
-                
+                List<GroupDeviceExecuteDataModel> executes = CurrentSelectedGroupData.GroupExecuteDatas.OrderBy(e => e.SortId).ToList();
 
+                foreach (GroupDeviceExecuteDataModel execute in executes)
+                {
+                    var device =DataManager.Instance.GetDeviceDataById(execute.DeviceId);
+
+                    // 对应 occ_device_type 表
+                    if (device.DataModel.DeviceType.Equals(1))
+                    {
+                        // 对应 occ_device_execute 表
+                        if (execute.ExecuteId.Equals(1))
+                        {
+                            DevicePowerController.RemotePowerOn(device.DataModel.MAC);
+                        }
+                        else if (execute.ExecuteId.Equals(2))
+                        {
+                            DevicePowerController.RemotePowerOff(device.DataModel.MAC);
+                        }
+                        else if (execute.ExecuteId.Equals(3))
+                        {
+                            DevicePowerController.RemoteRestart(device.DataModel.MAC);
+                        }
+                    }
+                    else
+                    {
+
+                    }
+
+
+                    //switch (device.DataModel.DeviceType)
+                    //{
+                    //    // 对应 occ_device_type 表
+                    //    // PC 机
+                    //    case 1:
+                    //        // 对应 occ_device_execute 表
+                    //        if (execute.ExecuteId.Equals(1))
+                    //        {
+                    //            DevicePowerController.RemotePowerOn(device.DataModel.MAC);
+                    //        }
+                    //        else if(execute.ExecuteId.Equals(2))
+                    //        {
+                    //            DevicePowerController.RemotePowerOff(device.DataModel.MAC);
+                    //        }
+                    //        else if(execute.ExecuteId.Equals(3))
+                    //        {
+                    //            DevicePowerController.RemoteRestart(device.DataModel.MAC);
+                    //        }                           
+                    //        break;
+                    //    default:
+                    //        break;
+                    //}
+
+                    // 睡眠延迟
+                    if (execute.Delay > 0)
+                    {
+                        Thread.Sleep(1000 * execute.Delay);
+                    }
+                }
+
+
+
+                EnableButton(true);
             }
             else
             {
