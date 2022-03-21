@@ -164,7 +164,7 @@ namespace OCC.Forms
                         var data = row.Tag as UserDataModel;
                         try
                         {
-                            DataBaseCRUDManager.Instance.DeleteDeviceInfoById(data.Id);
+                            DataBaseCRUDManager.Instance.DeleteUserInfoById(data.Id);
                         }
                         catch (Exception ex)
                         {

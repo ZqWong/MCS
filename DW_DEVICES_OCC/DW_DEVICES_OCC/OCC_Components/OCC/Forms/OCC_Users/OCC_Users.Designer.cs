@@ -29,21 +29,21 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.UserRightClick = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.DeleteUserInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AujustUserInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.uiGroupBox1 = new Sunny.UI.UIGroupBox();
+            this.UserList = new Sunny.UI.UIDataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.ButtonEditUser = new Sunny.UI.UIButton();
             this.ButtonDeleteUser = new Sunny.UI.UIButton();
             this.ButtonAddUser = new Sunny.UI.UIButton();
-            this.UserList = new Sunny.UI.UIDataGridView();
             this.Selected = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.AuthLevel = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Username = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,8 +54,8 @@
             this.UserRightClick.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.uiGroupBox1.SuspendLayout();
-            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UserList)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // UserRightClick
@@ -112,6 +112,66 @@
             this.uiGroupBox1.Text = "用户管理";
             this.uiGroupBox1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // UserList
+            // 
+            this.UserList.AllowUserToAddRows = false;
+            this.UserList.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
+            this.UserList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.UserList.BackgroundColor = System.Drawing.Color.White;
+            this.UserList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.UserList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.UserList.ColumnHeadersHeight = 32;
+            this.UserList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.UserList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Selected,
+            this.AuthLevel,
+            this.Username,
+            this.Sex,
+            this.Company,
+            this.IdentityId,
+            this.Remark});
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.UserList.DefaultCellStyle = dataGridViewCellStyle3;
+            this.UserList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.UserList.EnableHeadersVisualStyles = false;
+            this.UserList.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.UserList.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
+            this.UserList.Location = new System.Drawing.Point(0, 77);
+            this.UserList.Name = "UserList";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.UserList.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.UserList.RowHeadersVisible = false;
+            this.UserList.RowHeight = 40;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
+            this.UserList.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.UserList.RowTemplate.Height = 40;
+            this.UserList.SelectedIndex = -1;
+            this.UserList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.UserList.ShowGridLine = true;
+            this.UserList.Size = new System.Drawing.Size(741, 421);
+            this.UserList.TabIndex = 8;
+            this.UserList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.UserList_CellClick);
+            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Transparent;
@@ -137,6 +197,7 @@
             this.ButtonEditUser.TabIndex = 2;
             this.ButtonEditUser.Text = "编辑用户";
             this.ButtonEditUser.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ButtonEditUser.Click += new System.EventHandler(this.ButtonEditUser_Click);
             // 
             // ButtonDeleteUser
             // 
@@ -150,6 +211,7 @@
             this.ButtonDeleteUser.TabIndex = 1;
             this.ButtonDeleteUser.Text = "删除用户";
             this.ButtonDeleteUser.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ButtonDeleteUser.Click += new System.EventHandler(this.ButtonDeleteUser_Click);
             // 
             // ButtonAddUser
             // 
@@ -163,72 +225,12 @@
             this.ButtonAddUser.TabIndex = 0;
             this.ButtonAddUser.Text = "创建用户";
             this.ButtonAddUser.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            // 
-            // UserList
-            // 
-            this.UserList.AllowUserToAddRows = false;
-            this.UserList.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
-            this.UserList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle11;
-            this.UserList.BackgroundColor = System.Drawing.Color.White;
-            this.UserList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.UserList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
-            this.UserList.ColumnHeadersHeight = 32;
-            this.UserList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.UserList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Selected,
-            this.AuthLevel,
-            this.Username,
-            this.Sex,
-            this.Company,
-            this.IdentityId,
-            this.Remark});
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.UserList.DefaultCellStyle = dataGridViewCellStyle13;
-            this.UserList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.UserList.EnableHeadersVisualStyles = false;
-            this.UserList.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.UserList.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.UserList.Location = new System.Drawing.Point(0, 77);
-            this.UserList.Name = "UserList";
-            this.UserList.ReadOnly = true;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.UserList.RowHeadersDefaultCellStyle = dataGridViewCellStyle14;
-            this.UserList.RowHeadersVisible = false;
-            this.UserList.RowHeight = 40;
-            dataGridViewCellStyle15.BackColor = System.Drawing.Color.White;
-            this.UserList.RowsDefaultCellStyle = dataGridViewCellStyle15;
-            this.UserList.RowTemplate.Height = 40;
-            this.UserList.SelectedIndex = -1;
-            this.UserList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.UserList.ShowGridLine = true;
-            this.UserList.Size = new System.Drawing.Size(741, 421);
-            this.UserList.TabIndex = 8;
+            this.ButtonAddUser.Click += new System.EventHandler(this.ButtonAddUser_Click);
             // 
             // Selected
             // 
             this.Selected.HeaderText = "选择";
             this.Selected.Name = "Selected";
-            this.Selected.ReadOnly = true;
             this.Selected.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.Selected.Width = 75;
             // 
@@ -292,8 +294,8 @@
             this.UserRightClick.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.uiGroupBox1.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.UserList)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -305,6 +307,10 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private Sunny.UI.UIGroupBox uiGroupBox1;
         private Sunny.UI.UIDataGridView UserList;
+        private System.Windows.Forms.Panel panel1;
+        private Sunny.UI.UIButton ButtonEditUser;
+        private Sunny.UI.UIButton ButtonDeleteUser;
+        private Sunny.UI.UIButton ButtonAddUser;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Selected;
         private System.Windows.Forms.DataGridViewTextBoxColumn AuthLevel;
         private System.Windows.Forms.DataGridViewTextBoxColumn Username;
@@ -312,9 +318,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Company;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdentityId;
         private System.Windows.Forms.DataGridViewTextBoxColumn Remark;
-        private System.Windows.Forms.Panel panel1;
-        private Sunny.UI.UIButton ButtonEditUser;
-        private Sunny.UI.UIButton ButtonDeleteUser;
-        private Sunny.UI.UIButton ButtonAddUser;
     }
 }

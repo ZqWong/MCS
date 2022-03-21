@@ -27,7 +27,8 @@ namespace OCC.Forms
 
         public OCC_UserDetail()
         {
-            InitializeComponent();      
+            InitializeComponent();
+            btnOK.Click += BtnConfirm_Click;
         }
 
         private void OCC_UserDetail_Load(object sender, EventArgs e)
