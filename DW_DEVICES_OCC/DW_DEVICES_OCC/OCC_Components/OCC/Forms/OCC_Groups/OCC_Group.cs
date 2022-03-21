@@ -46,7 +46,8 @@ namespace OCC.Forms
 
         #endregion
 
-        private bool inSelectMode = false;
+        private bool inGroupSelectMode = false;
+        private bool inExecuteSelectMode = false;
 
         public GroupDataCache CurrentSelectedGroupData;
 
@@ -54,9 +55,12 @@ namespace OCC.Forms
 
         public OCC_Group()
         {
+            UiContext = SynchronizationContext.Current;
             InitializeComponent();
 
             DataGridViewGroup.Columns[0].Visible = false;
+            DataGridViewDeviceBinded.Columns[0].Visible = false;
+
             RefreshDataModel();
         }
 
@@ -68,6 +72,7 @@ namespace OCC.Forms
             {
                 CurrentSelectedGroupData = DataGridViewGroup.Rows[0].Tag as GroupDataCache;
             }
+            UiContext.Post(OCC_Main.Instance.ComboBoxGroupInitialize, null);
         }
 
         private void AppDataGridViewInitialize()
@@ -127,10 +132,10 @@ namespace OCC.Forms
 
         private void ButtonRemoveGroup_Click(object sender, EventArgs e)
         {
-            if (!inSelectMode)
+            if (!inGroupSelectMode)
             {
-                inSelectMode = true;
-                DataGridViewGroup.Columns[0].Visible = inSelectMode;
+                inGroupSelectMode = true;
+                DataGridViewGroup.Columns[0].Visible = inGroupSelectMode;
             }
             else
             {
@@ -146,16 +151,14 @@ namespace OCC.Forms
                         }
                         catch (Exception ex)
                         {
-                            MessageDialog msg = new MessageDialog();
-                            msg.Message = $"删除设备信息失败(ex: {ex})";
-                            msg.ShowDialog();
-                            return;
+                            ShowErrorDialog($"删除分组信息失败(ex: {ex})");
+                            throw ex;
                         }
                     }
                 }
 
-                inSelectMode = false;
-                DataGridViewGroup.Columns[0].Visible = inSelectMode;
+                inGroupSelectMode = false;
+                DataGridViewGroup.Columns[0].Visible = inGroupSelectMode;
                 RefreshDataModel();
                 //DeviceListInitialize();
                 OCC_Main.Instance.DataGridViewDevicesInitialize();
@@ -212,7 +215,39 @@ namespace OCC.Forms
 
         private void ButtonDeleteExecute_Click(object sender, EventArgs e)
         {
+            if (!inExecuteSelectMode)
+            {
+                inExecuteSelectMode = true;
+                DataGridViewDeviceBinded.Columns[0].Visible = inExecuteSelectMode;
+            }
+            else
+            {
+                foreach (DataGridViewRow row in DataGridViewDeviceBinded.Rows)
+                {
+                    if (row.Cells["ExecuteSelected"].EditedFormattedValue.Equals(true))
+                    {
+                        var data = row.Tag as GroupDeviceExecuteDataModel;
+                        Debug.Info($"Ready to delete {data.GroupId} infos");
 
+                        try
+                        {
+                            DataBaseCRUDManager.Instance.DeleteGroupDeviceExecuteById(data.Id);
+                        }
+                        catch (Exception ex)
+                        {
+                            ShowErrorDialog($"删除分组操作信息失败(ex: {ex})");
+                            throw ex;
+                        }
+
+                    }
+                }
+
+                inExecuteSelectMode = false;
+                DataGridViewDeviceBinded.Columns[0].Visible = inExecuteSelectMode;
+                RefreshDataModel();
+                //DeviceListInitialize();
+                OCC_Main.Instance.DataGridViewDevicesInitialize();
+            }            
         }
 
         private void ButtonEditExecute_Click(object sender, EventArgs e)

@@ -44,14 +44,14 @@
             this.ComboBoxApp = new Sunny.UI.UIComboBox();
             this.GroupBoxDeviceGroup = new Sunny.UI.UIGroupBox();
             this.DataGridViewDevice = new Sunny.UI.UIDataGridView();
-            this.uiGroupBox4 = new Sunny.UI.UIGroupBox();
-            this.PCDeviceStatusTimer = new System.Windows.Forms.Timer(this.components);
-            this.PowerSwitchImage = new System.Windows.Forms.ImageList(this.components);
-            this.HardwareDeviceStatusTimer = new System.Windows.Forms.Timer(this.components);
             this.DeviceName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Selected = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.SwitchButton = new System.Windows.Forms.DataGridViewImageColumn();
             this.ConnectionStatus = new System.Windows.Forms.DataGridViewImageColumn();
+            this.uiGroupBox4 = new Sunny.UI.UIGroupBox();
+            this.PCDeviceStatusTimer = new System.Windows.Forms.Timer(this.components);
+            this.PowerSwitchImage = new System.Windows.Forms.ImageList(this.components);
+            this.HardwareDeviceStatusTimer = new System.Windows.Forms.Timer(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.uiGroupBox3.SuspendLayout();
             this.uiGroupBox2.SuspendLayout();
@@ -132,6 +132,7 @@
             this.ComboBoxGroup.Text = "uiComboBox2";
             this.ComboBoxGroup.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.ComboBoxGroup.Watermark = "选择要启动的分组";
+            this.ComboBoxGroup.SelectedValueChanged += new System.EventHandler(this.ComboBoxGroup_SelectedValueChanged);
             // 
             // uiGroupBox2
             // 
@@ -265,37 +266,6 @@
             this.DataGridViewDevice.TabIndex = 0;
             this.DataGridViewDevice.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewDevice_CellContentClick);
             // 
-            // uiGroupBox4
-            // 
-            this.uiGroupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uiGroupBox4.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiGroupBox4.Location = new System.Drawing.Point(4, 686);
-            this.uiGroupBox4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.uiGroupBox4.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiGroupBox4.Name = "uiGroupBox4";
-            this.uiGroupBox4.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
-            this.uiGroupBox4.Size = new System.Drawing.Size(1256, 230);
-            this.uiGroupBox4.Style = Sunny.UI.UIStyle.Custom;
-            this.uiGroupBox4.TabIndex = 3;
-            this.uiGroupBox4.Text = "实时控制";
-            this.uiGroupBox4.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // PCDeviceStatusTimer
-            // 
-            this.PCDeviceStatusTimer.Tick += new System.EventHandler(this.DeviceStatusTimer_Tick);
-            // 
-            // PowerSwitchImage
-            // 
-            this.PowerSwitchImage.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("PowerSwitchImage.ImageStream")));
-            this.PowerSwitchImage.TransparentColor = System.Drawing.Color.Transparent;
-            this.PowerSwitchImage.Images.SetKeyName(0, "switch-关.png");
-            this.PowerSwitchImage.Images.SetKeyName(1, "switch-开.png");
-            this.PowerSwitchImage.Images.SetKeyName(2, "关闭中.png");
-            // 
-            // HardwareDeviceStatusTimer
-            // 
-            this.HardwareDeviceStatusTimer.Tick += new System.EventHandler(this.HardwareDeviceStatusTimer_Tick);
-            // 
             // DeviceName
             // 
             this.DeviceName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -326,6 +296,37 @@
             this.ConnectionStatus.Name = "ConnectionStatus";
             this.ConnectionStatus.ReadOnly = true;
             this.ConnectionStatus.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // uiGroupBox4
+            // 
+            this.uiGroupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uiGroupBox4.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiGroupBox4.Location = new System.Drawing.Point(4, 686);
+            this.uiGroupBox4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.uiGroupBox4.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiGroupBox4.Name = "uiGroupBox4";
+            this.uiGroupBox4.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
+            this.uiGroupBox4.Size = new System.Drawing.Size(1256, 230);
+            this.uiGroupBox4.Style = Sunny.UI.UIStyle.Custom;
+            this.uiGroupBox4.TabIndex = 3;
+            this.uiGroupBox4.Text = "实时控制";
+            this.uiGroupBox4.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // PCDeviceStatusTimer
+            // 
+            this.PCDeviceStatusTimer.Tick += new System.EventHandler(this.DeviceStatusTimer_Tick);
+            // 
+            // PowerSwitchImage
+            // 
+            this.PowerSwitchImage.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("PowerSwitchImage.ImageStream")));
+            this.PowerSwitchImage.TransparentColor = System.Drawing.Color.Transparent;
+            this.PowerSwitchImage.Images.SetKeyName(0, "switch-关.png");
+            this.PowerSwitchImage.Images.SetKeyName(1, "switch-开.png");
+            this.PowerSwitchImage.Images.SetKeyName(2, "关闭中.png");
+            // 
+            // HardwareDeviceStatusTimer
+            // 
+            this.HardwareDeviceStatusTimer.Tick += new System.EventHandler(this.HardwareDeviceStatusTimer_Tick);
             // 
             // OCC_Main
             // 

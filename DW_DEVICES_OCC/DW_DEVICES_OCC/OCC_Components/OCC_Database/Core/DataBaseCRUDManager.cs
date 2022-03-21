@@ -728,7 +728,7 @@ public class DataBaseCRUDManager : LockedSingletonClass<DataBaseCRUDManager>
         return ret;
     }
 
-    public bool DeleteGroupDeviceExecuteBy(int id)
+    public bool DeleteGroupDeviceExecuteById(int id)
     {        
         bool ret = false;
         try

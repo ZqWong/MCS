@@ -58,6 +58,8 @@ namespace OCC.Forms
 
         private Dictionary<string, string> portDictionary = new Dictionary<string, string>();
 
+        private GroupDataCache CurrentSelectedGroupData = null;
+
         public OCC_Main()
         {
             UiContext = SynchronizationContext.Current;
@@ -191,7 +193,10 @@ namespace OCC.Forms
         public void ComboBoxGroupInitialize(object args)
         {
             ComboBoxGroup.Items.Clear();
-
+            foreach (var item in DataManager.Instance.GroupInfoCollection)
+            {
+                ComboBoxGroup.Items.Add(item.GroupData.Name);
+            }
         }
 
         /// <summary>
@@ -204,10 +209,37 @@ namespace OCC.Forms
             if (-1 != ComboBoxGroup.SelectedIndex)
             {
                 Debug.Info($"Current Select App {ComboBoxGroup.SelectedItem}");
+
+                DataGridViewDevice.EndEdit();
+
+                
+
             }
             else
             {
                 ShowWarningDialog("请选择要启动的分组");
+            }
+        }
+
+        private void ComboBoxGroup_SelectedValueChanged(object sender, EventArgs e)
+        {
+            CurrentSelectedGroupData = DataManager.Instance.GetGroupDataByName(ComboBoxGroup.SelectedItem.ToString());
+
+            /// 将在分组中的设备进行标记
+            if (null != CurrentSelectedGroupData)
+            {
+                for (int i = 0; i < DataGridViewDevice.Rows.Count; i++)
+                {
+                    DataGridViewDevice.Rows[i].Cells["Selected"].Value = false;
+
+                    var deviceStatus = DataGridViewDevice.Rows[i].Tag as DeviceStatusCache;
+
+                    var has = CurrentSelectedGroupData.GroupExecuteDatas.Exists(d => d.DeviceId.Equals(deviceStatus.DataModel.Id));
+                    if (has)
+                    {
+                        DataGridViewDevice.Rows[i].Cells["Selected"].Value = true;
+                    }                   
+                }
             }
         }
 

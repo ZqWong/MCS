@@ -82,7 +82,8 @@ namespace OCC.Forms
         /// </summary>
         private void AppDataGridViewInitialize()
         {
-            DataGridViewApp.Rows.Clear();         
+            DataGridViewApp.Rows.Clear();
+            DataGridViewDeviceBinded.Rows.Clear();
             if (DataManager.Instance.AppDeviceBindedCollection.Count > 0)
             {
                 DataGridViewApp.Rows.Add(DataManager.Instance.AppDeviceBindedCollection.Count);
@@ -105,7 +106,6 @@ namespace OCC.Forms
         /// <param name="data"></param>
         private void DeviceDataGridViewInitialize(AppDeviceBindedCache data)
         {
-            DataGridViewDeviceBinded.Rows.Clear();
             if (data.DeviceBindData.Count > 0)
             {
                 DataGridViewDeviceBinded.Rows.Add(data.DeviceBindData.Count);

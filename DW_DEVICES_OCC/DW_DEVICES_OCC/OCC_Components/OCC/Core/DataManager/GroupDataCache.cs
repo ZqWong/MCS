@@ -22,6 +22,8 @@ namespace DataCache
 
         public int GroupId;
 
+        public string GroupName;
+
         public GroupDataModel GroupData;
 
         public List<GroupDeviceExecuteDataModel> GroupExecuteDatas;

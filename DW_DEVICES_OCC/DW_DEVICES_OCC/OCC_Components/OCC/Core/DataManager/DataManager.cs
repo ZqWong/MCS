@@ -167,6 +167,7 @@ namespace OCC.Core
                             List<GroupDeviceExecuteDataModel> groupDeviceExecutes = new List<GroupDeviceExecuteDataModel>();
                             GroupDataCache cache = new GroupDataCache();
                             cache.GroupId = group.Id;
+                            cache.GroupName = group.Name;
                             cache.GroupData = group;
                             DataBaseCRUDManager.Instance.TryGetAllGroupDeviceExecuteInfoByGroupId(group.Id, out groupDeviceExecutes);
                             cache.GroupExecuteDatas = groupDeviceExecutes;
@@ -180,6 +181,16 @@ namespace OCC.Core
                 Debug.Error($"{this} GetDeviceData failed : {ex}");
                 throw ex;
             }
+        }
+
+        public GroupDataCache GetGroupDataByName(string name)
+        {
+            return GroupInfoCollection.FirstOrDefault(g => g.GroupName.Equals(name));
+        }
+
+        public GroupDataCache GetGroupDataById(int id)
+        {
+            return GroupInfoCollection.FirstOrDefault(g => g.GroupId.Equals(id));
         }
 
         #endregion
