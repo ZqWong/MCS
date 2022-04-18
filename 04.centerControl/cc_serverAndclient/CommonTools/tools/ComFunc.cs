@@ -13,6 +13,9 @@ using Utilities;
 
 namespace DW_CC_NET.tools
 {
+    /// <summary>
+    /// 文件夹路径处理
+    /// </summary>
     public class ComFunc : Singleton<ComFunc>
     {
         public string GetMainModuleFilepath(int processId)

@@ -8,6 +8,7 @@ using Microsoft.Win32;
 
 namespace DW_CC_NET.tools
 {
+    // 开机自动启动设置
     public class AutoRunWithAdmin
     {
         /// <summary>
